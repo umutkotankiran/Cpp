@@ -1484,7 +1484,7 @@ namespace ali{
 
 Farklı scopelar func overloading olmaz
 
-namespace Nec{
+namespace Ali{
 	void func(int);
 }
 
