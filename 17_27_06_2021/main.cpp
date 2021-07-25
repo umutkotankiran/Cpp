@@ -1267,12 +1267,12 @@ Buna karşı önlem almakta mümkün. Bir eş isim alias bildirilebiliyoruz.
 
 Türlere de eş isim bildirimi legal.Buradaki sentaksa namespace alias deniyor.
 
-namespace neco
+namespace neco_project
 {
 	int x,y;
 }
 
-namespace nec neco_project;
+namespace nec = neco_project;
 tabi bu bildirimin olması için nec visible olmalı.
 
 int main()
