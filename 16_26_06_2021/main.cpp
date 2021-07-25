@@ -1494,6 +1494,17 @@ namespace Nec{
 
 ------------------------------------------------------------------------------------------------------------
 
+Burası ise func overloading 
+
+namespace Nec{
+	void func(int);
+}
+
+namespace Nec{
+	void func(double); Func OVerloading burası
+
+------------------------------------------------------------------------------------------------------------
+
 İsim alanındaki ismi bulmak için scope resolution operatörü kullanılır.
 
 int g = 20;
