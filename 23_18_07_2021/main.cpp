@@ -217,6 +217,7 @@ yukarıdaki f1,f2,f3 ler tanımlı
 void myfunc()
 {
 	std::cout << "myfunc cagrildi, myfunc abortu cagiracak\n";
+	abort();
 }
 
 int main()
