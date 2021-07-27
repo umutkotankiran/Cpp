@@ -1,5 +1,5 @@
 /*
-3. Derse katılmanız için sizden bir  "meeting id" ve "password" istenecek. Aşağıdaki id ve password'ü kullanmalısınız:
+
 Meeting Id : 895 3331 1835
 Password : 111222
 
