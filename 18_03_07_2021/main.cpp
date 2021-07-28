@@ -263,9 +263,11 @@ int main()
 
 ------------------------------------------
 init listi for ile dolaşabiliriz.
-void func(std::initializer::list<int> x)
+
+using namespace std;
+void func(std::initializer_list<int> x)
 {
-	for(auto iter = x.begin(); iter != std::npos)
+	for (auto iter = x.begin(); iter != x.end(); iter++)
 	{
 		std::cout << *iter << " ";
 	}
@@ -274,13 +276,7 @@ void func(std::initializer::list<int> x)
 
 int main()
 {
-	func({1,5,7,11,15,22}); //burada tüm listeyi dolaştığını görürüz.
-}
-
-range base for loop ilede olur.
-for(auto val : x)
-{
-	std::cout << val << "\n";
+	func({ 1,5,7,11,15,22 }); //burada tüm listeyi dolaştığını görürüz.
 }
 
 ----------------------------------------------------------------------------
