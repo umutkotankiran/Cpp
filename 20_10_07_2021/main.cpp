@@ -1532,8 +1532,7 @@ int main()
 
 2 - Fonksiyon çağrısında nitelenmiş isim kullanılırsa, ÖR: carptr->run(); BURADA SANALLIK DEVREYE GIRECEK ama
 	carptr->Car::run(); BURADA SANALLIK DEVREYE GIRMEYECEK. Olay Base olan sınıfın adresi/referanslı olan çağrılarda bitiyor.
-	muhtelemen Car carptr = new bmw; carptr->run(); yapınca devreye girdi. Bu kısma bak test et.
-
+	
 3 - Ctor içinde yapılan Virtual func çağrıları.
 	Bir mercedes nesnesi oluşturduğumda ve Mercedes nesnesi içindeki car nesnesi için ctor
 	çağrıldı, ama çağrılan car sınıfının run functionu oldu, mercedes sınıfının değil.
