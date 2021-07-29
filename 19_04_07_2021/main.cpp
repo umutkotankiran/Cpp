@@ -815,14 +815,14 @@ taban sınıfı türden nesneye türemiş sınıf nesnesini atayınca, fiilen t�
 
 		Türemiş Sınıf				 Taban Sınıf
 		|----------|				|-----------|
-		|Türemiş   |				|			|
-		|içindeki  |				|			|
-		|taban Sın.|				|			|
+		|Türemiş   |				|	    |
+		|içindeki  |				|	    |
+		|taban Sın.|				|	    |
 		|----------|				|-----------|
 		|----------|
-		|		   |
-		|		   |
-		|		   |
+		|          |
+		|	   |
+		|	   |
 		|----------|
 
 Dolayısı ile türemiş sınıftaki bilgi kaybediliyor.Bu sebeple nesne dilimlenmesi deniyor.
