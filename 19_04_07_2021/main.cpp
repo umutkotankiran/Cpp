@@ -856,14 +856,14 @@ Dikkat : Türemiş sınıf nesnesinin içindeki taban sınıfı nesnesinin adres
 
 	    Türemiş Sınıf				 Taban Sınıf
 		|----------|				|-----------|
-		|Türemiş   |				|			|
-		|içindeki  |				|			|
-		|taban Sın.|				|			|
+		|Türemiş   |				|	    |
+		|içindeki  |				|	    |
+		|taban Sın.|				|	    |
 		|----------|				|-----------|
 		|----------|
-		|		   |
-		|		   |
-		|		   |
+		|	   |
+		|	   |
+		|	   |
 		|----------|
 
 
