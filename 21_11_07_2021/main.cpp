@@ -27,6 +27,8 @@ void gfunc(Base& baseref)
 	baseref.foo(); // SENTAKS HATASI.Compile time da erişim kontrolne takılır.Erişim kontrolü burada Base sınıfı nesnesi için
 }
 
+Base classın public interface inde bulunan virtual func derived classın private interface inden override ettik.
+
 ----------------------------------------------------------------------------------------------------- -
 
 Sınıfın public interface inde sanal yada sanal olmayan fonksiyonlar olacak.
