@@ -1121,10 +1121,10 @@ Bunların bahsedilmesinin sebebi.Ctor init liste doğrudan taban sınıf konulab
 
 class C : public B{
 public:
-	C() B(int){ // GEÇERLI
+	C() : B(int){ // GEÇERLI
 	}
 
-	C() A(int,int){ //SENTAKS HATASI.
+	C() : A(int,int){ //SENTAKS HATASI.
 	}
 };
 
