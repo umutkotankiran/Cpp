@@ -128,7 +128,7 @@ int main()
 
 SIRAYI DEĞIŞTIR.DIKKAT!!!!
 
-class Der : public Base2, public Base2{
+class Der : public Base2, public Base1{
 
 };
 
