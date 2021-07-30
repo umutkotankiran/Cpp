@@ -594,7 +594,7 @@ public:
 	}
 	bool is_on()const
 	{
-		reutrn on_flag;
+		return on_flag;
 	}
 	virtual ~Device() = default;
 private:
