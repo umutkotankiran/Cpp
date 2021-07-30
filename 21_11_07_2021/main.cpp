@@ -952,8 +952,11 @@ Aşağıdaki işleri yapmak kolaylaşıyordu.
 Using eskiden de vardı ama modern C++ ta kapsamı baya genişledi.
 Cosntructor içinde using bildrimi yapabiliyoruz.Ctor için using bildirimi yaptığımızda, bu sefer sanki diğer member funclarda olduğu gibi
 taban sınıfın ctorlarıda türemiş sınıf içinde visible hale geliyor.
+
 DİKKAT!!
 BUNA TABAN SINIFIN SPECIAL MEMBER OLAN CTORLAR DAHIL DEĞIL!!!!!!!!!!!!!
+AŞAĞIDADA YAZDIK. EĞER IMPLICITLY DEFAULT EDILDIYSE TÜREMİŞ SINIFIN SPECİAL MEMBER FUNCLARI KULLANILACAK ZATEN.
+DİĞER PARAMETRELİ CTORLARDA BASE CLASSTAN INHERIT EDILECEK
 
 class Base{
 public:
