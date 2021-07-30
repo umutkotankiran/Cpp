@@ -786,6 +786,7 @@ Burada Device Ctorunu çağıran, printer yada scanner ctoru değil, Combonun Ct
 Birde multicombo ekliyorum. Eklenmiş uzun halini yazmayacağım
 
 class MultiCombo : public Combo{
+public:
 	MultiCombo()
 	{
 		std::cout << "MultiCombo Ctor\n"
