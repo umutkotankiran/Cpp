@@ -777,6 +777,7 @@ Sırayla Ctorlar çağrıldı.
 Device ctor
 Printer ctor
 Scanner ctor
+Combo Ctor
 
 Burada Device Ctorunu çağıran, printer yada scanner ctoru değil, Combonun Ctoru çağırdı.
 
