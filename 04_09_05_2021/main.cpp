@@ -481,13 +481,17 @@ sol taraf referansı(&) ve sağ taraf referansı(&&) == = sonuc sol taraf refera
 
 b - auto && r = x + 5; ise
 
+Derleyici auto yerine int&& koydu. int && &&  -> int && 
+int &&r = x + 5;
+
+Pratik Kural
+------------
 ilk değer veren rvalue exp ise auto karşılığı olan tür türün kendisi.
 Bu durumda auto ya karşılık gelen tür kendisi yani ==> int
 
 Derleyici auto yerine int koydu
 int&& r = x + 5;
 bu durumda r sağ taraf referansı oldu
-
 
 
 BASİT KURAL
