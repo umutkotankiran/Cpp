@@ -491,8 +491,8 @@ bu durumda r sağ taraf referansı oldu
 
 
 BASİT KURAL
-auto&& r = x; ise r sol taraf değeri
-auto&& r = 10; ise r  sağ taraf değeri
+auto&& r = x; ise r sol taraf referansı
+auto&& r = 10; ise r  sağ taraf referansı
 
 
 Normalde C++ türünde referansa referans olmaz.Ancak tür çıkarımı yapılan bağlamlarda
