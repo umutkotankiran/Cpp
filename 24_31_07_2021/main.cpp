@@ -300,16 +300,18 @@ Derleyiciler code optimization yapıyor. 2 tane optimizasyon karıştırılıyor
 C de bu kod üretme aşamasında optimizer modülü bunu yapıyordu.for içindeki
 değişkenin döngü dışına alınması, bazı kodların tamamen çıkarılması dead code elemination, döngü açılımı loop unrolling ... gibi.
 
-C ++ Abstract Machine bir derste anlatılacak.
+NOT : C++ Abstract Machine bir derste anlatılacak.
 
-2. Generic programlama paradigmasıyla beraber verilen 2. bir optimizasyon var.
+2. Generic programlama paradigmasıyla beraber verilen ikicni bir optimizasyon var.
 Derleyici compile time de bizim için code yazabilen bir program. Henüz tanışmadığımız bir optimizasyon var.
 Derleyici compile time da edindiği bilgilere göre farklı kodlar yazabiliyor bizim için.
 Mesela belirli güvenceler varsa kopyalama yerine taşıma işlemi yapıyor, ama belirli güvenceler yoksa kopyalama yapabiliyor...
 
 Kopyalama yerine Taşıma semantiği kullanılması yani.
 
-Exception Specification vardı C++17 ama kaldırıldı.Bu sebeple bu konu detaylı anlatılmayacak.
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Exception Specification vardı ama C++17 ile kaldırıldı. Bu sebeple bu konu detaylı anlatılmayacak.
 
 void func()throw(); Mesela bu geçmişe ait.
 void func()throw(std::bad_alloc); Buda öyle
@@ -323,17 +325,20 @@ bunlar artık bitti.Artık yok.
 Modern C++ ta noexcept keyword eklendi.
 Bu hem belirleyici hemde operator
 
-----------------------------------------------------------------------------
-----------------------------------------------------------------------------
+======================================================================================================================================
+======================================================================================================================================
+======================================================================================================================================
+
 
 NOEXCEPT SPECIFIER
 ------------------
+
 Bir function bildirildiğinde noexcept keywordünü parametre parantezinden sonra kullanırsak
 bu keyword functionun exception göndermeme garantisi verdiğini anlatıyor.
 
 void func()noexcept;
 
-İster global ister static/nonstatic member olsun ister special member func olsun(herşey),
+İster global ister static/nonstatic member olsun ister special member func olsun,
 noexcept ile nitelersek bu functionun exception throw etmeyeceğini derleyice ve okuyana söylemiş ouyoruz.
 
 class Myclass
@@ -341,11 +346,11 @@ class Myclass
 public:
 	void foo()const noexcept; // noexcept garantisi verilmiş
 	static int sf()noexcept; // noexcept garantisi verilmiş
-
 };
 
--------------------------------------------------------------------------
--------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+
 
 BUNU KULLANMANIN 2 YOLU VAR.
 ----------------------------
@@ -358,8 +363,8 @@ void bar() noexcept; // Bu ise garanti veriyor.Exception throw etmeyecek.
 
 2. NOEXCEPTTEN SONRA PARANTEZ VE IÇINE CONSTANT EXPRESSION
 ----------------------------------------------------------
-Derleme zamanı ifadesi. Boolean veya booleana compile time da dönüşebilecek ifade olacak
-Bu ifade true ise exception garantisi veriyor, false ise bu garantiyi vermiyor.
+Derleme zamanı ifadesi. Boolean veya booleana compile time da dönüşebilecek ifade olacak.
+Bu ifade true ise exception vermeme garantisi veriyor, false ise exception verebilir, herhangibir garanti yok.
 Yani exception verip vermemesini bir koşula bağlamış oluyoruz.
 
 void func()noexcept(true);
@@ -367,6 +372,7 @@ void func()noexcept; Bu yukarıdaki ile aynı anlamda. Exception throw etmeme ga
 
 void foo()noexcept(false);
 void foo();	Böyle yazmaklada arasında fark yok.Exception throw etmeme garantisi vermedi.
+			exception veredebilir, vermeyedebilir.
 
 
 class Myclass {};
@@ -374,9 +380,9 @@ void foo()noexcept(std::is_nothrow_assignable_v<Myclass>);   Böyle birşey de o
 
 Şu ana kadar noexcept bir specifier olarak kullanıldı sırada operator olarak kullanılması var.
 
-----------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------
+======================================================================================================================================
+======================================================================================================================================
+======================================================================================================================================
 
 NOEXCEPT OPERATOR
 -----------------
@@ -385,8 +391,8 @@ Operand olarak bir ifade alıyor.İfadenin Nothrow garantisi verilip verilmediğ
 int main()
 {
 	int x = 10;
-	noexcept(x+10); // Bu bir compile time operatorü.Bir logic değer üretiyor.Sabit ifadesi aynı zamanda.
-					// aynı zamanda operand yine UNEVALUATED CONTEX.decytype ve sizeof gibi.
+	noexcept(x+10); // Bu bir compile time operatorü.Bir logic değer üretiyor. Aynı zamanda sabit ifadesi.
+					// Aynı zamanda operand yine UNEVALUATED CONTEX. decytype ve sizeof gibi.
 }
 
 noexcept in operandı olan ifade unevaluated contex
@@ -411,6 +417,12 @@ public:
 	//Myclass(int)noexcept(noexcept(std::is_nothrow_assignable<std::string>::value) && noexcept(std::cout << 1)); Koşul baya karmaşık.Argüman az verildi çokta önemli değil
 };
 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 SINIFIN SPECIAL MEMBER FUNCLARI
 -------------------------------
 Burada noexcept garantisini derleyici kendi saptıyor.
@@ -421,8 +433,8 @@ private:
 	std::string ms;
 };
 
-Bu sınıfın default ctorunun noexcept garantisi verip vermediğini kendisi
-saptayacak. Derleyici compile time da elemanlara bakacak, elemanların hepsi default init edildiğinde bu işlemlerin
+Bu sınıfın default ctorunun noexcept garantisi verip vermediğini kendisi saptayacak. 
+Derleyici compile time da elemanlara bakacak, elemanların hepsi default init edildiğinde bu işlemlerin
 nothrow garantisi varsa, derleyicinin oluşturduğu default ctorda nothrow / noexcept garantisi verir.
 
 BUna bakabiliriz.
@@ -432,15 +444,15 @@ int main()
 	cout << is_nothrow_constructible_v<Myclass> <<"\n"; // true ise Myclass için compilerın yazdığı Default Ctor noexcept edilecek.
 														// Bu garanti aslında elemanlara bağlı.
 
-	cout << is_nothrow_copy_constructible_v<Myclass> <<"\n"; // Bu garantiyi vermediğini yazdırdık.Neden vermiyor çünkü stringin default ctoru noexcept garantisi vermiyor.
+	cout << is_nothrow_copy_constructible_v<Myclass> <<"\n"; // Bu garantiyi vermediğini yazdırdık.Neden vermiyor çünkü stringin Copy Ctoru noexcept garantisi vermiyor.
 
 	cout << is_nothrow_move_constructible_v<Myclass> <<"\n"; // Burada ise verdiğini gördük.
 }
 
 Nothrow garantisi vermesi derleyicinin ürettiği kodun performansı açısından hayati önem taşıyor.
-move ctor ve move assignment
+move ctor ve move assignment konusu
 
-------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 
 NOT !!!!!
 Special member func ı biz bildirirsek artık bunun noexcept olup olmamasından biz sorumluyuz.
@@ -460,7 +472,7 @@ int main()
 	std::cout << is_nothrow_move_constructible_v<Myclass> <<"\n"; //true değerini verir.Çünkü nothrow garantisini verdik.
 }
 
-------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 
 class Myclass{
 public:
@@ -481,7 +493,7 @@ int main()
 string sınıfının move ctoru nothrow garantisi verdiği için, myclass ında move ctoruda nothrow 
 garantisi veriyor.
 
-------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 
 class A{
 public:
@@ -507,8 +519,7 @@ int main()
 }
 
 
-
-------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 
 
 C++20 de kural geldi.
@@ -573,7 +584,7 @@ noexcept olması gerekiyor.Eğer noexcept değilse, bende strong garanti veremem
 Move yerine copy ctor kullanacağım diyor.
 
 
-ÖR:Bilinmeyen araçlar kullanılabilir.
+ÖR:Bilinmeyen araçlar kullanılabilir bu örnekte.
 
 
 class Person {
@@ -711,7 +722,7 @@ bu durumda ctorun kodu tamamlandığı için nesne hayata gelmiş olacak(Bir nes
 nesne hayata gelmiş statütüsünde ama işlevini yerine getiremeyecek bir sınıf nesnesi olacak. Zombie object deniyor buna.
 Teorik olarak hayatta ama ctor işlevini yerine getirecek şekilde oluşturamadığı için kullanılamaz durumda.
 Bu nesneyi kullananlar ya tanımsız davranış olur yada sınıf query function verecek ve her nesne yaratıldığında onun zombie olup olmadığını test edecek.
-Mecbur değilsek başka seçeneklere Ctor exception throw etmeli. 
+Mecbur değilsek başka seçeneklere, Ctor exception throw etmeli. 
 
 
 Ctor exception throw ettiğinde nesne hayata gelmemiş oluyor ama veri elemanları hayatta.Nesne hayatta olmadığı için exception yakalansa dahi destructor çağrılmayacak.
@@ -733,7 +744,7 @@ public:
 int main()
 {
 	try{
-		Myclass m; // Burada hayata gelmiş nesne yok.couttaki yazar ama başarılı birşekilde sonuna kadar çalışmadığı için dtor çalışmaz
+		Myclass m; // Burada hayata gelmiş bir nesne yok.couttaki yazar ama başarılı birşekilde sonuna kadar çalışmadığı için dtor çalışmaz
 	}
 	catch(int)
 	{
@@ -786,7 +797,7 @@ private:
 int main()
 {
 	try{
-		Myclass m; // Burada hayata gelmiş nesne yok.couttaki yazar ama başarılı birşekilde çalışmadığı için dtor çalışmaz
+		Myclass m; // Burada hayata gelmiş nesne yok.couttaki "Myclass Ctor" yazar ama başarılı birşekilde çalışmadığı için dtor çalışmaz
 	}
 	catch(int)
 	{
@@ -805,7 +816,7 @@ hata yakalandi
 Myclassın ctoru dinamik ömürlü bir A nesnesi oluşturdu ama ctorun ana bloğundaki kodlar exception throw etti.
 Bu durumda dtor çağrılmadı ve buradaki dinamik ömürlü nesne delete edilmemiş olacak yani dtoru çağrılmamış olacak.
 Ctor içinde edindiğimiz kaynakları bu şekilde ptr lara bağlamak riskli.Exception throw edilince nesne hayata gelmemiş olacak,
-nesnenin dtoru çağrılmamış durumda olacak ve kaynaklar geri verilmemiş olacak
+nesnenin dtoru çağrılmamış durumda olacak ve hataya kadar alınan kaynaklar geri verilmemiş olacak
 
 Bu durumda ya ctor içinde kontrollü kod yazıp, nesneyi kaynağa exception throw etmeden geri vereceğiz yada kaynağı
 smart pointera bağlamak mantıklı.
@@ -814,7 +825,16 @@ smart pointera bağlamak mantıklı.
 
 Smart Pointer ile yapıyoruz
 
-struct A tanımlı varsay
+struct A {
+	A()
+	{
+		std::cout << "Ctor kaynak edindi";
+	}
+	~A()
+	{
+		std::cout << "Dtor kaynakları geri verdi";
+	}
+};
 
 class Myclass{
 public:
@@ -841,7 +861,7 @@ int main()
 	{
 		std::cout <<"hata yakalandi\n";
 	}
-	// main bitince dtor çağrılmaz.
+	
 }
 
 ÇIKTI
@@ -852,7 +872,7 @@ Dtor kaynaklari geri verdi
 hata yakalandi
 
 Bu durumda myclass sınıfının ctoru, elemanlar initialize edildikten sonra, anabloğu içinde exception throw ederse , eleman sınıf nesnesi olduğu için
-stack unwinding sürecinde eleman olan sınıf nesnesi için destructor çağıracak.Unique ptr nin dtorunun çağırması onun hayatını kontrol ettiği dinamik
+STACK UNWINDING sürecinde eleman olan sınıf nesnesi için destructor çağıracak.Unique ptr nin dtorunun çağırması onun hayatını kontrol ettiği dinamik
 ömürlü A nesnesi için destructor çağrılması anlamına geliyor.
 
 
@@ -902,8 +922,60 @@ int main()
 -----
 hata yakalandi
 
-Myclass veya A nın destuctoru çağrılmadı 
+Myclass veya A nın destuctoru çağrılmadı. Çünkü daha A da iken exception throw etti. A bile yaratılmadı. Bu sebeple Myclassta
+yaratılmadı ve destructor çağrılmadı ikisi içinde.
 
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+BUNU BEN EKSTRADAN YAPTIM
+
+class A {
+public:
+	A()
+	{
+		std::cout << "A default ctor\n";
+	}
+	~A()
+	{
+		std::cout << "A default dtor\n";
+	}
+};
+
+class Myclass {
+public:
+	Myclass()
+	{
+		std::cout << "Myclass default ctor\n";
+		throw 1;
+	}
+	~Myclass()
+	{
+		std::cout << "Myclass default dtor\n";
+	}
+
+private:
+	A ax;
+};
+
+int main()
+{
+	try {
+		Myclass m;
+	}
+	catch (int)
+	{
+		std::cout << "Hata yakalandi\n";
+	}
+}
+
+A default ctor
+Myclass default ctor
+A default dtor
+Hata yakalandi		
+
+Burada ise A yaratıldı ama Myclass nesnesi yaratılamadı çünkü exception throw etti.
+Bizde yakaladık bunu ve catch e girmeden A nesnesi için Dtor çağrıldı. STACK UNWINDING
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -923,6 +995,8 @@ Myclass::Myclass() : ax(expr), bx(expr), cx(expr)
 {
 	throw 1;
 }
+
+
 Bu durumda ax bx ve cx hayata gelmiş olacaktı ve hepsi içinde destructor çağrılacaktı.
 
 C nin desturctoru throw etseydi, ax ve bx hayata gelmiş olacaktı ve ax bx için destructor çağrılacaktı cx ve myclass için çağrılmayacaktı.
@@ -977,9 +1051,9 @@ int main()
 	}
 }
 
-Yukarıda Ctor kodundan önce operator new func çalışır ve sizeof(Myclass) ı argüman gönderir ve bu kadar yer ayırır, bu allocate eden yeri geri veren
-operator delete functionu, bu ne zaman çağrılır, bu nesne delete edildiğinde. Peki ctor exception throw ederse operator delete func çağrılacak mı? evet buda 
-yine dilin garantisi altında.
+YUKARIDA CTOR KODUNDAN ÖNCE OPERATOR NEW FUNC ÇALIŞIR VE SIZEOF(MYCLASS) I ARGÜMAN GÖNDERIR VE BU KADAR YER AYIRIR, BU ALLOCATE EDEN YERI GERI VEREN
+OPERATOR DELETE FUNCTIONU, BU NE ZAMAN ÇAĞRILIR, BU NESNE DELETE EDILDIĞINDE. PEKI CTOR EXCEPTION THROW EDERSE OPERATOR DELETE FUNC ÇAĞRILACAK MI? EVET BUDA 
+YINE DILIN GARANTISI ALTINDA.
 
 ÇIKTI
 ----
@@ -1051,6 +1125,80 @@ bellek bloğu(biz delete çağırmasakta) derleyicinin ürettiği kodda operator
 
 Dil bunu garanti ediyor.Yani tekrar free etmeye gerek yok.
 
+----------------------------------------------------------------------------------------------------------
+
+BU ÖRNEĞİDE BEN EXTRADAN YAPTIM
+
+class A {
+public:
+	A()
+	{
+		std::cout << "A default ctor\n";
+	}
+	~A()
+	{
+		std::cout << "A default dtor\n";
+	}
+};
+
+class Myclass {
+public:
+	Myclass()
+	{
+		std::cout << "Myclass default ctor\n";
+		throw 1;
+	}
+	~Myclass()
+	{
+		std::cout << "Myclass default dtor\n";
+	}
+
+private:
+	A ax;
+};
+
+void* operator new (std::size_t size)
+{
+	std::cout << "operator new called\n";
+
+	void* vp = std::malloc(size);
+	if (!vp)
+	{
+		exit(EXIT_FAILURE);
+	}
+
+	return vp;
+}
+
+void operator delete(void* vp) noexcept
+{
+	std::cout << "operatoe delete\n";
+	free(vp);
+}
+
+
+int main()
+{
+	try {
+		Myclass *my = new Myclass;
+	}
+	catch (int)
+	{
+		std::cout << "Hata yakalandi\n";
+	}
+}
+
+ÇIKTI
+-----
+operator new called
+A default ctor
+Myclass default ctor
+A default dtor
+operatoe delete
+Hata yakalandi
+
+
+
 =============================================================================================================================================================
 =============================================================================================================================================================
 =============================================================================================================================================================
@@ -1061,11 +1209,9 @@ Destructor is noexcept.Doğuştan böyle.
 Nothrow/Noexcept garantisi veren bir func eğer exception throw(yani bu koşulu sağlamazsa) ederse TERMİNATE ÇAĞRILIR.
 
 
-Eğer noexcept garantisi veren bir fonksiyon kodu çalıştığında exception throw edilirse, bu durumda  terminate çağrılır.Hangi func olursa olsun böyle
+Eğer noexcept garantisi veren bir fonksiyon kodu çalıştığında exception throw edilirse, bu durumda terminate çağrılır.Hangi func olursa olsun böyle
 	a - Derleme zamanı kontrolüne tabi değil.Runtime ile ilgili
 	b - Bu durumda eğer exception throw edilirse terminate çağrılır.
-
-
 
 
 void my_terminate()
@@ -1364,7 +1510,7 @@ private:
 
 
 
-CTOR IÇIN FUNC TRY BLOK OLUŞTURDUĞUMUZDA EĞER EXCEPTI,ON THROW EDERSE VE PROGRAMIN AKIŞI CATCH BLOĞUNA GIRERSE, CATCH BLOĞUNDAN PROGRAMIN AKIŞI DEVAM ETMEYECEK,
+CTOR IÇIN FUNC TRY BLOK OLUŞTURDUĞUMUZDA EĞER EXCEPTION THROW EDERSE VE PROGRAMIN AKIŞI CATCH BLOĞUNA GIRERSE, CATCH BLOĞUNDAN PROGRAMIN AKIŞI DEVAM ETMEYECEK,
 BIZ BURAYA BIR KOD YAZMASAK DAHI BU EXCEPTION DERLEYICININ YAZDIĞI KODDA RETHROW EDILIYOR.
 
 
@@ -1408,7 +1554,7 @@ public:
 	catch (int x)
 	{
 		std::cout << "hata yakalandi x = " << x << "\n";
-		//aslında birşey yazmadık ve bu şekilde rethrow etmiş olduk.
+		//aslında birşey yazmadık ve bu şekilde rethrow etmiş olduk.rethrow da mainden yakalanmadı ve terminate çağrıldı.
 	}
 private:
 	A ax;
