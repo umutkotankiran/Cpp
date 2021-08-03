@@ -230,17 +230,11 @@ int main()
 
 Çıktı
 -----
-Bendeki visual studio da abort çağırmadı ama Linuxta Clion üzerinde myfunc ve abort çağrıldı.
-Exe olarak powershell den çalıştırınca da düzgün şekilde yazdı.
-
-Clion çıktıları aşağıda
--------------------------
 main basladi
 F1 cagrildi
 F2 cagrildi
 F3 cagrildi
 myfunc cagrildi, myfunc abortu cagiracak
-
 
 
 Özet: 
