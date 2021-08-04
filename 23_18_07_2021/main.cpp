@@ -650,6 +650,7 @@ Copy Constructor -> throw ifadesinde nesne kopyalanırdı ve kopyalanan nesne g�
 Destructor -> bu destructor yerel mex nesnesi için
 Hata yakalandi
 (getchar ile yine durduruldu)
+Destructor   Buradaki dtor kopyalanan nesne içi çağrıldı.
 
 -----------------------------------------------------------------------------------------------
 
