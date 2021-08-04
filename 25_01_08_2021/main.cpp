@@ -1264,7 +1264,7 @@ int main()
 	func(...,T&) --> func(...,int&)
 
 	function şöyle oldu. func(int&&, int&)
-	AYNI ZAMANDA İKİSİNDE DE T YE İNT DENK GELDİ.HAYA YOK
+	AYNI ZAMANDA İKİSİNDE DE T YE İNT DENK GELDİ.HATA YOK
 	
 	int,int  GEÇERLİ
 
