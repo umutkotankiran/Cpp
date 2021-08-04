@@ -1836,15 +1836,22 @@ kalıtımıyla elde edilmiş.
 #include <vector>
 #include "car.h"
 
-void car_game(Car& carptr)
+void car_game(Car& carref)
 {
-	carptr->start();
-	if (Fiat* p = dynamic_cast<Fiat*>(carptr))
-	{
-		p->activate_aebs();	//Arabanın Fiattan kalıtım yoluyla elde edilen sınıflarıda kapsıyor.Yani Fiat124 olsada içerisine girecek.
+	carref.start();
+
+	try {
+		Fiat& fr = dynamic_cast<Fiat&>(carref);
+		fr.activate_aebs();
 	}
-	carptr->run();
-	carptr->stop();
+	catch (const std::exception& ex)
+	{
+		std::cout << "Hata yakalandi : " << ex.what() << "\n";
+	}
+
+	carref.run();
+	carref.stop();
+
 }
 
 //NOT : Fiat sınıfına car sınıfında olmayan bir function ekleyelim.activate_aebs yi ekledik.Bir arkadaş önerdi bu ismi
@@ -1857,11 +1864,12 @@ int main() {
 	{
 		Car* p = create_random_car();
 		p->vprint(std::cout);
-		car_game(p);
+		car_game(*p);
 		(void)getchar();
 		delete p;
 	}
 }
+
 
 ÇIKTI
 -----
@@ -1897,37 +1905,4 @@ void my_terminate()
 	abort();
 }
 
-void car_game(Car& carref)
-{
-	carref.start();
-
-	try {
-		Fiat& fr = dynamic_cast<Fiat&>(carref);
-		fr.activate_aebs();
-	}
-	catch (const std::exception& ex)
-	{
-		std::cout << "Hata yakalandi : " << ex.what() << "\n";
-	}
-
-	carref.run();
-	carref.stop();
-
-}
-
-//NOT : Fiat sınıfına car sınıfında olmayan bir function ekleyelim.activate_aebs yi ekledik.Bir arkadaş önerdi bu ismi
-
-int main() {
-
-	srand((unsigned)time(nullptr));
-
-	for (;;)
-	{
-		Car* p = create_random_car();
-		p->vprint(std::cout);
-		car_game(*p);
-		(void)getchar();
-		delete p;
-	}
-}
 
