@@ -26,7 +26,7 @@ kümülatif çağrılarla dolu. arada birsürü otomatik ömürlü sınıf var.E
 Bu otomatik ömürlü sınıf nesneleri için geçerli.RAII nesneleriyse korkumuz yok.
 Dinamik ömürlüye girince kaynak sızıntısı oluşturan durumlar olabilir.Geçen ders görüldü.
 
-Kaynakları pointerlara bağlamak yerine RAII idiyomuna bağlıyoruz. yani sınıf
+Kaynakları pointerlara bağlamak yerine RAII idiyomunu kullanıyoruz. yani sınıf
 değişkenine bağlayabiliriz.
 
 class Myclass{};
