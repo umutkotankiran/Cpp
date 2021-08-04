@@ -1727,7 +1727,7 @@ if(auto *p = dynamic_cast<Mercedes *>(carptr))
 ---------------------------------------------------------------------------------------
 
 DİKKAT !!!!!!!!!!!!!!!!!!!!!
-Dynamic cast operatrünün kullanımında operandı olan ifade polymorphic bir türden olmak zorunda compile time hatası.
+Dynamic cast operatrünün kullanımında operandı olan ifade polymorphic bir türden olmak zorunda aksi takdirde compile time hatası.
 
 ---------------------------------------------------------------------------------------
 
