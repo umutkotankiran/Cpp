@@ -395,6 +395,15 @@ int main()
 					// Aynı zamanda operand yine UNEVALUATED CONTEX. decytype ve sizeof gibi.
 }
 
+-----------------------------------------------
+NOT : Unevaluated context oluşturan operatorler
+      sizeof
+      decltype
+      noexcept
+      typeid (sonraki ders görülecek)
+-----------------------------------------------
+
+
 noexcept in operandı olan ifade unevaluated contex
 noexcept(x++); x 1 artırılmaz
 
