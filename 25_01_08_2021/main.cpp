@@ -273,7 +273,7 @@ void car_game(Car* ptr)
 	ptr->start();
 	
 	if(typeid(*ptr) == typeid(Fiat)) {				// burada runtime da if in içine, *ptr a gelen araba Fiat ise girecek.Açıklama aşağıda
-		static_cast<Fiat *>(ptr)->activate_aebs();	// type bilgisi eğer fiat olursa bunu static cast ile cast edebiliriz.
+		static_cast<Fiat *>(ptr)->activate_aebs();	// type bilgisi eğer fiat olursa bunu static cast ile cast edebiliriz.Fiat124 e girmeyecek.Açıklama aşağıda.
 	}
 
 	ptr->run();
