@@ -486,7 +486,7 @@ int main()
 class Myclass{
 public:
 	Myclass();
-	Myclass(Myclass&&)default; //dikkat
+	Myclass(Myclass&&) = default; //dikkat
 private:
 	int x;
 	std::string ms;
