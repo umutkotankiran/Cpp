@@ -481,7 +481,7 @@ sol taraf referansı(&) ve sağ taraf referansı(&&) == = sonuc sol taraf refera
 
 b - auto && r = x + 5; ise
 
-Derleyici auto yerine int&& koydu. int && &&  -> int && 
+Derleyici auto yerine int koydu. int && 
 int &&r = x + 5;
 
 Pratik Kural
