@@ -256,7 +256,7 @@ true
 
 ------------------------------------------------------------------------------------------
 TEKRAR!!!
-- typeid polimorfik olmayan türler için kullanma mecburiyeti yok polimorfik olmayan türler 
+- typeid polimorfik türler için kullanma mecburiyeti yok. Polimorfik olmayan türler 
   için typeid operatörü tamamen static tür bilgisine yönelik bir typeinfo nesnesi döndürüyor.
 
 - Polymorphic türler sözkonusu olunca typeid operatörün eriştiği typeinfo bilgisi  
