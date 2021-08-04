@@ -772,7 +772,7 @@ void func(T x)
 ------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------
 
-Derleyici Şabon Tür Parametresi Yerine Hangi Türün Kullanılacağını Nasıl Anlayacak
+Derleyici Şablon Tür Parametresi Yerine Hangi Türün Kullanılacağını Nasıl Anlayacak
 ----------------------------------------------------------------------------------
 
 template <typename T>  // T template parametresi
@@ -790,7 +790,7 @@ T yerine int kullan anlamında açıkça yazmasakta koda bakarak dilin kurallar�
 olmalı gibi çıkarımlar yapacak.Function şablonlarında bu hakim mekanizma. %90 bu kullanılıyor.
 
 C++17 ye kadar çıkarım sadece func şablonları için geçerliydi. Sınıf şablonlarında bu mekanizma yoktu.
-C++17 de önemli bir araç eklendi. Polüler bir acronim ile temsil ediliyor.
+C++17 de önemli bir araç eklendi. Popüler bir acronim ile temsil ediliyor.
 CTAD = Class Template Argument Deduction. Bu sınıf şablonlarında kısıtlıda olsa deduction mekanizması var.
 
 2. Explicit Olarak Programcının Argümanı Yazması
@@ -811,7 +811,7 @@ Yada sentaks hatası olacak...
 
 -------------------
 
-Çıkarım mekanizmasıyla explicit argüman bildirimi mekanizması birlikte kullanılıyor.
+Çıkarım mekanizmasıyla explicit argüman bildirimi mekanizması birliktede kullanılıyor.
 
 
 template<typename T, typename U>
@@ -824,10 +824,9 @@ int main()
 }						// ikinci template parametresi için çıkarım mekanizmasını kullanıyor.
 
 
+
 3. Default Tür Argümanı Kullanımı
 ---------------------------------
-
-
 template<typename T, typename U = int>
 void func(T x, U y)
 {
@@ -860,7 +859,8 @@ void func(T x);
 int main()
 {
 	func(10); // T burada int. Burada func çağrısından template tür parametresi olan T nin ne olduğunu anlamaya çalışacak.
-	auto y = 10; // Burada auto yerine tür gelecek. = in sağından anlaşılacak bu. Biz öğrenmiştik bunları.
+	auto y = 10; // Burada auto yerine tür gelecek. ='in
+	sağından anlaşılacak bu. Biz öğrenmiştik bunları.
 
 }
 
@@ -878,7 +878,7 @@ template <typename& T>
 func(expr);
 
 template <typename&& T>
-func(expr);					yine aynı şekilde T için tür çıkarılacak hepsinde.
+func(expr);			yine aynı şekilde T için tür çıkarılacak hepsinde.
 
 -------------------------------------------------------------------------------
 
@@ -1020,7 +1020,7 @@ void func(T &&)
 	
 }
 
-Buradai func(T&&) parametresine kesinlikle sağ taraf referansı demiyoruz.
+Buradaki func(T&&) parametresine kesinlikle sağ taraf referansı demiyoruz.
 
 Standartların kullandığı terminolojiye göre buradaki parametreye forwarding REFERENCE DENIYOR.
 Aynı anlamda kullanılan 2. bir terim ise UNIVERSAL REFERENCE. Scott Meyers uydurmuş yine.
@@ -1072,7 +1072,7 @@ using MRef = Myclass&&;
 Myclass mx;
 
 Mref&& r = mx; // Myclass && && gelmiş && + && --> &&.  r türü Myclass&& = mx oldu ama rvalue reference lvalue expression atanamaz
-																					sentaks hatası oluşur bu sebeple.
+												Sentaks hatası oluşur bu sebeple.
 
 -----------------------------------------------------------------
 
@@ -1114,19 +1114,12 @@ int main()
 	//------------------------------------------------------------------------------------------------------
 
 	func(10); // T nin türü int.			Func ın içi func(int&&) oldu
-		
-	Kısa açıklama
-	-------------
-	10 sağ taraf değeri, yani int &&(sağ taraf referansı ile tutuluyor)
-	T&& = int&& olması için T = int olmalı
-
-	Uzun açıklama
-	-------------
+	
+	AÇIKLAMA
 	auto &&x = 10 dersek
-	auto burada int&& oldu.
-	int && && --> Sonuç int&& çıktı.
-	Sonucun int&& olması için T = int olmalı ki sonradan gelen && ile birleşip int&& oluştursun.
-
+	auto burada int oldu.
+	T ye karşılık int geldi
+	func(T&&) yani func(int&&) oldu
 	
 
 	//------------------------------------------------------------------------------------------------------
@@ -1134,18 +1127,12 @@ int main()
 	int x = 10;
 	func(x); // T nin türü int&.			Func ın içi &+&& -> &. func(int&) oldu
 
-
-	Kısa açıklama
-	-------------
-	x sol taraf değeri, yani int &(sol taraf referansı ile tutuluyor)
-	T&& = int& olması için T = int& olmalı
-
-	Uzun açıklama
-	-------------
+	AÇIKLAMA
 	auto &&x = x dersek
 	auto burada int& oldu.
+	T ye karşılık int& geldi
 	int & && --> Sonuç int& çıktı.
-	Sonucun int& olması için T = int& olmalı ki sonradan gelen && ile birleşip int& oluştursun.
+	func(T&&) yani func(int& &&)--> func(int&)
 
 
 	//------------------------------------------------------------------------------------------------------
@@ -1158,7 +1145,7 @@ int main()
 
 
 Template argument deduction her zaman başarılı olamayabilir.
-Derleyici her zaman çıkarımı çıkaramayabilir.Bu herzaman sentas hatası.
+Derleyici her zaman çıkarımı çıkaramayabilir.Bu herzaman sentaks hatası.
 Peki Derleyici neden tür çıkaramı yapamaz.
 
 TIPIK 2 AYRI NEDENI VAR.
@@ -1244,15 +1231,19 @@ int main()
 
 	- birinci parametre için, karışık kısım bu
 	auto &&x = i dersek 
-	auto burada int& oldu. 
-	int & && --> Sonuç int& çıktı. 
-	Sonucun int& olması için T = int& olmalı.
+	auto burada int& oldu.
+	Tye karşılık int& geldi
+	func(T&&,diğer param) için func(int& &&, diğer param) --> func(int&, diğer param)
+	
 
 	- ikinci parametre için
 	auto &y = i dersek
 	auto burada doğrudan int çıkar. 
+	T ye int geldi yani
+	func(birinci param, T&) --> func(birinci param, int&)
 
-	int&, int  AMBIGIUTY
+	BURADAKİ SIKINTI T BİRİNDE İNT İKEN DİĞERİNDE İNT&.AMBIGIUTY !!!!
+	int&, int  AMBIGIUTY. T ikisi arasında seçilemez
 
 	//----------------------------------------------------
 
@@ -1262,16 +1253,19 @@ int main()
 	
 	-Birinci parametre
 	auto &&x = 15 dersek
-	auto burada int&& çıkar
-	int&& && --> Sonuç int&& çıktı
-	Sonucun int&& olması için T = int olmalı ki
-	sonradan gelen && ile beraber int && olsun.
-
+	auto burada int çıkar
+	T ye int geldi 
+	func(T&& , ...) --> func(int && , ...)
+	
 	-İkinci Parametre
-	auto x = 25;
-	auto doğrudan int 
-	tür int
+	auto &x = 25;
+	auto doğrudan int
+	T ye int geldi
+	func(...,T&) --> func(...,int&)
 
+	function şöyle oldu. func(int&&, int&)
+	AYNI ZAMANDA İKİSİNDE DE T YE İNT DENK GELDİ.HAYA YOK
+	
 	int,int  GEÇERLİ
 
 	//----------------------------------------------------
