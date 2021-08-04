@@ -1641,7 +1641,7 @@ dynamic_cast<target type>(expr);
 Programın çalışma zamanında bir down-casting in güvenli olarak yapılıp yapılamadığını test ediyor.
 
 DİKKAT !!!!!!!!!!!!!!!!!!!!!
-Dynamic cast operatrünün kullanımında operandı olan ifade polymorphic bir türden olmak zorunda compile time hatası !!!!!!!!!
+Dynamic cast operatrünün kullanımında operandı olan ifade polymorphic bir türden olmak zorunda aksi takdirde compile time hatası !!!!!!!!!
 
 Der ve Base nesneleri olsun. Der, Base den kalıtım yoluyla elde edildi. child class tan parent class
 a yapılan dönüşümler otomatik olarak yapılıyordu zaten.Buna upcasting deniyordu. burada object slicing e dikkat ediliyordu hatta.
