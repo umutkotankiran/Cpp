@@ -2,7 +2,7 @@
 Exception Handlingten Devam
 
 Exception gönderildiğinde bu yakalanmazsa terminate functionu çağrılıyor bu da abort
-çalıştırılıyor ve program sonlanıyor.Uncought exception durumu oluşursa abort func çağrılıyor demek istiyoruz.
+çalıştırılıyor ve program sonlanıyor.Uncaught exception durumu oluşursa abort func çağrılıyor demek istiyoruz.
 
 Hatta set_terminate ile abort değilde başka bir func çağrılabilirdi.
 
