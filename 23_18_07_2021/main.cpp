@@ -723,7 +723,7 @@ int main()
 ile infinite loop a girmiş.
 
 Burada bir süre sonra yer elde edemeyecek ve bad_alloc sınıfı türünden
-hata nesnesi gönderecek, bizde bunu yakalamadığımız için uncought exception
+hata nesnesi gönderecek, bizde bunu yakalamadığımız için uncaught exception
 durumu oluşacak, terminate functionu çağrılacak ve o da abortu çağıracak ve
 program sonlanacak.
 
