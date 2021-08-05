@@ -1095,19 +1095,31 @@ void operator delete(void *vp)noexcept
 	free(vp);
 }
 
+class A{
+public:
+    A()
+    {
+        std::cout << "A Called\n";
+    }
+    ~A()
+    {
+        std::cout << "~A Called\n";
+    }
+};
 
 class Myclass {
 public:
-	Myclass()
-	{
-		throw 1;
-	}
-	~Myclass()
-	{
-		std::cout << "Myclass Dtor\n";
-	}
+    Myclass()
+    {
+        std::cout << "Myclass Ctor\n";
+        throw 1;
+    }
+    ~Myclass()
+    {
+        std::cout << "Myclass Dtor\n";
+    }
 private:
-	unsigned char buffer[1024];
+    A ax;
 };
 
 int main()
@@ -1125,8 +1137,12 @@ int main()
 ÇIKTI
 -----
 Operator New called
+A Called
+Myclass Ctor
+~A Called
 Operator delete called
 Hata yakalandi
+
 
 Bazıları bu kuralı bilmediği için buradaki bellek bloğunu geri vermeye çalışıyorlar.
 Eğer ctor exp throw ederse fakat nesne dinamik olarak oluşturulduysa, Dtor çağrılmasada operator new tarafından elde edilen sizeof sınıf türü kadar
