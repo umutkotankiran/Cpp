@@ -163,7 +163,12 @@ int main()
 	std::cout << "x = " << x << "\n"; 45 çıktı.İşlem kodu üretmiyor.
 }
 
- 
+-----------------------------------------------
+NOT : Unevaluated context oluşturan operatorler
+      sizeof
+      decltype
+      noexcept
+      typeid (sonraki ders görülecek)
 
 ----------------------------------------------------------------------
 
