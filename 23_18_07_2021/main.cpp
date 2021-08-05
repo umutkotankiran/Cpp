@@ -1019,7 +1019,7 @@ Bu garantiye basic guarantee deniyor.Bir exception gönderildi ama bizim func ı
 ve herhangibir invalid meydana getirmeyecek.Buna deniyor.
 
 Bu duruma exeption safe deniyor. Bir programın exception safe olması nedir?.
- - Program çalışırken hata gönderilme ihtimali olan tüm nesneleri yakalayacak. Uncought exception olmayacak.Tüm hataları yakalayacak
+ - Program çalışırken hata gönderilme ihtimali olan tüm nesneleri yakalayacak. Uncaught exception olmayacak.Tüm hataları yakalayacak
  - Herhangibir function bir exception gönderdiğinde yani bir throw işlemi yaptığında hiçbir kaynak sızıntısı olmayacak
    ve hayatı devam eden nesneler invalid hale gelmeyecek.
 
@@ -1323,7 +1323,7 @@ int main()
 	{
 		func();
 	}
-	catch(const out_of_range &ex) // Burada Aşağıdaki catch bloğu olmasaydı uncought exception olurdu.hata yakalanamazdı ve terminate edilirdi.
+	catch(const out_of_range &ex) // Burada Aşağıdaki catch bloğu olmasaydı uncaught exception olurdu.hata yakalanamazdı ve terminate edilirdi.
 	{
 		std::cout << "hata yakalandı..." << ex.what() << "\n";
 	}
