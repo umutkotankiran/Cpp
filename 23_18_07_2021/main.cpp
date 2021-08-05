@@ -1481,7 +1481,7 @@ int main()
 	
 TERMİNATE İN ÇAĞRILDIĞI HER DURUMU BİLMEMİZ GEREKiR
 ---------------------------------------------------
-1. Uncought Exception.Bir kod gönderiliyor fakat onu yakalayacak try catch blokları yok.
+1. Uncaught Exception.Bir kod gönderiliyor fakat onu yakalayacak try catch blokları yok.
 2. Eğer yakalanmış bir hata nesnesi yokken rethrow statement yürütülütse doğrudan terminate func çağrılır.
 3. Nothrow garantisi veren bir func on exception throw etmesi durumunda terminate çağrılır.Mesela Destructor.Bir sonraki ders görülecek
 
@@ -1619,7 +1619,7 @@ int main()
 Otomatik ömürlü nesneler bulunduğu scope tan çıkılınca hayatıda sona eren varlıklar. Burada ise bulunduğu scopetan
 çıkılmadan exception throw edilmiş.Hatta yakalanmazsa terminate çağrılır.Scope sonuna gelmeden oluyor bunlar.
 
-1 - Eğer uncought exception oluşmuşsa o exceptionun gönderildiği yere kadar oluşturulmuş otomatik ömürlü sınıf nesneleri için destructor 
+1 - Eğer uncaught exception oluşmuşsa o exceptionun gönderildiği yere kadar oluşturulmuş otomatik ömürlü sınıf nesneleri için destructor 
 çağrılma garantisi yok. Derleyici belki üretebilir ama hiçbir derleyicide bunu yapmıyor. Buradaki dert programın sonlanması değil,
 sonlandı ama belki birsürü otomatik ömürlü sınıf nesnesi için destructor çağrılmadı. Ya bunların destructorlarının çağrılmaması kalıcı
 hasar bırakıyorsa yine büyük sıkıntı.
