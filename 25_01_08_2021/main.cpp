@@ -168,7 +168,7 @@ NOT : Unevaluated context oluşturan operatorler
       sizeof
       decltype
       noexcept
-      typeid (sonraki ders görülecek)
+      typeid
 
 ----------------------------------------------------------------------
 
