@@ -1044,6 +1044,8 @@ T&&		 &&		&&
 
 Bu kurallar zaten ok. Daha öncede yazmıştık.
 
+autoda && && durumu oluşmuyor.
+
 -----------------------------------------------------------------
 
 ÖRNEKLER
