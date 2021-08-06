@@ -618,7 +618,7 @@ template <typename T, typename U>
 ------------------------------------------------------------
 
 Tür parametresi = Derleyici ben bir isim kullanıyorum ve bu isim bir türe karşılık geliyor.	
-				  Sen bu şablondan gerçek kodu yazarken bu ismin yerine, onun temsil ettiği türü kullanacaksın
+Sen bu şablondan gerçek kodu yazarken bu ismin yerine, onun temsil ettiği türü kullanacaksın
 
 Tür parametresi geçerken kullanılabilecek 2 adet keyword var.
 1. class
