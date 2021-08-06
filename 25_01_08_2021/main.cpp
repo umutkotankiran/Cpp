@@ -1090,7 +1090,7 @@ using Nec = Type&;		// Myclass & & geliyor. & + & --> &; Nec in türü Myclass&
 using Type = Myclass&&;
 using Nec = Type&;		// Myclass& yine
 
-using Type = Myclass&;
+using Type = Myclass&&;
 using Nec = Type&&;		//  Myclass&& + && --> &&. Nec türü Myclass&&
 
 
