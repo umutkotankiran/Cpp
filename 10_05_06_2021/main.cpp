@@ -364,9 +364,6 @@ x = expr; 	Burada da atama functionu overload edeceğiz. :D:D
 Sentence& operator=(const Sentence&); kaynak kopyalayacak şekilde
 Sentence& operator=(Sentence&&);	çalacak şekilde yazacağız.
 
-BUNU SOR????
-Eğer ifade R value expr ise, bir atama işlemi varsa ama bende de move assignement yoksa, copy assignment mı çalışacak?
-
 ------------------------------------------------------------------------------------------------------------
 
 DESTRUCTORDA DEĞIŞIKLIK
