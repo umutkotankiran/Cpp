@@ -442,7 +442,7 @@ redecleration örnek
 
 int main()
 {
-	int ival = { 12345 }; // bu tanımı sor.tek boyutlu dzi olabilir.
+	int ival = { 12345 };
 	char buf[100];
 
 	_itoa(ival, buf, 10);
