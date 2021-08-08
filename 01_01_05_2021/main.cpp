@@ -77,7 +77,7 @@ C++ ta ise hata değil.
 -----------------------------------------
 
 C de geçerli aşağısı
-for(int i = 0;;)
+for(int i = 0; i < 10; ++i)
 {
 	int i; //derleyici burayı farklı bir blok olarak yorumluyor.
 }		// bunu değişkeni tanımlarsa yapıyor.
