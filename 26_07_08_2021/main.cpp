@@ -1,6 +1,7 @@
 ﻿/*
 
 C++'IN EN ZOR VE EN ÖNEMLİ KISMI GENERIC PROGRAMLAMA PARADIGMASI VE TEMPLATELER
+-------------------------------------------------------------------------------
 
 Auto deduction ile template deduction neredeyse aynı.
 Bunları konuştuk.
@@ -8,7 +9,7 @@ Bunları konuştuk.
 Buradaki ambigiuty sorunlarına dikkat etmemiz gerekiyor.
 
 template <typename T>
-void func(T x, U &&y);
+void func(T x, T &&y);
 
 Burada tür çıkarımı yaparken, tüm argümanlar için T çıkarımı aynı olmalı.
 
@@ -49,7 +50,7 @@ bu ifade tabiki sağ taraf değeri. Aynı durum func() içinde geçerli.
 
 AMA !!! Burada çağrılan bir func var. bu func sınıfın copy assignment functionı.
 
-func() = per ile func().operator=(per); arasında bir fark yok. func ın return değeri Person türünden Dikkat et buna.
+func()=per ile func().operator=(per); arasında bir fark yok. func ın return değeri Person türünden Dikkat et buna.
 func() ın return değeri sağ taraf değeri olmasına rağmen ben bunun için copy assingment func ını çağırabilirim, bu normal durum aslında.
 
 
@@ -66,7 +67,7 @@ int main()
 	A{}.func(); // LEGAL 
 }
 
-Atama operator de buradaki func gibi. Bunu hem lvalue ex hemde rvalue expr ile çağırabiliriz.
+Atama operator func ta buradaki func gibi. Bunu hem lvalue ex hemde rvalue expr ile çağırabiliriz.
 
 -----------------
 
@@ -93,7 +94,7 @@ int main()
 	A{}.func(); // 1. VE 3. DURUMLARDA GEÇERLİ
 }
 
---------------------
+---------------------------
 
 AYNI DURUM COPY ASSIGNMENT İÇİNDE GEÇERLİ !!!
 
@@ -108,11 +109,10 @@ int main()
 	foo() = ax; // Bu durumda geçerli
 }
 
-
-----------------------------
+--------------------------------------------------------------------------
 
 struct A{
-	A& operator=(const A&)&;
+	A& operator=(const A&)&; // Dikkat 
 };
 
 A foo(); // func decleration
@@ -121,12 +121,12 @@ int main()
 	A ax;
 	A ay;
 	
-	ax = ay; //GEÇERLi
+	ax = ay; // GEÇERLİ
 
-	foo() = ax; // GEÇERLSİZ
-}
+	foo() = ax; // GEÇERSİZ.
+}				// Copy assignment sağ taraf değerleri için çağrılamaz.
 
-----------------------------
+--------------------------------------------------------------------------
 
 REFERENCE QUALIFIER İLE OVERLOADING TE YAPILIR
 
@@ -197,12 +197,13 @@ int main()
 }
 
 
--------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-BIR TEMPLATE YAZILIRKEN, DERLEYICI KODU YAZARKEN BAŞKA BIR TEMPLATE IN KODUNU YAZMAK ZORUNDA KALABILIR.
-
+BIR TEMPLATE YAZILIRKEN, DERLEYICI KODU YAZARKEN BAŞKA BIR TEMPLATE IN KODUNU YAZMAK ZORUNDA KALABILIR
+------------------------------------------------------------------------------------------------------
 
 template <typename T>
 void f2(T &&x)
@@ -234,7 +235,7 @@ Açıklama
 - foo(12) den derleyici T nin çıkarımını int olarak yaptı.
 - bu durumda func parametre değişkeninin türü de int oldu.
 - f1(x) çağrısı yapıldığında, derleyici f1 inde bir func şablonu olduğunu gördü ve çıkarımı int olarak yaptı.
-- f2(y+5) de f2 yi aradı ve bunun bir func şablonu olduğunu gördü, argüman olan ifadeden bir sağ taraf değeri olduğundan
+- f2(y+5) işleminde, f2 arandı ve bunun bir func şablonu olduğunu gördü, argüman olan ifadeden bir sağ taraf değeri olduğundan
   T türünün çıkarımını int olarak yaptı.Burada f2 nin parametresi bir sağ taraf referansı oldu.
 
 
@@ -305,14 +306,14 @@ void Swap(T &x, T &y)
 	y = std::move(temp);
 }
 
-Artık taşıma ile işlemleri yapmış oluyoruz.Eski C++ ile modern C++ arasındaki farklılıklardan biri.
+Artık taşıma ile işlemleri yapmış oluyoruz.Eski C++ ile Modern C++ arasındaki farklılıklardan biri.
 Modern implementasyon bu. Taşıma çok daha verimli oluyor.
 
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
 
 Function template lerle ilgili bizi ilgilendiren çok önemli bir yapı var.
-STL de Algorithm denilen STD func şablonlarını öğreninne burası çok önemli olacak.
+STL de Algorithm denilen STD func şablonlarını öğrenince burası çok önemli olacak.
 
 template <typename T>
 void func(T x)
@@ -332,7 +333,7 @@ Bu template ten derleyicinin yazacağı kodun geçerli olabilmesi için T nin ha
 2. Functor objesi olabilir.
 3. Lambda Expression olabilir.
 
-------------------------------
+-----------------------------------------------
 
 1. Function Pointer Durumu
 --------------------------
@@ -392,7 +393,7 @@ int main()
 	func(f);
 }
 
-Burada callable bir tür gönderildiğinde yani function çağrı operatörünün operandı olan türden bir nesne ise o zaman
+Burada callable bir tür gönderildiğinde, yani function çağrı operatörünün operandı olabilen türden bir nesne ise o zaman
 X bir callable nesne oluyor.
 
 Biz callable olarak
@@ -408,6 +409,7 @@ func( []{std::cout << "neco";} )
 Burada func içerisindeki bu ifadeye lambda expression deniyor.
 Lambda expressionlar görülecek ileride
 
+---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -450,11 +452,11 @@ Overload resolutionda 2 aday var.Burada double parametreli seçileceği için ş
 Derleyip çalıştırınca 
 function template type is " << typeid(T).name()   yazar.
 
---------
+------------------------------
 
 Float gönderseydim bu sefer templatten float parametreli function yazacak.
 
---------
+------------------------------
 
 Gönderdiğimiz argüman int olursa gerçek function seçilecek
 
@@ -463,17 +465,15 @@ int main()
 	func(24); // Burada derleyici int parametreli bir funcion yazmaz.Varolan gerçek func ı kullanır.
 }
 
---------
+------------------------------
 
 Char argümanla çağırsaydık, promotion olmayacaktı. Doğrudan türe bakılır, func şablonundan
 char parametreli function yazacaktı derleyici.
 
-
 -------------------------------------------------------------------------
 
-KURAL : Gerçek fgunction çağrılır aksi takdirde templatten kod yazılıyor.
+KURAL : Gerçek function ın, function overload resolutionda üstünlüğü var.
 
--------------------------------------------------------------------------
 -------------------------------------------------------------------------
 
 Mülakat sorusu
@@ -496,7 +496,7 @@ int main()
 
 -------------------------------------------------------------------------
 
-Aynı isimli birden fazla function şablonu olabilir mi? EVET
+AYNI ISIMLI BIRDEN FAZLA FUNCTION ŞABLONU OLABILIR MI? EVET
 
 template<typename T> // bu başka bir overload
 void func(T x)
@@ -531,6 +531,7 @@ int main()
 
 }
 
+============================================================================================================================
 ============================================================================================================================
 ============================================================================================================================
 
@@ -602,7 +603,7 @@ Burada 3 template te legal.Ama en fazla niteleyiciyi içeren hangisiyle o seçil
 T** en fazla niteleyiciyi içeren yani en spesifik bu sebeple o seçilecek.
 "3" yazacak.
 
-------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 
 DİLİN GERÇEK KURALI AŞAĞIDAKİ GİBİ.DAHA DETAYLI OLAN. PARTIAL ORDERING RULES
 
@@ -636,7 +637,7 @@ int main()
 {
 	int a[5]{};
 
-	//func(a); // Bu her iki template tanda çağrılabilir. Daha spesifik olan seçilecek yani ikincisi T(&)[5] parametreli seçilir.
+	//func(a); // Bu her iki template tende çağrılabilir. Daha spesifik olan seçilecek yani ikincisi T(&)[5] parametreli seçilir.
 }
 
 Bir soru üzerine uzun açıklama yine anlatıldı ama ben yazmıyorum.
@@ -714,7 +715,7 @@ int main()
 {
 	int y;
 	usint mytype = int&;
-	mytype &&x = 10;
+	mytype &&x = y;
 }
 
 int & && x = y; 
@@ -819,7 +820,7 @@ T sum(T x, U y)
 
 int main()
 {
-	auto x = sum(3, 3.4); //Z nin türü burada return değeri T olduğundan ve o da INT olarak çıkarım yapıldığından İNT olur.
+	auto z = sum(3, 3.4); //Z nin türü burada return değeri T olduğundan ve o da INT olarak çıkarım yapıldığından İNT olur.
 							// değer 6 çıkar. Veri kaybı oluşur.
 }
 
@@ -835,7 +836,7 @@ U sum(T x, U y)
 
 int main()
 {
-	auto x = sum(3, 3.4); // return değeri U template parametresi. O da double olarak çıkarılır. Bu örnek düzgün çalışır ama
+	auto z = sum(3, 3.4); // return değeri U template parametresi. O da double olarak çıkarılır. Bu örnek düzgün çalışır ama
 
 	auto z = sum(3.4, 3); // Bu seferde burada veri kaybı var. 6.4 değil 6 yazar.
 }
@@ -857,12 +858,14 @@ int main()
 
 Tek yol bu değil.
 
--------------------------------------------------------------------
--------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+
 
 TEMPLATES VE AUTO RETURN TYPE  
-BIR DIĞER ARAÇ AUTO VE TRAILING RETURL TYPE
--------------------------------------------
+BIR DIĞER ARAÇ TRAILING RETURN TYPE
+-----------------------------------
 
 TRAILING RETURN TYPE TAN BAŞLAYALIM
 Gerçek funclarda trailing return type kullanmanın çok bir önemi yok.
@@ -884,7 +887,7 @@ Biz burada geri dönüş türünün x + y nin türü olmasını istiyoruz.
 
 
 template <typename T,typename U>
-decyltype(x+y) sum(T u, U y)  // BURADA HATA VAR. Func parametre isimleri x ve y decyultype kısmında kullanılamaz.
+decyltype(x+y) sum(T x, U y)  // BURADA HATA VAR. Func parametre isimleri x ve y decyultype kısmında kullanılamaz.
 {								//  x ve y nin scope u orası değil.
 	
 }
@@ -944,8 +947,7 @@ int main()
 }
 
 
-----------
-
+------------------------------------------------------------
 
 template <typename T>
 decyltype(auto) foo(T x)
@@ -953,17 +955,24 @@ decyltype(auto) foo(T x)
 	return (x);   // decyltype kurallarına göre tür çıkarımı yapılırsa decyltype((x)); int& çıkar	
 }
 
-Hoca decyltype kurallarına girdi ama ben 4. derste yazmıştım. O yüzden kuralları yazmıyorum.
+===================================================================================================
+===================================================================================================
+Decyltype kurallarını ben 4. derste yazmıştım. Tekrar yazayım.
+1 - İsim formunda ise
+Bu isim hangi türden declere edildiyse bizim elde ettiğimizde o tür
 
-Sadece X value expr yi yazıyorum.Bir Xvalue expr oluşturalım
-int&& foo(); // bu çağrının değer kategorisi xvalue
-decyltype(foo()); bunun değer kategorisi xvalue olarak çıkar
-
+2 - İsim formunda ifade değilse
+Bu durumda decltype karşılığı elde edilen tür parantez içindeki ifadenin value kategorisine bağlı.
+a - eğer ifade pr value expr ise, decltype yerine gelen tür 	T türü
+b - eğer ifade L value exp.ise decltype yerine geşen tür 	T & türü
+c - eğer ifade X value exp.ise decltype yerine geşen tür 	T && türü
+===================================================================================================
+===================================================================================================
 
 ------------------------------------------------------------
 
 
-Decyltype auto ya geri dönelim.
+DECYLTYPE AUTO YA GERI DÖNELIM.
 
 template <typename T>
 decyltype(auto) foo(T x)
@@ -979,7 +988,7 @@ int main()
 	foo(12);	
 }
 
-SONUÇ : AUTO VARSA RETURN TÜR ÇIKARIMI AUTO YA GÖRE DECYLTYPE AUTO VARSA DECYLTYPE AUTOYA GÖRE YAPILIR !!!!
+SONUÇ : AUTO VARSA RETURN TÜR ÇIKARIMI AUTO YA GÖRE DECYLTYPE(AUTO) VARSA DECYLTYPE AUTOYA GÖRE YAPILIR !!!!
 
 auto func()
 {
@@ -1055,11 +1064,11 @@ int main()
 
 }
 
--------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TYPENAME YERINE CLASS TA KULLANILABILIR.AMA TYPENAME IN KULANILDIĞI ÖYLE BIR YER VARKI
-CLASS KEYWORD BURADA KULLANILAMIYOR.
+TYPENAME YERINE CLASS TA KULLANILABILIR.AMA TYPENAME IN KULANILDIĞI ÖYLE BIR YER VARKI CLASS KEYWORD BURADA KULLANILAMIYOR
+--------------------------------------------------------------------------------------------------------------------------
 
 template <typename T>
 int func(T x, int y)
@@ -1076,7 +1085,8 @@ burada typename keyword ünü kullanmak zorundayız.
 
 
 
-Yani T türünün bir nested type olan Nec i bir tür  bilgisi olarak kullanacaksak başına typename koyacağız. Aşağıdaki gibi olacak
+Yani T türünün bir nested type olan Nec i bir tür  bilgisi olarak kullanacaksak başına typename koyacağız. 
+Aşağıdaki gibi olacak
 
 template <typename T> // buradaki typename yerine class gelebilir
 typename T::value_type func(T x, int y)
@@ -1084,11 +1094,36 @@ typename T::value_type func(T x, int y)
 	typename T::Nec; // Buradaki typename yerine class keyword gelemez.
 }
 
-Eğer template tür parametresine bağlı bir türden bahsediyorsak, bunu çözünürlük operatörü ile niteliyorsak, bunun bir tür bilgisi oldupunu
+Eğer template tür parametresine bağlı bir türden bahsediyorsak, bunu çözünürlük operatörü ile niteliyorsak, bunun bir tür bilgisi olduğunu
 başka bir anlamda ele alınmaması gerektiğini belirtmek için typename keyword kullanmak zorunlu.
 
 
 ------------------------------------------------------------------------------------------------
+BU ÖRNEĞİ EXTRA YAPTIM
+
+class Myclass {
+public:
+	typedef int value_type;
+	class Nec {
+
+	};
+};
+
+template <typename T> // buradaki typename yerine class gelebilir
+typename T::value_type func(T x, int y)
+{
+	typename T::Nec N; // Buradaki typename yerine class keyword gelemez.
+	typename T::value_type val = 45;
+	return val;
+}
+
+int main()
+{
+	std::cout << func(Myclass{}, 5);	// 45 yazar.
+}
+
+------------------------------------------------------------------------------------------------
+
 ÖR:
 template <typename T> // buradaki typename yerine class gelebilir
 typename T::value_type func(T x)
@@ -1103,7 +1138,7 @@ int main()
 
 ÖR:
 template <typename T> 
-typename T::value_type func(T x, int y);
+typename T::value_type func(T x);
 
 class Myclass{
 public:
@@ -1114,20 +1149,23 @@ int main()
 {
 	Myclass mx; 
 
-	func(mx); // Artık burada geçerli çünkü Myclass ın value_type
-}				// isimli türü var 
+	func(mx); // GEÇERLI çünkü Myclass ın value_type isimli türü var 
 
 
-------------------------------------------------------------------------------------------------
+============================================================================================================================================================
+============================================================================================================================================================
+============================================================================================================================================================
 
 SUBSTITUTION İŞLEMİ
 -------------------
+
+OVERLOAD RESOLUTIONA KATILACAK FUNCTIONUN IMZASININ, PARAMETRIK YAPISININ ANLAŞILMASI AŞAMASINA DENİYOR.
 
 1.Argument Deduction
 2.Substitution 
 
 template <typename T>
-typename T::value_type func(T x, int y);
+T func(T x);
 
 void func(double);
 
@@ -1143,7 +1181,7 @@ Burada func(12); çağrıldığında int func(int) olacak ve overload resolution
 BURAYA DİKKAT !!!!
 
 template <typename T>
-typename T::Nec func(T x, int y);
+typename T::Nec func(T x);
 
 void func(double);
 
@@ -1159,8 +1197,8 @@ SUBSTITUTION FAILURE IS NOT AN ERROR !!!!!!!!!!!!
 Bu kural karmaşık gelebilir.
 
 EĞER BIR TEMPLATE TE SUBSTITUTION AŞAMASINDA YANI OVERLOAD RESOLUTIONA KATILACAK 
-FUNCTIONUN IMZASININ PARAMETRIK YAPISININ ANLAŞILMASI AŞAMASINDA BIR SENTAKS HATASI OLUŞURSA,
-BU BIR SENTAKS HATASI OLARAK KABUL EDİLMEZ SADECE OVERLOAD RESOLUTİONDAN ÇIKARTILIR.
+FUNCTIONUN IMZASININ, PARAMETRIK YAPISININ ANLAŞILMASI AŞAMASINDA BIR SENTAKS HATASI OLUŞURSA,
+BU BIR SENTAKS HATASI OLARAK KABUL EDİLMEZ, SADECE OVERLOAD RESOLUTİONDAN ÇIKARTILIR.
 BUNA SFINAE OUTTA DENİYOR
 
 Yukarıdaki örnekte T türü int. İnt in Nec diye bir türü olmadığından substitution hatası oluşacak
@@ -1197,7 +1235,7 @@ Bunlar ilerleyen derslerde görülecek ama daha çok İleri C++ konusu.
 Belirli func şablonları için belirli türleri o func veya sınıf şablonunda kullanılmasını 
 engellemeye yönelik bir araç
 
-C++ 20 de Comcept dile eklendi. En önemli araçlardan birisi Concept.
+C++ 20 de Concept dile eklendi. En önemli araçlardan birisi Concept.
 
 Template tür parametresine bağlı bir türden bahsediyorsak typename keywordü kullanmak zorunlu
 yoksa sentaks hatası olabilir ve typename yerine burada class keyword kullanılamaz.
@@ -1207,8 +1245,7 @@ yoksa sentaks hatası olabilir ve typename yerine burada class keyword kullanıl
 -----------------------------------------------------------------------------------------------------------------------------------
 
 STL E GIRDIĞIMIZDE ALGORITHM DENEN FUNCTION ŞABLONLARINI GÖRECEĞIZ.
-Bunlar veriyapıları üzerinde çalıştırılacak algoritmaların kodlarının yazılması için
-kullanılan function şablonları.
+Bunlar veriyapıları üzerinde çalıştırılacak algoritmaların kodlarının yazılması için kullanılan function şablonları.
 
 STD C++ library deki en önemli öğelerinden biri bu algoritmalar.
 Bunların çoğunu göreceğiz.STL de bu hep karşımıza çıkacak.
@@ -1218,7 +1255,7 @@ Containers   (class templates)
 Iterators	 (class templates)	
 Algorithms	 (function templates)
 
-------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
 
 BIR SINIFIN BIR ÜYE FONKSIYONUDA FUNC ŞABLONU OLABILIR.
 
@@ -1242,7 +1279,7 @@ Myclass sınıf şablonu değil ama myclass ın func isimli functionu bir functi
 Myclass tan bir nesne tanımladığımda, func isimli functionu bir argümanla çağırınca derleyici sınıfa bu parametreli bir func functionu yazacak.
 başka argüman verirsek başpa bir parametreli function yazacak.
 
-------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
 
 BU CTORDA OLABİLİR
 
@@ -1260,8 +1297,8 @@ int main()
 
 Böyle templatelere member template deniyor. 
 
-Bir şablondan derleyicinin gerçek kodu yazmasına derleyicinin o şablonunu instantiate etmesi deniyor.
-Oluşturulan fonksiyona template specialization deniyor
+Bir şablondan derleyicinin gerçek kodu yazmasına derleyicinin o şablonunu instantiate etmesi deniyor. Oluşturulan fonksiyona template specialization deniyor
+
 
 ==============================================================================================================================================================
 ==============================================================================================================================================================
@@ -1279,9 +1316,8 @@ Oluşturulan fonksiyona template specialization deniyor
 CLASS TEMPLATES / SINIF ŞABLONLARI
 ----------------------------------
 Burada oluşturacağımız şablondan hareketle amaç derleyiciye bir sınıfın kodunu yazdırmak.
-Yine bir metacode var ama bu sefer sınıf kodu yazdırmak için var.Func kodu için değil.
+Yine bir metacode var ama bu sefer sınıf kodu yazdırmak için var.Func kodu için değil. Func şablonlarına benziyor. template keyword zorunlu.
 
-func şablonlarına benziyor. template keyword zorunlu.
 Sentaks
 -------
 template <typename T>
@@ -1290,28 +1326,28 @@ class Myclass{
 };
 
 YUKARIDAKI BIR SINIF DEĞIL. BIR SINIF ŞABLONU!!!!!!!!!!!!!!
-Compiler bunu kullanarak bize sonsuz sayıda sınıf yazabilir. T int olursa ayrı double olursa ayrı bir sınıf.
+Compiler bunu kullanarak bize sonsuz sayıda sınıf yazabilir. T int olursa ayrı, double olursa ayrı bir sınıf.
 
 Sınıf ise aşağıdaki
 Myclass<int>    İşte bunların herbiri bir specialization.
 Myclass<double>   bu ise başka bir sınıf. T için her argüman farklı sınıf kodu demek.
 
----------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 
 T yi func şablonlarında kendimiz yazabilirdik veya deduction ile belli oluyordu.
-Sınıf şablonlarında C++17 ye kadar deduction mekanizması yoktu.C++17 de geldi bu özellik
-Sınıflı bir contex te mümkün. Bu konuya ilişkin kural setine CTAD deniyor.
+Sınıf şablonlarında C++17 ye kadar deduction mekanizması yoktu.C++17 de geldi bu özellik.
+Sınırlı bir contex te mümkün. Bu konuya ilişkin kural setine CTAD deniyor.
 CLASS TEMPLATE ARGUMENT DEDUCTION demek. C++ 2017 de geldi.
 
 int main()
 {
 	Myclass<int> x;
-	Myclass<double> y;   // x ile  ya farklı sınıflar
+	Myclass<double> y;   // x ile y farklı sınıflar
 	
 	x = y; // bu atama yapılamaz çünkü aynı sınıf türünden değil.
 }
 
-----------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 
 SENTAKSA BAKALIM
 ----------------
@@ -1319,7 +1355,7 @@ SENTAKSA BAKALIM
 template <typename T>
 class Myclass{
 public:
-	T f(T x); //  T int ise int f(int x );		data olsaydı dat atüründen olacaktı ...
+	T f(T x); //  T int ise int f(int x );		data olsaydı data atüründen olacaktı ...
 	int foo(const T&); // burada da türe göre yazılır.
 private:
 	T mx;
@@ -1330,8 +1366,10 @@ Template parametreleri sınıf kodu içinde heryerde kullanılabilir. public pri
 
 ----------------------------------------------------------------------------------------------------------------
 
-EĞER SINIFI SINIF ŞABLONU BIÇIMINDE YAZARSAK, SINIFIN ÜYE FONKSIYONLARI ÇAĞRILMADIĞI SÜRECE YAZILMAYACAK.
+EĞER SINIFI SINIF ŞABLONU BIÇIMINDE YAZARSAK
+--------------------------------------------
 
+NOT : SINIFIN ÜYE FONKSIYONLARI ÇAĞRILMADIĞI SÜRECE YAZILMAYACAK !!!!!!!!!!!!
 
 template <typename T>
 class Myclass{
@@ -1348,23 +1386,28 @@ int main()
 {
 	Myclass <int> mx;  // şuanda foo func veya f kodu yazılmayacak
 
-	mx.foo(); // Artık burada foo func yazılacak.Çünkü çağrılmış.
+	mx.foo(); // Artık burada foo functionu yazılacak.Çünkü çağrılmış.
 }
 
-----------------------------------------------------------
+---------------------------------------------------------------------------------------------
 
 Bu string için çok önemli çünkü birsürü functionu var.
 
 int main()
 {
-	string str{"Ali"}; // Burada sadece Ctor ve Dtor çağrıldı.
-}
+	string str{"Ali"}; // Burada sadece Ctor ve Dtor yazıldı çağrıldı.
+}						// Çünkü çağrıldıklarında yazılıyorlardı.
 
------------------------------------------------------------
 
-Member funclarion belirli bir sentaksi var
+================================================================================================================================================
+================================================================================================================================================
+================================================================================================================================================
 
-1. Sınıf şablonunun member funclarını doğrudan sınıf tanımı içinde inline olarak yazabiliriz.
+MEMBER FUNCTION SENTAKSI
+------------------------
+Member functionların belirli bir sentaksi var
+
+1. SINIF ŞABLONUNUN MEMBER FUNCLARINI DOĞRUDAN SINIF TANIMI IÇINDE INLINE OLARAK YAZABILIRIZ.
 ---------------------------------------------------------------------------------------------
 
 template <typename T>
@@ -1383,10 +1426,12 @@ private:
 };
 
 
-2. Sınıfın dışında bu func ın tanımını yazabilir.Bu Cpp de yazabiliriz demek değil çünkü derleyicinin kodu yazabilmesi için
-kodu görmesi lazım. Her durumda bunların tanımını derleyici görmeli yoksa yazamaz. Yine Header file içinde sınıf dışında yazılabilir.
--------------------------------------------------------------------------------------------------------------------------------------
+2. SINIFIN DIŞINDA BU FUNC IN TANIMINI YAZABILIR.
+-------------------------------------------------
+Bu Cpp de yazabiliriz demek değil çünkü derleyicinin kodu yazabilmesi için kodu görmesi lazım. 
+Her durumda bunların tanımını derleyici görmeli yoksa yazamaz. Yine Header file içinde sınıf dışında yazılabilir.
 
+//.h
 template <typename T>
 class Myclass{
 public:
@@ -1420,9 +1465,11 @@ T Myclass<T>::f1(T x, T y)
 MOLA
 
 =============================================================================================================================================================
+=============================================================================================================================================================
+=============================================================================================================================================================
 
 
-Dİkkat : Eğer func içinde sınıfın ismini doğrudan kullanırsak hangi açılımsa o açılımı kullanmış oluruz.
+DİKKAT : EĞER FUNC IÇINDE SINIFIN ISMINI DOĞRUDAN KULLANIRSAK HANGI AÇILIMSA O AÇILIMI KULLANMIŞ OLURUZ.
 
 template <typename T>
 class Myclass{
@@ -1430,11 +1477,14 @@ public:
 	void func(T)
 	{
 		Myclass x; //bu olur. Buda zaten Myclass <T> demek.
-		Myclass<T> x; // buda olur
+		Myclass<T> x; // buda olur.İkiside aynı.
 	}
 };
 
-func tanımını sınıf dışında yazıncada aynı durum var.
+
+--------------------------------------------------------------------------------------------------------------------
+
+FUNC TANIMINI SINIF DIŞINDA YAZINCADA AYNI DURUM VAR.
 
 template<typename U>    // her bir tanımda burası yazılacak.Ayrıca Burada U gibi farklı bir isimde kullanabilirim
 U Myclass<U>::func(U x)		// Aynı olacak diye birşey yok ama programcılar aynı ismi kullanıyorlar.
@@ -1442,7 +1492,7 @@ U Myclass<U>::func(U x)		// Aynı olacak diye birşey yok ama programcılar ayn�
 	Myclass a; // dendiği zaman bu da Myclass<T> a; demek aslında
 }
 
--------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
 
 EĞER RETURN DEĞERI SINIF TÜRÜNDENSE
 
@@ -1458,15 +1508,16 @@ Myclass<T> Myclass<T>::func(T x) // Bu şekilde yazılır. Return değerine Sade
 	
 }
 
---------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
 
-Her açılım için Derleyicinin ayrı bir sınıf tanımı var.
+HER AÇILIM IÇIN DERLEYICININ AYRI BIR SINIF TANIMI VAR.
 
+template<typename T>
 class Myclass{
 public:
 	Myclass()
 	{
-		std::cout << typeid.(*this).name() << "\n";
+		std::cout << typeid(*this).name() << "\n";
 	}
 };
 
@@ -1476,8 +1527,10 @@ int main()
 	Myclass<double> my; // buda öyle
 }
 
-Çıktıları farklı olur çünkü farklı sınıflar.
-Aralarında tür dönüşümü sözkonusu değil.
+class Myclass<int>
+class Myclass<double>
+
+Çıktıları farklı olur çünkü farklı sınıflar. Aralarında tür dönüşümü sözkonusu değil.
 
 my = mx; Yapılamaz yani.
 
@@ -1485,6 +1538,8 @@ Aynı durum nontype parametrelerde de var.
 Myclass<3>x;
 Myclass<5>y;
 x == y; SENTAKS HATASI. Örneği uzun uzun yazmadım.
+
+CONVERSION CONSTRUCTOR YAZILIRSA IŞLER DEĞIŞEBILIR !!!!!!!!!!!!! 
 
 ---------------------------------------------------------------------
 
@@ -1505,7 +1560,7 @@ class Myclass{
 
 bool operator==(const Myclass<int>&, cosnt Myclass<int>&); // bu bir şablon değil.
 
-template <typename T>
+template <typename T>	// Burası şablon
 bool operator==(const Myclass<T> &left , cosnt Myclass<T> &right);
 {
 }
@@ -1514,43 +1569,49 @@ int main()
 {
 	Myclass <int>x,y;
 	auto b = x == y; // yukarıda derleyici x in türüne bakacak ve Myclass<int> olduğunu anlayacak ve T nin çıkarımını int olarak yapacak
-}					 // T nin çıkarımı int olarak yapıldığında derleyicinin oluşturduğu func parametreleri Myclass<int> ve Myclass<int> olacak
+					 // T nin çıkarımı int olarak yapıldığında derleyicinin oluşturduğu func parametreleri Myclass<int> ve Myclass<int> olacak
 						// double olsaydı Myclass<double> olacaktı
+}
 
-
-Function şablonlarında derleyici bir çıkarım yaptığında, çıkarım sonucu functionun parametreleri bir sınıf şablonundan elde edilen sınıf türünden olabilir.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Güzel örnek
-ÖR:
+FUNCTION ŞABLONLARINDA DERLEYICI BIR ÇIKARIM YAPTIĞINDA, ÇIKARIM SONUCU FUNCTIONUN PARAMETRELERI BIR SINIF ŞABLONUNDAN ELDE EDILEN SINIF TÜRÜNDEN OLABILIR
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Başlık kontrol edildi :)
+Güzel bir örnek
+
 template <typename T>
-class Myclass{
+class Counter {
 public:
-	Counter() = default
-	Counter(T val) : mval{val} { } 
+	Counter() = default;
+
+	Counter(T val) : mval{ val } { }
+
 	Counter& operator++()
 	{
 		++mval;
 		return *this;
 	}
+
 	Counter& operator++(int)
 	{
-		Counter temp{*this};
-		++*this; //++mval ile aynı olabilir ama bu yukarıdakini çağırdı o da ++mval yaptı zaten.
+		Counter temp{ *this };
+		++* this; //++mval ile aynı olabilir ama bu yukarıdakini çağırdı o da ++mval yaptı zaten.
 		return temp;
 	}
+
 	void print()const
 	{
 		std::cout << "(" << mval << ")";
 	}
-	
-	// İkinci ve daha mantıklı olan bu yazıldı.	
+
+	// İkinci ve daha mantıklı olan bu yazıldı.	Hoca get diye bir func yazdırıp oradan get etti değeri.Ben operator overloading ile devam ettim.
 	template <typename T>
-	std::ostream& operator<<(std::ostream &os, const Counter<T>& c)
+	friend std::ostream& operator<<(std::ostream& os, const Counter<T>& c)
 	{
-		return os << "(" << mval << ")";
+		return os << "(" << c.mval << ")";
 	}
 
 private:
@@ -1558,36 +1619,44 @@ private:
 };
 
 
-İlk bu yazıldı.İkincisi inline yazıldı yukarıda
-//Bir global inserter yazmak istesek
-//std::ostream& operator<<(std::ostream &os, const Counter<int>& c);
+// İlk bu yazıldı.İkincisi inline yazıldı yukarıda. Bir global inserter yazmak istesek böyle
+// std::ostream& operator<<(std::ostream &os, const Counter<int>& c);
 
 int main()
 {
-	Counter<int> cnt{12};
+	Counter<int> cnt{ 12 };
+
+	std::cout << cnt <<"\n"; //yazıncada hata olmaz inserterdan dolayı.
 
 	++cnt;
 	cnt++;
 
 	cnt.print(); // 14 oldu bakınca
+	std::cout << "\n";
 
-	std::cout << cnt; yazıncada hata olmaz inserterdan dolayı.
+	std::cout << cnt <<"\n"; //yazıncada hata olmaz inserterdan dolayı.
 
-	//counter Long olsaydı sentaks hatası olurdu.çünkü overload sadece intr türünden şimdi
-	// bu durumda bunu fonksiyoj şablonu olarak yazmalıyız.
-
+		// Eğer inserter funcı bir func template olarak yazmasaydık, counter<long> olduğunda sentaks hatası olurdu.
+		// çünkü overload sadece int türünden olurdu.
 }
 
+ÇIKTI
+-----
+(12)
+(14)
+(14)
 
 --------------------------------------------------------------------------------------------------------
 
 PROGRAMCILARIN EN FAZLA KAFASININ KARIŞTIĞI YERLERDEN BIRINE BAKACAĞIZ.
 
-vector<int> bu bir sınıf yani bir tür.
+vector<int> 
+Bu bir sınıf, yani bir tür.
 Bu türün kendisinide sınıf şablonunda argüman olarak kullanabilir miyiz? EVET
 
 template <typename T>
-class Myclass{   };
+class Myclass{  
+};
 
 int main()
 {
@@ -1621,7 +1690,7 @@ int main()
 	Myclass<Myclass<Myclass<int>>> x;  // struct Myclass<struct Myclass<struct Myclass<int>>> yazar.
 }
 
--------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
 
 Dİyelimki vectorde Myclass ın int açılımı cinsten nesneler tutmak istiyoruz. Buda olabilir.
 
@@ -1630,13 +1699,13 @@ class Myclass{   };
 
 int main()
 {
-	vector<Myclass<int>>x; //MODERN C++ öncesinde <int>>x; kısmında >> olan yerde maximum munch kuralından ötürü operator right shift operator olarak alınıyordu
-}							// artık bu düzeltildi.Önceden arada boşluk karakteri bırakarak yazılıyordu. Yani >> yerine > > yazılıyordu.
+	vector<Myclass<int>>x; //MODERN C++ öncesinde <int>>x; kısmında >> olan yerde maximum munch kuralından ötürü operator right shift operator olarak alınıyordu.
+}							// Artık bu düzeltildi.Önceden arada boşluk karakteri bırakarak yazılıyordu. Yani >> yerine > > yazılıyordu.
 
 
----------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
 
-template <typename T>
+template <typename T, typename U>
 class Myclass{   
 };
 
@@ -1660,7 +1729,7 @@ int main()
 	Myclass<double,6> y; //Bunlarda aynı şekilde farklı birer sınıf
 }
 
------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
 
 Şimdi STLden örnek verilecek.
 ----------------------------
@@ -1679,10 +1748,11 @@ int main()
 
 	//Bu gerçek array sınıfı
 	array<double,5>ar;
+	
 	ar. dersek member funclarıda görürüz.
 }
 
----------------------
+-----------------------------------------------------------------------------------------------
 
 Bitset sınıf şablonu örneği
 template <size_t n>
@@ -1697,7 +1767,7 @@ int main()
 	bitset<32> bs; // nontype parametre için compilerın yazdığı kodda 32 kullanılmasını istiyoruz.
 }
 
-----------------------------------
+-----------------------------------------------------------------------------------------------
 
 Pair sınıf şablonu
 Bu baya önemli. Öyle yerler varki 2 adet farklı değeri tek bir nesne gibi kullanmak istiyoruz.
@@ -1727,7 +1797,7 @@ int main()
 Mesela bir functionun return değerini pair yapabiliriz
 
 std::pair<int,long> foo(); // bu func bir int birde long döndürüyor
-std::pair<int,string> func(); // bu func bir int birde string döndürüyor
+std::pair<int,std::string> func(); // bu func bir int birde string döndürüyor
 
 -------------------------------------------------------
 
