@@ -687,7 +687,7 @@ destructor this : 00EFF987
 SONUÇLAR:
 
 A - Compiler ne zaman int, myclass türünden bir değişkene dönüşmesi gerekiyorsa, bu durumdan vazife çıkaracak,
-Myclass(int); destructor ile geçiçi nesne yaratıp daha sonra da Copy Assignment func ile atama yapacak.
+Myclass(int); Constructor ile geçiçi nesne yaratıp daha sonra da Copy Assignment func ile atama yapacak.
 
 	Neler Dahil
 	---------------
