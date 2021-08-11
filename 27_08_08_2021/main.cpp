@@ -111,9 +111,11 @@ Fonksiyonlarda bunun kullanımı biraz sınırlı
 template <typename T, typename U = int>
 void func(T x, U y)
 {
+}
+int main()
+{
 	func(1,3.4);  // burada T int , U double olacak. Çünkü deduction yapılıyor burada.Aşağıda yazdım nedenini.
 }
-
 functionlarda default argument, template argument deductionu bloke etmiyor. Yine tür çıkarımı yapılıyor.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
