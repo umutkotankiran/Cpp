@@ -450,7 +450,7 @@ Alttaki func ise int parametreli
 Overload resolutionda 2 aday var.Burada double parametreli seçileceği için şablondan bir function yazacak.
 
 Derleyip çalıştırınca 
-function template type is " << typeid(T).name()   yazar.
+function template type is double   yazar.
 
 ------------------------------
 
