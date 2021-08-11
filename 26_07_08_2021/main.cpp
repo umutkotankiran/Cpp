@@ -699,6 +699,39 @@ int main()
 
 ----------------------------------------------
 
+TÜR ÇIKARIMI YAPILAMAYAN BIR DURUM OLABILIR.
+
+template <typename T>
+T func(int x); //bu şekilde yazarsak argümanı açıkça belirtmek gerelir. Tür çıkarımı yapılamaz burada.
+
+int main()
+{
+	
+}
+
+----------------------------------------------
+
+FUNCTION TEMPLATELERDE NONTYPE PARAMETER KULLANIMI
+
+template <typename T, int x>
+void func(T(&r)[x])
+{
+	std::cout << "size = " << x << "\n";
+}
+
+
+int main()
+{
+	double d[15] = { 0 };
+	func(d);
+
+}
+
+----------------------------------------------
+
+
+
+
 int main()
 {
 	usint mytype = int&&;
