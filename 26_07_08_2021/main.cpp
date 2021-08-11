@@ -727,9 +727,22 @@ int main()
 
 }
 
+
 ----------------------------------------------
 
+YUKARIDAKİNDEN DAHA BASİT BİR NONTYPE ÖRNEĞİ
 
+template <typename T>
+void func(T x, int a)
+{
+	std::cout << a ;
+}
+
+
+int main()
+{
+	func(10,5); // 5 İ YAZAR.
+}
 
 
 int main()
@@ -742,7 +755,7 @@ Burada int&& &&x durumu oluşur buda reference collapsinge göre
 int&&x = 10; olur en son durumda.
 
 
-------------------
+----------------------------------------------
 
 int main()
 {
