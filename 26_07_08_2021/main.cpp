@@ -727,10 +727,22 @@ int main()
 
 }
 
+----------------------------------------------
+YUKARIDAKİNDEN DAHA BASİT BİR NONTYPE ÖRNEĞİ
+
+template <typename T, int a>
+void func(T x)
+{
+	std::cout << typeid(T).name() << "\n";
+	std::cout << a;
+}
+
+int main()
+{
+	func<int,5>(39); // 5 yazar
+}
 
 ----------------------------------------------
-
-YUKARIDAKİNDEN DAHA BASİT BİR NONTYPE ÖRNEĞİ
 
 template <typename T>
 void func(T x, int a)
@@ -743,6 +755,8 @@ int main()
 {
 	func(10,5); // 5 İ YAZAR.
 }
+
+----------------------------------------------
 
 
 int main()
