@@ -1265,16 +1265,9 @@ int main()
 	func(T&& , ...) --> func(int && , ...)
 	
 	-İkinci Parametre
-	auto &x = 25;
-	auto doğrudan int
-	T ye int geldi
-	func(...,T&) --> func(...,int&)
-
-	function şöyle oldu. func(int&&, int&)
-	AYNI ZAMANDA İKİSİNDE DE T YE İNT DENK GELDİ.HATA YOK
+	auto &x = 25; //SENTAKS HATASI. Lvalue reference, R value exp bind etmez.
+	SENTAKS HATASI
 	
-	int,int  GEÇERLİ
-
 	//----------------------------------------------------
 }
 
