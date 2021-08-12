@@ -1527,7 +1527,7 @@ void func(const T &x)
 }
 
 template <typename T>
-void func(const T &x)
+void func(T &&x)
 {
 	foo(std::move(x));
 }
