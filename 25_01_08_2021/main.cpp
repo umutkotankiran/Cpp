@@ -1027,7 +1027,7 @@ void func(T &&)
 
 Buradaki func(T&&) parametresine kesinlikle sağ taraf referansı demiyoruz.
 
-Standartların kullandığı terminolojiye göre buradaki parametreye forwarding REFERENCE DENIYOR.
+Standartların kullandığı terminolojiye göre buradaki parametreye FORWARDING REFERENCE DENIYOR.
 Aynı anlamda kullanılan 2. bir terim ise UNIVERSAL REFERENCE. Scott Meyers uydurmuş yine.
 
 HATIRLATMALAR
