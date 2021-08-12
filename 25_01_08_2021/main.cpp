@@ -833,7 +833,7 @@ int main()
 3. Default Tür Argümanı Kullanımı
 ---------------------------------
 template<typename T, typename U = int>
-void func(T x, U y)
+void func(T x, U = U{})
 {
 }
 
