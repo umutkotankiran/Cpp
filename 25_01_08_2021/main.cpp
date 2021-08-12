@@ -1256,7 +1256,7 @@ int main()
 
 	//BUDA ÇOK ÖNEMLİ
 	
-	func(15,25); // int, int GEÇERLİ.
+	func(15,25); // GEÇERSİZ.
 	
 	-Birinci parametre
 	auto &&x = 15 dersek
