@@ -33,7 +33,7 @@ struct Myclass{
 
 int main()
 {
-	Myclass<char,char> m1; // T ve U double
+	Myclass<char,char> m1; // T ve U char
 	Myclass<char> mx; // T = char U = double(defaulttan geldi)
 	Myclass<> mx; // ikiside default template argument ten	T = int  U = double
 }
