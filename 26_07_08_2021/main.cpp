@@ -699,18 +699,6 @@ int main()
 
 ----------------------------------------------
 
-TÜR ÇIKARIMI YAPILAMAYAN BIR DURUM OLABILIR.
-
-template <typename T>
-T func(int x); //bu şekilde yazarsak argümanı açıkça belirtmek gerelir. Tür çıkarımı yapılamaz burada.
-
-int main()
-{
-	
-}
-
-----------------------------------------------
-
 FUNCTION TEMPLATELERDE NONTYPE PARAMETER KULLANIMI
 
 template <typename T, int x>
