@@ -1537,7 +1537,7 @@ FUNC TANIMINI SINIF DIŞINDA YAZINCADA AYNI DURUM VAR.
 template<typename U>    // her bir tanımda burası yazılacak.Ayrıca Burada U gibi farklı bir isimde kullanabilirim
 U Myclass<U>::func(U x)		// Aynı olacak diye birşey yok ama programcılar aynı ismi kullanıyorlar.
 {
-	Myclass a; // dendiği zaman bu da Myclass<T> a; demek aslında
+	Myclass a; // dendiği zaman bu da Myclass<U> a; demek aslında
 }
 
 --------------------------------------------------------------------------------------------------------------------
