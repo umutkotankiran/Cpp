@@ -309,11 +309,11 @@ DEĞER KATEGORILERI
 C de L ve R value var
 C++ ta L, PR , X value var.
 
-								  KESİŞİMLERİ
+				  KESİŞİMLERİ
 GVALUE	|--------------------|------------------|-----------------------|  RVALUE
-		|	LVALUE			 |		XVALUE		|		PRVALUE			|
-		|					 |					|						|
-		|--------------------|------------------|-----------------------|
+	|	LVALUE       |      XVALUE	|	PRVALUE		|
+	|		     |			|			|
+	|--------------------|------------------|-----------------------|
 
 
 LEFT VALUE = LOCATORS VALUE
@@ -330,13 +330,13 @@ X VALUE = NESNE GÖSTEREN İFADE AMA HAYATI BİTMEK ÜZERE OLAN NESNE.
 TEKRAR
 int& r; r nin türü intref
 
-						C			C++
------------------|----------------------
-++x				 |		R			L
---x				 |		R			L
-(x,y)			 |		R			L
+				C			C++
+-----------------|------------------------------------------
+++x		 |		R			L
+--x		 |		R			L
+(x,y)		 |		R			L
 a > 5 ? x : y	 |		R			L
-(x = y)			 |		R			L
+(x = y)		 |		R			L
 
 
 SONUC:
