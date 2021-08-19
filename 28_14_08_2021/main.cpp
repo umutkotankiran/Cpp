@@ -59,6 +59,10 @@ int main()
 	Neco_t<int> ; // typename Neco<int>::type demek
 }
 
+DİKKAT ÇOK ÖNEMLİ!!!!!!!!!!!!!!!!
+STRUCT NECO IÇINDEKI T* BIR TÜR, BIR VALUE DEĞIL. BU DURUMDA ALIAS TEMPLATE KULLANACAĞIZ VE TYPENAME KEYWORD OLACAK.
+EĞER BIR VALUE OLSAYDI TYPENAME KULLANMAYACAKTIM. ZATEN ORADA VARIABLE TEMPLATE IŞIN IÇINE GIRECEK.
+
 --------------------------------------------------------------------------------------------------------------------------
 
 YAZIM KOLAYLIĞI VEYA TEMPLATE ARGÜMAN SAYISINI AZALTMAK IÇIN ÇOĞUNUKLA ALIAS TEMPLATE TERCIH EDILIYOR.
@@ -88,6 +92,7 @@ VARIABLE TEMPLATE
 -----------------
 
 Modern C++ ta Variable template geldi. Değişken şablonları.Kitaplarda anlatılan variable template anlatımları asıl kullanımı anlatmıyor.%99 böyle.
+Alias template ile karıştırma.Alias template ta tr bilgisi vardı, burada doğrudan value var.
 
 template <typename T>
 auto pi = (T)(3.14159);  // TÜm kitaplar bu örneğe benzer örnek veriyor.
@@ -164,7 +169,7 @@ Yukarıdakini biz yazalım.
 template <typename T>
 constexpr bool isIntegral_v = std::is_Integral<T>::value
 
-BUnların genelde kullanıcısı olacağız.
+Bunların genelde kullanıcısı olacağız.
 Ne zaman kendimiz yazacağız. Metafunction oluşturduğumuzda yazacağız.
 
 
@@ -307,7 +312,7 @@ void func()
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
-METAFUNCTION FUNCTION DEMEK DEĞIL.COMPILE TIMEDA HESAPLAMA YAPAN BIR ARAÇ DEMEK.BU ARAÇ IÇIN YAPILAR KULLANILIYOR GENELDE.
+METAFUNCTION, FUNCTION DEMEK DEĞIL.COMPILE TIMEDA HESAPLAMA YAPAN BIR ARAÇ DEMEK.BU ARAÇ IÇIN YAPILAR KULLANILIYOR GENELDE.
 
 template <typename T> // const olmayanlar için bu özelleştirme oluşacak
 struct RemoveConst{
@@ -353,9 +358,9 @@ void func(T x)
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Birtakım programlama tekniklerini kullanarak compile time da T türünün belirli bir özelliği sağlayp sağlamadığını
+Birtakım programlama tekniklerini kullanarak compile time da T türünün belirli bir özelliği sağlayıp sağlamadığını
 test edebilir miyiz? Runtime değil. Compile time.Bunu yapabilirsek compile time de türe bağlı olarak if deyimi
-oluşturabiliriz. T ptr ise bir kod değilse başka bir kod gibi...
+oluşturabiliriz. T ptr ise bir kod, değilse başka bir kod gibi...
 
 Dolayısı ile bir türün bir özelliği sağlayıp sağlamadığını anlamak çok önemli.
 Önce primitive bir şekilde oluşturacağız sonrada type traits anlatılınca özü aynı ama biraz daha profesyonel bir araç kullanılacak.
@@ -632,7 +637,7 @@ template<>
 struct isVoid<void> : std::true_type { };
 
 template <typename T>
-constexpr void isVoid_v = isVoid<T>::value;
+constexpr bool isVoid_v = isVoid<T>::value;
 
 
 int main()
@@ -682,7 +687,7 @@ isVoid i biraz daha değiştiriyoruz.
 #include <iostream>
 
 template <typename T>
-struct IsVoid : std::is_same<void, std::remove_cv_t<T>> {}; // constluk ve volatilelik silindi.
+struct IsVoid : std::is_same<void, std::remove_cv_t<T>> {}; // constluk ve volatilelik silindi. dikkat _t var. Olmasaydı ::type ekleyecektik.
 
 template<typename T>
 constexpr bool IsVoid_v = IsVoid<T>::value;
@@ -739,13 +744,12 @@ template<typename T>
 struct is_pointer_helper<T*> : std::true_type {   };
 
 template<typename T>
-struct is_pointer : is_pointer_helper< typename std::remove_cv<T>::type > {    }; //constluk ve volatile lık silindi.
+struct is_pointer : is_pointer_helper< typename std::remove_cv<T>::type > {    }; //constluk ve volatile lık silindi. ::type olmasaydı remove_cv_t olacaktı
 
 NOT: Eğer bir template içinde kulandığım bir tür template tür parametresine bağlıysa typename yazmak zorunlu. 
 	 Yani burada T nin ne olduğuna bağlı olarak değer değişebilir.
 
-	 Bu örnek burada bırakıldı.
-	 maini yaz burada daha sonra.
+	 Bu örneği hoca burada bıraktı.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -787,7 +791,7 @@ int main()
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-DAHA SONRA GELINECEK AMA IF CONSTEXPR YE BAKILIYOR. BURADA COMPILE TIMEDA KONTROL YAPIYOR.
+CONSTEXPR IF DAHA SONRA İŞLENECEK ŞİMDİ GİRİŞ YAPTIK. BURADA COMPILE TIMEDA KONTROL YAPIYOR.
 
 template <typename T>
 void func(T x)
@@ -1395,7 +1399,7 @@ void print(const Types& ...params)
 }
 
 
----------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 template <typename ...Types>
 void print(const Types& ...params)
@@ -1505,7 +1509,7 @@ STL - STANDART TEMPLATE LIBRARY
 -------------------------------
 
 Bu konuyu bilmemek diye birşey söz konusu değil.Her C++ Programmer bilecek bunu.
-STL bir acronim.Açılımı başlıkta zaten. Burada kastedilen aslında dilin standart kütüphanesinin template olan bileşenlkeri
+STL bir acronim.Açılımı başlıkta zaten. Burada kastedilen aslında dilin standart kütüphanesinin template olan bileşenleri.
 
 Func template
 Class template
@@ -1516,10 +1520,10 @@ Günümüzde STL dendiğinde C++ ı standart kütüphanesinin tamamını kastedi
 C den gelen funclar veya trigonometri functionları.
 
 BU OBJECT ORIENTED BİR LIBRARY DEĞİL.
-Özellikle runtime polymorphism burada hiç hiç yer almıyora yakın. exception daki what var.
+Özellikle runtime polymorphism burada hiç yer almıyora yakın denebilir. exception daki what var.
 
-Burada kodlar template Derleyici kodları yazıp sonra derleyecek.
-Veri yapını implemente eden sınıfları düşünelim, dinamik dizide int double ... tutulacak türe bağlı derleyici compile timeda sınıf kodunu yazıyor.
+Burada kodlar template, Derleyici kodları yazıp sonra derleyecek.
+Veri yapısı implemente eden sınıfları düşünelim, dinamik dizide int double ... tutulacak türe bağlı derleyici compile timeda sınıf kodunu yazıyor.
 Yada algoritma denen func şablonlarını düşünürsek sort isimli func kodunu compile timeda bizim için yazıyor.
 
 Template in en büyük dezavantajı hata mesajlarının çok açık olmaması. Çok basit bir hatada 200-300 satır hata alabiliriz.
@@ -1533,12 +1537,12 @@ Diğerleri = Container Adapters, Iterator Adapters, Function Adapters, Function 
 
 Containers = Veri yapılarını implemente eden sınıf şablonları.Örneğin dinamik dizi, doubly linked list...
 
-Iterators = Pointerların genelleştirilmiş, soyutlanmıuş hali.Bunlar öyne nesnelerki containerlardaki tutulan öğelerin konum bilgilerini tutuyorlar.
+Iterators = Pointerların genelleştirilmiş, soyutlanmış hali.Bunlar öyne nesnelerki containerlardaki tutulan öğelerin konum bilgilerini tutuyorlar.
 Pointerda bir iterator olarak kullanılıyor.Bir pointer adres tutuyor, iterator ise pointer olabilir sınıf nesnesi olabilir. Varlık sebebi bir veri yapısındaki
 öğelerin konumunu tutmak.Containerda tutulan öğelere iterator denen nesneler yoluyla erişebiliriz. Bunlar pointer-like sınıflar.
 Bir pointerı * operatörünün operandı yapınca o adresteki nesneye erişiyorsa, iterator bir sınıf nesnesi ise, o sınıfın * func ı, bizi o konumdaki nesneye eriştirecek.
 
-Pointer-like pointer benzeri arayüze sahip sınıflar. *ptr, ++ptr, ptr>2 , ptr[3] ...
+Pointer-like pointer benzeri arayüze sahip sınıflar. *ptr, ++ptr, ptr-> , ptr[3] ...
 Yani aslında kendisi bir pointer olmayan ama pointer interface i ile kullanılan sınıflar, pointer like sınıflar.
 Her pointer like nesneye smart pointer denmiyor.Pointer interface ine sahip sınıflar 2 farklı amaç için kullanılabilir.
 
