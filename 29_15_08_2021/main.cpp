@@ -1071,7 +1071,7 @@ int main()
 }
 Burada kullanılan iter random access
 
-VECTOR YERINE LIST DERSEK BIDIRECTIONAL ITER OLACAĞINDAN SENTAKS HATASI OLUR
+VECTOR YERINE LIST DERSEK BIDIRECTIONAL ITER OLACAĞINDAN SENTAKS HATASI OLUR (iter - svec.begin() BU KISIM HATA)
 
 AMA bu yöntemler pratik değil.Sadece 5 olduğunu sorguluyor.
 Ya client kodu yaan sadece 5 değilde 6,7,8 kontrolü isterse
