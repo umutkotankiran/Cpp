@@ -935,7 +935,7 @@ int main()
 }
 
 Burada Myclass nesnelerine int türden nesneler atanacak. Bu compile timeda sentaks hatası oluşturacak.
-Conversion Constructor olmuş olsa sentaks hatası değil çünkü atamayı legal hale getirmiş oluyoruz.
+Conversion Constructor bile olsa sentaks hatası
 
 ======================================================================================================================================================================
 ======================================================================================================================================================================
