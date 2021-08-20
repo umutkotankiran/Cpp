@@ -561,42 +561,42 @@ nested type ının ne olduğuna bakmak.
 İTERATÖR KATEGORISI SÖZKONUSU ITERATÖRLERLE NELER YAPABILIRIM NELER YAPAMAM BUNLARI BELIRLIYOR BU YÜZDEN ÇOK ÖNEMLI!!!!!!!!!!
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-| ITERATOR KATEGORİLERİ	  |									OPERASYONLAR								  |													  |
+| ITERATOR KATEGORİLERİ	  |									OPERASYONLAR						      |													  |
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-|						  |																				  |													  |	
-|						  |		Copy constructible														  |			ostream_iterator						  |	
-|	 OUTPUT ITERATOR	  |		++it	it++	=														  |			ostreambuf_iterator						  |
-|						  |		*it		it->  (sol taraf değeri)										  |													  |
-|						  |																				  |													  |
+|						  |						          |         					      |	
+|						  |		Copy constructible			  |			ostream_iterator	      |	
+|	 OUTPUT ITERATOR	  		  |		++it	it++	=			  |			ostreambuf_iterator   	      |
+|						  |		*it		it->  (sol taraf değeri)  |  						      |
+|						  |							  |					              |
 |-------------------------|-------------------------------------------------------------------------------|---------------------------------------------------|
-|						  |		Copy constructible														  |													  |
-|						  |		++it	it++	=														  |			istream_iterator						  |
-|	  INPUT ITERATOR	  |		*it		it->  (sağ taraf değeri) 										  |			istreambuf_iterator						  |
-|						  |		it1 == it2		it1 != it2												  |													  |
-|						  |																				  |													  |
+|						  |		Copy constructible			  |						      |
+|						  |		++it	it++	=			  |			istream_iterator	      |
+|	  INPUT ITERATOR	  		  |		*it		it->  (sağ taraf değeri)  |			istreambuf_iterator	      |
+|						  |		it1 == it2		it1 != it2	  |						      |
+|						  |							  |						      |
 |-------------------------|-------------------------------------------------------------------------------|---------------------------------------------------|
-|						  |		Copy constructible - Default Constructible								  |													  |
-|						  |		++it	it++	=														  |			forward_list							  |
-|	FORWARD ITERATOR	  |		*it		it->  (sağ taraf değeri) (sol taraf değeri)						  |			unordered_set		unordered_multiset	  |
-|						  |		it1 == it2		it1 != it2												  |			unordered_map		unordered_multimap	  |
-|						  |																				  |													  |
+|						  |	Copy constructible - Default Constructible	  |		 				      |
+|						  |	++it	it++	=				  |	forward_list		    		      |
+|	FORWARD ITERATOR	  		  |	*it    it->  (sağ taraf değeri) (sol taraf değeri)|	unordered_set		unordered_multiset    |
+|						  |	it1 == it2		it1 != it2		  |	unordered_map		unordered_multimap    |
+|						  |							  |						      |
 |-------------------------|-------------------------------------------------------------------------------|---------------------------------------------------|
-|						  |		Copy constructible - Default Constructible								  |													  |
-|						  |		++it	it++		--it	it--		=								  |			list									  |
-|	  BIDIRECTIONAL		  |		*it		it->  (sağ taraf değeri) (sol taraf değeri)						  |			set		multiset						  |
-|	    ITERATOR		  |		it1 == it2		it1 != it2												  |			map		multimap						  |
-|						  |																				  |													  |
-|						  |																				  |													  |
+|						  |	Copy constructible - Default Constructible	  |						      |
+|						  |	++it	it++	--it	it--		=	  |	list					      |
+|	  BIDIRECTIONAL		 		  |	*it    it->  (sağ taraf değeri) (sol taraf değeri)|	set		multiset		      |
+|	    ITERATOR		  		  |	it1 == it2		it1 != it2		  |	map		multimap		      |
+|						  |							  |						      |
+|						  |							  |						      |
 |-------------------------|-------------------------------------------------------------------------------|----------------------------------------------------
-|						  |		Copy constructible - Default Constructible								  |													  |
-|						  |		++it	it++		--it	it--		=								  |			vector									  |
-|						  |		*it		it->  (sağ taraf değeri) (sol taraf değeri)						  |			deque									  |
-|	  RANDOM ACCESS		  |		it1 == it2		it1 != it2												  |			array									  |
-|	    ITERATOR		  |		it + n		n + it		it - n											  |			string									  |
-|	(Pointer Interface )  |		it+=n		it-=n														  |			C array									  |
-|						  |		it1 - it2																  |													  |
-|						  |		it[n]																	  |													  |
-|						  |		it1 < it2	it1 <= it2		it1 > it2	it1 >= it2						  |													  |
+|						  |	Copy constructible - Default Constructible        |						      |
+|						  |	++it	it++		--it	it--	=	  |			vector			      |
+|						  |	*it    it->  (sağ taraf değeri) (sol taraf değeri)|			deque			      |
+|	  RANDOM ACCESS		  		  |	it1 == it2		it1 != it2		  |			array			      |
+|	    ITERATOR		  		  |	it + n		n + it		it - n		  |			string			      |
+|	(Pointer Interface )  			  |	it+=n		it-=n				  |			C array			      |
+|						  |	it1 - it2					  |						      |
+|						  |	it[n]						  |						      |
+|						  |	it1 < it2   it1 <= it2   it1 > it2   it1 >= it2   |						      |
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
