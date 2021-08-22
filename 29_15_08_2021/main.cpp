@@ -570,7 +570,7 @@ nested type ının ne olduğuna bakmak.
 |						  |							  |					              |
 |-------------------------------------------------|-------------------------------------------------------|---------------------------------------------------|
 |						  |	Copy constructible			  	  |						      |
-|						  |	++it	it++	=			  	  |	istream_iterator	      		      |
+|						  |	++it	it++			  	  	  |	istream_iterator	      		      |
 |	  INPUT ITERATOR	  		  |	*it		it->  (sağ taraf değeri)	  |	istreambuf_iterator	      		      |
 |						  |	it1 == it2		it1 != it2		  |						      |
 |						  |							  |						      |
