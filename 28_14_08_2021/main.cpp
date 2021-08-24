@@ -958,7 +958,7 @@ void func(Args&... args) // Dikkat & . Functionun herbir parametresi Lvalue refe
 }
 
 template <typename ...Args> // 
-void func(Args&&... args) // Dikkat && . Functionun herbir parametresi Rvalue reference olacak.
+void func(Args&&... args) // FORWARDING REFERANS.Dikkat && . Functionun herbir parametresi Rvalue reference olacak.
 {
 }
 
