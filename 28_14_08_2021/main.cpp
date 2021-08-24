@@ -484,7 +484,7 @@ template <>
 struct is_void<const volatile void>: bool_constant<true>{ };
 
 template <typename T>
-constexpr bool is_void_v = is_void<T>::value; // burada typename kullanılmadı bunu sor
+constexpr bool is_void_v = is_void<T>::value; // BURADA TYPENAME YOK ÇÜNKÜ BU BIR ALIAS TEMPLATE DEĞIL !!!!!
 
 int main()
 {
