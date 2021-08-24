@@ -214,7 +214,7 @@ struct remove_reference
 }
 
 remove_reference<int>::type --> int türüdür.
-remove_reference<int&>::type --> int& türüdür.
+remove_reference<int&>::type --> int& türüdür.   // Dİkkat decution yok.Deduction olduğunda & lik düşüyordu.burada explicit verilmiş.
 
 Burada partial specialization yazılacak artık.
 
