@@ -1101,10 +1101,7 @@ void foo(T x, Args&&...args)
 {
 	f(std::forward<Args>(args)...); //aşağıdakilere açar.
 
-	f(std::forward<int>p1);
-	f(std::forward<double>p2);
-	f(std::forward<long>p3);
-
+	f(std::forward<int>(p1), std::forward<double>(p2), std::forward<long>(p3));
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
