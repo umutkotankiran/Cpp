@@ -838,6 +838,8 @@ int main()
 	vector<int> ivec{2,4,5,6,7,8};
 
 	const vector<int>::iterator iter = iter.begin(); //Dikkat!!! const bir sınıf nesnesi değeri değiştirilemez.Low level const a karşılık gelmiyor.
+	// BURADA ITERATOR CONST OLARAK NİTELENMİŞ. YANİ İTERATOR DEĞİŞEMEZ. ++ITER SENTAKS HATASI OLUR !!!!!!!!!!!!!!!
+	// DAHA AŞAĞIDAKİ ÖRNEKTE İSE CONST_ITERATOR DENMİŞ. BURADA İSE *ITERATOR = 234 GİBİ BİR EŞİTLEME SENTAKS HATASI !!!!!!!!!!!!!!!!!!!
 	
 	++iter;// SENTAKS HATASI OLUR
 	*iter = 45; //SENTAKS HATASI DEĞİL.
