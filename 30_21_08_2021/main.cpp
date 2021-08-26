@@ -1098,7 +1098,7 @@ OutIter CopyIf(InIter beg, InIter end, OutIter destbeg, Pred f)
 		if(f(*beg))
 			*destbeg++ = *beg;
 			
-		++*beg;
+		++beg;
 	}
 	return destbeg;
 }
