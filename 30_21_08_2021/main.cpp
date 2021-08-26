@@ -1192,7 +1192,7 @@ int main()
 
  BU KISIM TAMAMEN MÜLAKAT SORULARIYLA DOLU
 
- rbegin func ının return değeri olan iterator, aslında vectordeki son öğenin konumunu tutuyor.Tam doğru cümle değil.Burada bir hile var ama
+ rbegin func ının return değeri olan iterator, aslında vectordeki son öğeden bir sonraki konumu tutuyor.Burada bir hile var ama
  bu şu demek, 
 
  auto iter = ivec.rbegin();
