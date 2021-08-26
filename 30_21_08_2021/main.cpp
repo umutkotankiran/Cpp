@@ -701,7 +701,7 @@ MOLA
 ============================================================================================================================================================================
 
 
-ALGORITMALAR LAMBDALARIN EN ÇOK KULLANILDIĞI YERLERDEN BİRİ.
+FIND IF ÖRNEĞİ - ALGORITMALAR LAMBDALARIN EN ÇOK KULLANILDIĞI YERLERDEN BİRİ.
 Yani algoritmaya lambda ifadesini argüman olarak geçmekten bahsediliyor.
 
 #include <nutility>
@@ -735,7 +735,7 @@ int main()
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-BURADA KULLANILAN DATE HOCANIN VERDIĞI ÖDEV OLAN DATE
+COUNT IF ÖRNEĞİ - BURADA KULLANILAN DATE HOCANIN VERDIĞI ÖDEV OLAN DATE. 
 
 int main()
 {
@@ -776,6 +776,7 @@ int main()
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+PREDICATE ALAN SORT
 using namespace std;
 
 int main()
