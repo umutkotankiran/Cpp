@@ -757,7 +757,7 @@ STANDART FUNCTION OBJECT
 
 template <typename T>
 struct Less{
-	bool operator()(const t&x, const t&y)const
+	bool operator()(const T&x, const T&y)const
 	{
 		return x < y;
 	}
@@ -840,11 +840,11 @@ multiplies<type>()		|		param1 * param2
 divides<type>()			|		param1 / param2
 modulus<type>()			|		param1 % param2
 equal_to<type>()		|		param1 == param2
-not_equal_to<type>()	|		param1 != param2
+not_equal_to<type>()		|		param1 != param2
 less<type>() param1		|		< param2
 greater<type>()			|		param1 > param2
 less_equal<type>()		|		param1 <= param2
-greater_equal<type>()	|		param1 >= param2
+greater_equal<type>()		|		param1 >= param2
 logical_not<type>()		|		! param
 logical_and<type>()		|		param1 && param2
 logical_or<type>()		|		param1 || param2
