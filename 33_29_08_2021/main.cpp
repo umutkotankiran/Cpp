@@ -918,19 +918,19 @@ int main()
 
 	BAĞLI LİSTEDEKİ İLK 3 ÖĞEYİ SİLMEK İSTERSEK.
 		
-	forward_list<string> mylist{"ali","hasan","huseyin","ali","gul","eda"};
+	list<string> mylist{"ali","hasan","huseyin","ali","gul","eda"}; // DİKKAT BURASI LIST
 	print(mylist);
-	mylist.erase(mylist.begin(), next(mylist.begin(),3));
+	mylist.erase(mylist.begin(), next(mylist.begin(),3)); // LISTTE ERASE VARDI
 	print(mylist);
 
 	-----------------------------------------------------------------------------------------
 
 	Aşağıdaki gibide yapılabilir 
 
-	forward_list<string> mylist{"ali","hasan","huseyin","ali","gul","eda"};
+	forward_list<string> mylist{"ali","hasan","huseyin","ali","gul","eda"}; //BURADA FORWARD LIST OLDU
 
 	print(mylist);
-	mylist.erase_after(mylist.before_begin(), next(mylist.begin(),3)); //
+	mylist.erase_after(mylist.before_begin(), next(mylist.begin(),3)); // BUNDA ISE ERASE AFTER VAR
 	print(mylist);
 
 	-----------------------------------------------------------------------------------------
