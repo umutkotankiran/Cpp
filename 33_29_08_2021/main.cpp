@@ -461,9 +461,14 @@ Ekleme veya silme noktası biliyorsa O(1) karmaşıklığında oluyor.
 Bağlı listelerin varlık sebebi bu.
 Herhangibir konumdan ekleme veya silmeyi constant time a çekiyor.
 
+==============================================================================================
+==============================================================================================
+ÇOK ÖNEMLİ !!!!!!!!!!!!!!!!!!!!!!
 Vectorde sadece sondan ekleme constant time da
 Deque te hem sondan hem baştan constant time
 linked list lerde baştan sondan ortadan heryerden konum elimde olduğu sürece constant time da.
+==============================================================================================
+==============================================================================================
 
 Bu avantaj karşısında ödenen bedel çok yüksek.
 Ödenen Bedeller
@@ -479,11 +484,10 @@ Bu avantaj karşısında ödenen bedel çok yüksek.
 
 Bağlı Listenin avantajları
 --------------------------
-1. Bağlı listenin bir avantajı var.Bunu anlamadan nce vectordeki dezavantajı anlamak lazım.
-2. Node temelli veri yapılarında iterator invalidation problemi yok. düğümler silinmediği sürece 
-   bu düğümü gösteren iteratörler pinterlar referanslar invalid olmayacaklar
+1. Bağlı listenin bir avantajı var.Bunu anlamadan önce vectordeki dezavantajı anlamak lazım.
 
---------------------------------------------------------------------------------
+Node temelli veri yapılarında iterator invalidation problemi yok. düğümler silinmediği sürece 
+bu düğümü gösteren iteratörler pointerlar referanslar invalid olmayacaklar
 
 Diyelimki vectorde 400 byte lık büyük nesneler tutuyoruz.
 class nec nesnesi olsun bunlar. Bu veri yapısında çalışacak algoritmaların önemli ksımı swap yapıyor.
@@ -495,7 +499,7 @@ Taşıma kopyalamaya bir optimizasyon.
 struct nec{
 	array<int,100> mx;
 	// array in move ctoru bunu ne yapabilir ki, int in taşınması diye birşey yok bu
-	// 400 byte lıkalan yine kopyalanmak zorunda.Yani bir çok sınıf için move un ilave bir avantajı yok.
+	// 400 byte lık alan yine kopyalanmak zorunda.Yani bir çok sınıf için move un ilave bir avantajı yok.
 
 };
 
@@ -505,24 +509,24 @@ Vectörde tutuluyorlar ve argoritma çalışınca öğeler swap ediliyor.
 
 Linked list olursa, veriler düğümlerin içinde. Bu durumda Node ların içerisindeki pointerlar
 takas edilebilir. Neden 400 bytelık veriler takas edilsin. Bu durumda bağlı liste arayüzünde
-diğer sequence containerlarda olmayan fonlsiynlar göreceğiz. neden bunlar member func yapılmış?
-swapın getireceği avantajlardan faydalanmak için. Mesela merge , revwrse, uniue , sort
+diğer sequence containerlarda olmayan fonlsiyonlar göreceğiz. neden bunlar member func yapılmış?
+swapın getireceği avantajlardan faydalanmak için. Mesela merge , reverse, uniue , sort
 bunlar normalde STL algoritmaları ama list sınıfında sınıfın member funcları bunlar.
 
-Bunlar takas yapıyorlar ama Node ların içinde ki veriyi dğeilde içerisindeki pointerları takas ederek yapıyorlar.
+Bunlar takas yapıyorlar ama Node ların içinde ki veriyi değilde içerisindeki pointerları takas ederek yapıyorlar.
 
 STL e gelelim
 
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-biri C++ 11 ile dile elendi diğeri eskiden beri var.
-list eskiden beri olan çifte nbağlı liste sınıfı. Birde modern C++ ile dile eklenen forward list var.
+Biri C++ 11 ile dile elendi diğeri eskiden beri var.
+list eskiden beri olan çifte bağlı liste sınıfı. Birde modern C++ ile dile eklenen forward list var.
 
-LIST = Çifte bağlı liste sınıfı. sequence container	interafce ini neredeyse tamamen alıyor.
-Sadeece ilave fonksiyonları göreceğiz. iteratörler bidirectional iterator. başğı listede iki yönde
+LIST = Çifte bağlı liste sınıfı. Sequence container interafce ini neredeyse tamamen alıyor.
+Sadece ilave fonksiyonları göreceğiz.İteratörler bidirectional iterator. bağlı listede iki yönde
 hareket edeceğiz çünkü :D RANDOM ACCESS DEĞİL!!!!! UNUTMA !!!!!
 
 FORWARD LIST = Tekli bağlı liste.tek yönde dolaşılıyor. Forward iterator kategorisinde. -- işlemide yok.
@@ -540,11 +544,11 @@ Merge algoritması vardı ama listte sınıfın merge isimli member func ı var.
 Remove algoritmas vardı ama list in remove member func ı var.
 daha önce konuştuk hem global varsa hem member varsa kim çağrılır?
 
-Splice var. Node hangi bağlı listeye ait olduğunu bilmez.Dolayısıyla şöyle ,şlemler yapılabilir.
+Splice var. Node hangi bağlı listeye ait olduğunu bilmez.Dolayısıyla şöyle işlemler yapılabilir.
 bağlı listedeki bir düğümü çıkarıp başka bi bağlı listeye bağlayabiliriz.
 
 Her iki listede de konum belliyse o zaman ekleme ile silme herbiri constant time da olduğu için
-ekleme ve islmede constant time da olacak. Ör : 2 liste var biri geçenler diğeri kalanlar.
+ekleme ve islemide constant time da olacak. Ör : 2 liste var biri geçenler diğeri kalanlar.
 Geçenlerden birini karar değiştirip kalanlar listesine koyabilirim.
 
 Her iki listedeki konumlarıda biliyorsak birinden çıkarıp diğeine takmak constant time da olacak.
@@ -574,6 +578,7 @@ listeyi dolaşırken ya range fbase for loop yada [] ve iterator ile kendi for d
 Önerilen, range base for loop işi görüyorsa ayrı bir iterator döngüsü oluşturmayacağız.
 
 class Myclass{
+public:
 	Myclass(int,int,int)
 	{
 		std::cout << "int ctor\n";
@@ -700,7 +705,7 @@ int main()
 
 MERGE
 Sıralı birleştirme anlamında.
-İki sıralanmış listeyi birbiriyle birleştirebiliriz.
+İki sıralanmış listeyi birbiriyle birleştirebiliriz.Sıralanmamış ise hata veriyor.Denendi.
 
 int main()
 {
@@ -728,7 +733,7 @@ DİĞER ÖRNEK.
 
 int main()
 {
-	list<int> x,y;
+	list<string> x,y;
 	rfill(y,10,rname);
 	rfill(x,10,rname);
 
@@ -742,7 +747,7 @@ int main()
 	print(x);
 	print(y);
 
-	x.merge(y,f pred); // x kendine y yi katacak :D:D
+	x.merge(y,fpred); // x kendine y yi katacak :D:D
 
 	std::cout << "y.size() " << y.size() << "\n"; // size 0 artık. Buradakiler x e katıldı.
 	std::cout << "x.size() " << x.size() << "\n";
