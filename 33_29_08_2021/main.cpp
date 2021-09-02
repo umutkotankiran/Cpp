@@ -1082,7 +1082,7 @@ Kendi karşılaştırma ilişkimizi kendimiz kurabiliriz.
 class Compare
 {
 public:
-	bool operator()(int x, int y)
+	bool operator()(int x, int y)const
 	{
 		return x < y;
 	}
