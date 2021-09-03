@@ -147,16 +147,16 @@ Vectorde her ne kadar sondan ekleme constant time ama istediğimiz yerinden de e
 c.push_back(elem)		Appends a copy of elem at the end
 c.pop_back()			Removes the last element (does not return it)
 c.insert(pos,elem)		Inserts a copy of elem before iterator position pos and returns the position of the new element
-c.insert(pos,n,elem)	Inserts n copies of elem before iterator position pos and returns the position of the first new element (or pos if there is no new element)
-c.insert(pos,beg,end)	Inserts a copy of all elements of the range [beg,end) before iterator position pos and returns the position of the first newelement (or pos if there is no new element)
-c.insert(pos,initlist)	Inserts a copy of all elements of the initializer list initlist before iterator position pos and returns the position of the first new element (or pos if there is no new element; since C++11)
-c.emplace(pos,args...)	Inserts a copy of an element initialized with args before iterator position pos and returns the position of the new element (since C++11)
-c.emplace_back(args...) Appends a copy of an element initialized with args at the end (returns nothing; since C++11)
+c.insert(pos,n,elem)		Inserts n copies of elem before iterator position pos and returns the position of the first new element (or pos if there is no new element)
+c.insert(pos,beg,end)		Inserts a copy of all elements of the range [beg,end) before iterator position pos and returns the position of the first newelement (or pos if there is no new element)
+c.insert(pos,initlist)		Inserts a copy of all elements of the initializer list initlist before iterator position pos and returns the position of the first new element (or pos if there is no new element; since C++11)
+c.emplace(pos,args...)		Inserts a copy of an element initialized with args before iterator position pos and returns the position of the new element (since C++11)
+c.emplace_back(args...) 	Appends a copy of an element initialized with args at the end (returns nothing; since C++11)
 c.erase(pos)			Removes the element at iterator position pos and returns the position of the next element
 c.erase(beg,end)		Removes all elements of the range [beg,end) and returns the position of the next element
 c.resize(num)			Changes the number of elements to num (if size() grows new elements are created by their default constructor)
 c.resize(num,elem)		Changes the number of elements to num (if size() grows newelements are copies of elem)
-c.clear()				Removes all elements (empties the container)
+c.clear()			Removes all elements (empties the container)
 
 
 int main()
@@ -240,7 +240,7 @@ Burada 3 ihtimal var.
 1. Eklenen nesne kopyalama yoluyla eklenecek yani copy ctor çağrılacak.Yani eklenen bellek bloğu this adresi olarak kullanıp sınıfın copy ctoru çağrılacak.
 
 2. Bu nesne bir sağ taraf değeri ise yani birdaha kullanılma ihtimali yoksa ya da move kullanılarak bu gözden çıkarılmışsa o zaman bunun için move ctor çağrılacak.
-	copy ile move arasında çok büyük performans farkı olabilir
+   Copy ile move arasında çok büyük performans farkı olabilir
 
 3. Emplace ne yapıyor : Sen bana ctora göndereceğinm argümanları gönder, ben containerın o nesne için kullanacağı bellek alanında doğrudan ctoru çalıştırayım.
    Yani nesneyi ilgili bellek alanında hayata getiriyor.Copy ellision gibi.
@@ -251,7 +251,7 @@ int main()
 {
 	vector<Date> dvec;
 	Date mydate(12,4,1987);
-	dvec.push_back(Date::random()); // Burada pushback in sağ taraf ref parametrelil overload u çalıştı çünkü sağ taraf değeri date::random
+	dvec.push_back(Date::random()); // Burada pushback in sağ taraf ref parametreli overload u çalıştı çünkü sağ taraf değeri date::random
 	-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	dvec.push_back(mydate); // kopyasını çıkarttı burada
@@ -259,11 +259,11 @@ int main()
 	-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	dvec.emplace_back(4,4,1944);	// Bu ise ilgili bellek alanında doğrudan nesneyi oluşturdu.Dolayısı ile containera koyacağımız nesneyi nasıl oluşturacağımız
-									// baştan belliyse, insert veya push_back push_front gibi funcları çağırmak yerine, emplace funclarını çağırırsak, emplace func
-									// verdiğimiz argümanları kullanarak containerda verdiğimiz alanda nesneleri doğrudan construct edecek.
-									// push_back e karşı emplace_back var. 
-									// push_front a karşılık emplace_front var(buarada vectorde değil list, deque de vardı push_front).
-									// insert için ise doğrudan emplace var.
+					// baştan belliyse, insert veya push_back push_front gibi funcları çağırmak yerine, emplace funclarını çağırırsak, emplace func
+					// verdiğimiz argümanları kullanarak containerda verdiğimiz alanda nesneleri doğrudan construct edecek.
+					// push_back e karşı emplace_back var. 
+					// push_front a karşılık emplace_front var(buarada vectorde değil list, deque de vardı push_front).
+					// insert için ise doğrudan emplace var.
 
 
 	-------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -354,7 +354,7 @@ int main()
 	vector<int> ivec{2,4,7,9,1,6};
 	ivec.data(); // 2 overload u var. Hem get hem set için, int * ve const int *
 
-	display_array(ivec.begin() .... ); // bu şekilde yazamayız çünkü const int * parametresi var ve biz argüman olaRak iteratör gönderiyoruz.
+	display_array(ivec.begin() .... ); // bu şekilde yazamayız çünkü const int * parametresi var ve biz argüman olarak iteratör gönderiyoruz.
 
 	display_array(ivec.data(),ivec.size()); // bu şekilde yazılabilir.
 
@@ -440,7 +440,7 @@ int main()
 {
 	ivector<int> ivec{1,2,3,4,5,2,7,8,9};
 	//Bu vectorden 2 değerlerini silelim.Bunun için erase ve remove algoritmaları var ama tahmin edilenin dışında bir iş yapıyor.
-	// memfunc func olanının aduı erase global olanının adı remove.
+	// memfunc func olanının adı erase global olanının adı remove.
 
 	remove(begin(ivec),end(ivec),2); // container member func erase. global remove
 	// bunu aslında silmeyecek peki ne yapıyor ?
@@ -634,7 +634,7 @@ int main()
 	rfill(ivec,300,Irand(0,10000));
 	print(ivec);
 
-	ivec.erase(unique(ivec.begin(), ivec.end(), [](int x int y){return x % 2 == y % 2;}),ivec.end());
+	ivec.erase(unique(ivec.begin(), ivec.end(), [](int x, int y){return x % 2 == y % 2;}),ivec.end());
 
 	print(ivec);
 }
@@ -711,7 +711,6 @@ int main()
 
 SONDAN İLK ÖĞEYİ SİLMEK İÇİN REVERSE ITERATOR
 
-BUNA DİKKATLİ BAK EKSİK OLABİLİR.
 int main()
 {
 	vector<string> svec;
