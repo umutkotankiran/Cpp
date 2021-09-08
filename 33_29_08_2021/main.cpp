@@ -972,6 +972,38 @@ int main()
 		
 }
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+FORWARD LISTTEN ELEMAN SİLMEK
+
+int main()
+{
+  using namespace std;
+
+  forward_list<int> mylist{ 2, 5, 7, 8, 3, 1, 4, 6 };
+  int val = 4;
+
+  auto iter_prev = mylist.before_begin();
+  auto iter = mylist.begin();
+
+  while (iter != mylist.end() && *iter != val) {
+    ++iter_prev;
+    ++iter;
+  }
+
+  if (iter == mylist.end()) {
+    std::cout << "bulunamadi\n";
+  }
+  else {
+    mylist.erase_after(iter_prev);
+    for (auto i : mylist)
+      std::cout << i << " ";
+  }
+
+}
+
+2. bir yöntem daha var. benim yazdığım *next(iter) değerine bakıp yapılabilir.
+
 
 ================================================================================================================================================================
 ================================================================================================================================================================
