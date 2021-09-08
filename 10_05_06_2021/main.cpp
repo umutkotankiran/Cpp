@@ -327,7 +327,7 @@ int main()
 	Myclass x;
 	Myclass y(x);  // x lvalue olduğu için copy ctor cagrilacak
 	Myclass z(Myclass{}); // BURADA DAHA SONRA GÖRÜLECEK OLAN MANDATORY COPY ELISION ÇALIŞACAK VE DEFAULT CTOR ÇAĞRILACAK.
-	Myclass t(std::move(x)); // rvalue exp olduğu için move ctor cagrilacak
+	Myclass t(std::move(x)); // rvalue exp(std::move(x) X VALUE EXPRESSİON İLERİ C++TA GÖRÜLDÜ) olduğu için move ctor cagrilacak
 }
 
 Move constructor ın amacı gereksiz kopyalamalardan kaçınmak.
