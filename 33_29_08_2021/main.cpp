@@ -1002,8 +1002,36 @@ int main()
 
 }
 
-2. bir yöntem daha var. benim yazdığım *next(iter) değerine bakıp yapılabilir.
+İKİNCİ YOL
+----------
+int main()
+{
+	using namespace std;
+	
+	forward_list<int> x;
+	rfill(x, 10, Irand(0, 100));
 
+	print(x, "\n");
+
+	int n;
+	std::cout << "bir rakam giriniz : ";
+	cin >> n;
+
+	auto iter = x.before_begin();
+	for (; iter != x.end() && *next(iter) != n; ++iter)
+		;
+
+	if (iter != x.end())
+	{
+		std::cout << "Eleman siliniyor\n";
+		x.erase_after(iter);
+		print(x, "\n");
+	}
+	else
+	{
+		std::cout << "silinecek eleman yok\n";
+	}
+}
 
 ================================================================================================================================================================
 ================================================================================================================================================================
