@@ -90,8 +90,8 @@ C++20 ile contains doğrudan boolean döndürüyor.
 
 DİKKAT !!!!!!!!!!!!!!!!!!!!!!!!!!
 
-SETTE KAFA KARIŞTIRAN BIR KONU VAR.SETTE ISTEDIĞIMIZ ÖĞEYI ISTEDIĞIĞMIZ YERE
-EKLEYEMIYORDUK.SEQUENCE CONTAINER ILE ASSOCIATIVE CONTAINERLAR ARASINDAKI FARKLILIKLARDAN BIRI BUYDU.
+SETTE KAFA KARIŞTIRAN BIR KONU VAR.SETTE ISTEDIĞIMIZ ÖĞEYI ISTEDIĞIĞMIZ YERE EKLEYEMIYORDUK.
+SEQUENCE CONTAINER ILE ASSOCIATIVE CONTAINERLAR ARASINDAKI FARKLILIKLARDAN BIRI BUYDU.
 ASSOCIATIVE CONTAINERLARDA ELEMANLARIN KONUMLARI DEĞERI TARAFINDAN BELIRLENIYOR. SET IN LESS AÇILIMIYSA KÜÇÜKTEN BÜYÜĞE IKILI ARAMA AĞACI OLUŞTURULUYOR.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -107,11 +107,11 @@ int main()
 	cin>> name;
 
 	myset.insert(myset.begin(),"abidin");   // Burada başa ekliyor gibi görünüyor
-											// Buradaki konum hint, associative containerlarda hem değer hemde konum alanan functionlara deniyor.
+											// Buradaki konum hint, associative containerlarda hem değer hemde konum alan functionlara deniyor.
 											// bu konuma değilde bu konumu ip uçu olarak kullan kontrole buradan başla demek.
 											// Ayrıca maaliyeti azaltıyor.Yani abidini setin başına ekle anlamında değil.
 
-
+	
 	myset.insert(myset.begin(),"zeynep"); // Mesela sona eklendi burası Z harfi en sonda.Abidin A dan başladığı için başa ekledi.
 
 }
@@ -599,7 +599,7 @@ RANGE CTOR
 
 map<int,string> mymap; //Default ctor.
 
-map<int,string> mymap{{"Ali","12"},{"Ferda",34},{"Ayşe",26}}; //Init list ctor.
+map<string,int> mymap{{"Ali",12},{"Ferda",34},{"Ayşe",26}}; //Init list ctor.
 
 vector<pair<string,int>> myvec{{"Ali","12"},{"Ferda",34},{"Ayşe",26}}; 
 
@@ -633,12 +633,12 @@ int main()
 using namespace std;
 int main()
 {
-	int map<string ,Date> mymap;
+	map<string ,Date> mymap;
 
 	for(int i = 0; i < 100; ++i)
 	{
 		//mymap.insert({rname(), Date::random()});
-		mymap.emplace({rname(), Date::random()}); // Doğrudan değerlele başlatalım daha verimli.
+		mymap.emplace(rname(), Date::random()); // Doğrudan değerlele başlatalım daha verimli.
 	}
 
 	std::ofstream ofs{"out.txt"};
@@ -664,12 +664,12 @@ using namespace std;
 
 int main()
 {
-	int map<string ,Date> mymap;
+	map<string ,Date> mymap;
 
 	for(int i = 0; i < 500; ++i)
 	{
 		//mymap.insert({rname(), Date::random()});
-		mymap.emplace({rname(), Date::random()}); // doğrudan değerlele başlatalım daha verimli.
+		mymap.emplace(rname(), Date::random()); // doğrudan değerlele başlatalım daha verimli.
 	}
 
 	std::ofstream ofs{"out.txt"};
@@ -678,8 +678,8 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 	
-	std:: << "aranacak ismi girin: ";
-	sting name;
+	std::cout << "aranacak ismi girin: ";
+	string name;
 	cin >> name;
 
 	if(auto iter = mymap.find(name); iter != mymap.end()) // BURADA İSMİ BULDUK.KEY BURADA NAME
@@ -797,7 +797,7 @@ int main()
 	vector<pair<string,int>> myvec{cmap.begin(),cmap.end()}; 
 
 	//Vectoru sıralayacağız.
-	auto pred = [](const int &p1,const int &p2){
+	auto pred = [](const auto &p1,const auto &p2){
 		return p2.second < p1.second;
 	};
 
@@ -967,7 +967,7 @@ UNORDERED ASSOCIATIVE CONTAINERS
 
 Yolumuz boost ile birçok yerde kesişebilir. Mesela network ile ilgili bir library yok ama boostta var.
 Boostta çok fazla sayıda ilave container var.STD library eki containerlar işimizi görmeyince boosttaki ek
-containerlar işimizi görebilir. Zaten Boosttaki containerların bir kısmı STL e dahil edildi. Mesel array, tuple, unordered container... 
+containerlar işimizi görebilir. Zaten Boosttaki containerların bir kısmı STL e dahil edildi. Mesela array, tuple, unordered container... 
 bunlar boosttan küçük farklılıklarla boosttan alındı.
 
 unordered set
@@ -1127,10 +1127,18 @@ int main()
 1. std namespace te explicit specialization yapıp hash<Date> için kendi kodumu oluşturacağım.
 2. Doğrudan hasher functor oluşturabiliriz.
 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 template <typename T, typename H = std::hash<T>, typename E = std::equal_to<T>, typename A = std::allocator<T>>
 class UnorderedSet{
 	
 };
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 Eğer biz standart türlerden birini kullanıyorsak hiçbir sorun yok.Set i kullanır gibi kullanacağız.
 
