@@ -20,7 +20,7 @@ unordered multimap
 Hashtable veri yapısını kısaca yazalım.
 Burada amaç anahtarla erişimin artık logaritmik karmaşıklıkta değil constant timeda yada constant time ile log karmaşıklık arasında yapılması.
 Anahtarı bulmak nasıl O(1) karmaşıklıkta olacak.
-Bunu yağmanın birden fazla yolu var.Ama bu tip veri yapılarına hashtable deniyor
+Bunu yapmanın birden fazla yolu var.Ama bu tip veri yapılarına hashtable deniyor
 Farklı farklı hashtable implementasyonları var tabi.
 
 Öyle bir veri yapısı olsun ki, numaradan bize o numaranın sahibi olduğu isme eriştirsin. 20 elemanlı bir dizi oluştururuz. o elemenlarada isimleri yazarız mesela.
@@ -51,7 +51,7 @@ Diyeilmki 2 farklı anahtar bu indexe hash edildiyse o zaman bir bağlı listeye
 Örneğin key 12342135 olsun ama 1 indexini versin hash functionu, o zaman 3 ahantar çakışmışsa bu bağlı listede 3 öğe var.
 1. node a bakılır aradığımız bu değilse, 2. ve 3. ye bakılır.
 
-BU VERI YAPISININ EN VELİRLEYİCİ ÖZELLİKLERİNDEN BİR TANESİ KALİTELİ BİR HASH FUNCTIONU. BU MATEMATİĞİNDE KONUSU !!!!!!!!!!!!!!!!!
+BU VERI YAPISININ EN BELİRLEYİCİ ÖZELLİKLERİNDEN BİR TANESİ KALİTELİ BİR HASH FUNCTIONU. BU MATEMATİĞİNDE KONUSU !!!!!!!!!!!!!!!!!
 
 Bazı durumlarda bizimde hash functionu yazmamız gerekecek. HErşeyden önce anahtarı indexe dönüştüren bir hash functionuna ihtiyacımız var,
 popüler olarak bu işi yapan sınıf veya functiona hasher deniyor. Unordered set böyle.
@@ -290,7 +290,7 @@ Bir unordered sette dolaşmaya çok ihtiyaç yok ama dolaşalım
 
 int main()
 {
-	unordered_int<int>us;
+	unordered_set<int>us;
 
 	for(int i = 0; i < 100; ++i)
 	{
@@ -576,8 +576,8 @@ int main()
 		ofs << "|" <<setw(2) << i << "| [" << us.bucket_size(i) <<"] ";
 		
 		//SONRADAN EKLEDIK BUNU.ARTIK STRINGLERIDE YAZDIRDIK.
-		for(auto iter = us.begin(i); iter != us.end(i); ++iter) //DİKKAT !!!
-		{
+		for(auto iter = us.begin(i); iter != us.end(i); ++iter) //DİKKAT !!! BURASI ÇOK KRİTİK !!!!!!!!!!!!!!!!!!!!!! begin ve end in içine bak !!!!!!!!!!!!!!
+		{														// BEGIN VE END IÇINE ILGILI BUCKET DEĞERINI VERIP O RANGE TE DOLAŞABILIRIZ
 			ofs << *iter << " ";
 		}
 		ofs << "\n";
@@ -608,7 +608,7 @@ Buradaki bucket sayısı load factor hash functionun kalitesi.
 
 ÇOĞUNLUKLA BU KADAR İNCE AYAR YAPMAMIZ GEREKMEYECEK
 
-us.rehash(400); // BUCKET SAYISINI 400 YAPIYOR.ARGÜMAN BUCKET SAYISI
+us.rehash(400); // BUCKET SAYISINI 400 YAPIYOR.ARGÜMAN BUCKET SAYISI.TEST ETTİM 512 YAPTI.1500 YAPTIM 2048 YAPTI.
 us.reserve(); // MAX_COUNT TANE BUCKET RESERVE EDILEBILIYOR.DOĞRUDAN MAX_COUNT TANE BUCKET I RESERVE EDEBILIYORUZ.ASLINDA REHASH ILE AYNI IŞLEMI YAPIYOR.
 
 Tek fark rehash bucket sayısını alıyor, reserve dediğimizde bu değer size.
@@ -700,6 +700,9 @@ Burada çok fazla function yok zaten ihtiyaçta yok.
 int main()
 {
 	stack<int> s = {1,4,7,8}; //SENTAKS HATASI. İnit list ctor yok. 
+	stack<int> x{4}; // SENTAKS HATASI
+	stack<int> x(5); //SENTAKS HATASI
+
 	
 	Hangi Ctorlar var
 	-----------------
@@ -783,6 +786,7 @@ int main()
 {
 	std::deque dx{1,4,7,2,4,8}; // NEDEN GEÇERLİ ? CTAD C++17
 	std::stack mystack(dx); // GEÇERLİ. Stack<int> in bir Ctoru aynı zamanda deque<int>. Dolayısıyla elimizde deque varsa ondaki öğeleri alıp doğrudan stack başlatılabilir.
+	stack<int,vector<int>> x{y}; //BURASIDA GEÇERLİ. CTAD KULLANMADIM SADECE
 
 	while(!mystack.empty())
 	{
@@ -1142,10 +1146,10 @@ CONTAİNER ADAPTER BİTTİ. MOLA
 REFERENCE WRAPPER
 -----------------
 
-Referans bir nesnenin yerine geçen bir isim. C++ta bir çok yerde kullanılıyor. C++ta reference lar rebindable değil.x i tutuyordum artık y yi tutuyordum durumu yok.
+Referans bir nesnenin yerine geçen bir isim. C++ ta bir çok yerde kullanılıyor. C++ ta reference lar rebindable değil.x i tutuyordum artık y yi tutuyordum durumu yok.
 Bir çok programlama dilinde rebindable reference kavramı var. Mesela Pythonda var. Pointerları ise yeniden rebind edebiliyoruz.Bu konuda sorun yok.
 
-Diğer dezavantajda containerlarda tutamıyor olmamız
+Diğer dezavantajda containerlarda tutamıyor olmamız.
 
 int main()
 {
@@ -1155,7 +1159,7 @@ int main()
 
 REFERENCE WRAPPER bir pointer sarmalıyor, fakat interface i ile sarmaladığı pointer üzerinden rebindable referans yapısı oluşturuyor.
 
-Basit olarak implemente ettik.bunlarin yazilmişi var tabi.
+Basit olarak implemente ettik.bunların yazılmışı var tabi.
 
 template <typename T>
 class ReferenceWrapper{
@@ -1352,7 +1356,7 @@ int main()
 
 	int x = 10, y = 20;
 
-	pair<int&,int&>p(x,y);
+	pair<int&,int&>p(x,y); //DİKKAT vector<int&> SENTAKS HATASI ÇÜNKÜ CONTAINERLAR & TUTAMIYOR. AMA PAIRDE SORUN YOK.
 	
 	p.first = 40;
 	p.second = 70;
