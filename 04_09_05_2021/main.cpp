@@ -529,6 +529,8 @@ decltype(x) func(); func geri dönüş değeri şeklinde kullnabilirim.
 1 decltype operandı isim formnundaysa
 
 decltype(x)
+
+NOT : Eğer bir struct varsa ona -> ve . ile erişince buda isim formatında oluyor.
 decltype(ptr->x)
 decltype(ptr.x)
 
