@@ -407,56 +407,6 @@ Sentence& Sentence::operator=(Sentence && other)
 	return *this;
 }
 
----------------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------
-
-
-ÇOK ÇOK ÇOK ÖNEMLİ BİR NOT !!!!!!!!!!!!!!!!!
---------------------------------------------
-KENDİM TEST ETTİM!
-Move Ctor delete edilirse garip bir şekilde move assignment ta delete ediliyor.Garip :D
-Move assignment delete edilirse move contstructor delete edilmiyor. BURASI BAYA TUHAF :D
-
-TEST KODU AŞAĞIDA
-------------------
-class Myclass {
-public:
-	Myclass()
-	{
-		std::cout << "Default Constructor called\n";
-	}
-
-	~Myclass()
-	{
-		std::cout << "Destructor called\n";
-	}
-
-	Myclass(int x)
-	{
-		std::cout << "Myclass(int x) called";
-	}
-
-	Myclass(const Myclass& other)
-	{
-		std::cout << "Copy Constructor called\n";
-	}
-
-
-	Myclass& operator=(Myclass&& other)=delete;
-	//Myclass(Myclass&& other) = delete;
-
-};
-
-int main()
-{								BURASI ÖNEMLİ BİR DETAY BENCE
-	Myclass n;
-	//Myclass m;
-	//m = Myclass();
-
-	Myclass m = Myclass();
-
-}
 
 
 ================================================================================================================
