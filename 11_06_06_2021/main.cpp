@@ -772,11 +772,11 @@ destructor this : 00AFF75B
 
 
 ÖR:
-class Myclass
+Myclass foo()
 {
 	int ival {2143};
 	return ival;
-};
+}
 
 void func(Myclass);
 
