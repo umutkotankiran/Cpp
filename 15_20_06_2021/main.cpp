@@ -779,7 +779,7 @@ int main()
 
 Ben üye foksiyonu lvalue exp olan bir myclass nesnesiyle çağrılınca farklı bir function
 rvalue exp olan bir myclass nesnesiyle çağrılınca farklı bir func/kod çalışsın. Buda Mümkün
-Alttaki Sentaksa iyi bak. Buna Ref Qualifier deniyor.
+Alttaki Sentaksa iyi bak. Buna Reference Qualifier deniyor.
 
 
 class Myclass {
