@@ -1127,7 +1127,9 @@ ama internal linkage a ait olduğundan hata vermedi.
 
 bunun üstüne şunu yapalım.
 nutility.h
+const int x = 10;
 void fx();
+
 
 nutility.cpp
 #include "nutility.h"
@@ -1136,10 +1138,11 @@ nutility.cpp
 void fx()
 {
 	std::cout << "&x = " << &x<<"\n"; //const nesnelerin adresi alındığında derleyici onlara yer ayırmak zorunda.
-}										// adresini almazsak, kod içinde sabit gibi kullanırsak compiler yer ayırmak zorunda değil.
+}					  // adresini almazsak, kod içinde sabit gibi kullanırsak compiler yer ayırmak zorunda değil.
 
 main.cpp
-include ları yap
+#include "nutility.h"
+#include <iostream>
 
 int main()
 {
