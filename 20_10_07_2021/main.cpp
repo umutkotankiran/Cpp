@@ -652,7 +652,7 @@ public:
 
 class audi : public Car {
 public:
-	void start()	// buradaki start, Car dakini maskeler.
+	void start()	// Cardaki Start Buradakini Maskeler
 	{
 		std::cout << "Audi has started\n";
 	}
