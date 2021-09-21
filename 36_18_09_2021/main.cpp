@@ -1325,7 +1325,7 @@ int main()
 
 	std::cout << bs << "\n";
 
-	bs.flip(); // tüm bitleri sıfırlarladı
+	bs.flip(); // tüm bitleri ters çevirir.
 	bs.flip(5); // 5. indexteki bit flip edildi.
 
 	std::cout << bs << "\n";
