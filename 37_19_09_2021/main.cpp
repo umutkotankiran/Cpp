@@ -955,7 +955,7 @@ int main()
 	
 	int(Nec::*fptr)(int,int);
 
-	std::invoke(fptr, mynec, 10, 20);
+	std::invoke(fptr, mynec, 10, 20); //SENTAKS HATASI. POINTER NULLPTR VEYA GARBAGE OLURSA SENTAKS HATASI OLUŞUR.BİR FUNC İLE İLİŞKİLENDİRİLMELİ
 
 	----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
