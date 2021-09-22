@@ -357,7 +357,7 @@ int main()
 {
 	tuple<int, double,int string> tx{12,4.4,85,"ali"};
 	
-	auto n = get<int>(tx); //ILK INT I VERIYOR.
+	auto n = get<int>(tx); //SENTAKS HATASIDIR
 }
 
 
