@@ -975,7 +975,7 @@ YAZDIĞIMIZ TEMPLATE KULLANARAK AŞAĞIDAKİ DE YAZILABİLİR.
 
 int main()
 {
-	array<array<int,3>,4> ar{{1,1,1},{2,2,2},{3,3,3},{4,4,4,}};
+	array<array<int,3>,4> ar{{{1,1,1},{2,2,2},{3,3,3},{4,4,4,}}};
 
 	ar[2][1]; //erişilebilir
 
