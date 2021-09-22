@@ -620,7 +620,7 @@ int main()
 
 	auto p1 = &Myclass::mx;  // int myclass::*p1 = &Myclass::mx;   şeklinde tanımlanırdı auto olmasaydı.
 
-	int Myclass::* p2 = &Myclass::mx; // auto kullanmadan yazdık aslındayukarıda da yazmıştım.
+	int Myclass::* p2 = &Myclass::mx; // auto kullanmadan yazdık aslındayukarıda da yazmıştım. // DİKKAT!!! DATA MEMBER POINTER BU
 
 	----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
