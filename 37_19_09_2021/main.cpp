@@ -1294,7 +1294,9 @@ a - Programcı set_new_handler işlevini çağırır set_new_handler(my_new_hand
 
 	void my_new_handler()
 	{
-		1 - başarılı olmasını sağlayacak koşulları oluşturur.Mesela baştan bir alanı reserve edebilir.
+		1 - başarılı olmasını sağlayacak koşulları oluşturur.Mesela baştan bir alanı reserve edebilir.Bunun için Hocayı aradım.
+			Baştan dinamik olarak bir alan allocate edilebilir, benim handlerımda o alanı free edebilir.Free den sonra yer açıldığı için
+			malloc çağrısında yeri allocate etme şansım olur.ÇOK ÖNEMLİ !!!!!!
 		2 - Doğrudan bad_alloc throw et.Bad_alloctan kalıtımla elde edilmiş bir sınıfta olabilir.
 		3 - set_new_handler ı nullptr ile çağır
 		4 - std::terminate i çağır
