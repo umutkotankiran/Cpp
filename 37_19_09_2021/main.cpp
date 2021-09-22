@@ -1271,9 +1271,9 @@ void* operator new(size_t n)
 1. Bu döngüden çıkmamız için 2 ihtimal var. 1. ihtimal global func pointerı kimse set etmemiş olacak, malloc başarısız olduğunda fptr nin değeri nullptr olacak 
 ve bu döngüden çıkacak
 
-2. Malloc başarısız oldu ama benim functionum çağrıldı(set_new_handler ile set edilen func), benim func ım bir şekilde dinamik bellek alanı elde etmenin yolunu buldu
-Bu döngüden başarılı olduğundan çıkacak.EĞer bu durumda yer allocate edemezse, mallocun sonunda yer allocate etmesi gerekiyor yoksa döngüden çıkamıyor.Mallocun eninde sonunda 
-yer elde etmek zorunda
+2. Malloc başarısız oldu ama benim functionum çağrıldı(set_new_handler ile set edilen func), benim func ım bir şekilde dinamik bellek alanı elde etmenin yolunu bulursa,
+bu döngüden başarılı olduğundan çıkacak.
+Eğer bu durumda yer allocate edemezse, (mallocun sonunda yer allocate etmesi gerekiyor) döngüden çıkamıyor.Malloc eninde sonunda yer elde etmek zorunda.
 
 	Bu durumda döngüden çıkma yolları şunlar
 	a - Global func göstericisini kendi func ımıza set edeceğiz ve bu func başarılı olacak.bizimkinde malloc başarılı olmalı.ne kullanılırsa
