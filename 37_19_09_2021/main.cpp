@@ -963,7 +963,7 @@ int main()
 	
 	Nec *Necptr = &Mynec;
 
-	int(Nec::*fptr)(int,int);
+	int(Nec::*fptr)(int,int) = Nec::func;
 
 	std::invoke(fptr, Necptr, 10, 20); // Burada ->* ile çağırması gerekti.
 
