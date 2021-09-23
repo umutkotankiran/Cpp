@@ -1463,7 +1463,7 @@ void myhandler()
 	std::cout << "myhandler called...\n";
 	if(++count == 5)
 	{
-		throw std::terminate;
+		std::terminate();
 	}
 	(void)getchar();
 }
