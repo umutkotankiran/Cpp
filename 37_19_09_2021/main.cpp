@@ -1669,7 +1669,8 @@ int main()
 
 ÇOK ÖNEMLİ !!!!!!!!
 
-EĞER ARRAY DELETE YERINE DELETE KULLANIRSAK TANIMSIZ DAVRANIŞ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+EĞER ARRAY DELETE YERINE, DELETE KULLANIRSAK TANIMSIZ DAVRANIŞ   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+EĞER DELETE YERİNE, ARRAY DELETE KULLANIRSAK TANIMSIZ DAVRANIŞ YİNE  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ÖR:
 
