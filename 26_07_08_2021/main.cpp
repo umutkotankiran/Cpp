@@ -1147,30 +1147,6 @@ başka bir anlamda ele alınmaması gerektiğini belirtmek için typename keywor
 
 
 ------------------------------------------------------------------------------------------------
-BU ÖRNEĞİ EXTRA YAPTIM
-
-class Myclass {
-public:
-	typedef int value_type;
-	class Nec {
-
-	};
-};
-
-template <typename T> // buradaki typename yerine class gelebilir
-typename T::value_type func(T x, int y)
-{
-	typename T::Nec N; // Buradaki typename yerine class keyword gelemez.
-	typename T::value_type val = 45;
-	return val;
-}
-
-int main()
-{
-	std::cout << func(Myclass{}, 5);	// 45 yazar.
-}
-
-------------------------------------------------------------------------------------------------
 
 ÖR:
 template <typename T> // buradaki typename yerine class gelebilir
