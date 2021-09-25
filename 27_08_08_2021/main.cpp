@@ -615,7 +615,7 @@ struct Pair{
 
 	template <typename K, typename M>
 	Pair(const Pair<K,M> &other) : first(other.first), second(other.second) { }  // Burada bir sentaks hatası olmaması için,
-																				 // K türünden T türüne ve M türünden U türüne dönüşüm olmalı.Eşitlendiği için.
+										 // K türünden T türüne ve M türünden U türüne dönüşüm olmalı.Eşitlendiği için.
 	T first{};
 	U second{};
 };
@@ -626,7 +626,7 @@ int main()
 	Pair<double,double> x;
 	Pair<int,int> y;
 	
-	x = y; // NEDEN COPY ASIGNMENT ÇAĞRILMIYOR ???? AÇIKLAMA AŞAĞIDA
+	x = y; // İLK ÖNCE CONVERSİON CTOR SONRA COPY ASSIGNMENT ÇAĞRILIYOR
 }
 
 BURAYI OKU !!!!
