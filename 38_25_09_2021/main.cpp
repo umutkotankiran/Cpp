@@ -1071,7 +1071,7 @@ int main()
 	std::cout << "upx : " << (upx ? "dolu" : "bos") << "\n";
 	
 	{
-		std::unique_ptr<Triple>upy(std::move(upy)); // BURADA UPY, UPX IN KAYNAĞINI ÇALACAK. UPX TE MOVED FROM STATE DURUMUNDA OLACAK O DA BOŞ DEMEK
+		std::unique_ptr<Triple>upy(std::move(upx)); // BURADA UPY, UPX IN KAYNAĞINI ÇALACAK. UPX TE MOVED FROM STATE DURUMUNDA OLACAK O DA BOŞ DEMEK
 
 		std::cout << "upy : " << (upy ? "dolu" : "bos") << "\n";
 		std::cout << "upx : " << (upx ? "dolu" : "bos") << "\n";
@@ -1090,7 +1090,7 @@ BURASI ÇOK ÖNEMLİ. İKİ NESNEDE DOLUYSA
 int main()
 {
 	auto upx = make_unique<Triple>(1,2,3);
-	auto upx = make_unique<Triple>(5,7,12);
+	auto upy = make_unique<Triple>(5,7,12);
 	
 	std::cout << "upy : " << (upy ? "dolu" : "bos") << "\n";
 	std::cout << "upx : " << (upx ? "dolu" : "bos") << "\n";
@@ -1117,7 +1117,8 @@ upx : dolu
 upy : bos
 upx : dolu
 getchardan sonra
-(5, 7, 12) te ölüyor
+
+(5, 7, 12) te ölüyor unique ptr olduğundan
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1224,7 +1225,7 @@ int main()
 	
 	std::cout << "*uptr = " << *uptr << "\n"; // bu değerini verir 
 	std::cout << "uptr = " << uptr << "\n";  // Bu ise adresi yazdırır.
-	std::cout << "uptr = " << uptr.get() << "\n"; // aynı şekilde içerisindeki veriye eriştirir
+	std::cout << "uptr = " << uptr.get() << "\n"; // Sarmaladığı pointerı döndürür
 	
 }
 
