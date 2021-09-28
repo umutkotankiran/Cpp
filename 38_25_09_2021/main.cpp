@@ -593,7 +593,7 @@ int main()
 
 	auto p = new Triple;
 
-	std::cout << t << "\n";
+	std::cout << p << "\n";
 
 	//Delete etmezsek destructor çağrılmaz
 
@@ -606,7 +606,7 @@ int main()
 
 	auto p = new Triple;
 
-	std::cout << t << "\n";
+	std::cout << p << "\n";
 
 	delete p; // Şimdi desturctor çağrıldı
 
