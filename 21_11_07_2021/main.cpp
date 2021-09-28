@@ -855,7 +855,7 @@ class DerA : public A{
 
 class Base{
 public:
-	virtual A func(int); // & veya * yok. yani olmaz.
+	virtual A func(int); // & veya * yok. Kuralın olmabilmesi için * veya & olmalı.
 	virtual A& foo(int);
 };
 
