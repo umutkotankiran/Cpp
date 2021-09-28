@@ -34,7 +34,7 @@ int main()
 
 	---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	x = y ; doğrudan atamayı böyle yapamayız.
+	x = y ; doğrudan atamayı böyle yapamayız.Move only çünkü.
 
 	x = std::move(y); // Böyle olabilir dedik dün
 }
@@ -57,6 +57,8 @@ Myclass func()
 İhtimaller
 1 - Named return value optimization. Copy ellision yapar derleyici
 2 - Move memberlar çağrılır
+
+İleri C++'ta görüldü. Burada m i derleyici otomatik olarak Lvalue dan Rvalue ya dönüştürüyor.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -95,13 +97,15 @@ int main()
 
 	func(uptr); // HATA COPY YE KARŞI KAPALI
 	
+	--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 	func(std::move(uptr)); // BURADA MOVE EDILIR VE KAYNAK ÇALINIR.GEÇERLİ.UPTR DE BOŞ HALE GELDİ
 
 	std::cout << "uptr : " << (uptr ? "dolu" : "bos") << "\n"; // boş
 
 	--------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	PARAMETRESI UNIQUE PTR OLAN FUNC I PR VALUIE EXPRESSION ILE ÇAĞIRIRIZ.ÇÜNKÜ COPY OLMAMALI :D:D MOVE OLMALI
+	PARAMETRESI UNIQUE PTR OLAN FUNC I PR VALUE EXPRESSION ILE ÇAĞIRIRIZ.ÇÜNKÜ COPY OLMAMALI :D:D MOVE OLMALI. MAN. COPY ELLISION VAR TEST ETTİM TRIPLE İLE
 
 	func(unique_ptr<string>{new string{"mustafa aksoy"}});
 
@@ -117,6 +121,8 @@ int main()
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+HERB SUTTERIN UYGUN OLDUĞUNU DÜŞÜNDÜĞÜ YAPI
+
 using usptr = std::unique_ptr<std::string>;
 
 void func(usptr up)
@@ -129,17 +135,18 @@ using namespace std;
 int main()
 {
 	func(unique_ptr<string>{new string{ "mustafa aksoy" }});
-	func(make_unique<string>("haydar")); // Üsttekinde de bunda da hangisi çalışırsa çalışsın kaynak func kodunun çalışmasıyla sonlanacak. Buna isnk deniyor.
+
+	func(make_unique<string>("haydar")); // Üsttekinde de bunda da hangisi çalışırsa çalışsın kaynak func kodunun çalışmasıyla sonlanacak. Buna sink deniyor.
 										 // Herb sutter bu yapının daha uygun olduğunu düşünüyor. 
 }
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Scott Meyers ise aşağıdakini öneriyor.
+ÇILGIN SCOTT MEYERS İSE AŞAĞIDAKİNİN UYGUN OLDUĞUNU DÜŞÜNÜYOR
 
 using usptr = std::unique_ptr<std::string>;
 
-void foo(usptr &&up) // burada rvalue reference var. Up kullanıldığında buraya gleen nesne kulanılacak.Ama burada bir mülkiyet devri yok.
+void foo(usptr &&up) // burada rvalue reference var. Up kullanıldığında buraya gelen nesne kulanılacak.Ama burada bir mülkiyet devri yok.
 {
 	std::cout << "up : " << (up ? "dolu" : "bos") << "\n";
 }
@@ -214,7 +221,7 @@ int main()
 
 ÖĞE EKLEMEK
 -----------
-Pushback veya insert olsun bunların rvalue reference ve const lvalue refeence overload u var.
+Pushback veya insert olsun bunların rvalue reference ve const lvalue reference overloadu var.
 
 using usptr = std::unique_ptr<std::string>;
 
@@ -265,13 +272,14 @@ list<usptr>mylist{vec.begin(), vec.end()}; //SENTAKS HATASI. ÇÜNKÜ KOPYALAMA 
 copy(vec.begin(), vec.end(),mylist.begin()); // KOPYALAMA VAR YİNE SENTAKS HATASI
 
 Aşağıda çözümü var
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Hoca Copy in template kodunu yazdı ben yazmıyorum.
 copy de kopyalama adımında *destbeg = *beg; gibi bir adım var. burada *destbeg = std::move(*beg); yapsak bir hata olmaz.
-Bu amaçla kütüphaneye eklenemiş bir iterator adapter var. Biz mvoe iteratoru dereference ettiğimizde, onu move a argüman olarak gönderiyor.
+Bu amaçla kütüphaneye eklenemiş bir iterator adapter var. Biz move iteratoru dereference ettiğimizde, onu move a argüman olarak gönderiyor.
 
-auto ptr = std::move(*vec.begin()); // Sentaks hatası olmayacak yani.
+auto ptr = std::move(*vec.begin()); // Sentaks hatası olmayacak.
 
 MAKE_MOVE ITERATOR
 ------------------
@@ -286,7 +294,7 @@ Benzer şekilde range ctorda move iterator kullansaydık bir sorun çıkmayacakt
 2. Yola devam
 -------------
 
-list<usptr>mylist{make_move_iterator(vec.begin()), make_move_iterator(vec.end())}; // ŞİMDİ GEÇERLİ. MOVE VAR
+list<usptr>mylist{ make_move_iterator(vec.begin()), make_move_iterator(vec.end()) }; // ŞİMDİ GEÇERLİ. MOVE VAR
 
 copy(make_move_iterator(vec.begin()), make_move_iterator(vec.end()),mylist.begin()); // ŞİMDİ GEÇERLİ ARTIK MOVE VAR. Dikkat. mylist make_move_iterator yapılmadı :D:D:D
 
@@ -312,7 +320,7 @@ copy_backward -> sondan başa doğru kopyalıyor.
 
 
 move -> taşıyor
-move_backward -> Sondan başa doğr taşıyor.
+move_backward -> Sondan başa doğru taşıyor.
 
 ==========================================================================
 ==========================================================================
@@ -324,10 +332,11 @@ Move iterator kullandığımız yerde sözkonusu algoritma bir iterator konumund
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+EXCEPTION HANDLING
 
-Unique ptr nin en önemli varlık nedenlerinden birini konuşmadık.
-Exception Handling
+UNIQUE PTR NIN EN ÖNEMLI VARLIK NEDENLERINDEN BİRİ
 
 #include "triple.h"
 
@@ -338,18 +347,15 @@ void foo()
 
 void func()
 {
-	auto ptr = new Triple{12,56,78}; BURADASI İÇİN DTOR ÇAĞRILMIYORDU
+	auto ptr = new Triple{12,56,78}; // EXCEPTION HANDLINGTE, RAW POINTER KULLANIRSAK BURASI İÇİN DTOR ÇAĞRILMIYORDU 
 	
 	//kodlar ..
 
 	foo();
 }
 
-void func()
+void main()
 {
-
-	auto ptr = new Triple{12,56,78};
-
 	try{
 		func(); // exception olduğunda dinamik ömürlü nesne delete edilmemiş olacak.
 	}
@@ -468,7 +474,7 @@ Main devam ediyor
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 C++ 20 İLE GELEN BİR ÖZELLİK ÇOK ÖNEM KAZANIYOR.
-C++20 çncesinde lambda ifadeleri için oluşturulan closure typeların default ctoru ve copoy assignment funcları delete edilmişti.
+C++20 öncesinde lambda ifadeleri için oluşturulan closure typeların default ctoru ve copy assignment funcları delete edilmişti.
 
 
 int main()
@@ -484,9 +490,8 @@ int main()
 		unique<Triple, decltype(f)> uptr(new Triple{1,2,3}); // C++ 20 ile geldi C++17 sentaks hatası çünkü arkadaki kod decltype(f) ile bu nesneyi default init ediyor.
 	}
 
-
-	C++17 lambdaların closure typelarınında default ctor yok.C++17 de aşağıdaki gibi yazılabilir.C++20 dede geçerli.
-	unique<Triple, decltype(f)> uptr(new Triple{1,2,3},f);
+	C++17 lambdaların closure typelarınında default ctor yok.C++17 de aşağıdaki gibi yazılabilir.C++20'de de geçerli bu yazım biçimi
+	unique<Triple, decltype(f)> uptr(new Triple{1,2,3},f);  // decltype(f) te sorun çıkıyor.Aşağıda incelendi.
 }
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -530,7 +535,7 @@ int main()
 
 YUKARIDAKİ GERÇEK FUNC OLSAYDI
 
-function objeleri ile karıştırma onlar sınıftı. less greater... doğrudan type giriliyordu.
+FUNCTION OBJELERI ILE KARIŞTIRMA ONLAR SINIFTI. LESS GREATER... DOĞRUDAN TYPE GIRILIYORDU.
 
 bool mycomp(int x, int y)
 {
@@ -595,7 +600,7 @@ class Myclass;
 
 int main()
 {
-	std::unique_ptr<Myclass> uptr; // sentaks hatası çünkü incomplete type nesne, hayatı bitince deelte etmesi gerekiyor fakt delete in operandı olması için 
+	std::unique_ptr<Myclass> uptr; // sentaks hatası çünkü incomplete type nesne, hayatı bitince delete etmesi gerekiyor fakat delete in operandı olması için 
 }									// complete type olmalı
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -679,7 +684,7 @@ int main()
 	cout << *ptr << "\n";
 	ptr->set(1,3,6);
 
-	BURADA HATA YOK
+	BURADA HATA YOK.KENDİMİZDE DELETE ETMEYECEĞİZ UNIQUE PTR YAPACAK.
 }
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -694,7 +699,7 @@ int main()
 	cout << *ptr << "\n";
 	ptr->set(1,3,6);
 
-	BURADA HATA VAR ÇÜNKÜ KİMSE DELETE ETMEDİ BUNU.DELETE EDİLMESİ LAZIMDI
+	BURADA HATA VAR ÇÜNKÜ KİMSE DELETE ETMEDİ BUNU.DELETE EDİLMESİ LAZIMDI.UNIQUE PTR DA BOŞ ARTIK NESNEYİ TUTMUYOR.TUTSAYDI O DELETE EDERDİ.
 }
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -737,6 +742,8 @@ int main()
 										// 2. SIZEOF TRIPLE KADAR OPERATOR NEW FUNC ILE ELDE EDILEN BELLEK BLOĞU GERI VERILMEYECEK.
 
 	std::cout << *uptr << "\n"; // UNDEFINED BEHAVIOR. BURASIDA 2. BÜYÜK HATA
+
+	//DELETE EDILMELI 
 }
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -745,22 +752,25 @@ int main()
 
 int main()
 {
-	auto ptr = make_unique<Triple>(1,2,3);
+	auto uptr = make_unique<Triple>(1,2,3);
 
-	unique_ptr<Triple>upx;
+	unique_ptr<Triple> upx;
 
-	Triple * = uptr.release(); //BU GEÇERLİ
+	Triple *p = uptr.release(); //BU GEÇERLİ
 
-	upx = uptr.release(); // SENTAKS HATASI. ATAMA OPERATÖRÜNÜN SAĞ OPERANDI BİR UNİQUE PTR DEĞİL RAW POINTER.
+	upx = p.release(); // SENTAKS HATASI. ATAMA OPERATÖRÜNÜN SAĞ OPERANDI BİR UNİQUE PTR DEĞİL RAW POINTER.BÖYLE BIR COPY ASSIGNMENT FUNC YOK
 
 	BUNU YAPMAK İÇİN
 	upx.reset(uptr.release()); // BURASI GEÇERLİ. 
 	upx = std::move(uptr); // YUKARIDAKİ İLE AYNI
 }
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+==============================================================================================================================================================================
+==============================================================================================================================================================================
+==============================================================================================================================================================================
+==============================================================================================================================================================================
+==============================================================================================================================================================================
+
 
 UNIQUE PTR NEW OPERATORLERİYLE OLUŞTURULMUŞ DİNAMİK ÖMÜRLÜ NESNEYİ KONTROL ETMEK ZORUNDA DEĞİL. 
 EN ÇOK KULLANILDIĞI YERLERDEN BİRİ C APILERINI SARMALAMAK
@@ -792,7 +802,7 @@ C apilerini embedded ve linuxta çok kullanıyoruz
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Bir func var return değeri handle. get funclarının varlık sebebi bu. Neden var ? Çünkü pointer parametre isteyen c funclarına çağrı yaparken geti kullanacağız.
+BIR FUNC VAR RETURN DEĞERI HANDLE. GET FUNCLARININ VARLIK SEBEBI BU. NEDEN VAR ? ÇÜNKÜ POINTER PARAMETRE ISTEYEN C FUNCLARINA ÇAĞRI YAPARKEN GETI KULLANACAĞIZ.
 
 int main()
 {
@@ -839,7 +849,7 @@ LAMBDALARA GERİ DÖNDÜK
 BURADA EKSİK KALAN YERLER ANLATILACAK
 
 Derleyici lambda ifadeleri karşılığında bir pr value expression oluşturuyordu. Türü closure type, bu türü derleyici isimlendiriyor.
-Derleyiciye aslında bir sınıf kodu yazdırıyoruz. Bizim süslü parantez içine yuazdığımız kod sınıfın func call operator functionu.
+Derleyiciye aslında bir sınıf kodu yazdırıyoruz. Bizim süslü parantez içine yazdığımız kod sınıfın func call operator functionu.
 
 [](int x){}
 
@@ -936,17 +946,19 @@ public:
 
 	--------------------------------------------------------------------------------------------------------------------------------------------------------
 	--------------------------------------------------------------------------------------------------------------------------------------------------------
-	NOT: HANGİ STANDARTLARDA GELDİĞİ KAYNAK DOSYASINA KOYDUĞUM RESİMDE YAZIYOR
+	
+	NOT: HANGİ STANDARTLARDA GELDİĞİ KAYNAK DOSYASINA KOYDUĞUM RESİMDE YAZIYOR.BEN TEST ETTİĞİMDE THIS YAKALIYOR.BİR YANLIŞ ANLAŞILMA OLABİLİR.
 	[this] ---> *this referans yoluyla yakalanıyor
 	[*this] ----> *this kopyalama yoluyla yakalanıyor
 	[&] -----> yerel değişkenler + *this referans capture et
 	[&,this] -----> yerel değişkenler referans capture et + *this referans capture et
 	[&,*this] -----> yerel değişkenler referans capture et + *this copy ile capture et
-	[=] ----> herşey + *this referans yoluyla ama depricated oldu *this için olan özellik
+	[=] ----> herşey  + *this referans yoluyla ama depricated oldu *this için olan özelliki. TEST ETTİM
 	[=,this] ---> Herşey copy + *this referans yoluyla
 	[=,*this] ----> Herşey copy, *this te copy
 
-	Tabloya baptıpğımda hep *this capture ediliyor. Koplayama veya referans yoluyla.this in kendisi edilmiyor.
+	Tabloya baptığımda hep *this capture ediliyor. Koplayama veya referans yoluyla.this in kendisi edilmiyor.
+
 	--------------------------------------------------------------------------------------------------------------------------------------------------------
 	--------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -962,11 +974,11 @@ public:
 		
 		ÖNEMLİ!!!
 
-		[=] görülen her ismi copy  this i ise referans yoluyla capture et C++2020 de this ile ilgili olan depricated
+		[=] görülen her ismi ve this i ise referans yoluyla capture et C++2020 de this ile ilgili olan depricated
 		[&] görülen her ismi referans yoluyla capture et + this te referans
 
 		C++17 ye kadar yukarıdaki ikiside tamamen aynı anlama geliyordu. Bu bir pointer olduğu için this objesi fark yoktu.
-		Fakat C++17 de [=] depricated edildi.this capture ederken kullanılmamalı artık. [=] budan sonraki standartlarda sentaks hatası olacak.
+		Fakat C++17 de [=] depricated edildi.this capture ederken kullanılmamalı artık. [=] budan sonraki standartlarda sentaks hatası olabilir.
 		[=] geçerli ama depricated
 
 		Yani this capture ederken [this] veya [&] yapacağız.BU ikiside geçerli. [=] this capture etmek için kullanılmamalı çünkü depricated edildi.
@@ -978,7 +990,7 @@ public:
 		C++11 de yolu yoktu. C++14 te lambda init capture ile yapıyoruz
 
 		auto f = [startthis = *this](){ starthis } ;  // Burada nesnenin kendisini değil kopyasını kullanmış oluyoruz. Bazen gerekiyor. Çünkü bu lambdayı dışarıya vermek
-												  //istersek o nesnenin hayatı bittiğinbde this dangling hale gelebilir.
+													  //istersek o nesnenin hayatı bittiğinbde this dangling hale gelebilir.
 
 	--------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1031,7 +1043,7 @@ int main()
 {
 	auto uptr = make_unique<string>("Necati Ergin");
 	
-	auto f = [&uptr](){std::cou << *uptr<< "\n";}; // Burada uptr yi taşımadık o halen dolu durumda
+	auto f = [&uptr](){std::cout << *uptr<< "\n";}; // Burada uptr yi taşımadık o halen dolu durumda
 
 	f();
 
@@ -1053,7 +1065,7 @@ int main()
 {
 	auto uptr = make_unique<string>("Necati Ergin");
 
-	auto f = [uptr = std::move(uptr)](){std::cou << *uptr<< "\n";}; // Şuanda uptr yi taşıdık.
+	auto f = [uptr = std::move(uptr)](){std::cout << *uptr<< "\n";}; // Şuanda uptr yi taşıdık.
 
 	f(); // artık func scope taki uptr boş durumda.capture dan dolayı
 
@@ -1108,7 +1120,7 @@ int main()
 
 	auto f = [uptr = std::move(uptr)](){std::cout << *uptr<< "\n";};
 
-	auto g = f; // SENTAKS HATASI.ÇÜNKÜ MOVE ONLY MEMBER VAR SINIFTA. UNIQUE PTR :D:D:D COPY CTOR UNIUE PTR LERİ BİRBİRİNİ COPY EDERKEN HATA ALINCA 
+	auto g = f; // SENTAKS HATASI.ÇÜNKÜ MOVE ONLY MEMBER VAR SINIFTA. UNIQUE PTR :D:D:D COPY CTOR UNIQUE PTR LERİ BİRBİRİNİ COPY EDERKEN HATA ALINCA 
 				// COPY CTORU DELETE EDECEK. DELETE EDİLMİŞ FUNC A ÇAĞRI SENTAKS HATASI :D:D:D:
 
 	auto g = std::move(f); // BURADA GEÇERLİ.
@@ -1126,21 +1138,31 @@ C++ 20 İLE GELEN LAMBDA İFADELERİ İÇİN 3 TANE TEMEL DEĞİŞİKLİK VAR
 
 1. STATELES OLAN LAMBDALAR DEFAULT CONSTRUCTIBLE VE COPY ASSIGNABLE.YAZMIŞTIK
 
+Yukarıda da yapmıştık
+int main()
+{
+	auto f = [](int x){ return x + 5; };
+
+	auto g = f; // GEÇERLİ
+
+	decltype(f) g; //C++20 de geçerli eğer stateless değilse yani capture işlemi yapmadıysa.
+}
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-2. LAMBDA IN UNEVALUATED CONTEXT.ÖNEMLI BIR EKLENTI.C++20 DER KI EĞER BIR LAMBDA IFADESINI IŞLEM YUAPILMAYAN CONTEXT TE KULLANIRSAN ARTIK BIR SENTAKS HATASI DEĞIL.
+2. LAMBDA IN UNEVALUATED CONTEXT.ÖNEMLI BIR EKLENTI.C++20 DER KI EĞER BIR LAMBDA IFADESINI IŞLEM YAPILMAYAN CONTEXT TE KULLANIRSAN ARTIK BIR SENTAKS HATASI DEĞIL.
 
 int main()
 {
 	auto fcomp = [](int a, int b){ return a > b; };
 
-	set<int,decltype(fcomp)> myset;// burası C++20 öncesinde lambda lar default constructible olmadığından bu sentaks hatası
+	set<int,decltype(fcomp)> myset;// burası C++20 öncesinde lambdalar default constructible olmadığından bu sentaks hatası
 	
 	set<int,decltype(fcomp)> myset(fcomp);// burası C++20 öncesinde bu geçerli.Kullanım buydu
 
 	--------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	FCOMPU BIR KERE KULLANACAĞIM DEĞŞKEN NEDEN OLUŞTURAYIM.C++20 İLE GELDİ
+	FCOMPU BIR KERE KULLANACAĞIM, NEDEN DEĞİŞKEN OLUŞTURAYIM.C++20 İLE GELDİ
 
 	set<int,decltype([](int a, int b){ return a > b;})> myset; //GEÇERLİ.C++20 İLE GELDİ. DEĞİŞKEN YARATMADAN YAPTIK.
 
@@ -1154,9 +1176,9 @@ int main()
 
 3. TEMPLATED LAMBDA
 
-[]() ||"constexpr","noexcept","-> int trailing return type","mutable" || { }  gelebilir
+[]() | constexpr | noexcept| -> int - trailing return type | mutable" | { }  gelebilir
 
-auto f = [](auto x) {} member template yazıyordu.
+auto f = [](auto x) { } member template yazıyordu.
 
 []<typename T>(T x, T y){}
 
@@ -1209,7 +1231,7 @@ auto f = []<typename T>(T&& x){
 	
 func(std::forward<T>(f)); //DİKKAT
 
-
+----------------------------------------
 
 auto f = [](auto&& x){
 	return x + y;
