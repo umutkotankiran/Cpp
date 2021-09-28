@@ -1052,7 +1052,7 @@ int main()
 	std::cout << "upy : " << (upy ? "dolu" : "bos") << "\n";
 	std::cout << "upx : " << (upx ? "dolu" : "bos") << "\n";
 
-	std::unique_ptr<Triple>upy(std::move(upy)); // BURADA UPY, UPX IN KAYNAĞINI ÇALACAK. UPX TE MOVED FROM STATE DURUMUNDA OLACAK O DA BOŞ DEMEK
+	std::unique_ptr<Triple>upy(std::move(upx)); // BURADA UPY, UPX IN KAYNAĞINI ÇALACAK. UPX TE MOVED FROM STATE DURUMUNDA OLACAK O DA BOŞ DEMEK
 
 	std::cout << "upy : " << (upy ? "dolu" : "bos") << "\n";
 	std::cout << "upx : " << (upx ? "dolu" : "bos") << "\n";
