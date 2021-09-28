@@ -1229,7 +1229,7 @@ auto f = []<typename T>(T&& x){
 		return x + y;
 	};
 	
-func(std::forward<T>(f)); //DİKKAT
+func(std::forward<T>(x)); //DİKKAT
 
 ----------------------------------------
 
