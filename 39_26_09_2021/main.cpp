@@ -729,7 +729,7 @@ using namespace std;
 
 int main()
 {
-	auto ptr = make_unique<Triple>(1,2,3);
+	auto uptr = make_unique<Triple>(1,2,3);
 
 	Triple *p = uptr.release();
 
