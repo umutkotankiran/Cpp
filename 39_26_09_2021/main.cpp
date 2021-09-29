@@ -62,18 +62,16 @@ Myclass func()
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-std::unique_ptr<std::string> foo(const char *p)
+unique_ptr<std::string> foo(const char *p)
 {
-	auto ptr = std::make_unique<std::string>(p); 
-
-	return uptr; // mandatory copy ellision 
-
-	return std::move(uptr); // BU YAPILMAMALI.COPY ELLISIONU BOZAR.
+	auto ptr = make_unique<std::string>(p); 
+	return ptr; // mandatory copy ellision 
+	//return std::move(uptr); // BU YAPILMAMALI.COPY ELLISIONU BOZAR.
 }
 
 int main()
 {
-	unique_ptr<string> up;
+	unique_ptr<std::string> up;
 	
 	up = foo("neco");
 }
