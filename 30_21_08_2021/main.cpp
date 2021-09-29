@@ -20,7 +20,7 @@ En çok kullanılan yer bir algotirmaya argüman olarak gönderilmesi.
 	  bu parantezi kullanmak mecburi değil. Ama bir veya daha çok parametresi varsa ve bu belirteçlerden herhangibiri varsa parantez zorunlu.
 
 				constexpr	
-[]<typename>()	mutable		{} 
+[]<typename>()			mutable		{} 
 				noexcept
 				->int
 
