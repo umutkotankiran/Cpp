@@ -58,9 +58,10 @@ ATAMA İŞLEMLERİ
 
 c = c2					Assigns all elements of c2 to c
 c = rv					Move assigns all elements of the rvalue rv to c (since C++11)
-c = initlist			Assigns all elements of the initializer list initlist to c (since C++11)
-c.assign(n,elem)		Assigns n copies of element elemc.assign(beg,end) Assigns the elements of the range [beg,end)
-c.assign(initlist)		Assigns all the elements of the initializer list initlist
+c = initlist				Assigns all elements of the initializer list initlist to c (since C++11)
+c.assign(n,elem)			Assigns n copies of element elem
+c.assign(beg,end)			Assigns the elements of the range [beg,end)
+c.assign(initlist)			Assigns all the elements of the initializer list initlist
 c1.swap(c2)				Swaps the data of c1 and c2
 swap(c1,c2)				Swaps the data of c1 and c2
 
