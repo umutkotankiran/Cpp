@@ -1446,7 +1446,7 @@ int main()
 	
 	auto iter_pair = partition_copy(dvec.begin(), dvec.end(),back_inserter(ok_vec),back_inserter(not_ok_vec),
 	[](const Date &x){ return x.week_day() == 6;})
-	//return değeri first olan koşulu salayanlar, secondlar sağlamaynalar
+	//return değeri pairin first olan koşulu salayanların end i, secondlar sağlamaynalar ise sağlamayanların end i.
 
 	cout << "kosulu sağlayanlar\n";
 	print(ok_vec,"\n");
