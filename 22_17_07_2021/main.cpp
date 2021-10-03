@@ -978,26 +978,26 @@ Aşağıda da elmas formasyonu var.Burada da virtual inheritance var.
 			|  ios_base  |
 			|------------|
 			      ^
-				  |
-				  |
+			      |
+			      |
 			|------------|
 			|  basic_ios |
 			|------------|
 
-			 ^			^
-			/			 \	
-Virtual	in /			  \ Virtual	inheritance
-		  /				   \
-         /					\
-|-------------|			|-------------|
-|basic_istream|			|basic_istream|
-|-------------|			|-------------|
-		   ^                 ^
-			\				/
-			 \			   /	
-			  \			  /
-			   \		 /
-			    \	    /
+			 ^	     ^
+			/	      \	
+Virtual	inheritance   /			\ Virtual inheritance
+		    /			  \
+                  /			    \
+	|-------------|			|-------------|
+	|basic_istream|			|basic_istream|
+	|-------------|			|-------------|
+		   ^                 	     ^
+		    \			    /
+		     \			   /	
+		      \			  /
+		       \		 /
+		        \	    	/
 			|--------------|
 			|basic_iostream|
 			|--------------|
