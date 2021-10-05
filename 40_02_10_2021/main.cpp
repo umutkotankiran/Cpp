@@ -292,7 +292,7 @@ struct idendity
 }
 
 template <typename T>
-using idendity_t idendity<T>::type;
+using idendity_t = idendity<T>::type;
 
 int main()
 {
