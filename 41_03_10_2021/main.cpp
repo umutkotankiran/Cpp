@@ -546,7 +546,7 @@ Bunlar aslında bir biti 1 diğerleri 0 olan birer tamsayıdan farklı birşey d
 int main()
 {
 	cout.setf(std::ios::boolalpha); //aşağıdaki ile aynı işi yapıyor
-	cout.flags(os.flags() & std::ios::boolalpha);
+	cout.flags(os.flags() | std::ios::boolalpha);
 
 	cout.unsetf(std::ios::boolalpha);//aşağıdaki ile aynı işi yapıyor
 	cout.flags(std::ios::boolalpha & ~std::ios::boolalpha);
