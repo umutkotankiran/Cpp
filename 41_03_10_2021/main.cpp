@@ -522,7 +522,7 @@ void print_(ostream&s)
 =============================================================================================================================================================================
 
 
-STD::IOS::BOOLALPHA CONSTEXPR STATIC TMPFLAGS TÜRÜNDEN BIR SABIT
+STD::IOS::BOOLALPHA, CONSTEXPR STATIC TMPFLAGS TÜRÜNDEN BIR SABIT
 
 int main()
 {
