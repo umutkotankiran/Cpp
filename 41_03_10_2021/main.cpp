@@ -745,6 +745,7 @@ BASEFIELD KULLANAN 3 TANE MANIPLATOR VAR
 
 1 - ios::hex / ios::dec // ios::oct   ve alan bayrağı olarakta ios::basefield
 2 - ios::left / ios::right // ios::internal   ve alan bayrağı ios::adjustfield
+3 - ios::fixed / ios::scientific / ios::hexfloat // ios::defaultfloat   ve alan bayrağı olarakta ios::floatfield
 
 2 nolu madde için açıklama
 
@@ -753,8 +754,7 @@ BASEFIELD KULLANAN 3 TANE MANIPLATOR VAR
 |+				345|  ios::internal. İşaret başa gelecek, sayının kendisi sağa gelecek.
 |-			    345|  ios::internal
 
-3 - ios::fixed / ios::scientific / ios::hexfloat // ios::defaultfloat   ve alan bayrağı olarakta ios::floatfield
-
+3 nolu madde içn açıklama
 Burada durum biraz farklı. Default olarak ikiside set edilmemiş.ikiside set edilmemişse sayının büyüklüğüne bağlı olarak fixed mi scientific mi olduğuna kendisi
 karar veriyor. defaultfloat demek fixed veya scientific set edlmemiş demek. sayı büyüklüğüne göre kendisi karar veriyor.İkiside set edilmişse hexfloat modunda
 
