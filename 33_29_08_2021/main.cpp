@@ -1172,9 +1172,9 @@ BU KARŞILAŞTIRMA KRITERLERININ BELIRLI ÖZELLIKLERI SAĞLAMASI GEREKIOR YOKSA 
 
 Bu karşılaştırma işlemlerine STRICT WEAK ORDERING deniyor.
 
-1. a op b --> true ise      b op a --> false vermek zorunda.yoksa equivalance kriteri olarak kullanılamaz.
+1. a op a --> false olmak zorunda.true vermeyecek.
 
-2. a op a --> false olmak zorunda.true vermeyecek.
+2. a op b --> true ise      b op a --> false vermek zorunda.yoksa equivalance kriteri olarak kullanılamaz.
 
 3. a op b --> true ise	  ve	b op c --> true     ise     a op c --> true olmak zorunda.
 
