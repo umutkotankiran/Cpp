@@ -187,11 +187,12 @@ int main()
 	while(iter != svec.end()){
 		if(iter->length() == 5)
 		{
-			iter = svec.erase(iter); // bu durumda iteratörü artırmamak gerekiyor.
+			iter = svec.erase(iter); // bu durumda iteratörü artırmamak gerekiyor.Zaten erase'in return değeri bir sonraki iterator.
 		}
 		else if(iter -> length() == 6){
 			iter = svec.insert(iter, *iter);
 			iter += 2; // random access te böyle yazılır. bidirectiona olsaydı advance(iter,2) veya 2 defa artıracaktık
+				   // Burada eklenen insert eklenen öğenin konumunu return eder ve aynı öğeden 2 tane var bu örnekte 2 artıracağız
 		}
 		else
 		{
