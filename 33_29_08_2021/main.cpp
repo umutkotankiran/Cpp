@@ -648,6 +648,7 @@ int main()
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 REMOVE İLE SİLME YAPILABİLİR.
+Vectorde remove erase idiyomu veya C++ 20 ile global erase ile yapıyorduk ama listte ise doğrudan remove ile silinebilir.
 
 int main()
 {
