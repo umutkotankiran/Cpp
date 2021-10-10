@@ -825,7 +825,7 @@ int main()
 	print(x);
 	print(y);
 
-	x.splice(x.begin(),y.next(y.begin()), prev(y.end()); // x'e, ynin başlangıç ve bitişi hariç hepsini taşıyacak.
+	x.splice(x.begin(), y, next(y.begin()), prev(y.end()); // x'e, ynin başlangıç ve bitişi hariç hepsini taşıyacak.
 	std::cout << "y.size() " << y.size() << "\n"; //  2
 	std::cout << "x.size() " << x.size() << "\n"; //  8
 	print(x)
