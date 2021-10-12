@@ -322,7 +322,7 @@ int main()
 
 int main()
 {
-	istringstream iss{"necatiergin\hasan"}; //dikkat
+	istringstream iss{"necatiergin\nhasan"}; //dikkat
 
 	iss.ignore(100,'a'); // a yı görene kadar tüm argümanları ignore etti.
 
@@ -337,7 +337,7 @@ DEVAMI
 
 int main()
 {
-	istringstream iss{"necatiergin\hasan"}; //dikkat
+	istringstream iss{"necatiergin\nhasan"}; //dikkat
 
 	iss.ignore(100,'\n'); // \n a kadar olanları ignore etti.
 
