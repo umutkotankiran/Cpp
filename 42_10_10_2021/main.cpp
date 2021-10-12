@@ -657,7 +657,7 @@ Default init edince herhangibir dosyayıu yönetmeyen bir nesne oluşturmuş olu
 
 FSTREAM
 -------
-Bunların hepsi default initialize edilebiliyorlar, kopyalanıyorlar ama taşınabiliyorlar.
+Bunların hepsi default initialize edilebiliyorlar, kopyalanamıyorlar ama taşınabiliyorlar.
 Default init edildiğinde herhangibir dosyayı yönetmeyen bir sınıf nesnesi oluşturmuş oluyoruz.
 
 
