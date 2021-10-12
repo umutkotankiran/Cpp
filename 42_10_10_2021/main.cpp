@@ -10,9 +10,9 @@ Burada bu işi yapan sınıflar var bunlşar sstream header file da tanımlanan 
 
 Burada ise ostringstring istringstring ve stringstream sınıfları var demiştik.Bunlar sstream header file içinde tanımlanmış
 
-ostringstream : ostream den kalıtımla elde edilmiş. ostream im tüm interface ini almış ama ilave func ı var
-istringstream : istream den kalıtımla elde edilmiş. istream interfaceini almış
-stringstream : basic_iostream sınıfından kalıtımla elde edilmiş.
+ostringstream : ostream den kalıtımla elde edilmiş. ostream im tüm interface ini almış ama ilave func ı var.Bellekte bir yazıyı elde etmek için
+istringstream : istream den kalıtımla elde edilmiş. istream interfaceini almış. Bellekteki bir yazıyı okumak için
+stringstream : basic_iostream sınıfından kalıtımla elde edilmiş. Hem okumak için hemde elde etmek için
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
