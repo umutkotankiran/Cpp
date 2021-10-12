@@ -456,7 +456,7 @@ int main()
 	int x = 10;
 	string name {"gurbuz"};
 
-	(ostringstream{} << name << '_' << x << ".jpg").str(); // Bu C++ 11 ile geldi
+	auto s = (ostringstream{} << name << '_' << x << ".jpg").str(); // Bu C++ 11 ile geldi
 
 	cout << "(" << s << ")";
 }
