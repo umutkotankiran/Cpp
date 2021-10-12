@@ -277,11 +277,22 @@ int main()
 	
 }
 
+===============================================================================================
+===============================================================================================
+===============================================================================================
+
+ÇOK ÖNEMLİ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+<< GLOBAL OPERATOR FUNC OLARAK YAZILACAK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 bunu mümkün kılmak istiyoruz.operator overoadingden faydalanmak gerekiyor.
 burada bir binary << operatörü var. bunun function çağrısına dönüşmesi için <<
 overload edilmeli.bunu cout un ait olduğu sınıfa bir üye fonksiyon olarak yazmak
 mümkün değil.bu durumda tek seçenek global operator function.global operator func
 eğer sınıfın private bölümüne erişecekse friend olarak bildirilmeli.
+
+===============================================================================================
+===============================================================================================
+===============================================================================================
 
 
 ÜNLEMLER DİKKAT ÇEKSİN DİYE VAR :D:D
