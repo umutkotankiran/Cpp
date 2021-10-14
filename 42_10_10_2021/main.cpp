@@ -1296,9 +1296,9 @@ int main()
 		if(isprime(x))
 		{
 			ofs.write(reinterpret_cast<char *>(&x),sizeof(int)); // reinterpret_Cast i kullanmamız gereken ender durumlardan biri. 
-																 // Akımdaki karakter türü char olduğundan char * parametre.Dolayısı ile x in adresinden okuma yapacak
-																 // x int olduğundan int * ı göndermiş olurduk. Bu sebeple reinterpret_cast kullanıyoruz. 
-																 // ikinci parametre dosyaya kaç byte yazılacağı sizeof x veya sizeof int.
+									     // Akımdaki karakter türü char olduğundan char * parametre.Dolayısı ile x in adresinden okuma yapacak
+									     // x int olduğundan int * ı göndermiş olurduk. Bu sebeple reinterpret_cast kullanıyoruz. 
+									     // ikinci parametre dosyaya kaç byte yazılacağı sizeof x veya sizeof int.
 		
 			++prime_count;
 
