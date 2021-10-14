@@ -1290,7 +1290,7 @@ int main()
     }
     int prime_count{};
     int x;
-    while(prime_count << 1'000'000)
+    while(prime_count < 1'000'000)
     {
         if(isprime(x))
         {
