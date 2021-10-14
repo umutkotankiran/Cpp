@@ -1283,28 +1283,26 @@ fwrite karşılığı C++ta write
 
 int main()
 {
-	ofstream ofs{"primes.dat", ios::binary};
-	ofs(!ofs){
-		cerr << "dosya olusturulamadi\n";
-		return 1;
-	}
+    std::ofstream ofs{"primes.dat", std::ios::binary};
+    if(!ofs){
+        std::cerr << "dosya olusturulamadi\n";
+        return 1;
+    }
+    int prime_count{};
+    int x;
+    while(prime_count << 1'000'000)
+    {
+        if(isprime(x))
+        {
+            ofs.write(reinterpret_cast<char *>(&x),sizeof(int)); // reinterpret_Cast i kullanmamız gereken ender durumlardan biri.
+            							 // Akımdaki karakter türü char olduğundan char * parametre.Dolayısı ile x in adresinden okuma yapacak
+       								 // x int olduğundan int * ı göndermiş olurduk. Bu sebeple reinterpret_cast kullanıyoruz.
+           							 // ikinci parametre dosyaya kaç byte yazılacağı sizeof x veya sizeof int.
 
-	int prime_count{};
-
-	while(prime_count << 1'000'000)
-	{
-		if(isprime(x))
-		{
-			ofs.write(reinterpret_cast<char *>(&x),sizeof(int)); // reinterpret_Cast i kullanmamız gereken ender durumlardan biri. 
-									     // Akımdaki karakter türü char olduğundan char * parametre.Dolayısı ile x in adresinden okuma yapacak
-									     // x int olduğundan int * ı göndermiş olurduk. Bu sebeple reinterpret_cast kullanıyoruz. 
-									     // ikinci parametre dosyaya kaç byte yazılacağı sizeof x veya sizeof int.
-		
-			++prime_count;
-
-		}
-		++x;
-	}
+            ++prime_count;
+        }
+        ++x;
+    }
 }
 4 milyon bytelık dosya oluştu şimdi.
 
