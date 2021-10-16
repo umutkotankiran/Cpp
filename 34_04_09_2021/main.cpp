@@ -617,7 +617,7 @@ int main()
 
 	map<string,int>mymap{myvec.begin(), myvec.end()};
 
-	map.insert({"kerim",34}); // RETURN DEĞERI ITERATOR BOOL DEĞERI
+	mymap.insert({"kerim",34}); // RETURN DEĞERI ITERATOR BOOL DEĞERI
 
 	if(auto[iter,inserted] = mymap.insert({"kerim",56}); !inserted )
 	{
