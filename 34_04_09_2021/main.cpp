@@ -1068,6 +1068,15 @@ struct Hash{
 	}
 };
 
+
+TEMPLATE
+template <typename T, typename H = std::hash<T>, typename E = std::equal_to<T>, typename A = std::allocator<T>>
+class UnorderedSet{
+	
+};
+
+
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 int main()
