@@ -1114,6 +1114,17 @@ int main()
 	}
 }
 
+ÇIKTI
+-----
+5 kuyruktan cikiyor
+8 kuyruktan cikiyor
+14 kuyruktan cikiyor
+18 kuyruktan cikiyor
+22 kuyruktan cikiyor
+25 kuyruktan cikiyor
+59 kuyruktan cikiyor
+
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 KABACA IMPLEMENTASYON BU OLABILIR.
