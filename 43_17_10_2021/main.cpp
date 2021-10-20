@@ -780,7 +780,7 @@ bool operator!=(const equality<Der> &left, const equality<Der>& right) // BURADA
 class Nec : public equality<Nec> // BURADA NEC IN < FUNCTIONU OLDUĞUNDAN, YUKARIDAKİ == SINAYAN FUNC A GİRİLDİĞİNDE BURADAKİ < OPERATÖRÜNÜ KULLANACAK.
 {
 public:
-	Nec(val) : mval{val} {}
+	Nec(int val) : mval{val} {}
 	bool operator<(const Nec& other)const
 	{
 		return mval < other.mval;
@@ -791,12 +791,12 @@ private:
 
 int main()
 {
-	Nec x{123};
-	Nec y{234};
-	
-	std::cout << boolalpha;
-	cout << (x == x) << "\n";
-	cout << (x != x) << "\n";
+	Nec x{ 123 };
+	Nec y{ 234 };
+
+	std::cout << std::boolalpha;
+	std::cout << (x == x) << "\n";
+	std::cout << (x != x) << "\n";
 }
 
 Bunun özelliği, artık hemn interface te doğrudan static kalıtım yoluyla kullanıyoruz hemde istediğimiz kadar sınıfa bunu katabiliriz.
@@ -898,7 +898,7 @@ public:
 		return val_ + other.val_;
 	}
 private:
-	int val_;
+	int val_;	
 };
 
 int main()
@@ -945,7 +945,7 @@ template<typename T>
 class Value : public Base<Value<T>> //DIKKAT !!!!
 {
 public:
-	Value(T val) : val_{ val } { }
+	Value(const T& val) : val_{ val } { }
 	void print()const
 	{
 		std::cout << val_ << "\n";
@@ -956,7 +956,7 @@ public:
 		return val_ + other.val_;
 	}
 private:
-	int val_;
+	T val_;
 };
 
 int main()
@@ -981,7 +981,55 @@ burakburakburak
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-shared ptr deki enabled_shared_from_this örneği. Buraya kopyala
+SHARED PTR DEKI ENABLED_SHARED_FROM_THIS ÖRNEĞI
+
+// Eğer bir sınıfın üye fonksiyonu içinde shared_ptr ile hayatı kontrol edilen * this nesnesini gösteren
+// shared_ptr'nin kopyasını çıkartmak isterseniz sınıfınızı CRTP örüntüsü ile kalıtım yoluyla std::enable_shared_from_this
+// sınıfından elde etmelisiniz
+
+#include <memory>
+#include <iostream>
+
+
+using namespace std;
+
+class Neco : public std::enable_shared_from_this<Neco> {  //CRTP
+public:
+	Neco()
+	{
+		std::cout << "Neco ctor this : " << this << "\n";
+	}
+
+	void func()
+	{
+		std::cout << "Neco::func() islevi : " << this << "\n";
+
+		//ben func islevinin bir shared_ptr ile kontrol edilen dinamik Neco nesnesi icin cagrildigina eminim
+		auto sptr = shared_from_this();
+		std::cout << "sptr.use_count() = " << sptr.use_count() << "\n"; // use_count arttı
+	}
+
+	~Neco()
+	{
+		std::cout << "Neco destructor : " << this << "\n";
+	}
+};
+
+
+int main()
+{
+	auto sp = make_shared<Neco>();
+	sp->func();
+	//Neco *p = new Neco;
+
+	//try {
+	//	p->func();
+	//}
+	//catch (const std::exception &ex) {
+	//	std::cout << "hata yakalandi : " << ex.what() << "\n";
+	//}
+
+}
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -992,8 +1040,7 @@ Templatelerde 3 parametre yapısı var.
 2 - Template nontype parameter
 3 - template template parameter
 
-Template Template Parameter ileri C++ ta görülecek normalde.
-Parametreye karşılık gelen argümanda template olmalı.
+Template Template Parameter ileri C++ ta görülecek normalde.Parametreye karşılık gelen argümanda template olmalı.
 
 template <typename T, template<typename X> typename Con>
 class Myclass{
@@ -1003,7 +1050,7 @@ class Myclass{
 	}
 };
 
-Myclass ın bir sınıf şablonu olduğunu söylüyor,ama template argümanı olarak bir tane template tür parametreye sahip bir template kullanılması gerekiyor.
+Myclass ın bir sınıf şablonu olduğunu söylüyor ama template argümanı olarak bir tane template tür parametreye sahip bir template kullanılması gerekiyor.
 Biz burada Con kullandığımız zaman aslında Con bir templatein karşılığı.
 
 C++17 den önce
@@ -1302,7 +1349,7 @@ Başta karmaşık gelebilir.
 Header file chrono ama bu header file bir nested namespace içinde. Bunun adıda chrono. chronodaki öğelerden birini kullanmak için ortada using namespace bildirimi yoksa
 std::chrono::system_clock şeklinde yazacağız.
 
-using namaespace std; yazarsak artık
+using namespace std; yazarsak artık
 chrono::system_clock yazarız
 
 
@@ -1316,7 +1363,7 @@ Chrono içinde bizi ilgilendiren 3 tane önemli bileşen var. HErşey bu birbiri
 2 - Duration türleri (süre)
 3 - Time_point türleri (zamanda nokta)
 
-C deki time ile yaptıklarımızın çok büyüğünü ve çok daha fazlasını chrono ile yapabilliyoruz ama bazı işlemlerde ctime ile işbirliği halinde chronoyu kullanıyoruz.
+C deki time ile yaptıklarımızın çok büyüğünü ve çok daha fazlasını chrono ile yapabiliyoruz ama bazı işlemlerde ctime ile işbirliği halinde chronoyu kullanıyoruz.
 
 time_point ise bir clock a bağlı. Bir clock bize bir epoch ile bir time_point türü veriyor. Her clock un bir epoch u var.Epoch tarih zamanda bir timepoint idi.
 En yaygın epoch 1.1.1970 00.00 olabilir.
@@ -1357,12 +1404,12 @@ int main()
 	using namespace std;
 	using namespace std::chrono;
 
-	cout << typeid(seconds).name() << "\n"; // Burada econd ın ne olduğunu veriyor. duration<int64,ratio<1,1>> açılımı özetle.Yani tik birimi 1 saniye ama herbir tik bir tamsayı ile ifade ediliyor.
+	cout << typeid(seconds).name() << "\n"; // Burada second ın ne olduğunu veriyor. duration<int64,ratio<1,1>> açılımı özetle.Yani tik birimi 1 saniye ama herbir tik bir tamsayı ile ifade ediliyor.
 											// 3356 saniye gibi...
 
-	cout << typeid(milliseconds).name() << "\n"; // duration<int64,ratio<1,1000>> burasıda 
+	cout << typeid(milliseconds).name() << "\n"; // duration<int64,ratio<1,1000>>    Tik birimi int64 ama her tik 1/1000 saniye
 	
-	cout << typeid(nanoseconds).name() << "\n"; // duration<int64,ratio<1,1000000000>> 
+	cout << typeid(nanoseconds).name() << "\n"; // duration<int64,ratio<1,1000000000>>  ...	
 
 	cout << typeid(nanoseconds).name() << "\n"; // duration<int64,ratio<1,1000000>> 
 												
@@ -1399,13 +1446,13 @@ int main()
 	using namespace std;
 	using namespace std::chrono;
 
-	nanoseconds d{7489564}; // aslında aşağı seviyede long long ile bunun arasında fark yok.
+	nanoseconds d{7489564}; // aslında low levelda long long ile bunun arasında fark yok.
 
 	d.count(); // doğrudan tamsayı değerini veriyor.
 
 	------------------------------------------------------------------------------------------------------------------------------------
 
-	BIR SONRAKI DERSTE BUNLARI BIRBIRINE DÖNÜŞTÜREEĞIZ, ÇARPABILECEĞIZ, TOPLAMA ÇIKARMA KARŞILAŞTIRMA DÖNÜŞTÜRME ... IŞLEMLERI YAPILACAK
+	BIR SONRAKI DERSTE BUNLARI BIRBIRINE DÖNÜŞTÜRECEĞIZ, ÇARPABILECEĞIZ, TOPLAMA ÇIKARMA KARŞILAŞTIRMA DÖNÜŞTÜRME ... IŞLEMLERI YAPILACAK
 
 	seconds s{2345};
 	hours h{12};
