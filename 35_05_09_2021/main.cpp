@@ -863,7 +863,22 @@ int main()
 
 }
 
-ÇIKTIYI YAZ.
+ÇIKTI
+-----
+kenan kuyruga giriyor
+alev kuyruga giriyor
+samet kuyruga giriyor
+suphi kuyruga giriyor
+hulki kuyruga giriyor
+kuyrukta 5 kisi var
+kuyrugun basinda kenan var
+kuyrugun sonunda hulki var
+kenan kuyruktan cikiyor
+alev kuyruktan cikiyor
+samet kuyruktan cikiyor
+suphi kuyruktan cikiyor
+hulki kuyruktan cikiyor
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
