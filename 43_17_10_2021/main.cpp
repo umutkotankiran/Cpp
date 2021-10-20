@@ -1368,17 +1368,17 @@ C deki time ile yaptıklarımızın çok büyüğünü ve çok daha fazlasını 
 time_point ise bir clock a bağlı. Bir clock bize bir epoch ile bir time_point türü veriyor. Her clock un bir epoch u var.Epoch tarih zamanda bir timepoint idi.
 En yaygın epoch 1.1.1970 00.00 olabilir.
 
-	|								|
-	|								|
-	|								|
-	|								|
-	|	Bu kadar süre sonrası		|
+	|				|
+	|				|
+	|				|
+	|				|
+	|	Bu kadar süre sonrası	|
 	|---------------------------->  |
-	|								|
-	|								|
-	|								|
-	|								|
- Epoch					 Burası bir time point
+	|				|
+	|				|
+	|				|
+	|				|
+      Epoch			Burası bir time point
 
 
  Bu time point epoch tan önceki bir timepointte olabilirdi.Time pointin ve epoch un ne olduğunu belirleyen clock denen nesneler.
