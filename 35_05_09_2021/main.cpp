@@ -811,7 +811,8 @@ int main()
 	}
 }
 
-ÖDEV: 1:33, 1:37  deki forward listten eleman silmeyi yaz. ilgili derse ekle.
+ÖDEV: 1:33, 1:37  deki forward listten eleman silmeyi yaz. ilgili derse ekle. 
+EKLENDİ !!!
 
 
 MOLA
