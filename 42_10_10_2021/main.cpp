@@ -671,12 +671,12 @@ int main()
 							 // Buraya birşey yazmadığımızda text modunda açıyor.
 							 // Kullanacağımız constexpr static maskeler.ios veya ios_base elemanları (aynı şey)
 
-	ofstream ofs("out.txt", ios::out); // Yazma amaçlı açılıyor
-	ofstream ofs("out.txt", ios::in);  // Okuma amaçlı açılıyor
-	ofstream ofs("out.txt", ios::ate); // File pointer dosya sonunda olacak demek.
-	ofstream ofs("out.txt", ios::app); // Sona ekleyerek yazma amaçlı(append) 
-	ofstream ofs("out.txt", ios::trunc); // Dosyanın yazma amaçlı sıfırlanarak açıyor.
-	ofstream ofs("out.txt", ios::binary); // Binary Modda açıyor
+	fstream ofs("out.txt", ios::out); // Yazma amaçlı açılıyor
+	fstream ofs("out.txt", ios::in);  // Okuma amaçlı açılıyor
+	fstream ofs("out.txt", ios::ate); // File pointer dosya sonunda olacak demek.
+	fstream ofs("out.txt", ios::app); // Sona ekleyerek yazma amaçlı(append) 
+	fstream ofs("out.txt", ios::trunc); // Dosyanın yazma amaçlı sıfırlanarak açıyor.
+	fstream ofs("out.txt", ios::binary); // Binary Modda açıyor
 
 
 	Ofstream için default açış modu =  ios::out | ios::trunc
