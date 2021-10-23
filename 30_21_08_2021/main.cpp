@@ -413,8 +413,8 @@ int main()
 STANDARTLARDA SENTAKS HATASIYDI
 LAMBDA IFADELERI STATELESS OLDUĞUNDA CONSTEXPR FUNC OLMA KOŞULLARINI EZMIYORSA IFADE DEFAULT OLARAK CONSTEXPR KABUL EDILIYOR !!!!!!!!!!!!
 
-CONSTEXPR OLMA KOŞULLARI
-------------------------
+CONSTEXPR FUNCTION OLMA KOŞULLARI
+---------------------------------
 - Func parametreleri literal type olacak.
 - Func return değeri türü literal type olacak.
 - Func anablok içinde literal type olmayan herhangibir türden değişken olmayacak.
