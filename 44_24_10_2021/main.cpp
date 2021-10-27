@@ -491,8 +491,8 @@ int main()
 	time_point + duration = time_point
 	time_point - duration = time_point
 	time_point - time_point = duration
-	time_point > time_point = duration
-	time_point < time_point = duration   BUNLAR VAR
+	time_point > time_point 
+	time_point < time_point    			BUNLAR VAR
 
 	is_same_v<time_point<system_clock>,system_clock::time_point>; //true yazar
 
