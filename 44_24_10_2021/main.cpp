@@ -673,6 +673,7 @@ void print_time(const time_t& timer)
 		<< p->tm_min << ":" << setw(2) << p->tm_sec << "\n";
 }
 
+// AŞAĞIDA TIMEPOINT'TEN DURATION ÇIKARTTIĞIMIZ BİR ÖRNEK VAR 
 int main()
 {
 	auto tp_now = system_clock::now(); // ŞIMDIKI SAATIN TIME POINTI. EPOCH TAN GEÇEN ZAMANI TIMEPOINT OLARAK VERIYORDU.
