@@ -946,7 +946,7 @@ int main()
 
 EN SIK İHTİYAC DUYULAN CONST CHAR * VE EŞLİK EDEN SIZE_T
 
-void operator""_x(const char* p, size_t) //BURADA EKSİKLİK VAR
+void operator""_x(const char* p, size_t n)
 {
 	std::cout << "operator\"\"_x(const char *p, size_t n) << "\n";
 	std::cout << "n = " << n << "\n";
