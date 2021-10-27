@@ -1229,7 +1229,7 @@ int main()
 
 	mt19937 eng;
 
-	std::cout << my19937::default_seed << "\n"; //DEFAULT TOHUM/SEED DEĞERİ
+	std::cout << mt19937::default_seed << "\n"; //DEFAULT TOHUM/SEED DEĞERİ
 
 	------------------------------------------------------------------------------------------------------------------------------------------------------
 	KENDIMIZ SEED VEREBİLİRİZ
