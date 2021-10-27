@@ -255,7 +255,7 @@ int main()
 
 	DAKİKA İÇİN YAPALIM AYNISINI
 
-	seconds min = duration_cast<seconds>(ns); // GEÇERLİ
+	minutes min = duration_cast<seconds>(ns); // GEÇERLİ
 
 	std::cout << "sec count" << sec.count() <<"\n";
 
