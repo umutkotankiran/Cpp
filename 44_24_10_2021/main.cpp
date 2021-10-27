@@ -27,6 +27,10 @@ int main()
 	using namespace std::chrono; // isimleri nitelemeden kullanmak için bunu yapıyoruz.
 	
 	duration<int, std::ratio<1,10>> x; // x nesnesi tik birimi int ve her bir tik saniyenin 1/10 u kadar
+	
+	//ÇOK ÖNEMLİ !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// Burada x.count dediğimde aslında x e atanan değeri elde ediyorum.
+	// bu durationun değeri ise x.count() * ratio<x,y> değeri olacak. Aynı şeyler değil yani
 
 }
 
