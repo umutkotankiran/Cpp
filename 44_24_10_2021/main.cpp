@@ -608,7 +608,7 @@ int main()
 	cout << "islem basliyor\n";
 	auto tp_start = steady_clock::now();
 
-	fc(ivec, 10'000'000, [&] {return dist(eng); });
+	rfill(ivec, 10'000'000, [&] {return dist(eng); });
 	sort(ivec.begin(), ivec.end());
 
 	auto tp_end = steady_clock::now();
