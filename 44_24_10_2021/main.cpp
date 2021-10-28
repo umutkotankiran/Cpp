@@ -28,10 +28,6 @@ int main()
 	
 	duration<int, std::ratio<1,10>> x; // x nesnesi tik birimi int ve her bir tik saniyenin 1/10 u kadar
 	
-	//ÇOK ÖNEMLİ !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	// Burada x.count dediğimde aslında x e atanan değeri elde ediyorum.Template in birinci tür parametresi bu değer.
-	// bu durationun değeri ise x.count() * ratio<x,y> değeri olacak. Aynı şeyler değil yani
-
 }
 
 
