@@ -1213,7 +1213,7 @@ int main()
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-DIKKAT EDILMESI GEREKEN MY19937 SINIFI SIZEOF OLARAK BÜYÜK BIR SINIF
+DIKKAT EDILMESI GEREKEN MT19937 SINIFI SIZEOF OLARAK BÜYÜK BIR SINIF
 Kopyalama gereken yerde çok dikkatli olmak gerekiyor
 
 int main()
