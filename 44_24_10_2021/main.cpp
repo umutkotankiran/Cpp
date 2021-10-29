@@ -1576,10 +1576,10 @@ int main()
     //uniform_int_distribution dist; // böyle yapabiliriz.
     //suniform_int_distribution dist{}; // Default init edilirse 0-max arasında sayı üretiyor.
 
-    //uniform_int_distribution<int,int> dist{12,24}; // Böylede yazılabilir.
+    //uniform_int_distribution<int> dist{12,24}; // Böylede yazılabilir.1 Adet template tür parametresi var.
 
-    uniform_int_distribution dist{12,24}; // 12-24 arası sayı üretir.12 ve 24 dahil.CTAD ile böyle yazıldı
-    // dist nesnesini kullanmak için random sayı üreticisi gerekiyor.
+    uniform_int_distribution dist{12,24}; // 12-24 arası sayı üretir.12 ve 24 dahil.CTAD ile böyle yazıldı.Visual Studioda release modda tür implicit olmazsa hata veriyor
+    // dist nesnesini kullanmak için random sayı üreticisi gerekiyor.								
 
     mt19937 eng;
 
