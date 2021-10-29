@@ -1310,7 +1310,7 @@ BÖYLECE RANDOM DEVİCE RASGELE GERÇEK SAYI ÜRETTİĞİNDEN BAŞKA BİR SEED D
 
 int main()
 {
-	mt1993 eng{ random_device{} }; // random device seed değeri olarak verildi.
+	mt19937 eng{ random_device{}() }; // random device seed değeri olarak verildi.
 	
 	for(int i = 0; i < 10; ++i)
 	{
