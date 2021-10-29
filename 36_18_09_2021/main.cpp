@@ -846,7 +846,7 @@ int main()
 
 	try{
 		//auto val = ar[7]; // BURASI UB
-		auto val = at(7); // Exception throw eder.
+		auto val = ar.at(7); // Exception throw eder.
 	}
 	catch(const std::out_of_range &ex)
 	{
