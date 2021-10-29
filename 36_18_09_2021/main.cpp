@@ -29,7 +29,7 @@ public:
 int main()
 {
 
-	std::function<int(int)> f{square};
+	std::function<int(int)> f{square{}};
 	//Açısal parantez içerisinde bir function türü int(int). function adresi türü farklı int(*)(int)
 	
 	std::cout << f(123) << "\n";
