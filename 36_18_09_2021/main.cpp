@@ -301,10 +301,10 @@ int main()
 
 	BURADA PROGRAMCILARIN YANLIŞ ANLADIĞI ŞEYLER VAR
 	Tür argümanı belirtmeyip string literali kullanırsak, mesela aşağıdaki gibi 3. parametre const char * oluyor.string değil
-		tuple t{12,4.5,"Mustafa"}; 
-		NOT : User defined literal denen bir araç var.Bunu ileride anlatacak hoca.Yada İleri C++ ta anlatacak
-		tuple t{12,4.5,"Mustafa"s}; // bu şekilde string olmasını sağlayabiliriz.Bu bir Rvalue expr
-		hatta "mustafa"s = "ali"; // geçerli. :D 
+	tuple t{12,4.5,"Mustafa"}; 
+	NOT : User defined literal denen bir araç var.Bunu ileride anlatacak hoca.Yada İleri C++ ta anlatacak
+	tuple t{12,4.5,"Mustafa"s}; // bu şekilde string olmasını sağlayabiliriz.Bu bir Rvalue expr
+	hatta "mustafa"s = "ali"; // geçerli. :D 
 
 
 	cout << get<0>(t) << "\n";
