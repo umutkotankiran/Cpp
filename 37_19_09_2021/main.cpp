@@ -1213,7 +1213,7 @@ using new_handler = void(*)(void); // Buda using ile yapıldı.
 SET_NEW_HANDLER
 ---------------
 
-set_new_handler new içinde bildirilmiş. Buna bir adres verdiğimizde, gp nin değerini(aşağıda) bizim verdiğimiz adres ile set ediyor ve
+set_new_handler new içinde bildirilmiş. Buna bir adres verdiğimizde, gp(global func pointer) nin değerini(aşağıda) bizim verdiğimiz adres ile set ediyor ve
 gp nin eski değerinide get(return olarak gönderiyor yani) ediyor.
 
 new_handler set_new_handler(new_handler p)
@@ -1451,7 +1451,7 @@ exception caught : bad allocation
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//2. YAPILACAK
+//2. YAPILACAK TERMINATE CALL
 
 class Myclass{
 private:
@@ -1465,7 +1465,7 @@ void myhandler()
 	std::cout << "myhandler called...\n";
 	if(++count == 5)
 	{
-		std::terminate();
+		std::terminate();  //DİKKAT !!!
 	}
 	(void)getchar();
 }
@@ -1505,7 +1505,7 @@ myhandler called...
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//3. YAPILACK
+//3. YAPILACAK GLOBAL GP NESNESİ NULLPTR YAPILACAK 
 
 class Myclass{
 private:
@@ -1562,7 +1562,7 @@ exception caught : bad allocation
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//4. YAPILACK. SON İHTİMAL
+//4. YAPILACK. SON İHTİMAL. HANDLER BAŞKA BİR HANDLER ÇAĞIRACAK
 Başka bir handler olabilir.
 
 class Myclass{
