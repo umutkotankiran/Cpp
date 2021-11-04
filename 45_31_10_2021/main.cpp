@@ -606,6 +606,21 @@ int main()
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+SONRADAN DA DEĞER VERİLEBİLİYOR.
+DİKKAT !!! YUKARIDA VAROLAN DEĞERİ DEĞİŞTİRMEK İÇİN *X VEYA X.VALUE() KULLANDIK AMA DEĞER TUTMUYORSA BUNLAR TANIMSIZ DAVRANIŞ.
+EĞER OPTIONAL NESNESİ BOŞ İSE DOĞRDAN NESNEYE EŞİTLEME İLE DEĞER VEREBİLİYORUZ.ÖRNEK AŞAĞIDA
+
+int main()
+{
+	std::optional<int> x;
+
+	x = 23;
+
+	std::cout << *x;
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 OPERATOR BOOL DEĞER OLUP OLMADIĞINI SORGULAR
 
 int main()
