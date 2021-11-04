@@ -1038,9 +1038,6 @@ int main()
 	// BURADA TERSIDE MÜMKÜN.OPTIONALDAKI NESNEYIDE TAŞIYABILIRIZ.
 	std::optional<A> op2{ std::move(*op1) }; //  Yine taşıma semantiği çalıştı.
 
-	//Burada artık op1 boş durumda
-	//Burada artık op2 dolu durumda
-
 	std::cout << op1.has_value() << "\n"; //TRUE  
 	std::cout << op2.has_value() << "\n"; //TRUE.BURADA OPTIONAL DOLU AMA TUTTUĞU NESNE MOVED FROM STATE TE.
 
