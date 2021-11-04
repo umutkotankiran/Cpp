@@ -595,7 +595,7 @@ DEREFERENCE VE VALUE REFERENCE DÖNDÜRÜR
 
 int main()
 {
-	std::optional<int> x{111};
+	std::optional<int> x{111};  // optional nesnesini değerle başlatmayınca aşağıda eşitlesek bile sorun çıkıyor.
 
 	*x = 999;
 	std::cout << "x.value() = " << x.value << "\n";
