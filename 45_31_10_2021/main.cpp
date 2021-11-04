@@ -663,6 +663,7 @@ void func(std::string name, std::optional<std::string> middle_name)
 VALUE OR
 --------
 Return değeri referans değil value. Valuedan farklı olarak değeri varsa değeri elde ediyor ama değer yoksa default bir değer kullanmak.
+Optional nesnesinin değerini set etmiyor, return ettiği değer yukarıda yazdığım kontrole ilişkin değer.
 
 int main()
 {
