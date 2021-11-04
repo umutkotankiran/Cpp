@@ -1201,7 +1201,7 @@ int main()
 
 	Veya aşağıdaki ile aynı anlamda
 
-	if(holds_alternative<double>(vx)) // burayı yaz
+	if(holds_alternative<Date>(vx)) // burayı yaz
 	{
 	
 	}
