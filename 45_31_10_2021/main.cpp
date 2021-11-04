@@ -595,7 +595,7 @@ DEREFERENCE VE VALUE REFERENCE DÖNDÜRÜR
 
 int main()
 {
-	std::optional<int> x;
+	std::optional<int> x{111};
 
 	*x = 999;
 	std::cout << "x.value() = " << x.value << "\n";
