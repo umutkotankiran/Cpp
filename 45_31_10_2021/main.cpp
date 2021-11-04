@@ -349,7 +349,7 @@ constexpr int foo(Myclass m)
 
 Constexpr func olma koşullarını sağlaması başka birşey ama o funca yapılan çağrının üreteceği return değerinin compile time da hesaplanabilmesi bambaşka.
 
-constexpr int (int x, int y) // Bu constexpr olma koşullarını sağlıyor ama bu funca yapılan çağrıdan elde edilecek değerin bir compile time sabiti olduğu anlamına gelmiyor.
+constexpr int func(int x, int y) // Bu constexpr olma koşullarını sağlıyor ama bu funca yapılan çağrıdan elde edilecek değerin bir compile time sabiti olduğu anlamına gelmiyor.
 {
 	return x * y - 3;
 }
