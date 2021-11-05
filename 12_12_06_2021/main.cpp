@@ -908,6 +908,8 @@ C++ 2017 Bazı kuralları önemli ölçüde değiştirdi.
 Burada değişen önemli bir eklenti Inline Variables.
 
 ODR ve Inline function ları hatırlayalım.
+Aynı kaynak dosyada aynı 2 tanım sentaks hatası, farklı kaynak dosyalarda aynı varlığın birden fazla tanımı doğrudan undefined behavior.
+Eğer inline keywordünü yazarsak inline statüsüne girer yani link aşamasında linker bundan sadece 1 tane görecek ve ODR bozulmayacak
 
 //.h
 int x = 10;  
