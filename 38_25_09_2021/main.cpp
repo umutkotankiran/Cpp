@@ -904,7 +904,7 @@ Make Unique Template
 template <typename T, typename ...Args>
 std::unique_ptr<T>MakeUnique(Args&& ...args) // Burası forwarding reference
 {
-	std::unique_ptr<T>{ new T{std::forward<Args>(args)...} };   // dikkat burada variadic olmasaydı, auto&& olsaydı forward<decltype(args)>(args)... kullanacaktık.
+	return std::unique_ptr<T>{ new T{std::forward<Args>(args)...} };   // dikkat burada variadic olmasaydı, auto&& olsaydı forward<decltype(args)>(args)... kullanacaktık.
 }
 
 TEST
