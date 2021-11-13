@@ -945,7 +945,9 @@ public:
 	--------------------------------------------------------------------------------------------------------------------------------------------------------
 	--------------------------------------------------------------------------------------------------------------------------------------------------------
 	
-	NOT: HANGİ STANDARTLARDA GELDİĞİ KAYNAK DOSYASINA KOYDUĞUM RESİMDE YAZIYOR.BEN TEST ETTİĞİMDE THIS YAKALIYOR.BİR YANLIŞ ANLAŞILMA OLABİLİR.
+	NOT: HANGİ STANDARTLARDA GELDİĞİ KAYNAK DOSYASINA KOYDUĞUM RESİMDE YAZIYOR.BEN TEST ETTİĞİMDE THIS YAKALIYOR.HOCA *THİS İ REFERANSLA YAKALADIK DİYOR
+	     BURADA BANA *THİS DEĞİLDE THİS YAKALANMIŞ GİBİ GELDİ.
+	     
 	[this] ---> *this referans yoluyla yakalanıyor
 	[*this] ----> *this kopyalama yoluyla yakalanıyor
 	[&] -----> yerel değişkenler + *this referans capture et
