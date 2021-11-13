@@ -479,17 +479,17 @@ int main()
 {
 	using namespace std;
 
-	auto f = [](Triple *){
-		std::cout << p << " adresindeki nesneyi delete ediyorum\"
+	auto f = [](Triple *p){
+		std::cout << p << " adresindeki nesneyi delete ediyorum\n";
 		delete p;
 	};
 
 	{
-		unique<Triple, decltype(f)> uptr(new Triple{1,2,3}); // C++ 20 ile geldi C++17 sentaks hatası çünkü arkadaki kod decltype(f) ile bu nesneyi default init ediyor.
+		unique_ptr<Triple, decltype(f)> uptr(new Triple{1,2,3}); // C++ 20 ile geldi C++17 sentaks hatası çünkü arkadaki kod decltype(f) ile bu nesneyi default init ediyor.
 	}
 
 	C++17 lambdaların closure typelarınında default ctor yok.C++17 de aşağıdaki gibi yazılabilir.C++20'de de geçerli bu yazım biçimi
-	unique<Triple, decltype(f)> uptr(new Triple{1,2,3},f);  // decltype(f) te sorun çıkıyor.Aşağıda incelendi.
+	unique_ptr<Triple, decltype(f)> uptr(new Triple{1,2,3},f);  // decltype(f) te sorun çıkıyor.Aşağıda incelendi.
 }
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
