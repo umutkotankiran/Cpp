@@ -1204,9 +1204,10 @@ int main()
     sp->func();   // bunu çağırınca shared from this ile sp nin bir kopyası oluşacak, dinamik ömürlü sharedlerin sayısı 1 artacak.
     
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    Burası exception throw eder çünkü hayatı shared ptr ye bağlanmış bir dinamik ömürlü nesne olmalı. Burada raw pointer kullanılmış.
 
-
-    Neco *p = new Neco; // Burası exception throw eder çünkü hayatı shared ptr ye bağlanmış bir dinamik ömürlü nesne olmalı. Burada raw pointer kullanılmış.
+    Neco *p = new Neco;
 
     try {
     	p->func();
