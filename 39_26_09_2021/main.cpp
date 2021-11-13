@@ -953,7 +953,8 @@ public:
 	[&] -----> yerel değişkenler + *this referans capture et
 	[&,this] -----> yerel değişkenler referans capture et + *this referans capture et
 	[&,*this] -----> yerel değişkenler referans capture et + *this copy ile capture et
-	[=] ----> herşey copy + *this referans yoluyla ama depricated oldu *this için olan özelliki. TEST ETTİM
+	[=] ----> herşey + *this referans yoluyla ama depricated oldu *this için olan özelliki. TEST ETTİM!!!!!! BURASI NORMALDE OLAN [=] DEN FARKLI
+		  CLASS LAR İÇİNDE OLDUĞU ZAMAN [=] REFERANS GİBİ ÇALIŞTI.
 	[=,this] ---> Herşey copy + *this referans yoluyla
 	[=,*this] ----> Herşey copy, *this te copy
 
