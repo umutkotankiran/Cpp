@@ -879,8 +879,8 @@ void func(T &&x)
 	foo(std::forward<T>(x)); // Dİkkat decltype yok çünkü T ye gelen tür belli
 }
 
-template <typename Args>
-void func(Args... &&args)
+template <typename ...Args>
+void func(Args&& ...args)
 {
 	foo(std::forward<Args>(args)...); // Burasıda variadic.
 }
