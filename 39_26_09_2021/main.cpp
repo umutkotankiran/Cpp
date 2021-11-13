@@ -953,7 +953,7 @@ public:
 	[&] -----> yerel değişkenler + *this referans capture et
 	[&,this] -----> yerel değişkenler referans capture et + *this referans capture et
 	[&,*this] -----> yerel değişkenler referans capture et + *this copy ile capture et
-	[=] ----> herşey  + *this referans yoluyla ama depricated oldu *this için olan özelliki. TEST ETTİM
+	[=] ----> herşey copy + *this referans yoluyla ama depricated oldu *this için olan özelliki. TEST ETTİM
 	[=,this] ---> Herşey copy + *this referans yoluyla
 	[=,*this] ----> Herşey copy, *this te copy
 
