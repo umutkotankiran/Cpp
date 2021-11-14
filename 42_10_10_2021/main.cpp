@@ -5,8 +5,8 @@ Inmemory input output işlemleri.
 
 Giriş yada çıkış işleminin doğrudan programın kullandığı bellek alanı üzerinde yapılması kastediliyor.Mesela char türden bir dizi var. 
 Herhangibir çıktıyı o dizide yazı formunda oluşturmak  istiyoruz.Yada elimizde bir yazı formunda veri var, onun karakterlerini kullanarak bir formatlı giriş işleminde kullanmak istiyoruz.
-Yani karakterleri standart inputtan değil bir dosyadan değil doğrudan bellekten almak istiyoruz. C deki karşılıkları spirntf ve sscanf funcları. 
-Burada bu işi yapan sınıflar var bunlşar sstream header file da tanımlanan sınıflar var.
+Yani karakterleri standart inputtan değil bir dosyadan değil doğrudan bellekten almak istiyoruz. C deki karşılıkları sprintf ve sscanf funcları. 
+Burada bu işi yapan sınıflar var bunlar sstream header file da tanımlanan sınıflar var.
 
 Burada ise ostringstring istringstring ve stringstream sınıfları var demiştik.Bunlar sstream header file içinde tanımlanmış
 
