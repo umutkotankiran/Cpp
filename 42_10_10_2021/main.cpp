@@ -1379,7 +1379,7 @@ int main()
 
 	array<int>ivec(100);
 
-	while(ifs.read(reinterpret_cast<char *>(ivec.data()),sizeof(int) * ivec.size())
+	while(ifs.read(reinterpret_cast<char *>(ivec.data(),sizeof(int) * ivec.size())
 	{
 		print(begin(ivec), end(ivec));
 		_getch();
