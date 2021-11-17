@@ -596,7 +596,7 @@ Neden gloabal funclar, static olmuyor ?
 
 Friend Bildirimi
 
-a - Bir global(namespace) için yapılabilir.
+a - Bir global(namespace) func için yapılabilir.
 
 b - Bir başka sınıfın üye functionu için yapılabilir.
 	(Sınıf Complete type olarak tanımlanmalı.Incomplete type ile bildirilirse SENTAKS HATASI OLUR.ÖRNEKLERDE VAR)
