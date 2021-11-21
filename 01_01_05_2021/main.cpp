@@ -1,10 +1,5 @@
 /*
 
-Meeting Id : 895 3331 1835
-Password : 111222
-
-
-
 C nin eski standartlarında implicit int var
 
 foo()
