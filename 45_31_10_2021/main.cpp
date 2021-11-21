@@ -1190,7 +1190,7 @@ int main()
 {
 	variant<int,double,string,Date> vx;
 
-	auto b = holds_alternative<double>(vx);	// bool döndürüyor.Şuanda alternatiflerden biri double.True
+	auto b = holds_alternative<double>(vx);	// bool döndürüyor.True döndürüyorsa demekki variant double tutuyor.Burada false döndürür.
 
 	--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1201,7 +1201,7 @@ int main()
 
 	Veya aşağıdaki ile aynı anlamda
 
-	if(holds_alternative<Date>(vx)) // burayı yaz
+	if(holds_alternative<Date>(vx)) // Date tutuyorsa bloğa girer
 	{
 	
 	}
