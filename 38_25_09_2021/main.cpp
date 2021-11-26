@@ -836,7 +836,7 @@ int main()
 {
 	std::cout << "main basliyor\n";
 	{
-		std::unique_ptr<Triple[]> uptr{ new Triple[10]  };  // TRIPLE[] KULLANILMIŞ. UB BÖYLE ÇÖZÜLDÜ. DELETE EDERKENDE DELETE [] KULLANIYOR.
+		std::unique_ptr<Triple[]> uptr{ new Triple[10]  };  // TRIPLE[] KULLANILMIŞ. UB BÖYLE ÇÖZÜLDÜ. KONTROL ETTİM. DELETE EDERKENDE DELETE [] KULLANIYOR.
 	}
 	std::cout << "main bitiyor\n";
 }
@@ -855,7 +855,7 @@ int main()
 {
 	std::cout << "main basliyor\n";
 	{
-		std::unique_ptr<Triple,TripleDeleter> uptr{ new Triple[5]  };  // TRIPLE[] KULLANILMIŞ. UB BÖYLE ÇÖZÜLDÜ. DELETE EDERKENDE DELETE [] KULLANIYOR.
+		std::unique_ptr<Triple,TripleDeleter> uptr{ new Triple[5]  };  // TRIPLE KULLANILMIŞ BU SEFER. DELETE EDERKENDE DELETE [] KULLANIYOR.
 	}
 	std::cout << "main bitiyor\n";
 }
