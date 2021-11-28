@@ -812,8 +812,8 @@ Tamsayı için unsigned long long türünden olması zorunlu.Yani belirli parame
 
 PARAMETRELER AŞAĞIDAKİLER OLABİLİR
 ----------------------------------
-( const char * )	(1)
-( unsigned long long int )	(2)
+( const char * )	(1)	UNCOOKED PARAMETREİK YAPISI
+( unsigned long long int )	(2)	BURASI VE AŞAĞIDAKİLERİN TAMAMI COOKED
 ( long double )	(3)
 ( char )	(4)
 ( wchar_t )	(5)
