@@ -622,7 +622,7 @@ Diğer durumda,
 func(int x) buradaki parametrenin, void func(T *x) için tür çıkarımı yapılmaya çalışılsa herhangibir şekilde
 tür çıkarımı legal olmayacak. 
 
-Burada biri legal diğeri legal değil, LEGAL olan func seçilecek.
+BURADA DAHA SPESİFİK OLAN TÜR HATA VERDİ. SPESİFİK OLAN TÜR SEÇİLİR
 
 
 ---------------------------------------------------
