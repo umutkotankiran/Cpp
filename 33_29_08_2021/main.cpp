@@ -230,39 +230,35 @@ Son öğe ile yer değiştirip sonra silebiliriz.
 
 
 ================================================================================================================================================================
-================================================================================================================================================================
-================================================================================================================================================================
-================================================================================================================================================================
-================================================================================================================================================================
 
-DEQUE CONTAINER
+std::deque CONTAINER
 ---------------
 
-Double ended queue dan uydurmuşlar.
+double ended queue'dan uydurmuşlar.
 Polüler veri yapısından uydurmuşlar. Avantajı index ile sabit zamanda erişmek.
 Baştan ve sondan eklemeyide yine sabit zamanda yapmak.
 Sabit zaman derken amortised constant time.
 
-Vectorden farklı olarak hem baştan hemde sondan eleme constant time da.
-Vectorde sadece sondan ekleme constant idi.
-
+std::vector'den farklı olarak hem baştan hemde sondan ekleme "constant time" da.
+vector'de sadece sondan ekleme constant time idi.
 Ama index ile erişmek yine constant time da. Hepsinin avantajları ve dezavantajları var.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Deque implementasyonu
+deque implementasyonu
 
-Bu dinamik ömürlü dizilerin dizisi aslında. Tipik bir deque in bir t zamanındaki
-bellek yerleşimi böyle(31:53) olabilir. Buradaki sütunlar hepaten ayrı ayrı allocate ediliyorlar.
-Bunlara popüler olarak chunk deniyor. Chunkların boyutu implementasyona bağlı. Sondan ekleme yaparken chunklardan birini, baştan ekleme yaparken
-chunklardan birini kullanacağız. Dolayısı ile burada reallocation yok.
+Bu dinamik ömürlü dizilerin dizisi aslında. 
+Tipik bir deque'in bir t zamanındaki bellek yerleşimi böyle(31:53) olabilir. 
+Buradaki sütunlar hepaten ayrı ayrı allocate ediliyorlar.
+Bunlara popüler olarak chunk deniyor. Chunk'ların boyutu implementasyona bağlı. 
+Sondan ekleme yaparken chunklardan birini, baştan ekleme yaparken chunklardan birini kullanıyoruz. Dolayısı ile burada reallocation yok.
 
 Olsa olsa bir chunk bittiğinde yeni bir chunk allocate edilecek. Allocation var ama
 vectordeki gibi bir realloc yok. Eski bellek bloğundakilerin yeni bir yere taşınması gibi.
 
-NASIL OLUYORDA İNDEXLE ERİŞMEK SABİT ZAMANDA OLUYOR.
+NASIL OLUYORDA İNDEXLE ERİŞMEK SABİT ZAMANDA OLUYOR?
 Bunların adresleri için bir tablo var.
-mesea 88 değerindeinin indexi 12 olsun. index ile chunka erişiyor ve onunda belli indextei
+mesela 88 değerindeinin indexi 12 olsun. index ile chunka erişiyor ve onunda belli indextei
 elemanına erişiyor.Client kod açısından bakınca deque teki 12. öğe.
 
 Sondan ve baştan eklemenin maaliyeti O(1).
@@ -325,14 +321,13 @@ int main()
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-NEDEN DEQUE KULLANALIM
+NEDEN std::deque KULLANALIM?
 
-1. Hem index ile erişip, hem baştan hemde sondan sıksık ekleme silme yapıyorsak,
-vector baştan eklemede constant t,me karmaşıklığa sahip değil ama deque constant time.
+1. Hem index ile erişip, hem baştan hemde sondan sıksık ekleme silme yapıyorsak, vector baştan eklemede constant time karmaşıklığa sahip değil ama deque constant time.
 Bu başlı başına sebep.
 
-2. Vectorde reallocation var ama burada yok.Baştan ne kadar büyüyeceği belli ise reserve edilir
-ama belirsiz ise reserve etmekte mantıksız.
+2. vector'de reallocation var ama burada yok. Baştan ne kadar büyüyeceği belli ise reserve edilir
+ama belirsiz ise reserve etmek de mantıksız.
 
 3. Iterator invalidation ile iligli olabilir. Deque in iteratör invalidation kuralları
 vectörünkine göre farklı. Burada avantaj varsa yine deque kullanılabilir.
@@ -615,7 +610,6 @@ int main()
 	mylist.emplace_back(1,4,5); // Burada sadece int ctor çağrılıyor.
 	// elemanı doğrudan kullanmak için argümanlar elimizde ise emplace_back kullanılabilir.
 	// copy ellisiona çok benziyor.
-
 }
 
 
@@ -784,7 +778,7 @@ while(!x.empty())
 
 SPLICE
 
-Bir bağlı listeden bir veya daha fazla öğeyi list in birinden çıkarıp diğerine ekliyoruz.
+Bir bağlı listeden bir veya daha fazla öğeyi list'in birinden çıkarıp diğerine ekliyoruz.
 	
 int main()
 {
@@ -840,7 +834,7 @@ int main()
 ================================================================================================================================================================
 ================================================================================================================================================================
 
-FORWARD LIST
+std::forward_list
 EN PROBLEMLİ VE EN AZ KULLANILAN CONTAINER :D:D:D:D:D
 
 Modern C++ tan önce forward_list sınıfı yoktu. Bu geldiği zaman belki ideal isim slist
@@ -931,7 +925,7 @@ int main()
 
 	-------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	Aşağıdaki gibide yapılabilir 
+	Aşağıdaki gibi de yapılabilir 
 
 	forward_list<string> mylist{"ali","hasan","huseyin","ali","gul","eda"}; //BURADA FORWARD LIST OLDU
 
@@ -1355,8 +1349,8 @@ Normalde return değeri iterator dür ve insert edilmiş öğeye iteratör.
 multisette insert edilmeme şansı olmadığı için return değeri doğrudan iterator.
 Ama setin insert func return değeri pair<iterator,bool>
 
-bool ekleme yapıldı mı yapılmadımı bunun bilgisini veriyor. True ise ekleme yapıldı false
-ise yapılmadı
+bool ekleme yapıldı mı yapılmadı mı bunun bilgisini veriyor. 
+true ise ekleme yapıldı false ise yapılmadı
 
 iterator ise ekleme işlemi yapıldıysa, iterator eklenmiş öğeye iterator, ama yapılmadıysa var
 olan değere iterator.
