@@ -976,8 +976,8 @@ cout << *iter << "\n";
 	BackInsertIterator& operator++() { return *this; }				// ++destbeg ile destbeg aynı olması için
 	BackInsertIterator& operator++(int) { return *this; }			// destbeg++ ile destbeg aynı olması için
 	BackInsertIterator& operator=(const typename C::value_type &val) // integral_constant tan hatırla. value_type tür bilgisi.C ye bağlı tür olduğundan typename geldi.
-	{																 // C::value_type neden yazıldı? push edilecek değer int. C ise vector<int>. C::value_type ile int türüne
-		mc.push_back(val);											 // erişebildik.
+	{							        // C::value_type neden yazıldı? push edilecek değer int. C ise vector<int>. C::value_type ile int türüne
+		mc.push_back(val);					// erişebildik.
 		return *this;
 	}
  private:
