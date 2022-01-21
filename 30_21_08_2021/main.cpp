@@ -1323,7 +1323,7 @@ int main()
  con.rbegin -> Reverse itetator				return değeri : container::reverse_iterator
  con.crbegin -> const reverse iterator		return değeri : container::const_reverse_iterator
 
- YUKARIDAKİLER ITERATOR ADAPTERLAR
+ YUKARIDAKİLER ITERATOR ADAPTORLAR
  AŞAĞIDAKİLERDE TÜM LİSTE
  
 reverse_iterator
