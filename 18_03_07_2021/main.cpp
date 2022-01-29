@@ -171,6 +171,239 @@ headerfile initializer_list
 C++ ta küme parantezi içinde virgüllerle ayrılmış bir liste oluşturursanız ( {2,5,55,66,42,1} gibi ), bu liste
 birçok yerde initializer list denilen sınıf türünden bir nesneye dönüştürülerek kullanılıyor.
 
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+
+NOT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+BU KISIM İLERİ C++TAN ALINDI
+
+TEMPLATE
+--------
+template<typename T>
+class initializer_list{
+public:
+	constexpr initializer_list(const T* fst, const T* lst): first {fst}, last{lst} {  }
+	constexpr const T* begin()const {return first;}
+	constexpr const T* end()const {return last;}
+	constexpr std::size_t size()const {return static_cast<size_t>(last - first);}
+private:
+	const T* first;
+	const T* last;
+};
+
+-------------------------------------------------------------------------------------------------------------------------------
+#include<initializer_list>
+int main()
+{
+	auto x = {1,3,5,7};
+	auto y = x;
+	// x.begin() == y.begin() // Bunlar eşit midir. Eşit olmak zorunda
+	// &*x.begin() == &*y.begin() // Bunlar eşit midir. Eşit olmak zorunda
+}
+-------------------------------------------------------------------------------------------------------------------------------
+int main()
+{
+	int a[] = {1,2,3,4};
+	initializer_list<int>x(a,a+4); // normal parantez kullanıldı dikkat.
+	for(auto val : x)
+	{
+		std::cout << val << ' '; // 1 2 3 4
+	}
+}
+-------------------------------------------------------------------------------------------------------------------------------
+SONUÇLAR
+--------
+1. Bu light bir sinif
+2. 2 pointer elemanı var.
+3. constexpr ctoru var.
+4. ptr dan ötürü copy maliyeti çok düşük
+Kopyalandığı zaman aslında biz init list sınıfı türünden nesnenin copy sini çıkartmış oluyoruz.
+Dolayısı ile bir funcın parametresi init list ise aslında func, o init listin işaret ettiği rangeteki
+öğelerin copy edilmesi sonucunu doğurmuyor, sadece 2 ptr copy edecek.
+İnitializer listin tuttuğu adresteki nesneler const olarak ele alınıyor ve değiştirilemez.
+-------------------------------------------------------------------------------------------------------------------------------
+İNIT LIST ELIMIZDEYSE NELER YAPARIZ
+1.
+DÖNGÜYLE DOLAŞILABİLİR.
+int main()
+{
+	//auto x = {1,3,5,7,9}; // Geçerli
+	//auto x = {string{"ali"},string{"veli"},string{"ayse"}}; // Geçerli.Derleyici arka planda dizi oluşturmalı. 
+															  // aggregate type
+	x.begin()
+	x.end()
+	x.size()
+	Bu funclar var.
+	for döngüsüylede yapılabilir aşağıdaki gibi range base dor loop ilede yapılabilir.
+	------------------------------------------------------------------------------------------------
+	for(auto x : {1,3,6,9,12}) // elemanlar sabit ifadesi olacak diye birşey de yok.
+	{
+		foo(x); // yapılabilir.
+	}
+}
+Dizinin ilk elemanının ve bittiği yerin adresini init list in begin ve end ptr larında tutuyor.
+Initializer listteki elemanlar const ele alınır ve değiştirilemez.Contigues range olarak kullanılma garantisi var.
+-------------------------------------------------------------------------------------------------------------------------------
+2.
+SABIT IFADESI OLMAK ZORUNDA DEĞIL.
+void func(int a, int b, int c)
+{
+	auto x = {a,b,c}; // Geçerli
+}
+-------------------------------------------------------------------------------------------------------------------------------
+3.
+ADRESLER
+void func(std::initializer_list<int> x)
+{
+	std::cout << "&x = " << &x << '\n'; // 008FF7E0
+	std::cout << x.begin() << '\n';		// // 0012FFA48
+}
+int main()
+{
+	auto mylist = {1,5,7,8};
+	std:cout << "&mylist = " << &mylist << "\n"; // 008ff8d4
+	func(mylist);		// 008FF7E0 nesnelerin adresi farklı çıktı
+	cout << mylist.begin() << '\n'; // 0012FFA48 ilk eleman adresleri aynı
+}
+NOT : ELEMANLAR CONST T*.DOLAYISIYLA BEGİN VE ENDİ ÇAĞIRDIĞIMIZDA DÖNEN ADRES CONST T*. DEREFERENCE ETTİĞİMİZDE
+	  CONST BİR NESNE OLUYOR. BU DURUMDA SET İŞLEMİNDE SENTAKS HATASI OLUŞUR.
+İNIT LIST ADRESLERI FARKLI AMA TUTTUĞU ELEMANLARIN ADRESLERI AYNI !!!!!!!!!
+-------------------------------------------------------------------------------------------------------------------------------
+4.
+CTORLAR ARASI FARKLILIK
+int main()
+{
+	initializer_list<int> x{1,2}; // Bizden listedeki öğeleri istiyor.
+	initializer_list<int> x(1,2); // Bizden range istiyor
+}
+-------------------------------------------------------------------------------------------------------------------------------
+Yerel bir dizi ile init listi hayata getirirsek dangling hale getirme ihtimalimiz var mı? 
+VAR. İnit listi kullandığımız yerlerin neredeyse hepsinde.
+-------------------------------------------------------------------------------------------------------------------------------
+İKİ NOKTAYA DİKKAT ETMEK GEREKLİ
+Dilin kuralları arasındaki bir uyumsuzluk.Normalde auto type deduction ile template argument deduction aynı
+Sadeec initializer listte farklılık var.
+template<typename T>
+void func(T x);
+int main()
+{
+	func(10); // int türü. Kurallar auto ile aynı
+	------------------------------------------------------------------------------------------------
+	auto x = {1,4,5,6}; // Burada auto yerine initializer_list<int>
+	func({1,3,5,7,9}); // Burada initializer_list<int> değil.Scott Meyers bunu eleştiriyor
+}
+-------------------------------------------------------------------------------------------------------------------------------
+DİĞER NOKTA. BİR SINIFIN INIT LIST CTORU OLMASI DURUMU
+class Nec{
+public:
+	
+	// BU CTOR ILE NE YAPILIR
+	Nec(std::initializer_list<int> list) : mvec{list}{ }	// vectorun init list parametreli ctoru var.İnit edilebilir.
+	// DATA MEMBER STL CONTAINERDIR VE CTOR INIT LIST ILE INIT EDILIR
+	------------------------------------------------------------------------------------------------
+	
+	//INIT LIST DOLAŞILABİLİR
+	Nec(std::initializer_list<int> list) 
+	{
+		for(auto x : list)
+		{
+			//x...
+		}
+	}
+	------------------------------------------------------------------------------------------------
+	Nec(std::initializer_list<int> list) : mx(std::count(list.begin(),list.end(),7)) //buda olabilir
+	{
+	
+	}
+private:
+	std::vector<int>mvec;
+	int mx;
+};
+-------------------------------------------------------------------------------------------------------------------------------
+int main()
+{
+	auto list = {2,5,7,1,9};
+	auto list = {2,5,7,1,9};
+	vector<int> ivec(list); // Burada init list parametreli ctor kullanıldı
+	vector<int> ivec{list}; // Geçerli
+}
+-------------------------------------------------------------------------------------------------------------------------------
+int main()
+{
+	{x,y,z,t} // içindekilerin(x,y,z,t init list olsaydı) kendisi init list olsaydı vectore argüman göndersekdik 
+				// vector<intializer_list> olmalıydı
+}
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+class Myclass{
+public:
+	Myclass(std::initializer_list<int>)
+	{
+		std::cout << "ilist\n";
+	}
+	Myclass(int)
+	{
+		std::cout << "int\n";	
+	}
+	Myclass(int,int)
+	{
+		std::cout << "int int\n";	
+	
+	}
+};
+int main()
+{
+	Myclass m1{1}; // Burada init listin önceliği var
+	Myclass m1{1,2}; // Burada init listin önceliği var yine
+	Myclass m2(1); // Burada int ctor çağrılır
+	
+	Myclass m3(1,2); // Burada int int ctor çağrılır
+}
+-------------------------------------------------------------------------------------------------------------------------------
+int main()
+{
+	vector<int>ivec1(10); // size_t parametreli ctor
+	vector<int>ivec2(10,3); // size_t,const&t parametreli ctor
+	vector<int>ivec1{10}; // init list parametreli ctor
+	vector<int>ivec1{10,3}; // init list parametreli ctor
+	vector<int> vec = 10; // Sentaks hatası Size_t parametreli ctor explicit 
+	string str(10,'A'); // Fill ctor
+	string str{'A'}; // Initalizer list parametreli ctor. char değil.
+	initializer_lisat<int> x{3.4}; //Narrowing conversion.Sentaks hatası
+	auto x = {1,4,5,4u}; // Sentaks hatası
+}
+-------------------------------------------------------------------------------------------------------------------------------
+void func(std::initializer_list<int>&) // bu gereksiz. referansa gerek yok.
+{
+	
+}
+-------------------------------------------------------------------------------------------------------------------------------
+int main()
+{
+	initializer_list<int> x{}; //Geçerli
+	std::cout << x.size(); // 0
+}
+-------------------------------------------------------------------------------------------------------------------------------
+int main()
+{
+	std::initializer_list<int> x{1,5,8,12};
+	x.rbegin(); // Bu func yok
+	auto iter = rbegin(x); // Global olanı var
+}
+
+
+NOT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+İLERİ C++TAN ALINAN NOTLAR BURADA BİTİYOR
+
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+
+BURADAN YİNE TEMEL C++ NOTLARIYLA DEVAM EDİLİYOR
+
 Bu listedeki öğeler int ise, init listin int açılımı, double ise double açılımı ...
 Bu türden nesneleri yaratmenın yolları var.
 initializer_list<int> mylist {2,4,6,8,15};
