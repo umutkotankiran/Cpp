@@ -138,35 +138,35 @@ Burada konuyu %70 oranında ele alacağız. Bu konu için biraz çaba sarfetmemi
 
 			|------------|
 			|  ios_base  |
-			|------------|																    |------------------|
-				  ^																			|basic_streambuf<> |
-				  |																			|------------------|
-				  |																			streambuf/wstreambuf
+			|------------|							   |------------------|
+			      ^								   |basic_streambuf<> |
+			      |								   |------------------|
+			      |								   streambuf/wstreambuf
 			|------------|
 			| basic_ios<>|
 			|------------|
-				ios/wios
-				(virtual)
-			 ^			 ^
-			/			  \
-Virtual	in /			   \	 Virtual inheritance
-		  /					\
-		 /					 \
-|----------------|		|---------------|
-|basic_istream<> |		|basic_istream<>| 
-|----------------|		|---------------|
- istream/wistream		ostream/wostream
+		  	   ios/wios
+			   (virtual)
+		      ^			^
+		     /			 \
+Virtual	inheritance /			  \	 Virtual inheritance
+		   /			   \
+		  /			    \
+|----------------|			|---------------|
+|basic_istream<> |			|basic_istream<>| 
+|----------------|			|---------------|
+ istream/wistream			ostream/wostream
 	
-		   ^                 ^
-			\			    /
-			 \			   /
-			  \			  /
-			   \		 /
-				\	    /
-			|----------------|
-			|basic_iostream<>|
-			|----------------|
-			iostream/wiostream
+	       ^                	     ^
+		\			    /
+		 \			   /
+		  \			  /
+		   \		 	 /
+ 		    \	    		/
+		     |----------------|
+		     |basic_iostream<>|
+		     |----------------|
+		     iostream/wiostream
 
 IOS_BASE = Bu bir sınıf şablonu değil. Karakter türünden bağımsız giriş çıkış işlemi türünden bağımsız interface var.
 Biz cout veya cin kullanırken kullandığımız memberfunclar onun ios_base den aldıkları funclar. 
