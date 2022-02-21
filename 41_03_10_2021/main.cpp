@@ -398,7 +398,7 @@ Bunların default durumları var.boolean verinin yazılmasında default durum 0 
 int main()
 {
 	cout << (10 > 5) << "\n"; // Bunu yazan func fmtflags türünden veri elemanına bakacak, orada tipik olarak bit seviyesinde bir biti get edecek ve boolean değerin false 
-							 // olduğunu görecek ve 10 > 5 i true olarak değilde, 1 olarak yazacak.Default durumu 0 - 1 yazımı 
+				  // olduğunu görecek ve 10 > 5 i true olarak değilde, 1 olarak yazacak.Default durumu 0 - 1 yazımı 
 
 	---------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -406,11 +406,11 @@ int main()
 	gerekiyor.setf func ı ile yaparız.
 
 	cout.setf(ios_base::boolalpha); // bunu yazarsak, setf bu bayrakla sınıfın fmtflags türünden veri elemanını veyalıyor.
-									// artık boolean değerler true false olacak. Arka planda bu bayrakla veyalayacak
-									// tek yapmamız gereken bir biti 1 diğerleri 0 olan bayrağı argüman olarak göndermek.
-									// Bu bayraklarda(yada bitsel maskelerde) en tepedeki taban sınıfın içinde constexpr static
-									// veri elemanı olarak tanımlanmış.Bu bayrak ios_base::boolalpha. Burada sınıfın fmtflags türden
-									// veri elemanını bu flag ile veyalıyor. Bundan sonra boolean değerler true false yazacak.
+					// artık boolean değerler true false olacak. Arka planda bu bayrakla veyalayacak
+					// tek yapmamız gereken bir biti 1 diğerleri 0 olan bayrağı argüman olarak göndermek.
+					// Bu bayraklarda(yada bitsel maskelerde) en tepedeki taban sınıfın içinde constexpr static
+					// veri elemanı olarak tanımlanmış.Bu bayrak ios_base::boolalpha. Burada sınıfın fmtflags türden
+					// veri elemanını bu flag ile veyalıyor. Bundan sonra boolean değerler true false yazacak.
 
 	---------------------------------------------------------------------------------------------------------------------------------------------
 
