@@ -1249,7 +1249,7 @@ int main()
 	while(getline(ifs,sline))
 	{
 		//svec.push_back(sline); // Burada copy semantics çalışır
-		svec.push_back(std::moves(line)); // Burada ise taşıma semantiği çalışır.Move from state teki nesneyi tekrar kullandık ama tekrar değer yerleştiriyoruz her turda.
+		svec.push_back(std::move(line)); // Burada ise taşıma semantiği çalışır.Move from state teki nesneyi tekrar kullandık ama tekrar değer yerleştiriyoruz her turda.
 	}
 	std::cout << "svec.size() = " << svec.size() << "\n";
 }
