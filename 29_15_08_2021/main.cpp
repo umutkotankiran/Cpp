@@ -39,7 +39,7 @@ Ekleme silme işlemleri konumla yapılıyor.İstediğim konuma istediğim öğey
 std::vector			-> En çok kullnılan STL container
 std::deque			-> double ended queue. Baştan ve sondan ekleme yapabileceğimiz veri yapısı
 std::list			-> doubly linked list
-std::forward_list	-> (C++ 11 de geldi)  singly linled list
+std::forward_list		-> (C++ 11 de geldi)  singly linled list
 std::string			-> Yazı tutuyor.Gördük bunu.Bu da containers.Bunu daha çok STL algoritmalarıyla kullanacağız.
 std::array			-> (C++ 11 de geldi) array container
 
@@ -51,9 +51,9 @@ ASSOCIATIVE CONTAINERS
 Ekleme işlemi belirli bir konum değil değerle yapılıyor.
 İkili arama ağacı veri yapısı kullanılıyor. Değerin ne olduğuna bağlı olarak ekleneceği yer belirleniyor.
 
-std::set		-> Sadece anahtar tutuyor.Tamsayıların setini oluşturursak 17 nin sette olup olmadığını sorgulayabiliriz.Bir anahtardan bir tane var.
+std::set	-> Sadece anahtar tutuyor.Tamsayıların setini oluşturursak 17 nin sette olup olmadığını sorgulayabiliriz.Bir anahtardan bir tane var.
 std::multiset	-> Bir anahtardan birden fazla olabilir.Tamsayıların setinde 1 tane 12 olabilir.multisetinde 3,4,5,6 tane 12 olabilir.
-std::map		-> Anahtarın değerle eşlendiği veri yapısı.Anahtarla erişiyoruz yine ama anahtar karşılığı bir değere erişiyoruz.Buradakiler pair gibi anahtar değer çifti
+std::map	-> Anahtarın değerle eşlendiği veri yapısı.Anahtarla erişiyoruz yine ama anahtar karşılığı bir değere erişiyoruz.Buradakiler pair gibi anahtar değer çifti
 std::multimap	-> Bir anahtardan birden fazla olabilir.
 
 
@@ -64,9 +64,9 @@ Diğer dillerdeki adı hash tablosu denen veri yapısını implemente eden sın�
 Neden diğer dillerden farklı olarak böyle tuhaf isimler almışlar.Görece olarak geç dile eklenmesi.
 Dİğer diller eklemişti bunu kendisine ama C++ bu isim seçilseydi geçmişte yazılan kodlarda sentaks hataları oluşabilirdi.
 
-std::unordered_set			-> (C++ 11 de geldi) Sadece anahtar tutuyor.Bir anahtardan bir tane var.
+std::unordered_set		-> (C++ 11 de geldi) Sadece anahtar tutuyor.Bir anahtardan bir tane var.
 std::unordered_multiset		-> (C++ 11 de geldi) Bir anahtardan birden fazla olabilir.
-std::unordered_map			-> (C++ 11 de geldi) Anahtarın değerle eşlendiği veri yapısı.Buradakiler pair gibi anahtar değer çifti
+std::unordered_map		-> (C++ 11 de geldi) Anahtarın değerle eşlendiği veri yapısı.Buradakiler pair gibi anahtar değer çifti
 std::unordered_multimap		-> (C++ 11 de geldi) Bir anahtardan birden fazla olabilir.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ Bunun range olması için aşağıdaki koşul sağlanmalı.
 
 Birinci konumu tutan konumu artırdığımda bir süre sonra ikinci konuma eşitlenmeli.
 [konum1		konum2)
-p1			p2
+p1		p2
 
 Range boşta olabilir veya içinde öğeler tutulabilir. Range bir containerın range i.Yani herzaman bir containerla ilişkili.
 Range sözkonusu olduğunda konum1 dahil ama konum2 dahil değil.
@@ -254,7 +254,7 @@ Bulursa konum bulduğunun konumunu, bulamazsa end konumu
 
 template <typename Iter, typename T>
 Iter Find(Iter beg, Iter end, const T &val) // sonuncu aranacak değer. Eğer bulursa konumu
-{											// bulamazsa end konumunu döndürüyor.
+{					    // bulamazsa end konumunu döndürüyor.
 	while(beg != end)
 	{
 		if(*beg == val)
@@ -265,8 +265,8 @@ Iter Find(Iter beg, Iter end, const T &val) // sonuncu aranacak değer. Eğer bu
 }
 
 Algoritmanın gücü : Birkaç satırlık func şablonu bu.Bu şablondan yazılacak function, bir int dizide int te arayabilir
-					bir bağlı listede tarihte arayabilir, oyun programındaki fighter sınıf türünden nesneler tutan dizide 
-					bir fighterda arayabilir.Derleyici bu template ten kodu gönderdiğimiz türe göre yazacak.
+		    bir bağlı listede tarihte arayabilir, oyun programındaki fighter sınıf türünden nesneler tutan dizide 
+		    bir fighterda arayabilir.Derleyici bu template ten kodu gönderdiğimiz türe göre yazacak.
 					
 
 int main()
@@ -305,7 +305,7 @@ int main()
 	using namespace std;
 	list<string>svec {"ali","can","deniz","murat","hakan","ayse"}; // dikkat vector değil list.
 
-	string name= "hakan";
+	string name = "hakan";
 
 	if(auto iter = Find(svec.begin(), svec.end(), name); iter != svec.end()) // end değilse öğeyi bulmuştur.
 	{
@@ -435,7 +435,7 @@ int main()
 {
 	int a[] = {1,2,3,4,5,6,7};
 	print(a,a+sizeof(a)/sizeof(a[0]));	// print i hocanın kendi yazmış.
-										// normalde bu şekilde çağrılırdı.
+						// normalde bu şekilde çağrılırdı.
 
 	//Bunu doğrudan yazabiliriz.Specialization yapılmış
 	print(begin(a),end(a)); // böyle yapabiliriz.
@@ -539,7 +539,7 @@ int main()
 }
 ------------------------------------------------------------------------------------------
 using type = std::ostream_iterator<int>::iterator_category; // burada doğrudan ostream_iterator yazdığımız için
-int main()													// ::iterator:: gibi bir nesneye erişmeye gerek kalmadı
+int main()						    // ::iterator:: gibi bir nesneye erişmeye gerek kalmadı
 {
 	cout << typeid(type).name() << "\n"; //output iterator tag  ..
 }
@@ -554,14 +554,14 @@ int main()
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Her iteratörün bir iterator categorisi var. Bir iteratör sınıfını oluşturan, o oluşturduğu iterator sınıfının iteratör kategorisinide belirlemek zorunda.
-STL de de farklı farklı iteratör sınıfları var, vector ün listin ostream in iterator sınıfı gibi. Bunların hepsininde birer iterator kategorisi var.
+STL de de farklı farklı iteratör sınıfları var, vector ün listin ostreamin iterator sınıfı gibi. Bunların hepsininde birer iterator kategorisi var.
 Bu kategorilerde yukarıda yazan 5 taneden biri olmak zorunda ama iterator kategorisinin ne olduğunu anlamanın yolu, iterator sınıfının iterator category
 nested type ının ne olduğuna bakmak.
 
 İTERATÖR KATEGORISI SÖZKONUSU ITERATÖRLERLE NELER YAPABILIRIM NELER YAPAMAM BUNLARI BELIRLIYOR BU YÜZDEN ÇOK ÖNEMLI!!!!!!!!!!
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-| ITERATOR KATEGORİLERİ	  			  |						OPERASYONLAR						      |													  |
+| 		ITERATOR KATEGORİLERİ		  |						OPERASYONLAR						      |													  |
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 |						  |						          |         					      |	
 |						  |	Copy constructible				  |	ostream_iterator	    		      |	
@@ -617,7 +617,7 @@ int main()
 
 	++iter1;
 	--iter1;
-	--iter1[3];
+	--iter1[3];	
 
 	iter2 - iter1;
 	iter + 2;
@@ -664,7 +664,8 @@ int main()
 	auto iter = ilist.begin();
 
 	iter = ilist.end();   // assingment örneği verdi.
-							// Tabloda yok ama yapıalbiliyor.Hoca ekleyecek
+				// Tabloda yok ama yapıalbiliyor.
+				// Ben ekledim yukarıda var.
 
 }
 
@@ -675,7 +676,7 @@ STL IN EN SIK KULLANILAN ALGORITMASININ KODU.
 template <typename Iterx, typename Itery>
 Itery Copy(Iterx beg, Iterx end, Itery destbeg)
 {
-	while(beg!= end)
+	while(t)
 	{
 		*destbeg++ = *beg++;
 	}
@@ -787,11 +788,9 @@ int main()
 
 -------------------------------------------------------------------------------------------
 
-Bazı STL algoritmaları(copy de olduğu gibi) bir range de yazma işlemi yapıyor. 
-En tipik olanı copy algoritması
+Bazı STL algoritmaları(copy de olduğu gibi) bir range de yazma işlemi yapıyor. En tipik olanı copy algoritması
 
-Burada farklı veri türleri arasında kopyalamalar yapabiiyoruz.
-Önemli olan iterator konumundaki nesnelerin birbirine atanması
+Burada farklı veri türleri arasında kopyalamalar yapabiliyoruz. Önemli olan iterator konumundaki nesnelerin birbirine atanması
 
 Yazma algoritmalarının hepsinin ortak özelliği, return değeri en son yazdığı yerden bir sonraki konum.
 Öğe yoksa containerın end konumu. Bittiği yer oluyor.
@@ -811,7 +810,7 @@ OutIter Copy(InIter beg, InIter end, OutIter destbeg)
 		*destbeg++ = *beg++;
 	}
 	return destbeg; //2. template tür parametresine yazıldığı için
-}					// en son yazılandan bir sonrasını dönecek ayrıca
+}			// en son yazılandan bir sonrasını dönecek ayrıca
 
 
 -------------------------------------------------------------------------------------------
@@ -885,7 +884,7 @@ int main()
 
 ------------------------------------------------------------------------------------------------------
 
-ALGORITMALAR ITERATÖRLERE GÖRE YAZILIYOR VE TÜRLERININ AYN I OLMASI BEKLENMIYOR.
+ALGORITMALAR ITERATÖRLERE GÖRE YAZILIYOR VE TÜRLERININ AYNI OLMASI BEKLENMIYOR.
 
 #include <vector>
 
@@ -1056,8 +1055,8 @@ int main()
 
 	find_if(svec.begin(), svec.end(), is_len_5); 
 	// &islen de yazılabilir.
-	//burada bizim yazdpımız fonksiyona vectordeki stringler gönderilecek.
-	// ne zaman true olursa return edecek
+	// Burada bizim yazdığımız fonksiyona vectordeki stringler gönderilecek.
+	// Ne zaman true olursa return edecek
 
 
 	if(auto iter = find_if(svec.begin(), svec.end(), is_len_5); iter != svec.end())
