@@ -11,13 +11,13 @@ Container iterator ve algoritmalar en önemli 3 üyesi.
 CONTAINER: Veri yapılarını implemente eden sınıf şablonlarına deniyor. Ör: vector dinamik dizi veri yapısını implemente ediyor.
 
 ITERATOR : Pointer benzeri arayüze sahip.Nesneleri pointer gibi kullanılabilen sınıf şablonları.
-		   Amacı : Containerda bulunan öğelerin konumlarını tutan sınıflar.Adreste bir konumdur.Raw pointer da bir iterator olarak kullanılabilir.
-		   Containerda bulunan öğelere erişmek için kulanılıyor.
+	   Amacı : Containerda bulunan öğelerin konumlarını tutan sınıflar.Adreste bir konumdur.Raw pointer da bir iterator olarak kullanılabilir.
+	   Containerda bulunan öğelere erişmek için kulanılıyor.
 
 ALGORITMA : Algoritmaları implemente eden fonk şablonları. sort, find, reverse ...
-			Containerda bulunan veriler üzerinde birtakım işlemler yapılması gerekiyor. Bunların yapılması için algoritma denen functionları çağırıyoruz.
-		    Algoritmalarla containerları birbirine bağlıyan ise iterator.
-			Algoritmalar iteratorleri kullanarak containerlar üzerinde birtakım işlemler yapan functionlar.
+	    Containerda bulunan veriler üzerinde birtakım işlemler yapılması gerekiyor. Bunların yapılması için algoritma denen functionları çağırıyoruz.
+	    Algoritmalarla containerları birbirine bağlıyan ise iterator.
+	    Algoritmalar iteratorleri kullanarak containerlar üzerinde birtakım işlemler yapan functionlar.
 
 BUNLARIN HEPSI TEMPLATE.
 
