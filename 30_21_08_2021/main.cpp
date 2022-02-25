@@ -1328,90 +1328,29 @@ int main()
  4 TANE BEGİN FUNCTIONUMUZ OLDU. HEPSİNİ YAZALIM.
  Container con olsun
 
- con.begin ->								return değeri : container::iterator
- con.cbegin -> const iterator				return değeri : container::const_iterator
- con.rbegin -> Reverse itetator				return değeri : container::reverse_iterator
+ con.begin ->					return değeri : container::iterator
+ con.cbegin -> const iterator			return değeri : container::const_iterator
+ con.rbegin -> Reverse itetator			return değeri : container::reverse_iterator
  con.crbegin -> const reverse iterator		return değeri : container::const_reverse_iterator
 
  YUKARIDAKİLER ITERATOR ADAPTORLAR
  AŞAĞIDAKİLERDE TÜM LİSTE
  
 reverse_iterator
- 
-iterator adaptor for reverse-order traversal
-(class template)
 make_reverse_iterator
-  
-(C++14)
- 
-creates a std::reverse_iterator of type inferred from the argument
-(function template)
 move_iterator
-  
-(C++11)
- 
-iterator adaptor which dereferences to an rvalue reference
-(class template)
-move_sentinel
-  
-(C++20)
- 
-sentinel adaptor for use with std::move_iterator
-(class template)
 make_move_iterator
-  
-(C++11)
- 
-creates a std::move_iterator of type inferred from the argument
-(function template)
+move_sentinel
 common_iterator
-  
-(C++20)
- 
-adapts an iterator type and its sentinel into a common iterator type
-(class template)
 default_sentinel_t
-  
-(C++20)
- 
-default sentinel for use with iterators that know the bound of their range
-(class)
 counted_iterator
-  
-(C++20)
- 
-iterator adaptor that tracks the distance to the end of the range
-(class template)
 unreachable_sentinel_t
-  
-(C++20)
- 
-sentinel that always compares unequal to any weakly_incrementable type
-(class)
 back_insert_iterator
- 
-iterator adaptor for insertion at the end of a container
-(class template)
 back_inserter
- 
-creates a std::back_insert_iterator of type inferred from the argument
-(function template)
 front_insert_iterator
- 
-iterator adaptor for insertion at the front of a container
-(class template)
 front_inserter
- 
-creates a std::front_insert_iterator of type inferred from the argument
-(function template)
 insert_iterator
- 
-iterator adaptor for insertion into a container
-(class template)
 inserter
- 
-creates a std::insert_iterator of type inferred from the argument
-(function template)
 
  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
