@@ -909,7 +909,7 @@ ivec.capacity() vectorun kapasitesini döndürüyor. türü size_type yani size_
 int main()
 {
 	vector<int>ivec;
-	ivec.size = 0 
+	//ivec.size --> 0 
 	ivec.empty() true değer döndürecek.
 	ivec.capacity() vectorun kapasitesini döndürüyor. türü size_type yani size_t ile aynı.
 
@@ -918,7 +918,7 @@ int main()
 	std::size_type  = ivec.size();
 
 
-	vector<ivec>(10);
+	vector<int>ivec(10);
 	ivec.push_back(2); //size = 11
 	ivec.push_back(3); //size = 12
 	ivec.push_back(7); //size = 13
