@@ -652,8 +652,8 @@ ofstream yazma amaçlı dosyaları yönetmek için kullanacağımız sınıf.
 ifstream ise okuma amaçlı.
 fstream hem yazma hemde okuma amaçlı.
 
-Hepsi default initialize edilebniliyorlar. Kopyalanamıyorlar ama taşınabiliyorlar
-Default init edince herhangibir dosyayıu yönetmeyen bir nesne oluşturmuş oluyoruz.
+HEPSI DEFAULT INITIALIZE EDILEBNILIYORLAR.KOPYALANAMIYORLAR AMA TAŞINABILIYORLAR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+DEFAULT INIT EDINCE HERHANGIBIR DOSYAYIU YÖNETMEYEN BIR NESNE OLUŞTURMUŞ OLUYORUZ
 
 FSTREAM
 -------
