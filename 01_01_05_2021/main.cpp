@@ -9,15 +9,15 @@ foo()
 
 c++ ta sentaks hatası.
 
---------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 
-c de fonksiyon adını yazınca, olmasa bile hata vermiyordu.
+C de fonksiyon adını yazınca, olmasa bile hata vermiyordu.
 Eskiden kalma. implicit function decleration.zaten kullanmıyoruz.
 
 C++ ta sentaks hatası.
 
-----------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 
 old style funct. decleration
@@ -32,7 +32,7 @@ double a,b;
 
 C++ ta sentaks hatası.
 
-----------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 
 int foo(int x)
@@ -45,7 +45,7 @@ boş bırakılırsa sadece uyarı gelir.ama UNDEFINED BEHAVIOR.
 
 C++ ta sentaks hatası
 
-------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 C de aşağıdakiler farklı anlamda
 void func();
@@ -54,22 +54,22 @@ void foo(void);
 C++ ta ikisi arasında anlam farkı yok.
 parametre değişkeni yok demek ikiside.
 
--------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
-C99 dan önce bir statemant tan sonra bir değişken tanımlanamıyordu
+C99 dan önce bir statement tan sonra bir değişken tanımlanamıyordu
 yani kodun aşağısında bir değişken tanımlamak yoktu.
 
 
 C++ ta bu mümkün.
 
-----------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 C nin eski c99 dan öncesinde
 for(int i = 0 ; ;)   bu hata
 
 C++ ta ise hata değil.
 
------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 C de geçerli aşağısı
 for(int i = 0; i < 10; ++i)
@@ -79,17 +79,19 @@ for(int i = 0; i < 10; ++i)
 
 C++ ta GEÇERSİZ
 
------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 _Bool c de var.bu keyword
-hatta stdbool inclu değilirse
 
+hatta stdbool include edilirse
 buradaki bool ise macro
+
 bool x = true
 bool x = false yapılabiliyor.
 ama insanlar int kullanıyor.bool çok kullanılan bir konvensiyon değil.
 çakma bool
 
+------------------------------------------------------------------------------------------------------------------------
 
 _Bool C++ ta hata
 C++ taki bool farklı.
@@ -104,6 +106,7 @@ int x = 12;
 bool b = 12; ise eğer burası nonzero yani TRUE olur.
 Eğer 0 olsaydı FALSE olacaktı.
 
+------------------------------------------------------------------------------------------------------------------------
 
 Pointerlardan da bool türüne dönüşüm var.
 
@@ -122,6 +125,7 @@ int x = flag;   x burada 1 dir.
 
 false olsaydı -> 0 a dönüşecekti.
 
+------------------------------------------------------------------------------------------------------------------------
 
 Modern C++ ta bazı kurallar geldi.
 Modern ++ öncesinde
@@ -135,9 +139,7 @@ Modern ++ sonrası
 
 bool türünü pointera atamak yanlış.sentaks hatası.
 
-
-
-------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 C dilinde
 
@@ -147,45 +149,37 @@ bunun türü int
 C++ dilinde
 türü char.
 
-----------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 EN KRİTİK YER
-TÜR DÖNÜŞÜM KURALLARI
-IMPLICIT TYPE CONVERSION
+TÜR DÖNÜŞÜM KURALLARI - IMPLICIT TYPE CONVERSION
 
 C de
-farklı ptr türleri ve farklı tamsayı türleri arası
-implicit type conversion var.
-
+farklı ptr türleri ve farklı tamsayı türleri arası implicit type conversion var.
 
 C++ ta
 BU ÇOK NET SENTAKS HATASI.
 
-DETAYLI yazmayacağım.
-
---------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 Const ile ilgili farklılıklar
 
 C de ilk değer vermeden const nesne yaratılabilir.
-garbage value de olur , ama tanımlanabilir.
+Garbage value de olur , ama tanımlanabilir.
 
-C++ ta sentaks hatası
-ilk değer vermek şart.
-global değişken olsa bile sentaks hatası.
+C++ ta sentaks hatası, ilk değer vermek şart.
+Global değişken olsa bile sentaks hatası.
 
 const int *ptr; hata değil.
 int * const ptr; burası hata.
 
 Yani kendisi const olan nesneleri initialize etmemek sentaks hatası.
 
-
--------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 2. Const farklılığı
 
 C de
-
 int x = 20
 const int x = 20
 bu durumlarda external linkage.static gelirse internal linkage a ait olur.
@@ -194,7 +188,7 @@ bu durumlarda external linkage.static gelirse internal linkage a ait olur.
 C++ ta
 const global nesneler internal linkage dır.
 
--------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 C de
 const int x = 10;
@@ -204,29 +198,24 @@ C++ ta hata değil.
 const int x = 10;
 int a[x]; c++ ta hata değil.
 
-switch case de de kullanılır. case den sonra sabit gelmeli
-ama const türünden değişken konulabilir.
+switch case de de kullanılır. case den sonra sabit gelmeli ama const türünden değişken konulabilir.
 
------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
-
-C de const türden, türe e implicit cast var
+C de const türden, türe implicit cast var
 
 C++ ta const türden, başka bir türe implicit dönüşüm sentaks hatası.
-Operatörü var.const_Cast operatörü
+Operatörü var.const_cast operatörü
 
--------------------------------------------
-
+------------------------------------------------------------------------------------------------------------------------
 
 C de malloc u cast etmeden pointera atamak hata değil
 
 C++ ta hata.
+int *p = malloc(n * sizeof(int)); burası C++ ta hata, C de hata yok. malloc void * çeviriyordu buarada.
+C de detaylı görüldü
 
-int *p = malloc(n * sizeof(int)); burası C++ ta hata, C de hata yok.
-malloc void * çeviriyor buarada.
-
-
-----------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 C++ taglar türün kendisini belimlemiyor.
 
