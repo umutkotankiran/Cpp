@@ -419,6 +419,8 @@ void Nec::foo()const
 	mx = 23;  SENTAKS HATASI. ÇÜNKÜ GİZLİ PARAMETRE DEĞİŞKENİ DE CONST.
 		ELEMAN DEĞİŞTİRİLEMEZ.
 	
+	std::cout << mx << '\n'; // GEÇERLİ. MX DEĞİŞTİRİLEMEZ AMA ERİŞİLİR
+	
 	Nec mynec;
 	mynec.mx = 23   TAMAMEN GEÇERLİ. ÇÜNKÜ GİZLİ NEC POİNTER İLE ERİŞMEDİM.
 					YENİ BİR NESNE YARATILDI VE FOO DA MEMBER FUNC OLDUĞU İÇİN ERİŞİMİ VAR.
