@@ -593,10 +593,10 @@ public:
 int Figher::get_age()const
 {
 	++debug_call_count; // Semantik açıdan hata yok ama sentaks hatası var. fonksiyon const 
-						// burada semantik ile sentaks uyumsuzluğu var.Burada bir keyword devreye girer
-}						// mutable. yukarıda mutable ile tanımlandı tekrar.
-						// bu değişkenin değişmesi problem domainindeki anlamını değiştirmiyor.Bu sebeple normal
-						// karşılanmalı bu.Bunu aşmak için mutable kullanıyoruz.
+			    // burada semantik ile sentaks uyumsuzluğu var.Burada bir keyword devreye girer
+}			    // mutable. yukarıda mutable ile tanımlandı tekrar.
+			    // bu değişkenin değişmesi problem domainindeki anlamını değiştirmiyor.Bu sebeple normal
+			    // karşılanmalı bu.Bunu aşmak için mutable kullanıyoruz.
 
 mutable bir keyword.
 
