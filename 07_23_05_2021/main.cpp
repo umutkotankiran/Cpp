@@ -359,6 +359,7 @@ int main()
 	data mydata = {1,2,3};
 	const data *ptr = &mydata;
 	ptr->a = 20;	SENTAKS HATASI.çünkü (*ptr).a = 20; SENTAKS HATASI
+	ptr->a; // GEÇERLİ. ERİŞİLEBİLİR.
 }
 
 
