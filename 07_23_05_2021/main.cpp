@@ -687,10 +687,10 @@ void Nec::func()
 
 
 mx = 10;	
-Nec::mx = 20; bu şekilde :: operatörünün operandı olarak kullanılan isimlere qualified name deniyor.
-																		doğrudan kullanım unqualified
-this->mx = 30; bunların hepsi aynı.											
+Nec::mx = 20; //bu şekilde :: operatörünün operandı olarak kullanılan isimlere qualified name deniyor.
+	      //doğrudan kullanım unqualified
 
+this->mx = 30; //bunların hepsi aynı.											
 
 
 AYNI şekilde
@@ -705,7 +705,6 @@ Pythonda self diye geçiyordu bu.
 ------------------------------------------------------------------------------------------------------
 
 SORU
-
 class Nec{
 public:
 	void func();
@@ -750,14 +749,22 @@ void Nec::func()
 	std::cout << "this : " << this << "\n";
 }
 
-int main()
+void foo()
 {
 	int mx{};
-	mx; BURADA LOCAL MX KULLANILIR.
-
-	this->mx;	CLASS DATA MEMBER OLAN MX KULLANILIR.
-	Nec::mx te ulaşır mx e.
+	mx;   //BURADA LOCAL MX KULLANILIR.
+	
+	this->mx;	//CLASS DATA MEMBER OLAN MX KULLANILIR.
+	Nec::mx;	// te ulaşır mx e.
 }
+
+int main()
+{
+	Nec n;
+
+	n.foo();
+}
+
 
 SADECE BU KADAR DEĞİL.
 
@@ -809,10 +816,10 @@ Nec& Nec::func()
 int main()
 {
 	Nec mynec;
-	mynec.func();		  Nec * türden adres gönderdi implicit olarak.
+	mynec.func();	// Nec * türden adres gönderdi implicit olarak.
 
-	mynec.func().foo();   bu işlem yapılabilir.2 satırda da yazılabilir. Ama ileride görülecek bazı örneklerde
-							bunu kullanmak avantaj sağlayacak. Buna chaining deniyor.
+	mynec.func().foo();   // bu işlem yapılabilir.2 satırda da yazılabilir. Ama ileride görülecek bazı örneklerde
+				// bunu kullanmak avantaj sağlayacak. Buna chaining deniyor.
 
 }
 
@@ -825,10 +832,10 @@ int main()
 
 	cout << x << dval;
 	
-	cout.operator<<(x); burada çağrılan fonksiyonun return değeri sınıf türünden referans.ostream referans
-						yani burası cout un kendisi
+	cout.operator<<(x); //burada çağrılan fonksiyonun return değeri sınıf türünden referans.ostream referans
+			    //yani burası cout un kendisi
 
-	cout.operator<<(x).operator<<(dval); bu ile cout<<x << dval ; aynı şey.
+	cout.operator<<(x).operator<<(dval); //bu ile cout<<x << dval ; aynı şey.
 
 }
 
@@ -869,9 +876,9 @@ public:
 
 };
 
-myclass& myclass func()const
+myclass& func()const
 {
-	return *this;	SENTAKS HATASI. CONST POINTER DEREFERENCE EDİLDİ. TÜR CONST MYCLASS. COSNT MYCLASS TO MYCLASS SENTAKS HATASIDIR.
+	return *this;	//SENTAKS HATASI. CONST POINTER DEREFERENCE EDİLDİ. TÜR CONST MYCLASS. COSNT MYCLASS TO MYCLASS SENTAKS HATASIDIR.
 }
 
 SENTAKS HATASI OLMAMASI İÇİN YA MEMBER FUNCTİONDAKİ CONST SİLİNECEK YADA RETURN DEĞERİNE CONST EKLENECEK.
@@ -881,15 +888,15 @@ SENTAKS HATASI OLMAMASI İÇİN YA MEMBER FUNCTİONDAKİ CONST SİLİNECEK YADA 
 class myclass{};
 
 void func(myclass *);
-void func(const myclass *);   bu ikisi OVERLOAD.
+void func(const myclass *);   //bu ikisi OVERLOAD.
 
 int main()
 {
 	myclass a;
 	const myclass c;
 
-	func(&a);  1. overload çağrılır
-	func(&c);  2. overload çağrılır.
+	func(&a);  //1. overload çağrılır
+	func(&c);  //2. overload çağrılır.
 		
 }
 
@@ -897,21 +904,22 @@ int main()
 
 class Myclass{
 public:
-	void func(); Gizli parametre Myclass *
-	void func()const;  BURADA OVERLOADING VAR.Gizli param const Myclass *
+	void func(); //Gizli parametre Myclass *
+	void func()const;  //BURADA OVERLOADING VAR.Gizli param const Myclass *
 };
 
 BUnları çağırdığında hangisinin çağrıldığına baktı.
 const olan const parametre ile
-olmayanda olmayan parametre ile çağrıldı.
+Olmayanda olmayan parametre ile çağrıldı.
 
 ------------------------------------------------------------------------------------------------------------------------------
+
 EKLEME
 
 class Myclass{
 public:
-	void func();		Gizli parametre Myclass *
-	void func()const;	BURADA OVERLOADING VAR.Gizli param const Myclass *
+	void func();	//Gizli parametre Myclass *
+	void func()const;	//BURADA OVERLOADING VAR.Gizli param const Myclass *
 };
 
 void Myclass::func()
