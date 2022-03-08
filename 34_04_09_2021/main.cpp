@@ -107,9 +107,9 @@ int main()
 	cin>> name;
 
 	myset.insert(myset.begin(),"abidin");   // Burada başa ekliyor gibi görünüyor
-											// Buradaki konum hint, associative containerlarda hem değer hemde konum alan functionlara deniyor.
-											// bu konuma değilde bu konumu ip uçu olarak kullan kontrole buradan başla demek.
-											// Ayrıca maaliyeti azaltıyor.Yani abidini setin başına ekle anlamında değil.
+						// Buradaki konum hint, associative containerlarda hem değer hemde konum alan functionlara deniyor.
+						// bu konuma değilde bu konumu ip uçu olarak kullan kontrole buradan başla demek.
+						// Ayrıca maaliyeti azaltıyor.Yani abidini setin başına ekle anlamında değil.
 
 	
 	myset.insert(myset.begin(),"zeynep"); // Mesela sona eklendi burası Z harfi en sonda.Abidin A dan başladığı için başa ekledi.
