@@ -15,6 +15,9 @@ Otomatik ömürlü nesnenin yerini derleyici ayarlıyor.
 SENTAKS
 new(address)Sınıf_türü(Varsa_Argümanlar);
 
+Placement new da çağrılan operator new
+void* operator new(size_t size, Heap*); // mesela bu placement new. İleride görüldü 
+
 Dinamik ömürlüde biraz daha farklıydı. new->operator new->ctor.... 
 sizeof değeri kadar yer ayıracak
 
