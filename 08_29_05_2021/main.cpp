@@ -565,7 +565,6 @@ DEFAULT MEMBER INITIALIZER(C++11)
 in-class initializer de deniyor.
 class içinde init etmeye deniyor.
 
-BURALARI TEKRAR YAZ.
 class Myclass {
 public:
 	void print()const;
