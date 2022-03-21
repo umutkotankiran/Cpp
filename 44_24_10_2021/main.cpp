@@ -37,8 +37,8 @@ Bunlar bir tamsayı veya reel sayı türünden değişken compile time yöntemle
 int main()
 {
 	std::cout << typeid(milliseconds).name() << "\n"; // duration<int64, ratio<1,1000>> açılımını verir.
-													  // Burada milliseconds ile duration<long long , std::milli>  demek aynı şeyler
-													  // std::milli de ratio<1,1000> açılımı demek
+							// Burada milliseconds ile duration<long long , std::milli>  demek aynı şeyler
+							// std::milli de ratio<1,1000> açılımı demek
  	
 	------------------------------------------------------------------------------------------------------------------------------------------------------
 	HOURS
