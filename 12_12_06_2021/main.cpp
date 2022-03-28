@@ -862,9 +862,9 @@ static veri elemanlarına default member init olmuyor.
 class Myclass{
 
 	static int x = 20;   //BURASI SENTAKS HATASI!!!! INCLASS INIT veya DEFAULT MEMBER INIT(C++ 11 de geldi) deniyor buna
-						 //Burası Ctor init liste ekleniyordu hatırlarsak.Derleyici default ctora
-						 //bunu ekler.Def Ctor çağrılırsa SENTAKS HATASI OLUŞUR.BU NONSTATIC VERİ ELEMANLARI
-						 //İÇİN GEÇERLİ. STATICLER İÇİN DEĞİL.
+			     //Burası Ctor init liste ekleniyordu hatırlarsak.Derleyici default ctora
+	 		     //bunu ekler.Def Ctor çağrılırsa SENTAKS HATASI OLUŞUR.BU NONSTATIC VERİ ELEMANLARI
+			     //İÇİN GEÇERLİ. STATICLER İÇİN DEĞİL.
 };
 
 
