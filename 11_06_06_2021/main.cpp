@@ -49,8 +49,8 @@ VALUE CATEGORY
 Lvalue - PR Value - X value
 
 PR value + X Value = R Value ==> Bu ifadeler taşıma semantiği ile taşınmasında bir problem olmayacak.
-								 Yani kaynak çalabilirim ve bir problem olmaz demek.Bu garantiyi vermesinin sebebi
-								 bu nesnenin artık başka bir kod tarafından kullanılmayacak oluşu.
+				Yani kaynak çalabilirim ve bir problem olmaz demek.Bu garantiyi vermesinin sebebi
+				bu nesnenin artık başka bir kod tarafından kullanılmayacak oluşu.
 
 Lvalue ise bellekte bir yere karşılık geliyor demek.
 
@@ -63,7 +63,7 @@ Myclass func();
 int main()
 {
 	func(); // burası PR Value expr.Yani taşınabilir nesneye karşılık geliyor.
-}			// sözkonusu nesneyi başka bir nesnenin kullanma ihtimali yok, bu kaynak çalınabilir.
+}		// sözkonusu nesneyi başka bir nesnenin kullanma ihtimali yok, bu kaynak çalınabilir.
 
 
 ÖR:
@@ -132,8 +132,8 @@ int main()
 {
 	std::cout <<"main basladi\n"
 
-	Myclass(10); bu bir geçici nesne.Bir ifade içinde kullanılıyor.
-				 ifadenin çalıştırılması süresinde kullanılıyorlar.Yani ; e kadar denebilir.
+	Myclass(10); // bu bir geçici nesne.Bir ifade içinde kullanılıyor.
+		     // ifadenin çalıştırılması süresinde kullanılıyorlar.Yani ; e kadar denebilir.
 
 	std::cout << "Main devam ediyor\n";
 }
@@ -330,9 +330,9 @@ BURAYA DİKKAT !!!!!!!!!!!!!!!!
 int main()
 {
 	func(Myclass()); Geçici nesne yazıldı. Ama Burada func(mx) te olduğu gibi
-					 Copy Ctor çağrılmadı. Default Ctor çağrıldı.
-					 sınıfın move ctoru yok.tablodan baktık.
-		 			 Buradaki durum Copy Elision.
+			 Copy Ctor çağrılmadı. Default Ctor çağrıldı.
+			 sınıfın move ctoru yok.tablodan baktık.
+		 	 Buradaki durum Copy Elision.
 
 }
 
@@ -627,10 +627,10 @@ Yani destructor çağrılacak.
 ÇIKTI
 -----
 default ctor this : 003BFDA7  // m hayata geldi.
-Myclass(int x) x : 10 - this = 003BFCDB  //Geçici nesne yaratıldı.Bunu m = ival adımında implicit yaptı.Adreste farklı,
-										 // Bu nesne, m değil.Temp nesne.Bu geçici nesneden sonra COPY ASSIGNMENTTA ATAMA İŞLEMİNİ YAPAR.
-										 //Bu copy assignment derleyici tarafından default edilen. İstersek kendimizinkini yazarız ve o çağrılır.
-destructor this : 003BFCDB			// geçiçi nesnenin hayatı burada bitiyor.
+Myclass(int x) x : 10 - this = 003BFCDB  // Geçici nesne yaratıldı.Bunu m = ival adımında implicit yaptı.Adreste farklı,
+					 // Bu nesne, m değil.Temp nesne.Bu geçici nesneden sonra COPY ASSIGNMENTTA ATAMA İŞLEMİNİ YAPAR.
+					 // Bu copy assignment derleyici tarafından default edilen. İstersek kendimizinkini yazarız ve o çağrılır.
+destructor this : 003BFCDB		 // geçiçi nesnenin hayatı burada bitiyor.
 main devam ediyor 
 destructor this : 003BFDA7
 
@@ -687,7 +687,7 @@ destructor this : 00EFF987
 SONUÇLAR:
 
 A - Compiler ne zaman int, myclass türünden bir değişkene dönüşmesi gerekiyorsa, bu durumdan vazife çıkaracak,
-Myclass(int); Constructor ile geçiçi nesne yaratıp daha sonra da Copy Assignment func ile atama yapacak.
+Myclass(int); Constructor ile geçiçi nesne yaratıp daha sonra da Copy Assignment/Move assignment func ile atama yapacak.
 
 	Neler Dahil
 	---------------
@@ -749,8 +749,8 @@ User defined dönüşüm + Standart dönüşüm  Aynı şekilde bunuda gerçekle
 double dval = 23.3;
 Myclass mx;
 mx = dval;   // Bunun olması için önce dval in int e sonra da, intten de Myclass türüne dönüşüm olmalı.
-			 // standart conversion ile double dan int e, sonrada User defined conversion ile int ten Myclass
-			 // türüne sınıfın conversion ctor ının çağrılmasıyla dönüşüm gerçekleşiyor.
+	     // standart conversion ile double dan int e, sonrada User defined conversion ile int ten Myclass
+	     // türüne sınıfın conversion ctor ının çağrılmasıyla dönüşüm gerçekleşiyor.
 	
 
 Yani Myclass(int); yanlışlıkla bir dönüşüme sebep olabilir.
@@ -977,8 +977,7 @@ Dynamic Storage Class
 
 ------------------------
 
-Hayata istenildiği zaman getirilip istenildiği zaman bitirilen nesneler dinamik
-ömürlü nesnelerdir.
+Hayata istenildiği zaman getirilip istenildiği zaman bitirilen nesneler dinamik ömürlü nesnelerdir.
 
 Yakında classların static ömürlü değişkenlerini göreceğiz.
 
@@ -995,7 +994,7 @@ Zorunda değilsen dinamik ömürlü nesne oluşturma.
 Normalde otomatik ömürlü kullanırız, mecbur kalırsak dinamik ömürlü kullanırız
 
 Neden?
-1 - Dinamik ömürlülüer çok daha yüksek maliyetli.
+1 - Dinamik ömürlüler çok daha yüksek maliyetli.
 2 - Kullanımı otomatik ömürlüye göre daha zor, hata yapmak daha kolay.
 3 - Test-Debug-Değişiklik daha zor.
 
@@ -1006,8 +1005,7 @@ Nasıl oluşturulur?
 
 NEW OPERATÖRÜ
 -------------
--C++'ta Dinamik ömürlü nesne oluşturan operatorler var.
-Bunlara new operatörleri deniyor. 1 den fazla var bunlardan.
+-C++'ta Dinamik ömürlü nesne oluşturan operatorler var. Bunlara new operatörleri deniyor. 1 den fazla var bunlardan.
 
 Standartlar new expression diyor. Ama insanlar operator olarak kullanıyor.
 
