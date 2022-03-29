@@ -412,7 +412,7 @@ public:
 	static Singleton& get_instance() // Global bir access verildi.
 	{
 		static Singleton instance; // Default CTor çağrıldı.Statik ömürlü bir Singleton nesnesi yaratıldı.
-									// Tekrar çağrılsa bile yine aynı nesne dönecek.Varsa yaratmayacak tekrar.
+					   // Tekrar çağrılsa bile yine aynı nesne dönecek.Varsa yaratmayacak tekrar.
 
 		return instance;	//BUDA MEYERS SINGLETON :D:D:D:D:D
 	}
