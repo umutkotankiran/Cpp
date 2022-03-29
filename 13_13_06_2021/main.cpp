@@ -517,8 +517,8 @@ int foo()
 }
 
 int Myclass::x = foo();  // isim arama aranan isimin bulunmasıyla bitti.Parametreler argümanlarla uyuşmuyor.
-						 // overloading te değil. global foo gizlendi.
-						 // parametre değişkenide uyuşmuyor.SENTAKS HATASI.
+			// overloading te değil. global foo gizlendi.
+			// parametre değişkenide uyuşmuyor.SENTAKS HATASI.
 int main()
 {
 	std::cout << Myclass::x << "\n";
