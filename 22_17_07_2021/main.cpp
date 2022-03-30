@@ -1133,8 +1133,8 @@ PRİVATE, PROTECTEDA GÖRE ÇOK DAHA FAZLA KULLANILIYOR.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-FARKLAR
--------
+BİLGİLER
+--------
 1 - Clientlar için her Der bir Base olarak ele alınmayacak.Der den Base e otomatik dönüşüm sözkonusu değil.Ama clientlar için
 	Der myder;
 	Base *baseptr = &myder; // SENTAKS HATASI. public kalıtım olsaydı Geçerli. Ama Burada her Der bir Base deil bu sepeble sentaks hatası
