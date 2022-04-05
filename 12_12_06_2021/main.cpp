@@ -197,10 +197,9 @@ operator new functionu overload edilebilir. overload edersek compiler bizim
 overload ettiğimiz functionunu çağıracak.
 Aynı şekilde operator delete functionu içinde var. İleride görülecek.
 
-Not: Dinamik olarak hayata getirilen nesnelerin delete edilmesinden
-	 biz sorumluyuz.
+Not: Dinamik olarak hayata getirilen nesnelerin delete edilmesinden biz sorumluyuz.
 
-	 C#,Java gibi dillerde Garbage Collector var. C++ ta Garbage Collector olmaması seçim.
+C#,Java gibi dillerde Garbage Collector var. C++ ta Garbage Collector olmaması seçim.
 
 ----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
