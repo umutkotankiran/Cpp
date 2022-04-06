@@ -972,6 +972,7 @@ operator[]
 operator()
 type-cast operator function
 operator->
+operator*
 operator=     Bunlar Member Function olmak zorunda.Global Function olamaz.
 
 
