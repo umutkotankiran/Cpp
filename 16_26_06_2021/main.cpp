@@ -471,7 +471,7 @@ A::Nested A::Nested::foo(Nested)
 }
 
 //.cpp
-A::Nested A::Nested::foo(Nested x) // Bu durumda burası SENTAKS HATASI.Çünkü buradaki return olan Nested func içinde kullanılmadığı için
+Nested A::Nested::foo(Nested x) // Bu durumda burası SENTAKS HATASI.Çünkü buradaki return olan Nested func içinde kullanılmadığı için
 {								// standart isim arama kurallarına göre kullanılacak.
 
 }
@@ -1006,7 +1006,7 @@ private:
 
 int main()
 {
-	Owner ox; //Sentaks hatası yine.Yİne member default ctor çağrılamayacak.bu sebeple Owner default Ctor delete edilecek.
+	Owner ox; //GEÇERLİ
 }
 
 ÇIKTI
