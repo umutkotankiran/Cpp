@@ -1372,7 +1372,7 @@ else
 RFIND
 -----
 
-Aramaya baştan sona yapıyor.
+Aramayı sondan başa yapar. index döndürür
 
 string str{"velialiasd213"};
 
