@@ -761,6 +761,11 @@ print(name); // [Dogus Ural]
 string str{ name,3,2 }; //argümana dikkat
 print(str); // [us]
 
+DİKKAT!!!!!
+String yerine char * veya const char * olsaydı daha farklı olacaktı.
+stringte ilgili indexten sonrasını alırken, const char * olduğunda ilgili indexe kadar olan
+kısım alınacaktı
+
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
@@ -1172,9 +1177,14 @@ str.assign("ali");
 print(str); // yunusemre gitti.ali oldu :D
 
 const char *p = "0123456789";
-str.assign(p,3); // 012. p den başlayarak 3 karakter. daha önce 3 indexli char dan sonra kopyala falan gibi şeyler vardı. Karışabilir.
+str.assign(p,3); // 012. p den başlayarak 3 karakter.
 str.assign(p+3,5); // 34567
 str.assign(p+2,p+7); // 234567
+
+ÇOK ÖNEMLİ !!!!!!!!
+String argüman olarak verilirseydi yukarıda ilgili indexten sonrasını assign edecekti.
+const char * verildiğinde ise ilgili indexe kadar olan karakterleri assign edecekti. 
+
 
 ------------------------------------------------------
 
