@@ -65,8 +65,8 @@ class Member {
 class Der : public Base {
 public:
 	Der(const Der& other) : Base(other), mx(other.mx)  //Bunu yazmazsak, taban sınıf copy ctor olmaz default init edilir.Yani Def. Ctor cağrılır.
-	{  }												// iki nesne kopyalanınca bunların içerisindeki taban sınıf nesneleride kopyalanmalı.
-private:												// Derleyici Base alt nesnesini hayata getirirken, other ın içindeki Base i kullanacak.
+	{  }						// iki nesne kopyalanınca bunların içerisindeki taban sınıf nesneleride kopyalanmalı.
+private:						// Derleyici Base alt nesnesini hayata getirirken, other ın içindeki Base i kullanacak.
 	Member mx;
 };
 
@@ -119,9 +119,9 @@ class Der : public  Base {
 public:
 	Der() = default;
 	Der(const Der& other) : Base(other) //burada da upcasting vardı
-	{									// base hayata gelirken other içindeki base kullanılacak.
-										// Base(other) eklenmezse copy ctor değil bunun için default ctor çağrılır.Dikkat et.
-										// Derleyici Base alt nesnesini hayata getirirken, other ın içindeki Base i kullanacak.
+	{				// base hayata gelirken other içindeki base kullanılacak.
+					// Base(other) eklenmezse copy ctor değil bunun için default ctor çağrılır.Dikkat et.
+					// Derleyici Base alt nesnesini hayata getirirken, other ın içindeki Base i kullanacak.
 								
 	}
 }
@@ -185,7 +185,7 @@ public:
 		// Aşağıdakiler recursive çağrı oluşturur.DİKKAT!!! 
 		// operator=(other);
 		// *this = other;    // Bu ikisi bu fonksiyonun kendi kendisini çağırmasını sağlar.
-							 // Ama bizim amacımız taban sınıfın copy assignment functionunu çağırmak.
+					// Ama bizim amacımız taban sınıfın copy assignment functionunu çağırmak.
 
 		//Aşağıdakiler geçerli !!!!
 		Base::operator=(other);		//Base nesnesini içinde copy assignment çağrılıyor.
@@ -231,7 +231,7 @@ using iptr = int*;
 using fcmp = int(*)(const void*, const void*); bunlar türeş ismi verirken.
 
 
-Using in eklenmesi generic programlşama tarafı için asıl.
+Using in eklenmesi generic programlama tarafı için asıl.
 ileride görülecek.
 
 std::pair<int, int>x; buradaki int ler template arguman
@@ -261,7 +261,7 @@ int main()
 	Der myder;
 
 	myder.func(12);// sentaks hatası yok ama double parametreli func çağrılır.
-}					// 2 double parametre olsaydı sentaks hatası olurdu
+}			// 2 double parametre olsaydı sentaks hatası olurdu
 
 -------------------------------------------------------------------------------
 
@@ -555,8 +555,8 @@ virtual void fly() = 0; -- > burada ise implementasyon yazacağız.
 
 1. Burada en az 1 tane pure virtual functiona sahip olması sınıfı abstract yapıyor.
 2. Abstract sınıftan kalıtım yapınca, abstract sınıfın tüm pure virtual functionlarını override etmek gerekiyor.
-	Gerekiyor derken somut sınıf olması için. 1 tane bile functionu bile override etmezsek, kalıtım yoluyla elde ettiğimiz sınıfta
-	yine soyut bir sınıf olacak.
+   Gerekiyor derken somut sınıf olması için. 1 tane bile functionu bile override etmezsek, kalıtım yoluyla elde ettiğimiz sınıfta
+   yine soyut bir sınıf olacak.
 
 SOYUT OLUNCA NE OLUYOR ?
 NESNE OLUŞTURMAK SENTAKS HATASI OLUYOR AMA BU SINIFI POINTER VEYA REFERANS SEMANTIĞI ILE KULLANABILIYORUZ.
@@ -667,8 +667,8 @@ int main()
 {
 	Audi myaudi;
 	car_game(myaudi); //car sınıfının üye fonksiyonu çağrılacak burada.
-}						//burada early / static binding var.hangi func ın çağrıldığı
-						// burada compile time da belli olur.
+}			//burada early / static binding var.hangi func ın çağrıldığı
+			// burada compile time da belli olur.
 
 early binding / static binding compile timeda,
 late binding / dynamic binding te runtime da belli oluyor.
@@ -891,11 +891,11 @@ public:
 class Der : public Base {
 public:
 	void func(int, int); // Bu func ı bildirerek base sınıfın func isimli fonksiyonunu override etmiş oldum
-						 // modern C++ ta asla bu şekilde override etmeyeceğiz.Halen geçerli ama tercih edilmiyor.
-						 // Alttaki tercih edilir.
+			     // modern C++ ta asla bu şekilde override etmeyeceğiz.Halen geçerli ama tercih edilmiyor.
+			     // Alttaki tercih edilir.
 
 	void func(int, int)overide; // bu override keyword değil. contexual keyword
-};								// yazmazsak sentaks hatası olmaz.Ama yazılmalı.Yoksa birtakım kötü hata senaryoları oluşabilir.
+};				    // yazmazsak sentaks hatası olmaz.Ama yazılmalı.Yoksa birtakım kötü hata senaryoları oluşabilir.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -1091,7 +1091,7 @@ int main()
 	Der myder;
 	Base mybase = myder; //tercih edilmiyor.object slicing deniyor
 	mybase.func(); // artık virt dispatch olmayacak burada.Compile time da belli oluyor çünkü.
-}					// taban sınıfın func fonksiyonunu çağıracak.
+}		       // taban sınıfın func fonksiyonunu çağıracak.
 
 Vİrtual Dispatch devreye girmesi için, fonksiyon çağrısının taban sınıf pointer veya referansı ile yapılması gerekiyor. 
 
@@ -1219,8 +1219,8 @@ int main()
 }
 
 Not : Her Der nesnesi bir base nesnesidir.
-	  Her Necder nesnesi o da bir base nesnesidir.
-	  Aynı zamanda her Necder aynı zamanda Der sınıfı türünden bir nesnedir.
+      Her Necder nesnesi o da bir base nesnesidir.
+      Aynı zamanda her Necder aynı zamanda Der sınıfı türünden bir nesnedir.
 
 
 =================================================================================================================================
@@ -1235,7 +1235,7 @@ Belirli bir contextte kullanılınca keyword gibi çalışıyor ama onun dışı
 
 int main()
 {
-	int for;			//for değişken ismi yapılamaz
+	int for;		//for değişken ismi yapılamaz
 	int override = 1;	//burası geçerli ama kötü bir fikir.
 }
 
@@ -1246,8 +1246,7 @@ Geriye dönük uyumluluk.Eskiden bunlar isim olarak kullanılmış olabilir.Geç
 
 Override Sözcüğü ne yapıyor.ÇOK ÖNEMLİ !!!!
 Eğer taban sınıfın bir üye fonksiyonunu override ederken, override keywordünü kullanmazsam, derleyici böyle bir 
-sanal fonksiyon var mı kontrolünü yapmıyor.Bunun çok kötü sonuçları var.
-Bu kötü sonuç senaryolarına bakalım
+sanal fonksiyon var mı kontrolünü yapmıyor.Bunun çok kötü sonuçları var.Bu kötü sonuç senaryolarına bakalım
 
 
 1. SENARYO
@@ -1260,10 +1259,10 @@ public:
 
 class Der : public Base {
 public:
-	void foo(); //sentaks hatası değil. Override değil. Yeni bir function.
-};				// Bildirirken başına virtual koysam yeni bir sanal function olacak.Yukarıdaki sanal func ile alakasıda yok.
-				// Eğer Modern C++ta void foo()override; deseydik SENTAKS HATASI olacaktı. Artık bu taban sınıftaki bir üye fonksiyonun
-				// override ı olduğunu söylediğimiz için, derleyiciye bir kontrol yükümlülüğü geliyor.
+	void foo(); // Sentaks hatası değil. Override değil. Yeni bir function.
+};		    // Bildirirken başına virtual koysam yeni bir sanal function olacak.Yukarıdaki sanal func ile alakasıda yok.
+		    // Eğer Modern C++ ta void foo()override; deseydik SENTAKS HATASI olacaktı. Artık bu taban sınıftaki bir üye fonksiyonun
+		    // override ı olduğunu söylediğimiz için, derleyiciye bir kontrol yükümlülüğü geliyor.
 
 Yani Override edeyim derken, yanlış bir imza kullanmak sentaks hatası haline geliyor.
 
@@ -1282,7 +1281,7 @@ public:
 class NecoWidget : public GuiWidget {
 public:
 	void set_text(const std::string& msg)override; //SENTAKS HATASI.virtual function yok çünkü
-};												   //Eğer burada override yazılmasaydı SENTAKS HATASI OLMAYACAKTI.
+};						       //Eğer burada override yazılmasaydı SENTAKS HATASI OLMAYACAKTI.
 
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -1348,7 +1347,7 @@ AYnı şekilde override keywordde bildirimde olmalı.inline yazınca yazılabili
 
 Örneklerde fazla zaman kaybetmemek için başlık dosyası ekledi.
 
-class Car { // bıradaki I, pure virtual funclar var interface anlamında.
+class Car { // buradaki I, pure virtual funclar var interface anlamında.
 public:
 	virtual void start() = 0; // Pure virtual func .Bu tip classlara abstract class deniyor.
 	virtual void run() = 0;
@@ -1523,7 +1522,7 @@ int main()
 	}
 }
 
-17 Dakikalık kısmı hoca kaydetmeyi unuttu. Çok öneli değil. Sadece örnek çalıştırıldı birde fiat124 e bak.
+17 Dakikalık kısmı hoca kaydetmeyi unuttu. Çok öneli değil. Sadece örnek çalıştırıldı birde fiat124 e baktık.
 17 Dakikalık Kısım 1. ve 2. madde.Birde kütüphaneye koyduğu kodu çalıştırıp gösterdi.
 
 Özet
@@ -1541,7 +1540,7 @@ int main()
 	Car is running yazdırdı
 	NEDEN? 
 
-	Biz bir türemiş sınıf nesnesi hayagetirdiğimizde önce onun base classı/tabansınıf nesnesi hayata gelir.
+	Biz bir türemiş sınıf nesnesi hayata getirdiğimizde önce onun base classı/tabansınıf nesnesi hayata gelir.
 	Mercedes mymercedes; yazdığımızda ilk önce base classın ctoruna girer. buradaki işlemlerden sonra mercedes için 
 	ctor çağıracak. Şuanda Base in ctorunda iken mercedes henüz hayatta değil.Bu noktada sanal fonksiyon çağrılsaydı 
 	ve sanallık mekanizması devreye girseydi çağrılan mercedesin run functionu olsaydı, oluşmamış mercedesin fonksiyonunu çağırmaya
@@ -1580,7 +1579,9 @@ int main()
 
 	-----------------------------------------------------------------------------------------------------------------------------
 	-----------------------------------------------------------------------------------------------------------------------------
-
+	
+	VIRTUAL DISPATCH İN DEVREYE GİRMEDİĞİ DURUMLAR 
+	----------------------------------------------
 	ÖZET:
 	1 - DEĞİŞKEN YOLUYLA YAPILAN SANAL FONKSİYON ÇAĞRILARINDA VİRTUAL DİSPATCH YOK.OBJECT SLİCİNG KONUSU
 	2 - ÇÖZÜNÜRLÜK OPERATÖRÜYLE FONKSİYONUN İSMİ YAZILIRSA YİNE SANALLIK MEKANİZMASI YOK.
