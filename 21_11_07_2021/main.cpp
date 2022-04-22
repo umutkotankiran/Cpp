@@ -1010,6 +1010,7 @@ public:
 
 
 Türetilmiş sınıfı aşağıdaki gibi yazıyoruz
+Burada delegating constructor kullanılmış
 class Der : public Base{
 public:
 	Der(int x) : Base{x} {  }
