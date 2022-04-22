@@ -936,7 +936,7 @@ MOLA
 
 INHERITED CONSTRUCTOR
 ---------------------
-
+Delegated constructor ile inherited constructor farklı şeyler :)
 Sınıf içinde yapılan using bildirimini incelemiştik.Bunda taban sınıftaki isim türemiş scope içinde visible hale geliyordu.
 Aşağıdaki işleri yapmak kolaylaşıyordu.
 
