@@ -278,11 +278,11 @@ Bu tabloda function pointerları tutuluyor.
 
 MERCEDES SANAL FONK. TABLOSU
 |---------------------------|
-| 1	| &mercedes::start  	|
+| 1	| &mercedes::start  |
 |---------------------------|
-| 2	| &mercedes::run		|
+| 2	| &mercedes::run    |
 |---------------------------|
-| 3	| &mercedes::stop		|
+| 3	| &mercedes::stop   |
 |---------------------------|
 
 Bu sanal function tablosu runtime ın başında oluşturuluyor ama bu tablonun oluşturulmasında bu indexler compile timeda
@@ -291,11 +291,11 @@ bir sanal function tablosu var. Mesela Audinin sanal function tablosu var.
 
 Audi SANAL FONK. TABLOSU
 |---------------------------|
-| 1	| &audi::start			|
+| 1	| &audi::start	    |
 |---------------------------|
-| 2	| &audi::run			|
+| 2	| &audi::run	    |
 |---------------------------|
-| 3	| &Audi::stop			|
+| 3	| &Audi::stop	    |
 |---------------------------|
 
 Hiyerarşide ne kadar sınıf varsa herbiri için derleyici sanal function tablosu oluşturuyor.
@@ -426,6 +426,7 @@ Car* clone()override
 {
 	return new Bmw(*this); // new operatorüyle dinamik ömürlü bir nesne oluşturduk ama bunu copy ctor ile oluşturdum.
 }
+
 Yukarıdaki ile return new Bmw; arasındaki farka bakalım. bu olursa clone çağrıldığından aynısından bir tane daha oluşturur.
 Mesela Bmw nun öznitelikleri olsa, yaşı rengi modeli...  ve clone functionu 5 yaşındaki kırmızı Bmw için çağrılmış olsun;
 O zaman new Bmw(*this) buradaki yeni Bmw da 5 yaşında ve kırmızı olacak. Ama return new Bmw böyle olursa, oluşturduğum Bmw
