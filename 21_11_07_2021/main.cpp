@@ -813,7 +813,7 @@ public:
 
 Covariance
 ----------
-Taban sınıfın bir virtual member functionunu override eden türemiş sınıf fonksiyonu hem aynı imzada hemde ayrı return değeri
+Taban sınıfın bir virtual member functionunu override eden türemiş sınıf fonksiyonu hem aynı imzada hemde aynı return değeri
 türünde bir fonksiyon bildirmek zorunda.Tekrar yazdık.İmza aynı return değeri türü farklı bir fonksiyon bildirerse override keywordu
 kullanmasada sentaks hatası olacak.Bunun bir istisnası var.Covariance bu istisna kurala verilen isim
 
