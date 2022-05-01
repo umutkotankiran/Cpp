@@ -277,7 +277,7 @@ public:
 		
 		//Aşağıdakiler gibi kullanıp aşarız bunu
 		A::func(12);
-		A::func(1,2);
+		B::func(1,2);
 	}
 };
 
