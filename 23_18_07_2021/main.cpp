@@ -1380,11 +1380,11 @@ void func()
 		std::cout << "hata func icinde yakalandı : " << ex.what() << "\n";
 		
 		//throw ex; // TEKRAR YAZIYORUM. Bu rethrow statement değil.Böyle yaparsak derleyici yeni bir hata nesnesi kopyalayarak oluşturacak ve dynamic type kaybedilecek.
-					// artık burada oluşturulacak yeni hata nesnesi türü out_of_range değil yani artık exception.çalıştırılınca maindeki
-					// exception türü olan catch yakalar.
+			    // artık burada oluşturulacak yeni hata nesnesi türü out_of_range değil yani artık exception.çalıştırılınca maindeki
+			    // exception türü olan catch yakalar.
 
-		throw;		//Burası ise rethrow statement.Dinamik tür korunur burada. Gönderilen hata nesnesinin kendisi tekrar gönderilir.
-					// main içerisindeki out_of_Range parametreli catch bloğu yakalar.			
+		throw;	   //Burası ise rethrow statement.Dinamik tür korunur burada. Gönderilen hata nesnesinin kendisi tekrar gönderilir.
+			   // main içerisindeki out_of_Range parametreli catch bloğu yakalar.			
 	}
 }
 
@@ -1409,8 +1409,8 @@ int main()
 -----
 hata func icinde yakalandi : Hata hata hata
 
-Hata yakalandi (const std::out_of_range&)		// buraya dikkat. Hata func içinde &exception ile yakalandı rethrow edildi
-												// ve daha sonrasında aynı nesne, main içinden tekrar out_of_range ile yakalandı.
+Hata yakalandi (const std::out_of_range&)	// buraya dikkat. Hata func içinde &exception ile yakalandı rethrow edildi
+						// ve daha sonrasında aynı nesne, main içinden tekrar out_of_range ile yakalandı.
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
 
