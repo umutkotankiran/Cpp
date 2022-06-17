@@ -979,7 +979,7 @@ Perfect forwardingte göreceğiz.
 
 BIRDE DECLTYPE(AUTO) VAR.
 
-Burada func return değeri türü çıkarımında decyltype
+Burada func return değeri türü çıkarımında decltype
 kuralları uygulanacak demek.
 
 template <typename T>
@@ -1000,7 +1000,7 @@ int main()
 template <typename T>
 decltype(auto) foo(T x)
 {
-	return (x);   // decltype kurallarına göre tür çıkarımı yapılırsa decyltype((x)); int& çıkar	
+	return (x);   // decltype kurallarına göre tür çıkarımı yapılırsa decltype((x)); int& çıkar	
 }
 
 ===================================================================================================
@@ -1045,10 +1045,10 @@ auto func()
 }
 //main
 
-decyltype(auto) func()
+decltype(auto) func()
 {
 	const int x = 10;
-	return x;  // Budrada ise decyltype(auto) ya göre CONST INT olur.
+	return x;  // Budrada ise decltype(auto) ya göre CONST INT olur.
 }
 //main
 
