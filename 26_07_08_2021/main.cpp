@@ -935,14 +935,14 @@ Biz burada geri dönüş türünün x + y nin türü olmasını istiyoruz.
 
 
 template <typename T,typename U>
-decyltype(x+y) sum(T x, U y)  // BURADA HATA VAR. Func parametre isimleri x ve y decyultype kısmında kullanılamaz.
+decltype(x+y) sum(T x, U y)  // BURADA HATA VAR. Func parametre isimleri x ve y decltype kısmında kullanılamaz.
 {								//  x ve y nin scope u orası değil.
 	
 }
 
 Aşağıdaki gibi yazılabilir.
 template <typename T,typename U>
-auto sum(T u, U y) -> decyltype(x+y) // ARTIK LEGAL
+auto sum(T u, U y) -> decltype(x+y) // ARTIK LEGAL
 {
 	
 }
@@ -977,7 +977,7 @@ Perfect forwardingte göreceğiz.
 
 -------------------------------------------------------
 
-BIRDE DECYPTYPE(AUTO) VAR.
+BIRDE DECLTYPE(AUTO) VAR.
 
 Burada func return değeri türü çıkarımında decyltype
 kuralları uygulanacak demek.
@@ -998,14 +998,14 @@ int main()
 ------------------------------------------------------------
 
 template <typename T>
-decyltype(auto) foo(T x)
+decltype(auto) foo(T x)
 {
-	return (x);   // decyltype kurallarına göre tür çıkarımı yapılırsa decyltype((x)); int& çıkar	
+	return (x);   // decltype kurallarına göre tür çıkarımı yapılırsa decyltype((x)); int& çıkar	
 }
 
 ===================================================================================================
 ===================================================================================================
-Decyltype kurallarını ben 4. derste yazmıştım. Tekrar yazayım.
+Decltype kurallarını ben 4. derste yazmıştım. Tekrar yazayım.
 1 - İsim formunda ise
 Bu isim hangi türden declere edildiyse bizim elde ettiğimizde o tür
 
@@ -1020,15 +1020,15 @@ c - eğer ifade X value exp.ise decltype yerine geşen tür 	T && türü
 ------------------------------------------------------------
 
 
-DECYLTYPE AUTO YA GERI DÖNELIM.
+DECLTYPE AUTO YA GERI DÖNELIM.
 
 template <typename T>
-decyltype(auto) foo(T x)
+decltype(auto) foo(T x)
 {
-	return (x);   // decyltype kurallarına göre tür çıkarımı yapılırsa decyltype((x)); int& çıkar
+	return (x);   // decltype kurallarına göre tür çıkarımı yapılırsa decltype((x)); int& çıkar
 
 	int *ptr;
-	return *ptr; // burada ise decyltype(*ptr); int& çıkar türü.
+	return *ptr; // burada ise decltype(*ptr); int& çıkar türü.
 }
 
 int main()
@@ -1036,7 +1036,7 @@ int main()
 	foo(12);	
 }
 
-SONUÇ : AUTO VARSA RETURN TÜR ÇIKARIMI AUTO YA GÖRE DECYLTYPE(AUTO) VARSA DECYLTYPE AUTOYA GÖRE YAPILIR !!!!
+SONUÇ : AUTO VARSA RETURN TÜR ÇIKARIMI AUTO YA GÖRE DECLTYPE(AUTO) VARSA DECLTYPE AUTOYA GÖRE YAPILIR !!!!
 
 auto func()
 {
