@@ -731,6 +731,28 @@ int main()
 	func(12);
 }
 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+is_pointer idiyom
+
+#include <type_traits>
+
+template<typename T>
+struct is_pointer_helper : std::false_type {   };
+
+template<typename T>
+struct is_pointer_helper<T*> : std::true_type {   };
+
+template<typename T>
+struct is_pointer : is_pointer_helper< typename std::remove_cv<T>::type > {    }; //constluk ve volatile lık silindi. ::type olmasaydı remove_cv_t olacaktı
+
+NOT: Eğer bir template içinde kulandığım bir tür template tür parametresine bağlıysa typename yazmak zorunlu. 
+     Yani burada T nin ne olduğuna bağlı olarak değer değişebilir.
+
+     Bu örneği hoca burada bıraktı.
+
+
 ----------------------------------------------------------
 
 FUNCTION OLARAKTA KENDİM YAZDIM
@@ -762,26 +784,6 @@ int main()
 	func<const long long>();
 
 }
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-is_pointer idiyom
-
-#include <type_traits>
-
-template<typename T>
-struct is_pointer_helper : std::false_type {   };
-
-template<typename T>
-struct is_pointer_helper<T*> : std::true_type {   };
-
-template<typename T>
-struct is_pointer : is_pointer_helper< typename std::remove_cv<T>::type > {    }; //constluk ve volatile lık silindi. ::type olmasaydı remove_cv_t olacaktı
-
-NOT: Eğer bir template içinde kulandığım bir tür template tür parametresine bağlıysa typename yazmak zorunlu. 
-	 Yani burada T nin ne olduğuna bağlı olarak değer değişebilir.
-
-	 Bu örneği hoca burada bıraktı.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
