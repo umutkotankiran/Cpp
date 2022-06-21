@@ -731,6 +731,38 @@ int main()
 	func(12);
 }
 
+----------------------------------------------------------
+
+FUNCTION OLARAKTA KENDİM YAZDIM
+
+#include <iostream>
+#include <type_traits>
+
+template<typename T>
+void f(T x, std::false_type)
+{
+	std::cout << "ptr degil\n";
+}
+
+template<typename T>
+void f(T x, std::true_type)
+{
+	std::cout << "ptr\n";
+}
+
+template<typename T>
+void func()
+{
+	f(T{}, std::is_pointer<T>::type());
+}
+
+int main()
+{
+
+	func<const long long>();
+
+}
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 is_pointer idiyom
