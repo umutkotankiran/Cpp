@@ -676,7 +676,7 @@ STL IN EN SIK KULLANILAN ALGORITMASININ KODU.
 template <typename Iterx, typename Itery>
 Itery Copy(Iterx beg, Iterx end, Itery destbeg)
 {
-	while(t)
+	while(beg != end)
 	{
 		*destbeg++ = *beg++;
 	}
