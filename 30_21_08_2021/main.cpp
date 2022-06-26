@@ -386,10 +386,10 @@ int main()
 
 NOEXCEPT DURUMU
 
-				constexpr
-[]<typename>()	mutable		{}
-				noexcept
-				->int
+			constexpr
+[]<typename>()		mutable		{}
+			noexcept
+			->int
 
 Noexcept keyword kullanılırsa nasıl bir func noexcept belirleyici ile noexcept hale getiriyorsak, lambdalarda da bu şekilde kullanabiliriz.
 Noexcept yazılmazsa default olarak noexcept değil. noexcept yazarsakta noexcept garantisi veriyor.Veya koşulada bağlanabilir
