@@ -354,8 +354,8 @@ int tmain()
 	auto f = [](int x){ return x * 5;}; // f burada closure type
 
 	auto g = +[](auto x){return x * 5;}; // IDE sentaks hatası veriyor ama değil.
-										 // pozitif lambda idiyom. f in türü burada function pointer type
-										 // + burada bir türdönüşümüne neden oluyor.Burası bir function adresine dönüşüyor.
+					     // pozitif lambda idiyom. f in türü burada function pointer type
+					     // + burada bir türdönüşümüne neden oluyor.Burası bir function adresine dönüşüyor.
 
 
 	std::cout << typeid(f).name()<< "\n"; // closure type
@@ -437,7 +437,7 @@ int main()
 {
 	int ival = 45;
 	auto f = [ival](int a)constexpr {return a + ival;}; // Dikkat!!! Bu durumda bu functionun herhangibir şekilde constexpr olmasını engelleyen senaryoda 
-														 // SENTAKS HATASI olacak.static yazınca mesela sentaks hatası içeride
+							   // SENTAKS HATASI olacak.Burası sentaks hatası. static yazıncada mesela sentaks hatası içeride
 }
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
