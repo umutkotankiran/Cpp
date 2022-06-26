@@ -788,7 +788,7 @@ int main()
 
 	auto f = [](const string s1, const string &s2) {
 	return s1.length() < s2.length() || (s1.length() == s2.length()) && s1 < s2;}; // birinci ikinciden küçük uzunlukta veya uzunlukları eşit ama birinci ikinciden küçükse
-																					// yani s1 < s2 derken asci table daki numaralarına göre. 
+										       // yani s1 < s2 derken asci table daki numaralarına göre. 
 
 	sort(svec.begin(), svec.end(),f);
 	print(svec);
