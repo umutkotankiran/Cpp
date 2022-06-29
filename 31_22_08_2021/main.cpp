@@ -318,8 +318,8 @@ Ama prev ile next C++ 11 ile geldi.
 
 NEXT VE PREV
 ------------
-Advance pointerın veya iteratörün kendisini iletiyor yani referans yoluyla alıyor.call by reference
-Fakat next bizden bir iterator alıyor ve o iteratörden n sonraki konumu return değeri olarak iletiyor.Call by value
+Advance pointerın veya iteratörün kendisini iletiyor yani referans yoluyla alıyor.call by reference.Advance iterator değerini değiştiriyor.
+Fakat next bizden bir iterator alıyor ve o iteratörden n sonraki konumu return değeri olarak iletiyor.Call by value.Next/prev iterator değerini değiştirmiyor.
 
 next(iter, 5);//call by value. Bu iteratorden 5 sonraki konum. 2. parametresine argüman geçmezsek default olarak 1 alıyor.
 next(iter); // bir sonraki konumu return ediyor.
