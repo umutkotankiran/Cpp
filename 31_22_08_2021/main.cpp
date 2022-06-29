@@ -162,7 +162,7 @@ int main()
 
 	iterator_traits<vector<int>::iterator>::Iterator_category
 
-	advance(ptr,5); //SENTAKS HATASI. Neden bu int * türünden ve bunun iterator categorisi yok.
+	advance(ptr,5);
 }
 
 iterator_traits pointer türleri için özelleştirilmiş.Dolayısıyla aslında iteratörün iterator categorisi demekle, iterator_traits in iterator açılımının iterator categorisi demek
