@@ -10,11 +10,11 @@ vector<Elem> c = c2				Copy constructor; creates a new vector as a copy of c2 (a
 vector<Elem> c(rv)				Move constructor; creates a new vector, taking the contentsof the rvalue rv (since C++11)
 vector<Elem> c = rv				Move constructor; creates a new vector, taking the contentsof the rvalue rv (since C++11)
 vector<Elem> c(n)				Creates a vector with n elements created by the default constructor
-vector<Elem> c(n,elem)			Creates a vector initialized with n copies of element elem
-vector<Elem> c(beg,end)			Creates a vector initialized with the elements of the range[beg,end)
-vector<Elem> c(initlist)		Creates a vector initialized with the elements of initializer list initlist (since C++11)
-vector<Elem> c = initlist		Creates a vector initialized with the elements of initializerlist initlist (since C++11)
-c.~vector() Destroys all elements and frees the memory
+vector<Elem> c(n,elem)				Creates a vector initialized with n copies of element elem
+vector<Elem> c(beg,end)				Creates a vector initialized with the elements of the range[beg,end)
+vector<Elem> c(initlist)			Creates a vector initialized with the elements of initializer list initlist (since C++11)
+vector<Elem> c = initlist			Creates a vector initialized with the elements of initializerlist initlist (since C++11)
+c.~vector() 					Destroys all elements and frees the memory
 
 Container sınıfları array hariç RAII sınıfları
 Ctor kaynak edinip Dtor kaynakları geri veriyor.Dolayısıyla taşınma semantiğine aday.
