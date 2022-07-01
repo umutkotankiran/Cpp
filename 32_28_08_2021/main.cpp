@@ -403,7 +403,7 @@ ivec. yazıp karşına çıkanları bilip bilmediğini kontrol et.
 
 
 ALGORTİMALAR - SİLME ARLGORİTMALARI
-
+-----------------------------------
 Başlıkta oksimoronik bir durum var.Algoritmalar silme işlemi yapamazlar :D:D
 Neden?
 Algoritma parametresi iterator çünkü.
@@ -481,6 +481,7 @@ int main()
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 REMOVE ERASE
+------------
 AMAÇ GERÇEKTEN BU DEĞERLERİ SİLMEK İSE C++20 YE KADAR MEŞHUR IDIYOMU KULLANIYORUZ
 
 int main()
@@ -507,9 +508,12 @@ int main()
 }
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+ERASE
+-----
 C++20 DE BUNUDA AYRI FUNC ŞABLONU YAPTILAR. !!!!!!!!!!!!!!!!
-Farklı farklı specializationları var.Argüman olarak vegin ve end değil nesnenin kendisini gönderiyoruz !!!!!!!!!!!!!!
+Farklı farklı specializationları var.Argüman olarak iteratörleri değil nesnenin kendisini gönderiyoruz !!!!!!!!!!!!!!
 
 auto n = erase(svec,"ali"); //Artık böyle yapılabiyor kendi içinde erase remove idiyomu kullanıyor. svec in kendisini gönderdik.
 //return değeri silinen öğe sayısı
@@ -537,7 +541,7 @@ int main()
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 REMOVE_IF
-
+---------
 Bir predicate alıyor ve onun true döndürdüğü değerleri siliyor.
 
 int main()
@@ -561,7 +565,9 @@ int main()
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ERASE_IF
+--------
 C++20 de geldi.Return değeri silinen öğe sayısı.
+Erase gibi çalışıyor. İterator değil container nesnesini argüman geçiyoruz !!!!!!!!!!!!!!!!!!!!
 
 int main()
 {
