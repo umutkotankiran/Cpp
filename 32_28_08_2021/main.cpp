@@ -508,10 +508,10 @@ int main()
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-C++20 DE BUNUDA AYRI FUNC ŞABLONU YAPTILAR.
-farklı farklı specializationları var.
+C++20 DE BUNUDA AYRI FUNC ŞABLONU YAPTILAR. !!!!!!!!!!!!!!!!
+Farklı farklı specializationları var.Argüman olarak vegin ve end değil nesnenin kendisini gönderiyoruz !!!!!!!!!!!!!!
 
-auto n = erase(svec."ali"); Artık böyle yapılabiyor kendi içinde erase remove idiyomu kullanıyor.
+auto n = erase(svec,"ali"); //Artık böyle yapılabiyor kendi içinde erase remove idiyomu kullanıyor. svec in kendisini gönderdik.
 //return değeri silinen öğe sayısı
 
 print(svec);
