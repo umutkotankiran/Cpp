@@ -592,9 +592,9 @@ int main()
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 UNIQUE
-
+------
 Range teki ardışık aynı değere sahip öğelerden bir tane bırakıyor.
-11234444555678997766554433 -- >  12345678976543   BURAYI YAZ 
+11234444555678997766554433  -->  12345678976543
 
 Unique öğelerin silineceğinin kararını vermek için == kullanıyor.
 unique te logic silme yapıyor.Unique in return değeri logic end. Yukarıda 3 ten sonrası. Fiziksel silme için logic end ile gerçek end i 
@@ -672,8 +672,8 @@ Kopyalayarak silme işlemini yapıyor.Silinecek öğeleri kopyalamıyor. Geçen 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 UNIQUE COPY
+-----------
 Ardışık öğelerin 1 tanesini kopyalıyor.
-
 
 int main()
 {
