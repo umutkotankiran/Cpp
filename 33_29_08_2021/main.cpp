@@ -96,7 +96,7 @@ SORU:
 using namespace std;
 int main()
 {
-	vector<int> svec(20);
+	vector<string> svec(20);
 	generate(svec.begin(), svec.end(), rname);
 	copy(svec.begin(), svec.end(), ostream_iterator<string>{cout, " "});// vectordeki stringeri ıkış akımına yazdı son argümanda
 	cout << "\n";
