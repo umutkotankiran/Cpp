@@ -139,16 +139,16 @@ kuralları var.
 VECTORDEKİ KURALLAR
 -------------------
 1 - Yeni boyut eski kapasiteden daha büyük olursa realloc olur. bu öğelerin biryere taşınması demek.
-	yani realloc olduğunda eskilerin hepsi geçersiz hale geliyor.
+    yani realloc olduğunda eskilerin hepsi geçersiz hale geliyor.
 
 2 - insert, emplace_back, emplace, pushback bu funclar çağrıldığında herhangibir realloc olmazsa
-	eklemenin yapıldığı konumdan önceki nesnelere yönelik iteratörler ve referanslar geçerliliğini koruyor.
-	AMA ekleme yapılan ve daha sonraki konumlar geçersiz hale geliyor.
+    eklemenin yapıldığı konumdan önceki nesnelere yönelik iteratörler ve referanslar geçerliliğini koruyor.
+    AMA ekleme yapılan ve daha sonraki konumlar geçersiz hale geliyor.
 
 3 - Silme işlemlerinde ise erase ve pop_back ile bir konumdaki öğe silinirse,
-	bundan öncekilerin konumunu tutan pointer veya iteratörler geçerliliğini
-	koruyorlar ama silinen dahil silinenden sonrakileri elemanları tutan iteratör veya pointerlar veya referanslar
-	geçerliliğini kaybediyor.
+    bundan öncekilerin konumunu tutan pointer veya iteratörler geçerliliğini
+    koruyorlar ama silinen dahil silinenden sonrakileri elemanları tutan iteratör veya pointerlar veya referanslar
+    geçerliliğini kaybediyor.
 
 Az önceki soruda kodu yanlış yazma sebebi tipik olarak iterator invalidation.
 
