@@ -188,6 +188,13 @@ int main()
 		if(iter->length() == 5)
 		{
 			iter = svec.erase(iter); // bu durumda iteratörü artırmamak gerekiyor.Zaten erase'in return değeri bir sonraki iterator.
+						// NOT !!!!!!!!!!!!!!!!!!!!!!!!!!!
+						// ERASE I TEST ETTIM BEN, BENIM ÇIKARDIĞIM SONUÇ ŞU, ERASE SILDIĞI ÖĞENIN KONUMUNU DÖNDÜRÜYOR
+						// AMA ARTIK BU KONUMDA BIR SONRAKI ÖĞE VAR.YANI ARKA PLANDA BIR COPY YAPILDI VE CONTIGUES HALE GELDI YINE
+						// CPPREFERENCE TAN BAKTIM RETURN DEĞERİNİ AŞAĞIDAKİ GİBİ AÇIKLAMIŞ
+						
+						// Iterator following the last removed element.
+						 
 		}
 		else if(iter -> length() == 6){
 			iter = svec.insert(iter, *iter);
