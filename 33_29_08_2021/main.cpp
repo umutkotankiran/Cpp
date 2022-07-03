@@ -738,7 +738,8 @@ int main()
 
 	
 	
-DİĞER ÖRNEK.
+DİĞER ÖRNEK
+MERGE MEMBER FUNCINA PREDICTION OLARAK CALLABLE VERECEĞİZ
 
 int main()
 {
