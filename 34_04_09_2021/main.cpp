@@ -852,7 +852,7 @@ int main()
 	if(auto iter = mymap.find(oldkey); iter != mymap.end())
 	{
 		auto handle = mymap.extract(iter);
-		handle.key() = newkey;
+		handle.key() = newkey;		// sette handle.value() derdik. mapte key değiştiriyoruz.
 		mymap.insert(std::move(handle));
 
 		std::cout << "bulundu ve degistirildi\n";
