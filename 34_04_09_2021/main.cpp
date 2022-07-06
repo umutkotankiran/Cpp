@@ -871,7 +871,8 @@ int main()
 INSERT_OR_ASSIGN
 C++17 ile geldi.
 
-Map e bir ekleme yapmak istersek, bu ekleme mapta bu anahtar yoksa gerçekleşecek ve mapta bu anahtar varsa gerçekleşmeyecek.Bunu istiyoruz.
+Map e bir ekleme yapmak istersek, bu ekleme mapta bu anahtar yoksa gerçekleşecek ve mapta bu anahtar varsa gerçekleşmeyecek.
+Sadece anahtara ilişkin değeri değiştirecek.Bunu istiyoruz.
 
 mymap.insert({"Mustafa",987}); 
 
