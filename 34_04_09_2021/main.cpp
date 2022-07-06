@@ -426,8 +426,8 @@ int main()
 MAP
 ---
 Anahtarın birer değer ile eşlenmesi durumuna deniyor.Veri yapısı sette olduğu gibi ikili arama ağacı.
-Ekleme arama silme işlemleri anahtar ile yapılacak ve logaritmik karmaşıklıkta olacak. Burada sadece anahtar tutmak yerine, anahtarı anahtarla birlikte kullanılacak bir değerle
-birlikte tutuyoruz.İngilizcede ilgili key in value değeri deniyor.
+Ekleme arama silme işlemleri anahtar ile yapılacak ve logaritmik karmaşıklıkta olacak. Burada sadece anahtar tutmak yerine, 
+anahtarı anahtarla birlikte kullanılacak bir değerle birlikte tutuyoruz.İngilizcede ilgili key in value değeri deniyor.
 
 Set ve multiset ile özünde aynı ama farklılık nerede? 
 Set ve multisette sadece key tutulurken burada key value çiftleri tutuluyor. Yani key value pairleri
