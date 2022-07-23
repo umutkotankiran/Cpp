@@ -63,7 +63,7 @@ BITSEL OPERATORLER OVERLOAD EDILMIŞ
 int main()
 {
 	bitset<16> bx{5423u};
-	bitset<16> bx{5912423u};
+	bitset<16> by{5912423u};
 
 	std::cout << bx << "\n";
 	std::cout << by << "\n";
