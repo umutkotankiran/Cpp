@@ -1389,8 +1389,7 @@ public:
 
 class Myclass : private Empty{
 private:
-	Empty e;
-	int mx;
+	mx;
 };
 
 int main()
