@@ -10,7 +10,7 @@ Overload edilemeyen bir operator new var. Onuda biliyoruz.
 PLACEMENT NEW
 -------------
 Bu ifadeler ve buna bağlı olarak placement new ne iş yapıyor. Burada amaç bir yeri allocate etmek yerine zaten varolan bir yerde nesneyi hayata getirmek. 
-Otomatik ömürlü nesnenin yerini derleyici ayarlıyor.
+Otomatik ömürlü nesnenin yerini derleyici ayarlıyor. PLACEMENT NEW OVERLOAD EDİLEMİYOR !!!!!!
 
 SENTAKS
 new(address)Sınıf_türü(Varsa_Argümanlar);
