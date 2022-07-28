@@ -278,7 +278,7 @@ public:
 		return p;
 	}
 
-	void operator delete(void* vp)
+	void operator delete(void* vp)  // AYın şekilde static tanımlanlanıyor.
 	{
 		std::cout << "Myclass::operator delete called! n = "  << vp << "\n";
 		free(vp);
