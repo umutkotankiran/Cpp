@@ -1091,7 +1091,7 @@ Upy nin hayatı getchar a gelmeden nesne delete edilmiş olacak
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-BURASI ÇOK ÖNEMLİ. İKİ NESNEDE DOLUYSA
+BURASI ÇOK ÖNEMLİ. İKİ NESNEDE DOLUYSA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 int main()
 {
