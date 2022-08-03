@@ -508,7 +508,7 @@ nesne yok durumda.
 template <typename T, typename Deleter = std::default_delete<T>>
 class unique_ptr{
 public:
-	~unique_ptr();
+	~unique_ptr()
 	{
 		if(mp)
 		{
