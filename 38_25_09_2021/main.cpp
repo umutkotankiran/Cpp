@@ -1231,7 +1231,7 @@ int main()
 	
 	std::cout << "*uptr = " << *uptr << "\n"; // bu değerini verir 
 	std::cout << "uptr = " << uptr << "\n";  // Bu ise adresi yazdırır.
-	std::cout << "uptr = " << uptr.get() << "\n"; // Sarmaladığı pointerı döndürür
+	std::cout << "uptr = " << uptr.get() << "\n"; // Sarmaladığı pointerı döndürür.Bir üstteki ile aynı
 	
 }
 
