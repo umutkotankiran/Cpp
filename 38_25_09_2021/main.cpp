@@ -1050,16 +1050,19 @@ GETCHAR() A KADAR KESINLIKLE DESTRUCTOR ÇAĞRILMAYACAK. DELETE EDILEN TRIPLE NE
 
 int main()
 {
-	auto upx = make_unique<Triple>(1,2,3);
+	using namespace std;
 
-	std::cout << "upy : " << (upy ? "dolu" : "bos") << "\n";
-	std::cout << "upx : " << (upx ? "dolu" : "bos") << "\n";
+    	auto upx = make_unique<Triple>(1,2,3);
+    	std::unique_ptr<Triple>upy;
 
-	std::unique_ptr<Triple>upy(std::move(upx)); // BURADA UPY, UPX IN KAYNAĞINI ÇALACAK. UPX TE MOVED FROM STATE DURUMUNDA OLACAK O DA BOŞ DEMEK
+    	std::cout << "upy : " << (upy ? "dolu" : "bos") << "\n"; // Boş
+    	std::cout << "upx : " << (upx ? "dolu" : "bos") << "\n";  // Dolu
 
-	std::cout << "upy : " << (upy ? "dolu" : "bos") << "\n";
-	std::cout << "upx : " << (upx ? "dolu" : "bos") << "\n";
+    	upy = (std::move(upx)); // BURADA UPY, UPX IN KAYNAĞINI ÇALACAK. UPX TE MOVED FROM STATE DURUMUNDA OLACAK O DA BOŞ DEMEK
 
+    	std::cout << "upy : " << (upy ? "dolu" : "bos") << "\n"; // Dolu
+    	std::cout << "upx : " << (upx ? "dolu" : "bos") << "\n"; // Boş
+	
 	getchar();
 
 }
