@@ -290,6 +290,27 @@ private:
 };
 
 
+--------------------------------------------------------------
+--------------------------------------------------------------
+--------------------------------------------------------------
+NOT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+OPERATOR NEW I GLOBAL SEVİYEDE DE YAZABİLİRİM
+void* operator new(std::size_t n) // Static yazsakta yazmasakta static member func olarak kabul ediliyor.Nonstatic gibi görünüyor ama değil
+{
+	auto p = std::malloc(n);
+	std::cout << "Myclass::operator new called! n = " << n << "\n";
+	if (!p)
+	{
+		throw std::bad_alloc{};
+	}
+	std::cout << "address of allocated block = " << p << "\n";
+	return p;
+}
+--------------------------------------------------------------
+--------------------------------------------------------------
+--------------------------------------------------------------
+
+
 int main()
 {
 	auto p = new std::string; // bizim yazdığımız oper new çağrılmayacak
