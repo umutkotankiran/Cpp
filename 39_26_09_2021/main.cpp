@@ -695,7 +695,6 @@ int main()
 	auto ptr = px.release(); // px mülkiyeti bıraktı ve return değeri tuttuğu adresi ptr ye atandı.
 
 	cout << *ptr << "\n";
-	ptr->set(1,3,6);
 
 	BURADA HATA VAR ÇÜNKÜ KİMSE DELETE ETMEDİ BUNU.DELETE EDİLMESİ LAZIMDI.UNIQUE PTR DA BOŞ ARTIK NESNEYİ TUTMUYOR.TUTSAYDI O DELETE EDERDİ.
 }
@@ -711,7 +710,6 @@ int main()
 	auto ptr = px.get(); 
 
 	cout << *ptr << "\n";
-	ptr->set(1,3,6);
 	delete ptr;
 
 	std::cout << *px << "\n"; // DANGLING POINTER.NEDEN? ÇÜNKÜ PX İN HAYATI BİTİNCE P Yİ DELETE EDECEK AMA BİZ ZATEN PTR YANİ GÖSTERDİĞİ P Yİ KENDİMİZ DELETE ETTİK.
