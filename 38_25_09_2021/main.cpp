@@ -42,7 +42,7 @@ int main()
 	
 	// Diğer newlerde olduğu gibi ifadenin ürettiği değer Date nesnesinin adresi.
 	// Burada bir allocation yok!!!!! Burada çağrılan operator new func. Buradaki operator new overload edilemiyor. 
-	// Overload edilemeyen : void *operator new(void *vp, size_t size) { //kodlar...	return vp;	}
+	// Overload edilemeyen : void *operator new(size_t size, void *vp) { //kodlar...	return vp;	}
 	// Çağrılan operator new yukarıdaki, dolayısıyla şimdi çağrılan operator new bu olduğu için bizim verdiğimizi
 	// return ediyor ve dolayısıyla this adresi olarak bu adres kullanılacak.
 	// Date içinde this yazdırıldı.Buffer adresiyle this aynı olduğu ortaya çıktı.
