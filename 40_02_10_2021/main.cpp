@@ -706,7 +706,7 @@ Lock functionu bize shared ptr nesnesini veriyor.
 }
 
 EĞER WEAK_PTR YI OLUŞTURAN SHARED_PTR HALEN KAYNAĞINI KORUYORSA YANI ONUN KAYNAĞI GERI VERILMEMIŞSE, O KAYNAK SONLANDIRILMAMIŞSA, LOCK FUNCI
-ÇAĞIRDIĞIMDA O KAYNAĞI GÖSTEREN YINE BIR SHARED PTR VERIYOR BANA !!!!!!!!!!!!!!
+ÇAĞIRDIĞIMDA O KAYNAĞI GÖSTEREN YINE BIR SHARED PTR VERIYOR BANA. AKSİ TAKDİRDE NULLPTR  !!!!!!!!!!!!!!
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
