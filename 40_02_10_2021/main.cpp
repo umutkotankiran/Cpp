@@ -456,7 +456,7 @@ KOPYALAMAYA AÇIK BIR TÜR
 
 int main()
  {
-    shared_ptr<Triple> spx;
+    shared_ptr<int> spx(new int{45});
 
     {
         std:cout << "spx.use_count() = "<< spx.use_count() << "\n"; // 1
