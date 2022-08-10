@@ -1108,19 +1108,19 @@ Curiously Recurring Template Pattern
 İleri C++ ta görülecek
 
 template <typename T>
-class Base{
+class Base {
+public:
     void func()
     {
-        std::cout << typeid(T).name() << "\n"; 
-        reinterpret_cast<T &>(*this).foo();
+        std::cout << typeid(T).name() << "\n";
+        reinterpret_cast<T&>(*this).foo();
     }
 };
-
-
-class Der : public Base<Der>{  //Burada base<der> aynı zamanda der sınıfının taban sınıfı.Burada T yi kullansam  
+class Der : public Base<Der> {  //Burada base<der> aynı zamanda der sınıfının taban sınıfı.Burada T yi kullansam  
+public:
     void foo()
     {
-        std::cout << "Der::foo()\n";    
+        std::cout << "Der::foo()\n";
     }
 };
 
