@@ -206,8 +206,8 @@ int main()
 	cout. // interface i görülür.
 
 	basic_ostream<char, char_traits<char>>		// cout bu sınıf türünden
-	basic_ostream<char>							// yukarıdaki ile bu aynı
-	ostream										// yukarıdakininde typedef ismi bu
+	basic_ostream<char>				// yukarıdaki ile bu aynı
+	ostream						// yukarıdakininde typedef ismi bu
 
 	---------------------------------------------------------------------------------------------------------------------------------------------
 
