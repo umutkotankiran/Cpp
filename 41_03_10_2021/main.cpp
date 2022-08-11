@@ -100,9 +100,9 @@ int main()
 	int x = 2543;
 	
 	cout.setf(ios::dec);
-	cout.with(16);								// yazma alanı değişikliği için
+	cout.width(16);				    // yazma alanı değişikliği için
 	cout.setf(ios::left, ios::adjustfield);     // sola dayalı yazmak için 
-	cout.fill('_');								// Boşluk karakterlerini _ ile dolduralım
+	cout.fill('_');				    // Boşluk karakterlerini _ ile dolduralım
 
 	cout << x << "ali"; // sola dahalı 16 karakterlik alana yazdı.
 }
@@ -123,7 +123,7 @@ int main()
 	cout << format("|{:_^<18}|",x) << "\n";
 	// C++20. Tüm formatlama özelliklerini tek bir string ile belirtebileceğim
 	// :18 yazma alanı genişliği 18
-	// < sola dah-yalı yazdı
+	// < sola dayalı yazdı
 	// _ doldurma karakteri olarak kullanıldı
 	// < yerine ^ kullanırsak ortalamalı centered yazım biçimi
 }
