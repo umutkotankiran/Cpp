@@ -549,7 +549,7 @@ int main()
 	cout.flags(os.flags() | std::ios::boolalpha);
 
 	cout.unsetf(std::ios::boolalpha);//aşağıdaki ile aynı işi yapıyor
-	cout.flags(std::ios::boolalpha & ~std::ios::boolalpha);
+	cout.flags(cout.flags() & ~std::ios::boolalpha);
 
 	cout.flags(os.flags() & ^std::ios::boolalpha); // boolalpha ise unset ediyor, değilsede set ediyor :D:D:D
 
