@@ -658,14 +658,14 @@ int main()
 {
 	int x = 345;
 
-	cout << showpos;
+	cout.setf(ios::showpos);
 
 	cout << x; // +345 yazdı
 	cout << x; // +345 yazdı
 	cout << x; // +345 yazdı
 
 	// akım nesnesinin state inin bir parçası oldu bu. Bunu tekrar değiştirmem lazım eski hali için
-	cout << noshowpos;
+	cout.setf(ios::noshowpos);
 	cout << x; // 345 yazdı
 	cout << x; // 345 yazdı
 
