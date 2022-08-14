@@ -11,6 +11,20 @@ Gidenler Bu bytelar ekran, dosya, network başka bir programa gönderiliyor olab
 Gelenler ise klavyeden dosyadan başka bir programdan gelebilir.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DİKKAT!!!!!!!!!!!!!!!!
+BURASI ÇOK ÖNEMLİ !!!!!!!!!!!!!!!!
+Manipulatörler ile fmtflagsı set eden constexpr değişkenler farklı namespaceler içinde fakat isimleri aynı.
+
+ÖR:
+cout << std::internal << std::showpos;  // Burası cout ile bu şekilde kullanılırken
+cout.setf(std::ios::internal | std::ios::showpos); // setf functionu ile bu şekilde kullanılıyor.
+
+std::ios::internal ----> bir sabit iken
+std::internal ----> bir manipulatör
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Bunlar formatlı mı formatsızmı?
 formatted input-output, unformatted input-output
