@@ -316,7 +316,7 @@ int main()
 {
 	istringstream iss{"necatiergin"};
 
-	iss.ignore(100,'a'); // a yı görene kadar tüm argümanları ignore etti.
+	iss.ignore(100,'a'); // ilk 100 karakterden a yı görene kadar tüm argümanları ignore etti.
 
 	string str;
 
