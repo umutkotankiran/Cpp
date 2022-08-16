@@ -242,7 +242,8 @@ int main()
 
 	int ival;
 
-	iss.ignore(100,'\n'); // 100 KARAKTER IGNORE ET YADA NEW LINE IGNORE EDENE KADAR HEPSINI IGNORE ET DEMEK.
+	iss.ignore(100,'\n'); // 100 KARAKTERE BAKACAK VE İLK 100 KARAKTER İÇERİSİNDE \n VARSA BUNA KADAR OLANLARI IGNORE EDECEK.
+				// iss.ignore(100); OLSAYDI DOĞRUDAN İLK 100 KARAKTERİ IGNORE EDECEKTİ.
 	iss>>ival;
 	std::cout << "ival = " << ival << "\n"; // 8757
 }
