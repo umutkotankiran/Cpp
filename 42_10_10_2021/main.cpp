@@ -172,6 +172,13 @@ IGNORE
 istream::ignore = İstediğimiz kadar karakteri giriş akımının bufferı içinden çıkartıyor. Bu istream sınıfının funcı olduğundan, istream sınıfı için, istreamden kalıtımla elde edilen
 ifstream için ve istringstream için kullanılabilir.cin içinde kullanılabilir.
 
+1 PARAMETRELİ OVERLOAD
+Belirtilen değer kadar karakteri ignore eder
+
+2 PARAMETRELİ OVERLOAD
+Bİrinci parametre kaç karakter içerisinde arama yapılacak
+İkinci parametre ise hangi karakteri arıyorum. Bulursa o karaktere kadar olanı ignore ediyor
+
 istream den kalıtımla elde edilenler içinde de kulanılabilir.
 
 int main()
