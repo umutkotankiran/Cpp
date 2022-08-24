@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 
 	streamsize read_bytes{0};
 
-	while(ifs.read(reinterpret_cast<char *>(buffer), size)) // unsigned char * dan char * a cast ettik.
+	while(ifs.read(reinterpret_cast<char *>(buffer), size),  ifs.gcount() == 0) // unsigned char * dan char * a cast ettik.
 	{
 		auto n = ifs.gcount();
 		ofs.write(reinterpret_cast<char *>(buffer), n);
