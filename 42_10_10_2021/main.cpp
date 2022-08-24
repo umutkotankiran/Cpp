@@ -1314,6 +1314,9 @@ int main()
 }
 4 milyon bytelık dosya oluştu şimdi.
 
+
+
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1336,40 +1339,59 @@ int main()
 		cout << x << " ";
 		_getch();
 	}
-
+	
+	----------------------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------
+	ÇOK ÖNEMLİ NOT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+	Burada gcount kullanmadık çünkü teker teker okuduk.
+	Sonraki örneklerde gcount kullanılacak çünkü buffer olarak bir vector yada array verilecek.
+	55 tane öğe varsa ve türden bağımsız okumayı 10 ar 10 ar yapıyorsak, geriye kalan 5 tane öğeyi
+	okurken ifs.read funcında akım fail eder ve son 5 öğeyi yazdırmadan yada işleme sokmadan
+	döngüden çıkılır.
+	----------------------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------
+	
 	------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	TEK INT DEĞIL DAHA FAZLASINI OKUYABILIRDIK
 
-	constexpr int size{10};
+	constexpr int size{ 10 };
 	int a[size];
 
-	while(ifs.read(reinterpret_cast<char *>(a),sizeof(a)) // Döngünün her turunda bu diziyi dolduracak kadar byte okumuş olacak.C deki generic programming i hatırlattı bu.
-	{
-		print(begin(a), end(a)); // bunu hoca yazdı print algoritması
-		_getch();
+	while (ifs.read(reinterpret_cast<char*>(a), sizeof(a)), ifs.gcount() != 0) // Döngünün her turunda bu diziyi dolduracak kadar byte okumuş olacak.C deki generic programming i hatırlattı bu.
+	{									   // gcount'a bakmasaydık sayı 10 un katlarıda değilse ifs.read ten zaten akım fail edecekti.
+										   // son kısım alınmayacaktı.
+		print(std::begin(a), std::end(a)); // bunu hoca yazdı print algoritması
 	}
 }
 
+BUrada gcount kullanarak birde kullanmayarak aradaki farka bakılabilir.
+En son döngü turunda buffer tam dolmadıysa bir önceki turdan kalanlar olacak
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ARRAY ILE YAPARSAK
 
 int main()
 {
-	ifstream ifs{"primes.dat", ios::binary};
-	ifs(!ofs){
-		cerr << "dosya olusturulamadi\n";
+	std::ifstream ifs{ "Sayilar.txt", std::ios::binary };
+	if(!ifs) {
+		std::cerr << "dosya olusturulamadi\n";
 		return 1;
 	}
 
-	constexpr int size{10};
-	array<int,size>ar;
+	constexpr int size{ 10 };
+	std::array<int, size>ar;
 
-	while(ifs.read(reinterpret_cast<char *>(ar.data()),sizeof(int) * size)
+	while (ifs.read(reinterpret_cast<char*>(ar.data()), sizeof(int) * size), ifs.gcount() != 0)
 	{
-		print(begin(a), end(a)); // bunu hoca yazdı print algoritması
-		_getch();
+		print(std::begin(ar), std::end(ar)); // bunu hoca yazdı print algoritması
 	}
 }
 
@@ -1393,6 +1415,8 @@ int main()
 		_getch();
 	}
 }
+
+En son döngü turunda buffer tam dolmadıysa bir önceki turdan kalanlar olacak
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1424,32 +1448,32 @@ int main()
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+GCOUNT AŞIRI ÖNEMLİ BİR FUNCTION
 
 using namespace std;
 
 int main()
 {
-	ifstream ifs{"primes.dat", ios::binary};
-	ifs(!ifs){
-		cerr << "dosya olusturulamadi\n";
-		return 1;
-	}
-	
-	ofstream ofs{"primescopy.dat", ios::binary};
-	ifs(!ofs){
+	ifstream ifs{ "Sayilar.txt", ios::binary };
+	if(!ifs) {
 		cerr << "dosya olusturulamadi\n";
 		return 1;
 	}
 
-	constexpr size_t size{1024};
+	ofstream ofs{ "Sayilarcopy.txt", ios::binary };
+	if(!ofs) {
+		cerr << "dosya olusturulamadi\n";
+		return 1;
+	}
+
+	constexpr size_t size{ 1024 };
 	unsigned char buffer[size]; // döngünün her turunda bu buffera yazılacak
 
-	while(ifs.read(reinterpret_cast<char *>(buffer), size)) // char olduğundan dizi boyutu doğrudan size :D
+	while (ifs.read(reinterpret_cast<char*>(buffer), size), ifs.gcount() != 0) // char olduğundan dizi boyutu doğrudan size :D
 	{
-		ofs.write(reinterpret_cast<char *>(buffer), ifs.gcount()); // ifs ile read ettiklerini ofs.write ile yazıyor ve count u da argüman veriyoruz.
+		ofs.write(reinterpret_cast<char*>(buffer), ifs.gcount()); // ifs ile read ettiklerini ofs.write ile yazıyor ve count u da argüman veriyoruz.
 	}
 
-	//cevap tam 4 milyon çıkmadı hocada 3.997 gibi birşeydi sanırım bende test edeceğim.
 }
 
 */
