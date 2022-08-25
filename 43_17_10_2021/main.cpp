@@ -291,19 +291,19 @@ int main(int argc, char** argv)
 
 	ostringstream oss{ "*necati ergin" };
 
-	cout << "[" << oss.str() << "]\n"; // *necati ergin
+	cout << "[" << oss.str() << "]\n"; // [*necati ergin]
 
 	oss.seekp(7); // Tam boşluğa geldi pointer. MEMORY DE DÖNÜYOR BU OLAYLAR BİR FİLE İÇERİSİNDE DEĞİL. OSTRINGSTREAM DİKKAT!!!!!
 	oss.put('-'); // - yazdı boşluğa
-	cout << "[" << oss.str() << "]\n"; //tekrar yazdık
+	cout << "[" << oss.str() << "]\n"; // [*necati-ergin]
 
 	oss.seekp(0, ios::end);
 	oss.put('!');
-	cout << "[" << oss.str() << "]\n";// *necati ergin!
+	cout << "[" << oss.str() << "]\n";// [*necati-ergin!]
 
 	oss.seekp(0);
 	oss.put('!');
-	cout << "[" << oss.str() << "]\n"; // !necati ergin!
+	cout << "[" << oss.str() << "]\n"; // [!necati-ergin!]
 
 }
 
