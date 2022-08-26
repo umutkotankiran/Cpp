@@ -749,8 +749,8 @@ Static bir kalıtım yoluyla bir sınıfın interface ine ilave birtakım skille
 ÖNEMLİ
 ------
 Aşağıdaki örnekte 
-!= OPERATÖR FUNC, == OPERATOR FUNC KULLANIYOR.
-== İSE, < OPERATOR FUNC KULLANIYOR
+!= OPERATÖR FUNCI, == OPERATOR FUNCINI KULLANIYOR.
+== İSE, < OPERATOR FUNCINI KULLANIYOR
 
 
 ÖR:
