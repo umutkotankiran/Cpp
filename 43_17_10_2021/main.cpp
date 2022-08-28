@@ -1382,7 +1382,7 @@ En yaygın epoch 1.1.1970 00.00 olabilir.
 
 
  Bu time point epoch tan önceki bir timepointte olabilirdi.Time pointin ve epoch un ne olduğunu belirleyen clock denen nesneler.
- C++20 ye kadar bize 3 tane standart saat türü veriliyordu. system clock, file resolution clock, steadyclock. C++20 ile bu sayı arttı.
+ C++20 ye kadar bize 3 tane standart saat türü veriliyordu. system clock, High resolution clock, steadyclock. C++20 ile bu sayı arttı.
 
  ÖZET: Bİr clock umuz varsa bu bize bir timepoint veriyor birde bu time pointe anlam kazandıracak bir epoch değeri veriyor.
 		
