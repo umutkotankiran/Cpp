@@ -1301,6 +1301,7 @@ Sınıfların static member funcları -> . veya :: operatörleri ile çağrılab
 -------------------------------------------------------------------------------------------------------
 ÖR:
 class Myclass{
+public:
 	static void foo();
 	void func();
 private:
