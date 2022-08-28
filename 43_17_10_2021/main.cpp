@@ -1428,7 +1428,7 @@ int main()
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-using frame = std::chrono::duration<long long, ratio<1,60>>; // saniyenin 1/60 ından veriler tutacak
+using frame = std::chrono::duration<double, ratio<1,60>>; // saniyenin 1/60 ından veriler tutacak
 
 int main()
 {
