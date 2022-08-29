@@ -16,7 +16,7 @@ Buradaki türler
 
 DURATION TEMPLATE
 
-template <typename Rep, typename R>
+template <typename Rep, typename Ratio>
 struct Duration{
 
 };
