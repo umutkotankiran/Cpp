@@ -1399,6 +1399,25 @@ duration<long long int,ratio<1,1000>>;  Her tik saniyenin binde biri, ve tikin t
 
 BURADA TYPEDEF ISIMLERINIDE KULLANABILIRIZ.
 
+-------------------------------------------------------------
+-------------------------------------------------------------
+-------------------------------------------------------------
+ÇOK ÖNEMLİ NOT !!!!!!!!!!!!!!!!!!!!!!!!!
+std::milli bir kesir değeri yani,
+std::milli bir ratio türü anlamında kullanılıyor
+std::milli --> ratio<1,1000>
+
+AMA!!!!!!
+std::chrono::milliseconds ise bir duration.
+Bu duration içerisinde de tür olarak ratio var.
+milli de ratio olduğundan tür olarak milli belirtilmiş.
+std::chrono::milliseconds --> duration<long long, std::milli>
+Yukaruda milli zaten bir ratio olduğundan milli yazılmış
+-------------------------------------------------------------
+-------------------------------------------------------------
+-------------------------------------------------------------
+
+
 int main()
 {
 	using namespace std;
