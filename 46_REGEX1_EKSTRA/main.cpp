@@ -326,7 +326,7 @@ Boundary
 -----------
 Konum olarak bir koşul oluşturuyor.
 
-\b kelime başı olacak demek
+\b kelime başı olacak demek. ^ise paragraf başı
 ne -> anne, neden, yine, deneme hepsi match ediyor ama
 
 \bne --> burada kelime başı olması gerekiyor.
@@ -833,7 +833,7 @@ Hoca internetten bulmuş aşırı aşırı uzun. onu yazmadım.
 int main()
 {
 	regex rgx("\b0[xX][0-9a-fA-F]+\b"); // \b kelime başı demek. ^ ise satır başı demek
-										// bu hex formatında sayıları bulur
+					    // bu hex formatında sayıları bulur
 
 	string str;
 
