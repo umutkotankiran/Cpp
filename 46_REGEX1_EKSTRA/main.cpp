@@ -224,7 +224,7 @@ Quantifier sayısal niteleyici anlamında.
 
 Asterisk *
 ----------
-Kendisinden önce gelen karakterden * yada n tane olabilir demek.
+Kendisinden önce gelen karakterden 0 yada n tane olabilir demek.
 Yani kendisinden öncekini [0-n] aralığında çarpıyor.
 x*y demek, y olacak ama x tende 0 ve n aralığında olabilir demek.
 
