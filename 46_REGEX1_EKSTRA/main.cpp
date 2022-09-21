@@ -497,7 +497,7 @@ sonra yine 0-9 arasındaki karakterlerden + ile birşelerek 1 yada daha çok oal
 
 6. Hex numbers 
 
-\b0[xX][09a-fA-F]+\b
+\b0[xX][0-9a-fA-F]+\b
 satır başı olacak. 0 olacak.
 x veya X olacak.
 0 - 9 arasındakilerden biri yada  a - f arasındaki charlardan biri yada
