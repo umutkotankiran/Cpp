@@ -6,7 +6,7 @@ Regular Expression
 Nedir neden ihtiyaç duyulur veya notasyonlar nelerdir...
 Bunları ilk öğrenmemiz gerekir.
 
-C++ ın standart regexi librarysi gerexi yapma şansı tanır.
+C++ ın standart regexi librarysi regexi yapma şansı tanır.
 Karmaşık bir library, zaten regexin kendiside karmaşık.
 
 Yazılarla ilgili işlemler çok sık ihtiyaç duyduğumuz işlemler.
