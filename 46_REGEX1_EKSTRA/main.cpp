@@ -154,6 +154,11 @@ yani a, e ve r olmayacak ama başka karakter olabilir anlamında.
 [^aer] --> tms, xms, yms hepsi valid
 			ems valid değil ama.Çünkü e karakteri aer den biri.
 
+NOT !!!!!!!!!!!!!!!!!
+---------------------
+^ normalde satır başı anlamında kullanılıyor aşağıda görülecek ama [] içerisinde kullanılırsa karakterlerden birisi olmayan
+anlamında kullanılıyor
+
 -----------------------------------------------------------------------------------------------------------------------------
 
 hyphen -
