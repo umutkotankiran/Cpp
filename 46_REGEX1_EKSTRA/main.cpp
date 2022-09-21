@@ -573,15 +573,15 @@ b - Lazy olabilir.
 Greey Örneği
 ------------
 a[ert]+k  --> aertk, aertertk valid durumdalar.
-			  arttttekk buda valid.	
-			  + kendisinden önceki gruptan 1 veya daha fazla sayıda olacak demek.
-			  burada ert den bir tanesi seçildi. daha sonra r daha sonra t seçildi yani
-			  1 den fazla kez o gruptan karakter yazılmış. O yüzden valid.
+		arttttekk buda valid.	
+		+ kendisinden önceki gruptan 1 veya daha fazla sayıda olacak demek.
+		burada ert den bir tanesi seçildi. daha sonra r daha sonra t seçildi yani
+		1 den fazla kez o gruptan karakter yazılmış. O yüzden valid.
 
 Lazy Örneği
 -----------
 a[ert]+? --> İlk kurala uyanı bulduğunda bırakacak. 
-			 aert yazınca ilk uyan ae olduğundan ae yi match olarak görüyor
+	     aert yazınca ilk uyan ae olduğundan ae yi match olarak görüyor
 
 Enteresan bir durum daha var!!!!!!!!!!!!
 a[ert]+?k --> aertertk yazınca hepsini match gösterdi.
@@ -635,12 +635,11 @@ basic_regex<char> için doğrudan regex kullanıyoruz.
 int main()
 {
 	regex rgx; // Bu bizden bir regex stringi istiyor. Arkaplandaki regex motoru
-				// regex sınıfı türünden bu nesnenin temsil ettiği regex stringini kullanacak.
-				// bunu cstring olarak yada std::string olarak ctora argüman olarak geçebiliriz.
+		   // regex sınıfı türünden bu nesnenin temsil ettiği regex stringini kullanacak.
+		   // bunu cstring olarak yada std::string olarak ctora argüman olarak geçebiliriz.
 
 
 	regex rgx("[abc]+123[ef]"); 
-		
 }
 
 -----------------------------------------------------------------------------------------------------------------------------
@@ -684,26 +683,26 @@ int main()
 
 	regex r1{"necati (erg)in"};
 	std::cout << "r1 icin alt ifade sayisi : " << r1.mark_count() << '\n'; // Burada 1 tane capture grup var.
-																			// 1 döndürür.
+										// 1 döndürür.
 	//---------------------------------------------------------------------------------
 
 	regex r1{"(necati) (erg)in"};
 	std::cout << "r1 icin alt ifade sayisi : " << r1.mark_count() << '\n'; // Burada 2 tane capture grup var.
-																			// 2 döndürür.
+										// 2 döndürür.
 
 	//---------------------------------------------------------------------------------
 
 	regex r1{"(nec(ati)ergin)"};
 	std::cout << "r1 icin alt ifade sayisi : " << r1.mark_count() << '\n'; // Burada yine 2 tane capture grup var.
-																			// 2 döndürür.
+										// 2 döndürür.
 
 	//---------------------------------------------------------------------------------
 
 	regex r1{"\\(necati)\\"};
 	std::cout << "r1 icin alt ifade sayisi : " << r1.mark_count() << '\n'; // 0 verir. Burada aslında \\ yazınca \ gibi evaluate ediliyor
-																			// buda parantezleri escape etti. 
-																			// Yani parantezler metacharacater değil artık
-																			// mark count 0 verir
+									       // buda parantezleri escape etti. 
+									       // Yani parantezler metacharacater değil artık
+									       // mark count 0 verir
 
 }
 
