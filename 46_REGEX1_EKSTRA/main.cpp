@@ -459,7 +459,7 @@ ahmet Necagti'ye dedi ki  içinde necati geçen bütün satırları buldu.
 
 4. Geçerli tarih
 
-(0[1-9]|[12][0-9]|3[01])([-./])(0[1-9]|1[012])\2(19|20)\d\d
+(0[1-9]|[12][0-9]|3[01])([-.\/])(0[1-9]|1[012])\2(19|20)\d\d
 
 0 karakteri gelecek, 1-9 arasından biri sonrasında veya var.
 Veyanın solu yada sağı match olacak.
@@ -468,9 +468,12 @@ veya gelmiş yine solu veya sağı olacak sağında 3 ve 0 veya 1 den biri olaca
 Buraya kadar olan kısım tarihin günü 
 
 0 ve 1 -9 arası olacak veya 1 olacak sonra 0-1-2 den biri olacak
-\2 back reference. yani 2. parantez([-./]) hangi ayıraç kullanıldıysa \2 yazan
+\2 back reference. yani 2. parantez([-.\/]) hangi ayıraç kullanıldıysa \2 yazan
 yerde de o ayıraç kullanılacak.
-ay bitti
+ay'da bitti
+DİKKAT!!!!!!!!!!!!
+normalde . kullanacaksak \. yazardık ama [] içerisinde . doğrudan kullanılabildi ama
+/ kullanmak için \ kullanmak zorunda kaldık
 
 
 19 veya 20 olacak sonrasında 2 tane rakam karakteri.
