@@ -808,10 +808,10 @@ int main()
 	std::cout << "toplam cumle sayisi: " << svec.size() << "\n";
 
 	std::string sreg{ ".*([trkma]{2,}).*\\1.*" }; // herhangibir chardan 0-n arasında sayıda
-												  // sonra trkma dan 2 veya dana fazla sayıda
-												  //herhangibir chardan 0 veya daha fazla tane
-												  // 1. gruptan 1 tane daha yani ([trkma]{2,}) dan bir tane daha olmalı
-												  // herhangibir chardan 0-n tane
+						      // sonra trkma dan 2 veya dana fazla sayıda
+						      //herhangibir chardan 0 veya daha fazla tane
+						      // 1. gruptan 1 tane daha yani ([trkma]{2,}) dan bir tane daha olmalı
+						      // herhangibir chardan 0-n tane
 
 	std::regex rgx{sreg}; // Regex nesnesini oluşturduk
 
