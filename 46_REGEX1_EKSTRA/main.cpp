@@ -983,8 +983,10 @@ int main()
 -----------------------------------------------------------------------------------------------------------------------------
 
 ÇOOOOK ÖNEMLİ !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+BUNUN ÇALIŞMASI İÇİN REGEX STRINGINI GRUPLAMAK GEREKİYOR. BUNU DA PARANTEZLE YAPIYORUZ.
+YANİ REGEX STRİNGİNDE PARANTEZLE GRUPLARI BELİRTECEĞİZ.
 
-(\d{4}\.([a-f]{4})\.(\d{4})
+(\d{4})\.([a-f]{4})\.(\d{4})
 1784.dcba.5653
 birinci capture grup 1784
 ikinci capture grup dcba
