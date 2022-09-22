@@ -326,7 +326,7 @@ Boundary
 -----------
 Konum olarak bir koşul oluşturuyor.
 
-\b kelime başı olacak demek. ^ise paragraf başı
+\b kelime başı olacak demek. ^ise satır başı
 ne -> anne, neden, yine, deneme hepsi match ediyor ama
 
 \bne --> burada kelime başı olması gerekiyor.
