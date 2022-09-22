@@ -832,7 +832,7 @@ Hoca internetten bulmuş aşırı aşırı uzun. onu yazmadım.
 
 int main()
 {
-	regex rgx("\b0[xX][0-9a-fA-F]+\b"); // \b kelime başı demek. ^ ise satır başı demek
+	regex rgx("\\b0[xX][0-9a-fA-F]+\\b"); // \b kelime başı demek. ^ ise satır başı demek
 					    // bu hex formatında sayıları bulur
 
 	string str;
