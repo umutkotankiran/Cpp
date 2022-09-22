@@ -1005,12 +1005,12 @@ prefix()  alican
 suffix()  enes
 
 Düzenlemeye çalışalım !
-       
-	    mr1 mr2  mr3
+        
+        mr1  mr2 mr3
  alican1784.dcba.5653enes
-prefix |		    | suffix
-	   |____________|
-			mr0
+prefix |	    | suffix
+       |____________|
+	    mr0
 
 
 			
