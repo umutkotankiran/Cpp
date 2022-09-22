@@ -975,8 +975,8 @@ int main()
 
 	// MATCH RESULT NESNESİNİNDE MEMBER FUNCLARI VAR
 	sm.str(); // yazı
-	sm.pos(); // index
-	sm.len(); // uzunluk veriyor.
+	sm.position(); // index
+	sm.lenth(); // uzunluk veriyor.
 }
 
 -----------------------------------------------------------------------------------------------------------------------------
