@@ -1149,17 +1149,17 @@ int main()
 	{
 		// *iter match result(smatch türünden nesne)nesnesini veriyor.
 		std::cout << iter->str(0) << '\n'; // yazıdaki tüm matchleri bulmuş oluyorum.
-											// 1234.fbed.4356 gibi veriler yazdırı
+						   // 1234.fbed.4356 gibi veriler yazdırı
 
 		std::cout << iter->position(0) << '\n'; // iter->position() ile aynı.
-												// her bulunan yazının indexi
-												// 1234 veya 5864 gibi verileri yazar
+							// her bulunan yazının indexi
+							// 1234 veya 5864 gibi verileri yazar
 
 		std::cout << iter->str(1) << '\n';  // Sadece 1. submatchleri yazar
-											// 2342 gibi veriler yazar.
+						// 2342 gibi veriler yazar.
 
 		std::cout << iter->str(2) << '\n';  // Sadece 2. submatchleri yazar
-											// abcd  gibi verileri yazar.
+						// abcd  gibi verileri yazar.
 	}
 
 }
@@ -1177,9 +1177,9 @@ int main()
 	for(sregex_iterator iter{str.begin(), str.end(), rgx}, end; iter != end; ++iter)
 	{
 		cout << iter->str() << '\n'; // o komundaki nesnenin str funcını çağırıyoruz.
-									// o konumdaki nesnes bir match resul
-									// iter->str(0); değerini geçsek yine aynı ama
-									// iter->str(1); varsa eğer ilk submatch geçilir.
+					     // o konumdaki nesnes bir match resul
+					     // iter->str(0); değerini geçsek yine aynı ama
+					     // iter->str(1); varsa eğer ilk submatch geçilir.
 	}
 }
 
