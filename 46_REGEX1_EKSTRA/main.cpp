@@ -1196,6 +1196,10 @@ Farklı tarafı constrcutor son parametresine bir tamsayı değeri geçiyroum.
 Bu tamsayı değerinin ne olduğuna bağlı olarak rangei dolaşırken bizi belirttiğimiz indexli
 submatchlere eriştiriyor.
 
+NOT!!!!!!!!!!!!!!!!!!!!!
+sregex_iteratorde biz iter.str(1) gibi ifadeler ile submatchlere erişiyorduk
+sregex_token_iteratorde ise bu indexleri iterator ctorunda yazıyoruz. iter.str()
+yazarak erişiyoruz.İndexe gerek kalmamış oldu ama ctor içerisinde yazdık farkı bu.
 
 #include <iostream>
 #include <string>
