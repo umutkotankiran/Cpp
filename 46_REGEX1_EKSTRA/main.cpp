@@ -1207,8 +1207,8 @@ int main()
 
 	string str("projede projeyi basariya ulastiracak profesyonel programcilar gerekiyor");
 	regex rgx("\\b(pro)([^ ]*)"); // \\b kelime başı.(pro) birinci capture grup pro olacak.
-								  // daha sonra ikinci capture grupta boşluk olan karakterle başlamayacak demek.
-								  // Yani boşluk olmayan karakterlerden olacak. * da 0-n arasında olacak diyor.
+				      // daha sonra ikinci capture grupta boşluk olan karakterle başlamayacak demek.
+				      // Yani boşluk olmayan karakterlerden olacak. * da 0-n arasında olacak diyor.
 
 	sregex_token_iterator rend;
 
