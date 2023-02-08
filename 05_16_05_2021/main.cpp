@@ -206,7 +206,7 @@ cosnt int x = 23;
 cosnt int y = 23;
 
 constexpr auto a = isprime(sum_square(x,y) + 3);  bu bir sabit ifadesi ve sentaks hatası yok. 
-													çünkü gönderilen değerler sabit
+						  çünkü gönderilen değerler sabit
 
 
 
@@ -214,9 +214,9 @@ int x = 23;
 cosnt int y = 23;
 
 constexpr auto a = isprime(sum_square(x,y) + 3); burası ise sentaks hatası çünkü burada x sabit ifadesi değil.
-													doayısı ile constexpr ile belirtilen değilken sabit olamıyor.
-													fonksiyonlar constexpr ama argümanlar const değil, bu durumda
-													fonksiyonların ürettiği değerler sabit ifadesi değil.
+						 doayısı ile constexpr ile belirtilen değilken sabit olamıyor.
+						 fonksiyonlar constexpr ama argümanlar const değil, bu durumda
+						 fonksiyonların ürettiği değerler sabit ifadesi değil.
 
 ------------------------------------------------------------ -
 ------------------------------------------------------------ -
@@ -432,7 +432,7 @@ int func()
 	return 1;
 }
 
----------------------------------------------- -
+-----------------------------------------------
 
 
 redecleration örnek
