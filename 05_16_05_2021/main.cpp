@@ -24,8 +24,7 @@ const int x = foo(); burada ise foo() sabit ifadesi olmadığı için kullanıla
 const nesneye ilk değeri sabit ifadesi ile verirsek sabit ifade
 gereken yerlere kullanılır.
 
-----------------------------------------------
-----------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 constexpr
 
@@ -45,7 +44,7 @@ x = 100; burada sentaks hatası.
 
 bildiğimiz const ile constexpr nin farkı ileride görülecek.
 
-----------------------
+----------------------------------------------------------------------------------------------------
 
 Birde constexpr fonksiyonlar var.
 
@@ -58,8 +57,8 @@ AMA CONSTEXPR ISE BU IFADENIN SABIT IFADESI OLARAK KULLANILACAĞINI GÖSTERIYOR.
 constexpr const int* p = &x;   burada ikiside farklı anlamda
 nesnenin türü const int* ama constexpr ile tanımlanmış.
 
----------------------------------------------------------------------
----------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 ÖRNEK: BURASI ÖNEMLİ !!!!
 const sentaks bileşeni. ifadenin değişmeyeceğini söylüyor.
 sabit ifadesi geçen yerlerde C++ ta const nesne kullanılır.
@@ -73,8 +72,8 @@ const int t = 22;
 const int x = y; //Burası OK. const demek nitelenen ifade değişmeyecek demek.
 constexpr const int x = z; // Sentaks hatası çünkü.z const değil.const olsaydı C++ ta sabit yerine kullanılabilirdi.
 constexpr const int x = t; // Burası OK.burada t const, constexpr zaten ifadenin sabit olmasını ister. t sabit yerine kullanılır.
----------------------------------------------------------------------
----------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 IMPLİCİT OLARAK BİR CONST DAHA GELİYOR
 
@@ -88,8 +87,8 @@ olduğundan hata verdi. sanırım bu ileride görülecek.
 Hocadan cevap alındı: Yerel değişken adresleri sabit ifadesi olarak kabul edilmiyor.
 Global dğeişkenleri kabul edilebilir.
 
------------------------------------
------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 CONSTEXPR FUNCTION
 
@@ -135,9 +134,7 @@ YANİ CONSTEXPR FOPNKSIYONA SABİT İFADESİ GÖNDERME ZORUNLULUĞU YOK AMA
 GÖNDERİRSEK FONKSİYON ÇAĞRISIDA SABİT İFADESİ OLUYOR VE COMPİLE TİME DA ELDE EDİLİYOR.
 
 
-
----------------------------------------------------------- -
-
+----------------------------------------------------------------------------------------------------
 
 C de yazdığımız asal sayı fonksiyonunu C++ ta yazıyor.
 
@@ -181,12 +178,12 @@ const int x = a * b + 4; yazıp x in üzerine gelirsek sonucu gösterir. x i con
 
 isprime(square(a,b) +1); bu ifade bir sabit ifadesi.çünkü fonksiyonlar constexpr ve elemanlarda sabit ifadesi.
 
---------------------
+----------------------------------------------------------------------------------------------------
 
 sabit ifadesi olup olmadığını anlamak için başka bir constexpr değişkene
 bu değer atanmalı.
 
---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 constexpr int func(int x, int y)
 {
@@ -196,8 +193,9 @@ constexpr int func(int x, int y)
 
 	return a;    // constexpr koşulu sağlanırsa ve değer runtime da hesaplanırsa değersabit ifadesi olmayacak
 }
------------------------------------------------------------- -
------------------------------------------------------------- -
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 BU KISMIN ÖZETİ AŞAĞIDA
 -----------------------
@@ -218,8 +216,8 @@ constexpr auto a = isprime(sum_square(x,y) + 3); burası ise sentaks hatası ç�
 						 fonksiyonlar constexpr ama argümanlar const değil, bu durumda
 						 fonksiyonların ürettiği değerler sabit ifadesi değil.
 
------------------------------------------------------------- -
------------------------------------------------------------- -
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 C++'TA ASIL OLAN VERİM !!!!!!!!!!!!!!!!!
 
@@ -240,7 +238,7 @@ Bu dilin kuralı.Compiler optimization değil.
 NOT : BU TANIŞMA DERSİ.
 İLERİDE GÖRÜLECEK ZATEN.
 
--------------------------------------------------------- -
+----------------------------------------------------------------------------------------------------
 
 DİKKAT !!!
 C++ TA BAZI KODLARIN BAŞLIK DOSYASINDA BULUNMASI GEREKİYOR.
@@ -256,8 +254,10 @@ INLINE VARIABLES
 
 KODU GÖSTERMEK İSTEMİYORSAK BU BİR DEZAVANTAJ OLABİLİR.
 
-============================================================== =
-============================================================== =
+====================================================================================================
+====================================================================================================
+====================================================================================================
+====================================================================================================
 
 FUNCTIONLARIN VARSAYILAN ARGÜMAN ALMASI
 ---------------------------------------
@@ -305,8 +305,8 @@ BURADAKİ EN BÜYÜK RİSK SIRANIN KARIŞMASI.
 KENDİ API LERİMİZİ YAZARKENDE CLIENT KODUN RAHAT ETMESİ İÇİN
 KULLANABİLİRİZ.
 
--------------------------------------------------------------------
--------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 EĞER BİR FONKSİYONUN BİLDİRİMİNDE BİR PARAMETRE İÇİN DEFAULT ARGUMENT
 BELİRTİLMİŞSE ONUN SAĞINDAKİ TÜM PARAMETRELERİNDE DEFAULT ARGUMENT
@@ -323,7 +323,7 @@ NOT !!!!!!!!!!!!!!!!!!!
 BİLDİRİMDE VARSAYILAN ARGUMENT BELİRTİLMİŞSE TANIMDA KESİNLİKLE
 BELİRTİLMEYECEK.YOKSA SENTAKS HATASI.
 
-------------------------
+----------------------------------------------------------------------------------------------------
 
 NOT !!!!!!!!!!!!!!!!!!!
 func(1, , 3); BU HATA.BU ŞEKİLDE ÇAĞIRAMAYIZ.
@@ -378,13 +378,13 @@ int main()
 		y = 3
 }
 
------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 int foo(int a, int b = a); BURASI SENTAKS HATASI
 DEFAULT ARGUMENTTA DAHA ÖNCE KULLANILAN PARAMETRE 
 KULLANILAMIYOR.
 
-------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 NOT !!!! ÇOOOK ÖNEMLİ !!!!!!!!!
 void func(int, int, int);
@@ -396,7 +396,8 @@ TEKRAR BİLDİRİM / REDECLERATION İLE YAPILIR
 void func(int, int, int = 10);
 
 
------------------------------------------- -
+----------------------------------------------------------------------------------------------------
+
 void func(int, int = 10, int); BURASI TEK BAŞINA SENTAKS HATASI
 
 void func(int, int  int = 20); BURASI GEÇERLİ.
@@ -415,8 +416,8 @@ void func(int, int  int = 20);
 
 2 DEFA TEKRAR EDİLMİŞ AYNI BİLDİRİM.REDECLERATİON. SENTAKS HATASI.
 
---------------------------------------------------------------------
---------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 ÇOK ÖNEMLİ BİR YER DAHA.
 REDECLEREATION İLE REDEFINITION KARIŞTIRILIYOR.
@@ -432,8 +433,7 @@ int func()
 	return 1;
 }
 
------------------------------------------------
-
+----------------------------------------------------------------------------------------------------
 
 redecleration örnek
 #include <cstdlib>
@@ -456,7 +456,7 @@ aşağıdaki gibi REDECLERATION yapsaydık bir parametreyi göndermeye gerek yok
 int _itoa(int, char*, r = 10);
 
 
---------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 void print_date(int day, int mon, int year = -1);
 bu kullanılan bir tema. default argument kullanıldığını söylüyor.
@@ -464,7 +464,7 @@ bu kullanılan bir tema. default argument kullanıldığını söylüyor.
 printf_date(15, 4); bu çağrı 2020 de yapıldıysa 15 4 2020 gibi bir
 birşey sağlamak.
 
------------------------------- -
+----------------------------------------------------------------------------------------------------
 
 ÖR:
 
@@ -494,7 +494,7 @@ void print_date(int day = -1, int mon = -1, int year = -1)
 }
 
 
--------------------------------------------------------------- -
+----------------------------------------------------------------------------------------------------
 
 void func(int, int* ptr = nullptr);  bu tip örnekler çok göreceğiz.
 
@@ -513,12 +513,15 @@ double strtod(cosnt char*, char** = nullptr); bunu bildirimde yukarı yazsaydık
 çağırırkende sadece strtod(str); deseydik bu stdtod(str,NULL) ile aynı anlamda olacaktı.
 
 
-================================================================
-================================================================
-================================================================
-================================================================
-================================================================
-================================================================
+====================================================================================================
+====================================================================================================
+====================================================================================================
+====================================================================================================
+====================================================================================================
+====================================================================================================
+====================================================================================================
+====================================================================================================
+
 
 FUNCTION OVERLOADING
 --------------------
@@ -562,8 +565,8 @@ FONKSİYONUN 3 TANE OVERLOAD U VAR MESELA İSİM ANLAMINDA KULLANILMIŞ.
 foo FUNCTIONU OVERLOAD EDİLMİŞ
 foo FUNCTIONUNUN 3 TANE OVERLOAD U VAR. HEM FİİL HEM İSİM ANLAMINDA KULLANILIYOR.
 
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 BU KONU ÇOK KARIŞTIRILIYOR
 
@@ -622,12 +625,11 @@ int func(int*);   BURADA BU FONKSIYONUN 4 TANE OVERLOAD U VAR.
 int func(int);
 int func(int, int = 10);  2 TANE OVERLOAD VAR ÇÜNKÜ FUNCTION IMZASI FARKLI.
 
-
---------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 int func(int);
 int func(const int);   BURASI OVERLOADING DEĞIL.REDECLERATION VAR.CONST BURADA İHMAL EDİLİYOR. PTR DA İHMAL EDİLMİYOR
-						VEYA REFERANSLARDA İHMAL EDİLMİYOR.
+			VEYA REFERANSLARDA İHMAL EDİLMİYOR.
 
 NASIL ANLARIM ?
 REDECLERATİON HATA VERMEZ AMA BUNU DEFINITIONA ÇEVİRİRSEK HATA VERİR.
@@ -659,18 +661,17 @@ int func(const int,int)
 }
 
 
--------------------------------------------
 TEKRAR YAZIYORUM YUKARIDA VARDI
 int func(int);
 int func(const int);   BURASI OVERLOADING DEĞIL.REDECLERATION VAR.
 
---------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 void func(int*);
 void func(const int*); BURASI KESINLIKLE FUNCTION OVERLOADING.
 
 
--------------------- -
+----------------------------------------------------------------------------------------------------
 
 void func(int*p);
 void func(int* const p);   BURADA FUNCTİON OVERLOADING YOK. TOP LEVEL CONST DERLEYİCİ TARAFINDAN İHMAL EDİLİP
@@ -681,15 +682,14 @@ NOT : OVERLOADİNG VARSA DECLERATIONDAN DEFINITIONA ÇEVİRDİĞİMDE HATA OLUŞ
 OVERLOADİNG YOKSA HATA VERİR ÇÜNKÜ AYNI İSİMDE BİR FONKSİYON DAHA TANIMLANMIŞ OLUR.
 BU OVERLOADİNG VARSA MÜMKÜN.
 
-------------------------
+----------------------------------------------------------------------------------------------------
 
 typedef int itype;
 
 void func(int);
 void func(itype);  OVERLOADING YOK, REDECLERATION VAR.
 
-
------------------------- -
+----------------------------------------------------------------------------------------------------
 
 C++ ta
 using itype = int;
@@ -697,8 +697,7 @@ using itype = int;
 typedef int (*fptr)(int); bu C ve C++ ta
 using fptr = int(*)(int); bu Modern C++ ta daha çok kullanılır.
 
---------------------------------
-
+----------------------------------------------------------------------------------------------------
 
 void func(char);
 void func(signed char);
@@ -709,19 +708,20 @@ void func(char) {}  üçünede yaz.hata yoksa overloading var.
 void func(signed char) {}
 void func(unsigned char) {} hata yok çünkü overloading
 
-----------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 void func(int);
 void func(int32_t);  // IMPELEMTATION DEFINED :D
-						bende overloading yok.redefinition var :D
-----------------------------------------------
+		     // bende overloading yok.redefinition var :D
+		     
+----------------------------------------------------------------------------------------------------
 
 void func(int&);
 void func(const int&);  burada OVERLOADİNG var.Pointer örneğinde olduğu gibi.
 
 BU EN SIK KULLANILAN OVERLOAD BİÇİMLERİNDEN BİRİ.
 
---------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 void func(int&);
 void func(const int&);
@@ -731,8 +731,7 @@ TEREDÜTTE Mİ KALDIM ?
 HEPSİNDE ; YERİNE {} YAPIP DEFINITION YAP.
 HATA YOKSA OVERLOAD VAR. HATA VARSA OVERLOAD OLMAMIŞTIR.
 
---------------------------------------------------
-
+----------------------------------------------------------------------------------------------------
 
 void func(int&)
 void func(const int&)
@@ -756,7 +755,7 @@ void func(int[5]);
 void func(int[6]);
 void func(int*);     OVERLOADING YOK.
 
--------------------------------------------------- -
+----------------------------------------------------------------------------------------------------
 
 NOT !!!!!!!!!!
 
@@ -764,9 +763,9 @@ Nesnenin kendi constluğu bir overloading yaratmıyor.
 
 birde paramtetrelerin top level constluğu overloading oluşturmuyor.
 
-=============================================================================
-=============================================================================
-
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 ZOR BÖLÜM !!!!!!!!!!!!!
 
@@ -799,8 +798,8 @@ Bu süreç 2 farklı şekilde sonuçlanır.
 			ama 2 seçenek arasında seçme yapılamıyor.
 			öncelik veremiyor.Böyle durumlarda SENTAKS HATASI
 
--------------------------------------------------------- -
--------------------------------------------------------- -
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 FUNCTION OVERLOAD RESOLUTION SÜRECİ 3 AŞAMADA ELE ALINIYOR.
 
@@ -1207,11 +1206,3 @@ NOT: ORTADA VIABLE FONKSİYON YOKSA BU AŞAMAYA GEREK YOK.
 						   Bu Ambigiuty olarak değerlendiriliyor.
 
 */
-
-#include <iostream>
-
-
-int main()
-{
-	
-}
