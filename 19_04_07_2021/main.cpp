@@ -132,9 +132,9 @@ stol(str,idxRet=nullptr, base=10)				Converts str to a long
 stoul(str,idxRet=nullptr, base=10)				Converts str to an unsigned long
 stoll(str,idxRet=nullptr, base=10)				Converts str to a long long
 stoull(str,idxRet=nullptr, base=10)				Converts str to an unsigned long long
-stof(str,idxRet=nullptr)						Converts str to a float
-stod(str,idxRet=nullptr)						Converts str to a double
-stold(str,idxRet=nullptr)						Converts str to a long double
+strof(str,idxRet=nullptr)						Converts str to a float
+strod(str,idxRet=nullptr)						Converts str to a double
+strold(str,idxRet=nullptr)						Converts str to a long double
 to_string(val)									Converts val to a string
 to_wstring(val)									Converts val to a wstring
 
