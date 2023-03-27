@@ -1643,10 +1643,7 @@ başka ihtimallerde var. Birsonraki derste görülecek.
 
 class Member {
 public:
-	Member()
-	{
-		std::cout << "Member Default Constructor\n";
-	}
+	
 	Member(int x)
 	{
 		std::cout << "Member(int x) x = " << x << "\n";
