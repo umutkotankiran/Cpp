@@ -1159,7 +1159,13 @@ int main()
 BURASI SÜREKLİ KAÇIRILIYOR!!!!!!!!!!
 
 C ile C++ ın internal linkage olayı farklı.
-C de kod file da static yapıyorduk. C++ ta header fileda bildirebiliyoruz.ama farklı nesneler oluyor bu değişkenler.
+C de kod file da static yapıyorduk. C++ ta header fileda bildirebiliyoruz .ama farklı nesneler oluyor bu değişkenler.
+TEST : 
+header fileda const veya static ile tanımlayıp tüm file lardan include edince adresler farklı.
+Her bir code file için farklı bir nesne.
+
+inline yapınca ise aynı nesne. inline a alternatif C style olarak yazmak. headerda extern bildirimi
+onu headerı include eden code file da ise tanım.
 
 ---------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------
