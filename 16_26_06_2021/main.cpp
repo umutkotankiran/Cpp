@@ -1361,14 +1361,16 @@ bizim istediğimiz gibi.Yazacaksan ciddi nedenimiz olmalı.
 
 class Member{
 public:
-	Member(Member&&);
-private:
 	Member() = default;
 	Member(const member&);
+private:
+	Member(Member&&);
 };
 
 class Owner{
 public:
+
+	Member m;
 };
 
 int main()
