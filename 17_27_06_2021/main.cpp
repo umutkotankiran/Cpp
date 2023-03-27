@@ -812,7 +812,7 @@ namespace A
 	int a;
 	namespace B
 	{
-	inline namespace C
+		inline namespace C
 		{
 			int x;
 		}
@@ -822,7 +822,7 @@ namespace A
 int main()
 {
 	A::B::x = 23; //geçerli
-	A::x = 33; // geçeli
+	A::x = 33; // geçersiz
 }
 
 inline namespace C bildirimde adeta sanki biz bu namespace çıkışında using namespace c yazmışım gibi 
