@@ -1512,7 +1512,7 @@ namespace Nec{
 int g = 20;
 
 namespace Nec{
-	int x =10;
+	int g =10;
 }
 
 int main()
