@@ -9,6 +9,7 @@ STL containerlarını 3 e ayırıyorduk.
 Sequencial containers
 	vector
 	deque
+	string
 	list
 	forward_list
 	array
@@ -875,7 +876,7 @@ const char *p = s.c_str(); // yazı başka yere taşınırsa pointer dangling ha
 puts(p);
 s+="buraya geldi bugun";
 cout << s << "\n";
-puts(s); // tanımsız davranış.ÇÜNKÜ REALLOCATİON OLDU.
+puts(p); // tanımsız davranış.ÇÜNKÜ REALLOCATİON OLDU.
 
 ----------------------------------------------------------------------------
 
