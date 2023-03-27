@@ -1621,7 +1621,7 @@ namespace prog{
 
 1. ihtimal
 //cpp filedan aşağıdaki gibi tanımlıyoruz.
-void Nec::prog:Nec()
+void prog::Nec::func()
 {
 	//
 }
