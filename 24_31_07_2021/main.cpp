@@ -620,7 +620,7 @@ int main()
 {
 	using namespace std;
 
-	vector<Person> pvec{ "Cahit sitki taranci","Ahmet musip diranas","fazil husnu daglarca" };
+	vector<Person> pvec{ "Cahit sitki taranci","Ahmet muhip diranas","fazil husnu daglarca" };
 
 }
 
