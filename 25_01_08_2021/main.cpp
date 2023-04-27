@@ -877,13 +877,13 @@ Kurallar burada da aynı fark yok.
 
 
 template <typename T>
-func(T expr);
+void func(T expr){}
     
 template <typename T>
-func(T& expr);
+void func(T& expr){}
     
 template <typename T>
-func(T&& expr);			yine aynı şekilde T için tür çıkarılacak hepsinde.
+void func(T&& expr){}		yine aynı şekilde T için tür çıkarılacak hepsinde.
 
 =======================================================================================================================
 =======================================================================================================================
