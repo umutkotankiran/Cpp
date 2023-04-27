@@ -514,7 +514,7 @@ Programlamanın çok önemli alanlarından biri. C++ ın en güçlü olduğu ala
 C++ diğer dillerden önde bu konuda.
 C de yapmıştık zaten. memcmp memmove memcpy bunlar türden bağımsız işlemler yapıyorlar
 qsort ... Nesnenin türünü dikkate almadan nesneyi bellekteki bir byte dizisi olarak ele alınıyor burada.
-C ve C++ ta bunun aracı void pointerlar.
+C de bunun aracı void pointerlar.
 
 hata gswap ı biz yazmıştık.Tekrar gsawp ve greverse yazıldı. Bunlar C de görüldüğü için yazmıyorum.
 
