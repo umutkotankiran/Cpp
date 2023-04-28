@@ -1410,7 +1410,7 @@ int main()
 {
 	Myclass <int> mx;  // şuanda foo func veya f kodu yazılmayacak
 
-	mx.foo(); // Artık burada foo functionu yazılacak.Çünkü çağrılmış.
+	mx.foo(1); // Artık burada foo functionu yazılacak.Çünkü çağrılmış.
 }
 
 ---------------------------------------------------------------------------------------------
