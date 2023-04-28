@@ -326,9 +326,9 @@ void foo(std::vector<int> &&) //Burasıda forwarding referans değil.Bir deducti
 
 template<typename T>
 void foo(std::vector<T> &&) // DEĞİL. Bu func ın parametresi sağ taraf referansı.Yani T int ise
-{							// parametresi vector<int>&& olacak.Yani T yalın halde değil
-}							// başka bir açılım olarak vberilmişse forwarding referans değil
-							// Ancak T&& olursa forwarding referans
+{			    // parametresi vector<int>&& olacak.Yani T yalın halde değil
+}			    // başka bir açılım olarak vberilmişse forwarding referans değil
+			    // Ancak T&& olursa forwarding referans
 
 
 template <typename T>
