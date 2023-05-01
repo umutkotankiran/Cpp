@@ -595,8 +595,8 @@ struct integral_constant {
 	using type = integral_constant; // type = integral_constant<int,5>. sadece struct adını yazınca aslında açılımı yazılmış gibi davranıyordu.
 	
 	constexpr operator value_type() const noexcept { return value; } // casting operator func. value type a dönüştürüyor. 
-																	 // integral_constant<int,5>{} bunu değer bekleyen yerde kullanırsak 5 e dönüşecek.
-																	 // constexpr olduğunu için sabit ifadesi.Gerekli yerde 5 e dönüşecek.
+									 // integral_constant<int,5>{} bunu değer bekleyen yerde kullanırsak 5 e dönüşecek.
+									 // constexpr olduğunu için sabit ifadesi.Gerekli yerde 5 e dönüşecek.
 	
 	constexpr value_type operator()() const noexcept { return value; } // func call operator func. return 5 o da. integral_constant<int,5>{}() bu da 5 i döndürür.
 };
