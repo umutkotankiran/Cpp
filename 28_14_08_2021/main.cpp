@@ -242,14 +242,14 @@ template <typename T>
 void func(T)
 {
 	typename Remove_Reference<T>::type ; // Buradaki T bir referans olsa bile referans olmayacak.
-}										 // T nin int& olduğu anlaşılırsa.Remove_Reference<int&>::type = int türü olacak
-											referanslık siliniyor.
+}					     // T nin int& olduğu anlaşılırsa.Remove_Reference<int&>::type = int türü olacak
+					     // referanslık siliniyor.
 
 int main()
 {
-	Remove_Reference<int&>::type x; // Burada int& değil int türünü kullanmış olacağım
+	Remove_Reference<int&>::type x;  // Burada int& değil int türünü kullanmış olacağım
 	Remove_Reference<int&&>::type x; // Burada int&& değil int türünü kullanmış olacağım yine
-										// her seferinde kullandığım specialization değişiyor.Bu sebeple int 
+					 // her seferinde kullandığım specialization değişiyor.Bu sebeple int 
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------
