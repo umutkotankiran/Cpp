@@ -865,7 +865,7 @@ template <typename T, typename U>
 class Myclass{
 public:
 	Myclass(T x);
-	Myclass(T x, T y);
+	Myclass(T x, U y);
 };
 
 int main()
