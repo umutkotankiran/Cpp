@@ -377,7 +377,7 @@ Virtual Constructor ve Virtual Destructor
 -----------------------------------------
 
 C++ ta constructor virtual olamaz. Virtual keywordü constructor için kullanılamaz.
-Ayrıca nonstatic member functionlar ve global functionlar sanal olamaz. Bu sentaks kuralı
+Ayrıca static member functionlar ve global functionlar sanal olamaz. Bu sentaks kuralı
 
 class Base {
 public:
