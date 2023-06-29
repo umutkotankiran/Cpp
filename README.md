@@ -14,3 +14,4 @@ Kurs 4 saat ve 45 ders olarak yapıldı ve not alındı. 45 * 4 = 180 saat kurs 
 
 5 - References, Reference Semantic vs Pointer Semantic, Value Categori and Data Type, Universal Reference,
     Type Deductions for auto, auto&, auto&&, Reference Collapsing Rules, Decltype Specifier, 
+6
