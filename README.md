@@ -5,6 +5,8 @@ Kurs 4 saat ve 45 ders olarak yapıldı ve not alındı. 45 * 4 = 180 saat kurs 
 3 saat ve 60 ders olarak işleyen arkadaşların müfredatı veya konu sıralaması ile %100 uyuşmayabilir.
 
 
+
+
 1 - C++ vs C
 
 2 - Initializations
@@ -15,4 +17,3 @@ Kurs 4 saat ve 45 ders olarak yapıldı ve not alındı. 45 * 4 = 180 saat kurs 
 
 5 - References, Reference Semantic vs Pointer Semantic, Value Categori and Data Type, Universal Reference,
     Type Deductions for auto, auto&, auto&&, Reference Collapsing Rules, Decltype Specifier, 
-  
