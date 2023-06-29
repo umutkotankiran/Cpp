@@ -194,6 +194,23 @@ sonuna h koymuyoruz.
 
 ----------------------
 
+TEKRAR
+------
+int x; Default İnit.Refler hata, constlar hata
+int y{}; Value init.burada y zero initialize edilir.y = 0 yani :D
+int z{ 20 }; Uniform / Brace
+int t(12); Direct init.
+int k = 23; Copy init.
+int x(); Function Decleration
+
+Mülakat sorusu
+auto x{ 10 }; x in türü int
+
+auto x = { 10 };  buradaki tür Initializer list deniyor.Daha görülmedi.
+std::initializer_list<int>
+
+auto z{ 10,20 }; c++17 de artık sentaks hatası
+auto z = { 10,20 }; init list oldu.Geçerli.
 
 
 
