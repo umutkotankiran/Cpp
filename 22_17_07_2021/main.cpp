@@ -1410,6 +1410,8 @@ alignas ile alignment requiremets daha büyük bir değer olabilir.
 Ama bunu küçültmek işlemcinni destek vermediği durum olabilir
 yada işlemlerin çok daha yavaş yapılması anlamına gelebilir.
 
+PADDING BYTES C'DE ANLATILDI
+https://github.com/umutkotankiran/C/blob/390307dc8ca03a4272cca9f469232deef5ff5073/46_08_04_2021/main.c#L336
 ------------------------------------------------------------------------------------------
 
 Bir kullanımı daha var.
