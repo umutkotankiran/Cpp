@@ -1397,6 +1397,21 @@ duration<int,ratio<1>>;  Bu öyle bir süre birimi ki, her tiki bir saniye ve he
 
 duration<long long int,ratio<1,1000>>;  Her tik saniyenin binde biri, ve tikin türü long long int anlamına gelecek.
 
+-------------------------------------------------------------
+-------------------------------------------------------------
+NOT !!!!
+Duration süre demek. std::chrono::milliseconds bir duration veriyor.
+Template olarak std::chrono::duration<int,ratio<1,1000>> yazılabilir.
+burada template tür parametrelerine erişirken rep ve period nested türleri
+kullanabiliriz.Rep değeri tik değerinin türünü, period ise bir tik'in 
+sayısal değerinin türünü gösteriyor.
+
+cout << typeid(std::chrono::milliseconds::rep).name() << '\n';  //int64
+cout << typeid(std::chrono::milliseconds::period).name() << '\n';  // std::ration<1,1000>
+
+-------------------------------------------------------------
+-------------------------------------------------------------
+
 BURADA TYPEDEF ISIMLERINIDE KULLANABILIRIZ.
 
 -------------------------------------------------------------
