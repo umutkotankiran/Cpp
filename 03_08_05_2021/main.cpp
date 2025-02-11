@@ -310,7 +310,7 @@ C de L ve R value var
 C++ ta L, PR , X value var.
 
 				  KESİŞİMLERİ
-GVALUE	|--------------------|------------------|-----------------------|  RVALUE
+GLVALUE	|--------------------|------------------|-----------------------|  RVALUE
 	|	LVALUE       |      XVALUE	|	PRVALUE		|
 	|		     |			|			|
 	|--------------------|------------------|-----------------------|
@@ -321,7 +321,7 @@ PR VALUE = PURE R VALUE
 X VALUE = EXPIRING VALUE
 -----------------------------
 PRVALUE + XVALUE = RVALUE
-LVALUE + XVALUE = GVALUE
+LVALUE + XVALUE = GLVALUE
 ---------------------------------------
 
 PR VALUE = NESNE GÖSTERMEYEN İFADE DEMEK
