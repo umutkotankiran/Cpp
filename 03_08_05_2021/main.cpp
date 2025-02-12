@@ -251,7 +251,7 @@ int main()
 
 int& foo(int& r)
 {
-	return x;
+	return r;
 }
 
 int main()
