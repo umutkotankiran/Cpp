@@ -286,6 +286,13 @@ int main()
 Not : Narrowing conversionu engelleme burada da kullanılabilir.
 Not : Bazı durumlarda compiler implicitly geçici nesne oluşturuyor zaten.Görülecek
 
+ÇIKTI
+-----
+main basladi
+Myclass()
+~Myclass()
+main devam ediyor
+
 ======================================================================================================
 ======================================================================================================
 ======================================================================================================
