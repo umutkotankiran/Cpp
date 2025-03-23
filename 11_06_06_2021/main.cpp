@@ -107,6 +107,7 @@ SınıfTürü{ Ctora gönderilecek argüman veya argümanlar }
 ---------------------------------------------------------
 
 class Myclass{
+public:
 	Myclass()
 	{
 		std::cout << "Myclass()\n";
@@ -230,6 +231,14 @@ Destructor çağrılacaktı ama çağrılmadı. Burası istisna.
 Hayatı ne zaman bitecek ? Referans olan ismin scope u sonlandığında, 
 bu referansa bağlanan geçici nesneninde hayatı bitecek.Örnek 1 örnek sonra
 
+ÇIKTI
+-----
+main basladi
+Myclass()
+main devam ediyor
+
+~Myclass()
+
 ------------------------------
 
 İSTİSNA 2:
@@ -245,6 +254,14 @@ int main()
 }
 
 Sağ taraf referansında da aynı şekilde hayatı bitmiyor.
+
+ÇIKTI
+-----
+main basladi
+Myclass()
+main devam ediyor
+
+~Myclass()
 
 --------------------------------------------------------------
 
