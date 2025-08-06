@@ -46,7 +46,7 @@ Geçiçi nesnelere ve R-X Value Category ye giriş.
 
 Bir grafik var mediumda ondan ilerliyoruz.Hatırlatma gibi oldu.
 VALUE CATEGORY
-Lvalue - PR Value - X value
+Lvalue + XValue = GLvalue
 
 PR value + X Value = R Value ==> Bu ifadeler taşıma semantiği ile taşınmasında bir problem olmayacak.
 				Yani kaynak çalabilirim ve bir problem olmaz demek.Bu garantiyi vermesinin sebebi
