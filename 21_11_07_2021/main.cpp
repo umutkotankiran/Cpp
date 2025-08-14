@@ -949,6 +949,11 @@ Aşağıdaki işleri yapmak kolaylaşıyordu.
 	türemiş sınıf clientlarının kullanabilmesini sağlayabiliyorduk.Yoksa yine türemiş sınıfa aynı isimli bir func yazıp, taban sınıfın
 	protected func ına çağrı yapmak gerekecekti.
 
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+NOT: EN SON ÖRNEKTE CPPINSIGHTS İLE KONUYU ÇOK İYİ AÇIKLIYOR !!!!!!!!!!!!!!!
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 Using eskiden de vardı ama modern C++ ta kapsamı baya genişledi.
 Cosntructor içinde using bildrimi yapabiliyoruz.Ctor için using bildirimi yaptığımızda, bu sefer sanki diğer member funclarda olduğu gibi
@@ -1065,6 +1070,8 @@ int main()
 	Der in Ctorlarını yazarsak, Der sınıfının kendi Ctorlarının önceliği var.
 
 NOT : BIZIM ISTEDIĞIMIZ CONSTRUCTOR DER IN DE ELEMANLARI INIT EDECEKSE INHERITED CTOR IŞIMIZI GÖRMEZ!!!!!!!!!!!!!!!!!
+	  ASLINDA DERLEYİCİ TÜREMİŞ SINIFIN CONTRUCTORINI YAZIYOR AMA ELEMANLARI CONTRUCTOR INITIALIZER LISTE EKLEMİYOR VE
+      TABAN SINIFIN CONSTRUCTORINI ÇAĞIRIYOR.
 
 ÖRNEK Aşağıda
 class Der : public Base{
@@ -1194,6 +1201,84 @@ int main()
 
 
 SET EDILECEK KENDI MEMBERLARIMIZDA VARSA, TÜREMIŞ SINIF CTORUDA YAZACAĞIZ YADA DEFAULT MEMBER INIT ILE INIT EDECEĞIZ.
+
+CPPINSIGHTS ÖRNEĞİ
+Yazılan örnek
+#include <iostream>
+
+class Base{
+public:
+    Base(int x1, int x2) : mx{x1}, my{x2} {std::cout << "base::base(int,int)\n";}
+    void print()const{
+        std::cout << "mx=" << mx << " my=" << my << '\n'; 
+    }
+private:
+	int mx,my;
+};
+
+class Der : public Base{
+public:
+	using Base::Base;
+private:
+	int mval;
+};
+
+int main()
+{
+	Der myder(40,20);
+	myder.print(); 
+}
+
+
+CPPINSIGHTS KARŞILIĞI
+#include <iostream>
+
+class Base
+{
+  
+  public: 
+  inline Base(int x1, int x2)
+  : mx{x1}
+  , my{x2}
+  {
+    std::operator<<(std::cout, "base::base(int,int)\n");
+  }
+  
+  inline void print() const
+  {
+    std::operator<<(std::operator<<(std::operator<<(std::cout, "mx=").operator<<(this->mx), " my=").operator<<(this->my), '\n');
+  }
+    
+  private: 
+  int mx;
+  int my;
+  public: 
+};
+
+
+class Der : public Base
+{ 
+  public: 
+  
+  private: 
+  int mval;
+  public: 
+
+  inline Der(int x1, int x2) noexcept(false)  // Bu kısımı yazmış. Base sınıfın ctoru var ama türemiş sınıfta initialize yok
+  : Base(x1, x2)
+  {
+  }
+  
+};
+
+
+int main()
+{
+  Der myder = Der(40, 20);
+  static_cast<const Base&>(myder).print();
+  return 0;
+}
+
 
 ======================================================================================================================================
 ======================================================================================================================================
