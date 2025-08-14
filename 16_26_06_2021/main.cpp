@@ -676,7 +676,7 @@ Association : Sistemdeki 2 sınıf birbiriyle işbirliği halinde kullanılıyor
 					Bir futbolcu bugün fenerde yarın Gs de. gibi.					
 		composition : Yine bir nesne diğerinini sahibi fakat sahip olan ile olunan nesne arasında ömürsel birliktelik var.Sahip hayata gelince, olunan da gelir.
 					  Sahip ölürse, sahip olunanda ölüyor. Araba perte çıktı motoru da kullanılamaz kendide ise arada composition var.
-					  ama eğer motorunu başka yerde kullanabileceksek aggregation var.
+					  ama eğer motorunu başka yerde kullanabileceksek aggregation var. Başka bir sınıfı veri elemanı olarak almak denebilir.
 
 
 Containment : bir nesne diğerini eleman olarak alması durumuna deniyor.
