@@ -422,7 +422,7 @@ public:
 		return os << "[" << c.mval << "]" << "\n";
 	}
 
-	operator int()const // bunu sonradan ekledik hata verdiğini görmek için
+	operator int()const // bunu sonradan ekledik hata vermediğini görmek için
 	{
 		return mval;
 	}
@@ -447,7 +447,7 @@ int main()
 	//Dikkat!!!
 	//int ival = c.operator int();  //Burasıda aynı çağrı aşağısı ile.Counter türünden int türüne dönüşüm yoktu.
 									//operator int()const yazınca LEGAL OLDU.
-	int ival = c; // SENTAKS HATASI ŞUANDA. 
+	int ival = c; // Geçerli
 	
 
 	std::cout << "ival = " << ival << "\n";
