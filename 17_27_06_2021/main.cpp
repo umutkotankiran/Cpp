@@ -1092,9 +1092,15 @@ UNNAMED NAMESPACE LER INTERNAL LINKAGE A AIT.
 EXTERNAL LINKAGE = FARKLI KAYNAK DOSYALARDA BİR İSİM AYNI VARLIĞA İŞARET EDİYORSA BUNA EXTERNAL LİNKAGE DENİR.
 INTERNAL LİNKAGE = O İSİM SADECE O KAYNALK DOSYADA KULLANILDIĞINDA AYNI VARLIĞI GÖSTERİYOR.AYNI İSİM BAŞKA KAYNAK DOSYADA
 					BAŞKA BİR VARLIK OLABİLİR.
-
-C DEN BİLDİĞİMİZ LINKAGE OLAYLARINA UFAKTAN GİRDİ.YAZMIYORUM.
-
+	 
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+External linkage = tek obje, farklı TUlardan aynı sembol.
+Internal linkage = aynı isim farklı TUlarda farklı objeler.
+C++’ta inline = header’a tanım koyabilmenin yolu (tek obje olacak şekilde).
+Header’da static int val = 2324; → her TU kendi kopyasını üretir → bu yüzden “farklı değişkenler” olur.
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 
 Modern c++ öncesinde eklenildi.
 static in kullanılıp internal linkage a ait demek deprecated oldu
