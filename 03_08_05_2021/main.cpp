@@ -318,6 +318,11 @@ int temp = d;
 int &&r = temp'in_adresi;
 
 Tabii burada biz referans yoluyla referansın refere ettiği yeri deştirdiğimizde d'yi değiştirmiş olmayacağız.
+
+Diğer durum
+int &&r{3.14};            // geçersiz! double -> int dönüştürmesi daraltıcı dönüştürme
+int &&k = {3.14};        // geçersiz! geçersiz! double -> int dönüştürmesi daraltıcı dönüştürme
+
 -------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------
