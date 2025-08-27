@@ -40,7 +40,7 @@ auto s = "Dosya :" + "Adi " + s1 + s2 + '_' + ".jpg"; BURASI SENTAKS HATASI.
 
 Substring Elde Eden Functionlar
 -------------------------------
-Yazen bir substringi yeni bir yazı olarak kullanmak istiyoruz.
+Bazen bir substringi yeni bir yazı olarak kullanmak istiyoruz.
 Bunun için substr yi kullanabiliriz.
 
 string str{"bugun gunlerden pazar"};
