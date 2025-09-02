@@ -586,8 +586,8 @@ void flight_game(Airplane&); Bu ikisi olabilir.
 
 SONUÇ:
 takeoff diyorki herkes bu kodu kullanacak.
-fly diyorki ister benim kodumu kullanın ister kendi kodlarınızı oluşturun.
-land diyorki kendi kodlarınızı oluşturmanız gerekiyor.
+land diyorki ister benim kodumu kullanın ister kendi kodlarınızı oluşturun.
+fly diyorki kendi kodlarınızı oluşturmanız gerekiyor.
 
 NOT : TEKRAR. GLOBAL FUNCLAR VE STATIC MEMBER FUNCTION SANAL FUNCTION OLAMAZLAR.
 
