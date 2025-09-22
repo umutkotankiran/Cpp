@@ -799,21 +799,38 @@ void check_special_bits(const fs::path& file) {
     }
 }
 
+--------------------------------------------------------------------------------------------------------------------------------------------
 
+Hata Yönetimi
+Filesystem işlemleri birçok farklı hata durumu ile karşılaşabilir (dosya bulunamadı, izin reddedildi, disk dolu vb.). 
+Bu bölümde robust hata yönetimi stratejilerini öğreneceğiz. Exception handling ve error_code kullanımı arasındaki farkları ve 
+hangi durumlarda hangisinin tercih edilmesi gerektiğini ele alacağız.
 
+Exception Handling
+------------------
+cpptry {
+    fs::copy_file("source.txt", "dest.txt");
+} catch (const fs::filesystem_error& ex) {
+    std::cout << "Filesystem hatası: " << ex.what() << std::endl;
+    std::cout << "Hata kodu: " << ex.code() << std::endl;
+    std::cout << "Path1: " << ex.path1() << std::endl;
+    std::cout << "Path2: " << ex.path2() << std::endl;
+}
 
+Error Code Kullanımı
+--------------------
+cppstd::error_code ec;
+fs::path p = "nonexistent.txt";
 
-
-
-
-
-
-
-
-
-
-
-
+// Exception atmayan versiyon
+std::uintmax_t size = fs::file_size(p, ec);
+if (ec) {
+    std::cout << "Hata: " << ec.message() << std::endl;
+    std::cout << "Hata değeri: " << ec.value() << std::endl;
+    std::cout << "Kategori: " << ec.category().name() << std::endl;
+} else {
+    std::cout << "Dosya boyutu: " << size << std::endl;
+}
 
 
 */
